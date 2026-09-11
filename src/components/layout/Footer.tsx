@@ -1,0 +1,98 @@
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { nav, site } from "@/lib/site";
+import { Wordmark } from "@/components/ui/Wordmark";
+
+function Col({
+  title,
+  items,
+}: {
+  title: string;
+  items: ReadonlyArray<{ label: string; href: string; external?: boolean }>;
+}) {
+  return (
+    <div>
+      <p className="mono-label text-ink-3">{title}</p>
+      <ul className="mt-4 flex flex-col gap-2.5">
+        {items.map((it) => (
+          <li key={it.href}>
+            {it.external ? (
+              <a
+                href={it.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-[0.95rem] text-ink-2 transition-colors duration-[160ms] hover:text-ink"
+              >
+                <span className="link-underline">{it.label}</span>
+                <ArrowUpRight className="size-3.5" strokeWidth={2} aria-hidden />
+              </a>
+            ) : (
+              <Link
+                href={it.href}
+                className="text-[0.95rem] text-ink-2 transition-colors duration-[160ms] hover:text-ink"
+              >
+                <span className="link-underline">{it.label}</span>
+              </Link>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export function Footer() {
+  return (
+    <footer className="border-t border-line bg-bg">
+      <div className="container-x pt-16 pb-10 md:pt-20">
+        <div className="grid gap-12 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <Wordmark byline />
+            <p className="mt-6 max-w-[28ch] text-[1.35rem] font-medium leading-[1.2] tracking-[-0.025em] text-ink">
+              {site.tagline}
+            </p>
+            <p className="mt-4 max-w-[38ch] text-[0.95rem] leading-relaxed text-ink-2">
+              From supplier data to store-ready products. Shopify, WooCommerce
+              and compatible custom platforms.
+            </p>
+            <a
+              href={`mailto:${site.email}`}
+              className="mt-6 inline-block font-mono text-[0.85rem] text-ink-2 hover:text-ink"
+            >
+              <span className="link-underline">{site.email}</span>
+            </a>
+          </div>
+
+          <div className="grid gap-10 sm:grid-cols-3 md:col-span-7">
+            <Col title="Services" items={nav.footer.services} />
+            <Col title="Company" items={nav.footer.company} />
+            <Col title="Legal" items={nav.footer.legal} />
+          </div>
+        </div>
+
+        <div className="mt-16 flex flex-col gap-4 border-t border-line pt-6 text-[0.85rem] text-ink-3 md:flex-row md:items-center md:justify-between">
+          <p>
+            Scenox Commerce is part of{" "}
+            <a
+              href={site.parentUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink-2 hover:text-ink"
+            >
+              <span className="link-underline">Scenox Studios</span>
+            </a>
+            .
+          </p>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <span className="mono-micro">
+              {site.platforms.join(" • ")}
+            </span>
+            <span className="mono-micro tabular">
+              © {new Date().getFullYear()} Scenox Studios
+            </span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
