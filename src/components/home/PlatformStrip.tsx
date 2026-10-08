@@ -38,10 +38,10 @@ export function Statement() {
           </Reveal>
           <Reveal delay={0.1} className="lg:col-span-3 lg:pt-3">
             <p className="text-[1rem] leading-[1.55] text-ink-2">
-              The 48-hour launch is one shape of the work. Growing brands,
-              retailers, wholesalers and agencies send us catalogs from 50 to
-              50,000+ SKUs. One AI-powered engine, reviewed by people, at any
-              scale.
+              The 48-hour launch is where most stores start. From 50 to
+              50,000+ SKUs, then on to Google Shopping, marketplaces, email
+              and WhatsApp. One AI-powered engine, reviewed by people, from
+              the first upload to the repeat order.
             </p>
           </Reveal>
         </div>

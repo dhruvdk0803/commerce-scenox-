@@ -6,6 +6,9 @@ import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { CheckBox } from "@/components/ui/Status";
+import { useMarket, usePrice } from "@/components/market/MarketProvider";
+
+const DEMO_PRICE = { in: 4999, us: 89, uk: 69, au: 129 };
 
 const RAW: [string, string, "null" | "warn" | "ok" | "muted" | undefined][] = [
   ["SKU", "AX-442", undefined],
@@ -26,6 +29,8 @@ const RAIL = ["CLEAN", "MAP", "ENRICH", "VALIDATE"];
 export function BeforeAfter() {
   const [tab, setTab] = useState<TabKey>("Description");
   const reduce = useReducedMotion();
+  const price = usePrice();
+  const market = useMarket();
 
   return (
     <section className="section-y border-t border-line" aria-labelledby="ba-heading">
@@ -45,7 +50,9 @@ export function BeforeAfter() {
               <span className="mono-micro text-ink-3">ROW 0412</span>
             </div>
             <dl className="flex-1 divide-y divide-line">
-              {RAW.map(([k, v, tone]) => (
+              {RAW.map(([k, raw, tone]) => {
+                const v = k === "price" ? String(DEMO_PRICE[market.id]) : raw;
+                return (
                 <div key={k} className="grid grid-cols-[6.5rem_1fr] items-baseline px-4 py-3">
                   <dt className="mono-micro text-ink-3">{k}</dt>
                   <dd
@@ -60,7 +67,8 @@ export function BeforeAfter() {
                     {v}
                   </dd>
                 </div>
-              ))}
+                );
+              })}
             </dl>
             <div className="border-t border-line px-4 py-3">
               <span className="mono-micro text-danger">3 FIELDS INVALID · 2 MISSING</span>
@@ -134,7 +142,7 @@ export function BeforeAfter() {
                 </h3>
                 <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1">
                   <span className="mono-micro text-ink-3">SKU AX-442</span>
-                  <span className="text-[0.95rem] font-medium text-ink tabular">₹4,999</span>
+                  <span className="text-[0.95rem] font-medium text-ink tabular">{price(DEMO_PRICE)}</span>
                   <span className="mono-micro text-success">IN STOCK</span>
                 </div>
 

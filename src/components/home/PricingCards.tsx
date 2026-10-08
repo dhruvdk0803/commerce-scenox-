@@ -10,6 +10,7 @@ import { Button, TextLink } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { MotionItem, Stagger, staggerChild } from "@/components/ui/Reveal";
+import { useMarket, usePrice } from "@/components/market/MarketProvider";
 
 export function PricingCards({
   preview = false,
@@ -20,6 +21,8 @@ export function PricingCards({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.3 });
+  const market = useMarket();
+  const price = usePrice();
   useEffect(() => {
     if (inView) track("pricing_viewed", { preview });
   }, [inView, preview]);
@@ -37,11 +40,14 @@ export function PricingCards({
               {heading[1]}
             </>
           }
-          description="Starting prices for completed catalog operations, not per-row data entry. We confirm a fixed quote after inspecting your files. International projects are quoted in USD on request."
+          description={`Starting prices in ${market.currency} for completed catalog operations, not per-row data entry. We confirm a fixed quote after inspecting your files.`}
         />
 
         <Stagger as="ul" className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4 md:mt-16" amount={0.1}>
-          {tiers.map((t) => (
+          {tiers.map((t) => {
+            const p = price(t.price);
+            const fixed = t.price[market.id] != null;
+            return (
             <MotionItem
               key={t.id}
               variants={staggerChild}
@@ -65,10 +71,10 @@ export function PricingCards({
                 <p
                   className={cn(
                     "mt-2 font-semibold leading-none tracking-[-0.035em] text-ink tabular",
-                    t.price.startsWith("₹") ? "text-[2.5rem]" : "text-[1.75rem] pt-1.5",
+                    fixed ? "text-[2.5rem]" : "text-[1.75rem] pt-1.5",
                   )}
                 >
-                  {t.price}
+                  {p}
                 </p>
               </div>
 
@@ -92,7 +98,8 @@ export function PricingCards({
                 {t.cta}
               </Button>
             </MotionItem>
-          ))}
+            );
+          })}
         </Stagger>
 
         {preview ? (

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
@@ -8,6 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { track, trackConversion } from "@/lib/analytics";
 import { isValidEmail, isValidPhone, isWorkEmail } from "@/lib/validation";
 import { cn } from "@/lib/utils";
+import { useMarket } from "@/components/market/MarketProvider";
 import {
   ChipGroup,
   Field,
@@ -87,6 +89,7 @@ function validateStep(step: number, d: Data): Errors {
 }
 
 export function LeadForm() {
+  const market = useMarket();
   const params = useSearchParams();
   const reduce = useReducedMotion();
   // Client-only component (see LeadFormLoader): safe to read storage + params lazily.
@@ -101,12 +104,15 @@ export function LeadForm() {
     const need = params.get("need");
     const tier = params.get("tier");
     const platform = params.get("platform");
+    const plan = params.get("plan");
     const needs = [...(saved.needs ?? [])];
     if (need && NEED_QUERY_MAP[need] && !needs.includes(NEED_QUERY_MAP[need])) needs.push(NEED_QUERY_MAP[need]);
+    if (plan && !needs.includes("Monthly plan")) needs.push("Monthly plan");
     const d: Data = {
       ...empty,
       ...saved,
       needs,
+      country: saved.country || (COUNTRIES as readonly string[]).find((c) => c === market.label) || "",
       productCount: saved.productCount || (tier && TIER_COUNT_MAP[tier]) || "",
       platform:
         saved.platform || (platform && PLATFORMS.find((p) => p.toLowerCase() === platform.toLowerCase())) || "",
@@ -488,9 +494,9 @@ export function LeadForm() {
                       <p className="mono-micro mb-2 text-ink-3">ACCESS & DATA</p>
                       We never ask for store passwords. Publishing access is arranged after project approval using scoped
                       collaborator or staff accounts where supported. Files are used only for your project. Read our{" "}
-                      <a href="/data-handling" className="text-ink underline underline-offset-2">
+                      <Link href="/data-handling" className="text-ink underline underline-offset-2">
                         data-handling policy
-                      </a>
+                      </Link>
                       .
                     </div>
                   </div>

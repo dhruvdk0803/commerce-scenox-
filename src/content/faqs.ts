@@ -46,8 +46,20 @@ export const faqs: FAQ[] = [
     a: "High-SKU catalogs are a strong fit. Large projects are assessed first, then scheduled in batches with a publishing plan. Wholesalers and distributors with 10,000 to 50,000+ SKUs are typical.",
   },
   {
+    q: "Do you only do catalogs?",
+    a: "The catalog is where we start, because every other channel depends on it. From the same clean product data we also run AI product imagery, Google Shopping and marketplace feeds, email marketing with abandoned cart recovery, and WhatsApp automation.",
+  },
+  {
+    q: "Do I need Klaviyo or a separate WhatsApp tool?",
+    a: "No. Email and WhatsApp run on Scenox's own sending and messaging infrastructure, connected to your store. If you already use Klaviyo or Shopify Email, we can build there instead.",
+  },
+  {
+    q: "Why do you cost less than an agency?",
+    a: "An AI engine does the repetitive work agencies bill by the hour, and our team reviews the output instead of typing it. That's what makes us faster and cheaper without cutting corners on accuracy.",
+  },
+  {
     q: "Do you offer ongoing catalog management?",
-    a: "Yes. New SKU onboarding, price updates, content changes, category restructuring and recurring supplier-data processing can run as an ongoing operation once the initial catalog is live.",
+    a: "Yes. Monthly plans cover new SKU onboarding, price and stock updates, a weekly catalog health scan, feed sync and, on the Retention and Growth Stack plans, your email and WhatsApp flows.",
   },
 ];
 
@@ -80,7 +92,11 @@ export const pricingFaqs: FAQ[] = [
     a: "The sample is free for projects that are a reasonable fit. It shows you exactly what your catalog will look like before you commit.",
   },
   {
-    q: "Do international clients pay in INR?",
-    a: "International projects are quoted in USD on request. Use the Get Started form and select your country.",
+    q: "Why are prices different in each country?",
+    a: "We price each market for that market: India in INR, the US in USD, the UK in GBP and Australia in AUD. You see the prices for your region and you're invoiced in that currency. The scope of every product is the same everywhere.",
+  },
+  {
+    q: "Why are you cheaper than an agency or a freelancer?",
+    a: "Because an AI engine does the repetitive work that agencies bill by the hour: parsing files, mapping categories, drafting descriptions, matching images, building flows. People review the output instead of typing it. You pay for finished work, not hours.",
   },
 ];

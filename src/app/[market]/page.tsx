@@ -16,7 +16,9 @@ import { PlatformModules } from "@/components/home/PlatformModules";
 import { SampleOffer } from "@/components/home/SampleOffer";
 import { ProofModule } from "@/components/home/ProofModule";
 import { PricingCards } from "@/components/home/PricingCards";
-import { OngoingOps } from "@/components/home/OngoingOps";
+import { Advantages } from "@/components/home/Advantages";
+import { ProductMenu } from "@/components/pricing/ProductMenu";
+import { PlanCards } from "@/components/pricing/PlanCards";
 import { FAQ } from "@/components/home/FAQ";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -42,15 +44,17 @@ export default function HomePage() {
         <MessySpreadsheet />
         <BeforeAfter />
         <ServiceGrid />
+        <ProductMenu tone="muted" />
         <ProcessSteps />
         <SystemSpec />
         <SpeedComparison />
         <AudienceCards />
         <PlatformModules />
+        <Advantages />
         <SampleOffer />
         <ProofModule />
         <PricingCards preview />
-        <OngoingOps />
+        <PlanCards />
         <FAQ />
         <FinalCTA />
       </main>

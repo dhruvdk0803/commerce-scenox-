@@ -15,6 +15,9 @@ import { SampleOffer } from "@/components/home/SampleOffer";
 import { ProofModule } from "@/components/home/ProofModule";
 import { PricingCards } from "@/components/home/PricingCards";
 import { OngoingOps } from "@/components/home/OngoingOps";
+import { Advantages } from "@/components/home/Advantages";
+import { ProductMenu } from "@/components/pricing/ProductMenu";
+import { PlanCards } from "@/components/pricing/PlanCards";
 import { FAQ } from "@/components/home/FAQ";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { Footer } from "@/components/layout/Footer";
@@ -43,6 +46,9 @@ const MAP: Record<string, ComponentType> = {
   proof: ProofModule,
   pricing: PricingCards,
   ops: OngoingOps,
+  menu: ProductMenu,
+  advantages: Advantages,
+  plans: PlanCards,
   faq: FAQ,
   final: FinalCTA,
   header: Header,

@@ -98,30 +98,38 @@ export function Header({ minimal = false }: { minimal?: boolean }) {
                       exit={{ opacity: 0, transform: "translateY(-4px) scale(0.985)" }}
                       transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
                       style={{ transformOrigin: "top left" }}
-                      className="absolute left-0 top-[calc(100%+10px)] w-[560px] rounded-[12px] border border-line bg-bg-elevated p-2 shadow-[0_12px_40px_-16px_rgba(16,17,18,0.18)]"
+                      className="absolute left-0 top-[calc(100%+10px)] w-[620px] rounded-[12px] border border-line bg-bg-elevated p-2 shadow-[0_12px_40px_-16px_rgba(16,17,18,0.18)]"
                     >
-                      <div className="grid grid-cols-2 gap-1">
-                        {nav.services.map((s, i) => (
+                      <div className="grid grid-cols-2 gap-x-1">
+                        {(["Catalog", "Sell & Retain"] as const).map((g) => (
+                          <div key={g}>
+                            <p className="mono-micro px-3.5 pb-1 pt-2.5 text-ink-3">{g.toUpperCase()}</p>
+                            {nav.services
+                              .filter((s) => s.group === g)
+                              .map((s) => (
+                                <Link
+                                  key={s.href}
+                                  href={s.href}
+                                  onClick={() => setServicesOpen(false)}
+                                  className="block rounded-[8px] px-3.5 py-2.5 transition-colors duration-[160ms] hover:bg-bg-muted"
+                                >
+                                  <span className="text-[0.925rem] font-medium tracking-[-0.01em] text-ink">{s.label}</span>
+                                  <p className="mt-0.5 text-[0.85rem] leading-snug text-ink-2">{s.desc}</p>
+                                </Link>
+                              ))}
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-1 grid grid-cols-2 gap-1 border-t border-line pt-1">
+                        {nav.more.map((s) => (
                           <Link
                             key={s.href}
                             href={s.href}
                             onClick={() => setServicesOpen(false)}
-                            className={cn(
-                              "group rounded-[8px] px-3.5 py-3 transition-colors duration-[160ms] hover:bg-bg-muted",
-                              i === 4 && "col-span-2 border-t border-line pt-3.5 mt-1 rounded-t-none",
-                            )}
+                            className="rounded-[8px] px-3.5 py-2.5 transition-colors duration-[160ms] hover:bg-bg-muted"
                           >
-                            <div className="flex items-center gap-2">
-                              <span className="mono-micro tabular text-ink-3">
-                                {String(i + 1).padStart(2, "0")}
-                              </span>
-                              <span className="text-[0.925rem] font-medium tracking-[-0.01em] text-ink">
-                                {s.label}
-                              </span>
-                            </div>
-                            <p className="mt-1 pl-[calc(0.6875rem*2+0.5rem)] text-[0.85rem] leading-snug text-ink-2">
-                              {s.desc}
-                            </p>
+                            <span className="text-[0.925rem] font-medium tracking-[-0.01em] text-ink">{s.label}</span>
+                            <p className="mt-0.5 text-[0.85rem] leading-snug text-ink-2">{s.desc}</p>
                           </Link>
                         ))}
                       </div>

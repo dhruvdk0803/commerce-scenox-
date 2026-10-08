@@ -13,13 +13,21 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbJsonLd, faqJsonLd, pageMeta } from "@/lib/seo";
 import { pricingFaqs } from "@/content/faqs";
 import { PageHero } from "@/components/ui/PageHero";
+import { ProductMenu } from "@/components/pricing/ProductMenu";
+import { PlanCards } from "@/components/pricing/PlanCards";
+import { Price } from "@/components/market/Price";
+import { plans, tiers } from "@/content/pricing";
+import { getMarket, getPrice } from "@/lib/market-server";
 
-export const metadata: Metadata = pageMeta({
-  title: "Pricing — Catalog upload from ₹6,999",
-  description:
-    "Transparent starting prices for ecommerce catalog operations. Starter, Growth, Catalog Launch and Scale tiers. Final quote confirmed after inspecting your files.",
-  path: "/pricing",
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const from = await getPrice(tiers[0].price);
+  return pageMeta({
+    title: `Pricing & Plans — Catalog upload from ${from}`,
+    description:
+      "Public starting prices for catalog upload, cleanup, imagery, feeds, email and WhatsApp automation, plus monthly plans. Fixed scope for every product.",
+    path: "/pricing",
+  });
+}
 
 const INCLUDED = [
   "Source-file inspection and a fixed quote",
@@ -30,7 +38,8 @@ const INCLUDED = [
   "Upload, publishing and a QA pass",
 ];
 
-export default function PricingPage() {
+export default async function PricingPage() {
+  const market = await getMarket();
   return (
     <>
       <Header />
@@ -39,18 +48,31 @@ export default function PricingPage() {
 
         <PageHero
           eyebrow="PRICING"
-          title="Simple projects. Simple pricing."
-          lead="Starting prices are public because they should be. Complex projects are assessed before a final quote, and nothing hides behind “contact sales”."
+          title="Fixed products. Public prices."
+          lead="Every service is a product with a set scope, a delivery time and a starting price in your currency. Run one, or let a monthly plan run all of it. Nothing hides behind “contact sales”."
           className="pb-2 md:pb-4"
           facts={[
-            { k: "STARTS FROM", v: "₹6,999 (up to 250 products)" },
-            { k: "MOST POPULAR", v: "Catalog Launch · up to 1,000 · from ₹14,999" },
-            { k: "1,000+", v: "Assessed, then a fixed quote" },
-            { k: "INTERNATIONAL", v: "USD quotes on request" },
+            { k: "CATALOG UPLOAD", v: <>From <Price set={tiers[0].price} /> · up to 250 products</> },
+            { k: "MOST POPULAR", v: <>Catalog Launch · up to 1,000 · from <Price set={tiers[2].price} /></> },
+            { k: "MONTHLY PLANS", v: <>From <Price set={plans[0].price} /> a month</> },
+            { k: "CURRENCY", v: `${market.currency} · prices for ${market.label}` },
           ]}
         />
 
-        <PricingCards heading={["Four tiers.", "One completed catalog."]} />
+        <PricingCards heading={["Catalog upload.", "Four tiers, one completed catalog."]} />
+        <ProductMenu
+          tone="muted"
+          eyebrow="EVERY PRODUCT"
+          title={
+            <>
+              Everything else,
+              <br />
+              <span className="text-ink-2">priced the same way.</span>
+            </>
+          }
+          description="Each product is a fixed scope with a starting price. We confirm the final figure after seeing your store and data."
+        />
+        <PlanCards tone="light" />
 
         {/* included + large catalogs */}
         <section className="section-y border-t border-line bg-bg-muted/40" aria-labelledby="included-heading">

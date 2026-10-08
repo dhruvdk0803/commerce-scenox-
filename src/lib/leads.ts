@@ -129,7 +129,7 @@ export function validatePayload(p: unknown): { ok: true; data: Payload } | { ok:
         platform: str("platform").slice(0, 40),
         productCount: str("productCount").slice(0, 40),
         sources: arr("sources").slice(0, 12),
-        needs: arr("needs").slice(0, 12),
+        needs: arr("needs").slice(0, 20),
         timeline: str("timeline").slice(0, 40),
       },
     };

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -76,9 +77,9 @@ export default function ContactPage() {
               </div>
               <p className="mt-4 text-[0.8rem] leading-relaxed text-ink-3">
                 By sending you agree to our{" "}
-                <a href="/privacy" className="underline underline-offset-2 hover:text-ink">
+                <Link href="/privacy" className="underline underline-offset-2 hover:text-ink">
                   privacy policy
-                </a>
+                </Link>
                 . We use your details only to reply and scope your project.
               </p>
             </div>

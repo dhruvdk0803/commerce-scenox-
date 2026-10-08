@@ -31,7 +31,12 @@ export const NEEDS = [
   "Categories",
   "Variants",
   "SEO",
+  "Product imagery",
+  "Google Shopping / marketplaces",
+  "Email & abandoned cart",
+  "WhatsApp automation",
   "Ongoing management",
+  "Monthly plan",
   "Other",
 ] as const;
 
@@ -63,6 +68,10 @@ export const NEED_QUERY_MAP: Record<string, (typeof NEEDS)[number]> = {
   wholesale: "New upload",
   agency: "New upload",
   upload: "New upload",
+  imagery: "Product imagery",
+  feeds: "Google Shopping / marketplaces",
+  email: "Email & abandoned cart",
+  whatsapp: "WhatsApp automation",
 };
 
 export const TIER_COUNT_MAP: Record<string, (typeof PRODUCT_COUNTS)[number]> = {

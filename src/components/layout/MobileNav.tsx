@@ -62,7 +62,7 @@ export function MobileNav({
           >
             <p className="mono-label mb-3 text-ink-3">Services</p>
             <ul className="flex flex-col">
-              {nav.services.map((s, i) => (
+              {[...nav.services, ...nav.more].map((s, i) => (
                 <motion.li
                   key={s.href}
                   initial={reduce ? false : { opacity: 0, transform: "translateY(8px)" }}
@@ -78,7 +78,7 @@ export function MobileNav({
                       {s.label}
                     </span>
                     <span className="mono-micro tabular text-ink-3">
-                      {String(i + 1).padStart(2, "0")}
+                      {"group" in s ? s.group.toUpperCase() : ""}
                     </span>
                   </Link>
                 </motion.li>

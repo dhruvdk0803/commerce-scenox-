@@ -3,7 +3,10 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { site } from "@/lib/site";
 import { organizationJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
-import "./globals.css";
+import { MARKET_IDS } from "@/lib/markets";
+import { getMarketId } from "@/lib/market-server";
+import { MarketProvider } from "@/components/market/MarketProvider";
+import "../globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -49,11 +52,18 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return MARKET_IDS.map((market) => ({ market }));
+}
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const market = await getMarketId();
   return (
     <html
       lang="en"
@@ -66,7 +76,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        {children}
+        <MarketProvider market={market}>{children}</MarketProvider>
         <JsonLd data={organizationJsonLd()} />
       </body>
     </html>

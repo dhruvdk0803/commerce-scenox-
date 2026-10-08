@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { Eyebrow } from "./Eyebrow";
 import { Reveal } from "./Reveal";
 
-export type Fact = { k: string; v: string };
+export type Fact = { k: string; v: ReactNode };
 
 /**
  * Inner-page opener. Copy on the left, a compact facts ledger on the right

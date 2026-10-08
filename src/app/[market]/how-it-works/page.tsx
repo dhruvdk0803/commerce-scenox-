@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { ProcessExplorer } from "@/components/pages/ProcessExplorer";
 import { ProcessSteps } from "@/components/home/ProcessSteps";
 import { SystemSpec } from "@/components/home/SystemSpec";
+import { Advantages } from "@/components/home/Advantages";
 import { BeforeAfter } from "@/components/home/BeforeAfter";
 import { SampleOffer } from "@/components/home/SampleOffer";
 import { FAQ } from "@/components/home/FAQ";
@@ -62,6 +63,7 @@ export default function HowItWorksPage() {
         </section>
 
         <SystemSpec />
+        <Advantages />
 
         <section className="section-y border-t border-line" aria-labelledby="principles-heading">
           <div className="container-x grid gap-10 lg:grid-cols-12">

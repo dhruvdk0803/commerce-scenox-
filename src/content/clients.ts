@@ -8,6 +8,8 @@ export const clients: { name: string; sector?: string; homepage?: boolean }[] = 
   { name: "Black Wo Manufacturers" },
   { name: "Katta Interior and Hardware" },
   { name: "All Home Living" },
+  { name: "Mavrikta" },
+  { name: "Jynora Jewels" },
   { name: "Rooh Amer", homepage: false },
 ];
 

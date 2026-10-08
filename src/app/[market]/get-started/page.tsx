@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Header } from "@/components/layout/Header";
@@ -60,13 +61,13 @@ export default function GetStartedPage() {
               </div>
               <p className="mt-4 text-[0.8rem] leading-relaxed text-ink-3">
                 By submitting you agree to our{" "}
-                <a href="/terms" className="underline underline-offset-2 hover:text-ink">
+                <Link href="/terms" className="underline underline-offset-2 hover:text-ink">
                   terms
-                </a>{" "}
+                </Link>{" "}
                 and{" "}
-                <a href="/privacy" className="underline underline-offset-2 hover:text-ink">
+                <Link href="/privacy" className="underline underline-offset-2 hover:text-ink">
                   privacy policy
-                </a>
+                </Link>
                 . We use your details only to scope and deliver your project.
               </p>
             </div>
