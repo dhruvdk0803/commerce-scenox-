@@ -17,6 +17,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Price } from "@/components/market/Price";
 import { productPages, type ProductPage } from "@/content/products";
 import { breadcrumbJsonLd, faqJsonLd, pageMeta, serviceJsonLd } from "@/lib/seo";
+import { site } from "@/lib/site";
 
 function get(id: string): ProductPage {
   const p = productPages.find((x) => x.id === id);
@@ -42,6 +43,7 @@ function PriceBox({ p }: { p: ProductPage }) {
           <span className="mono-micro text-ink-3">DELIVERY</span>
           <span className="text-[0.9rem] text-ink">{p.turnaround}</span>
         </div>
+        <p className="mt-2 text-[0.75rem] leading-snug text-ink-3">{site.qualifier}</p>
       </div>
       <Facts label="WHAT YOU GET" facts={p.facts} />
     </div>

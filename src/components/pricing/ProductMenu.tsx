@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { Price } from "@/components/market/Price";
+import { site } from "@/lib/site";
 
 const ORDER: ProductGroup[] = ["catalog", "channels", "retention"];
 
@@ -87,6 +88,7 @@ export function ProductMenu({
             );
           })}
         </div>
+        <p className="mt-6 text-[0.85rem] text-ink-3">{site.qualifier}</p>
       </div>
     </section>
   );

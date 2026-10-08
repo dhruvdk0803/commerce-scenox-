@@ -24,7 +24,7 @@ export type ProductSummary = {
   desc: string;
   price: PriceSet;
   unit: string;
-  turnaround: string;
+  turnaround: string; // always shown with site.qualifier
   isNew?: boolean;
 };
 
@@ -59,7 +59,7 @@ const existing: ProductSummary[] = [
     desc: "Spreadsheets and supplier data, live on your store.",
     price: { in: 6999, us: 149, uk: 119, au: 229 },
     unit: "up to 250 products",
-    turnaround: "48 hours for eligible catalogs",
+    turnaround: "From 48 hours",
   },
   {
     id: "cleanup",
@@ -69,7 +69,7 @@ const existing: ProductSummary[] = [
     desc: "Fix what is already online, in bulk.",
     price: { in: 4999, us: 129, uk: 99, au: 199 },
     unit: "up to 250 products",
-    turnaround: "3–5 working days",
+    turnaround: "From 48 hours",
   },
   {
     id: "migration",
@@ -79,7 +79,7 @@ const existing: ProductSummary[] = [
     desc: "Move the store. Not the mess.",
     price: { in: 19999, us: 499, uk: 399, au: 749 },
     unit: "per store",
-    turnaround: "Confirmed after review",
+    turnaround: "From 48 hours",
   },
 ];
 
@@ -97,7 +97,7 @@ export const productPages: ProductPage[] = [
     desc: "Clean, consistent product photos from the images you already have.",
     price: { in: 2999, us: 79, uk: 65, au: 119 },
     unit: "per 50 products",
-    turnaround: "2–3 working days",
+    turnaround: "From 48 hours",
     metaTitle: "AI Product Photo Editing for Ecommerce",
     metaDescription:
       "Background removal, consistent white-background sets, lifestyle scenes and marketplace-ready sizes from your existing product photos. Reviewed by a person before delivery.",
@@ -158,7 +158,7 @@ export const productPages: ProductPage[] = [
     desc: "Google Shopping, Meta, Amazon and Flipkart from one clean catalog.",
     price: { in: 7999, us: 199, uk: 159, au: 299 },
     unit: "per channel, one-time setup",
-    turnaround: "3–5 working days",
+    turnaround: "From 48 hours",
     metaTitle: "Google Shopping, Meta & Marketplace Feed Management",
     metaDescription:
       "Google Merchant Center, Meta catalog, Amazon, Flipkart and eBay listings built from your store catalog. Feed errors and disapprovals fixed, kept in sync as products change.",
@@ -219,7 +219,7 @@ export const productPages: ProductPage[] = [
     desc: "Cart recovery, welcome, post-purchase and win-back flows that run on their own.",
     price: { in: 12999, us: 349, uk: 279, au: 529 },
     unit: "one-time setup, 8 core flows",
-    turnaround: "5–7 working days",
+    turnaround: "From 48 hours",
     metaTitle: "Ecommerce Email Marketing & Abandoned Cart Recovery",
     metaDescription:
       "Abandoned cart, checkout, welcome, post-purchase, back-in-stock and win-back email flows for Shopify and WooCommerce stores. Built and run on Scenox infrastructure, or in Klaviyo.",
@@ -284,7 +284,7 @@ export const productPages: ProductPage[] = [
     desc: "Cart recovery, COD confirmation, order updates and broadcasts on WhatsApp.",
     price: { in: 9999, us: 279, uk: 229, au: 429 },
     unit: "one-time setup",
-    turnaround: "5–7 working days",
+    turnaround: "From 48 hours",
     metaTitle: "WhatsApp Automation for Ecommerce Stores",
     metaDescription:
       "Abandoned cart recovery, COD order confirmation, shipping updates, broadcasts and customer nurture on the official WhatsApp Business API. Built for Shopify and WooCommerce.",

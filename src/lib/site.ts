@@ -12,7 +12,7 @@ export const site = {
   whatsapp: "",
   platforms: ["Shopify", "WooCommerce", "Custom Websites"],
   qualifier:
-    "For eligible catalogs. Turnaround varies based on catalog complexity and source-data quality.",
+    "For eligible projects. Turnaround depends on scope, catalog complexity and the quality of the data and access we receive.",
 } as const;
 
 export const nav = {
