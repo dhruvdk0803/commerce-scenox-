@@ -24,6 +24,7 @@ export const nav = {
     { label: "Feeds & Marketplaces", href: "/feeds-marketplaces", desc: "Google Shopping, Meta, Amazon, Flipkart.", group: "Sell & Retain" },
     { label: "Email & Abandoned Cart", href: "/email-marketing", desc: "Recovery, welcome and win-back flows.", group: "Sell & Retain" },
     { label: "WhatsApp Automation", href: "/whatsapp-automation", desc: "Cart recovery, COD confirmation, updates.", group: "Sell & Retain" },
+    { label: "AI Customer Support", href: "/ai-customer-support", desc: "Order and product questions answered 24/7.", group: "Sell & Retain" },
   ],
   more: [
     { label: "Monthly Plans", href: "/pricing#plans", desc: "Catalog, channels and retention, run for you." },
@@ -43,6 +44,7 @@ export const nav = {
       { label: "Feeds & Marketplaces", href: "/feeds-marketplaces" },
       { label: "Email & Abandoned Cart", href: "/email-marketing" },
       { label: "WhatsApp Automation", href: "/whatsapp-automation" },
+      { label: "AI Customer Support", href: "/ai-customer-support" },
       { label: "Wholesalers & Distributors", href: "/wholesale-catalog" },
     ],
     company: [

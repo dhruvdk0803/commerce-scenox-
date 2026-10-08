@@ -18,6 +18,8 @@ import { OngoingOps } from "@/components/home/OngoingOps";
 import { Advantages } from "@/components/home/Advantages";
 import { ProductMenu } from "@/components/pricing/ProductMenu";
 import { PlanCards } from "@/components/pricing/PlanCards";
+import { BundleCards } from "@/components/pricing/BundleCards";
+import { PricingTabs } from "@/components/pricing/PricingTabs";
 import { FAQ } from "@/components/home/FAQ";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { Footer } from "@/components/layout/Footer";
@@ -49,6 +51,8 @@ const MAP: Record<string, ComponentType> = {
   menu: ProductMenu,
   advantages: Advantages,
   plans: PlanCards,
+  bundles: BundleCards,
+  pricingtabs: PricingTabs,
   faq: FAQ,
   final: FinalCTA,
   header: Header,

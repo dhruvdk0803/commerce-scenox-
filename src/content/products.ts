@@ -38,6 +38,8 @@ export type ProductPage = ProductSummary & {
   lead: string;
   facts: { k: string; v: string }[];
   ledger: { heading: string; title: string; note: string; rows: LedgerRow[] };
+  /** What happens at hour 0, 12, 24 and 48. */
+  timeline: [string, string, string, string];
   deliverables: { title: string; items: string[] };
   edges: { title: string; body: string }[];
   faqs: FAQ[];
@@ -123,6 +125,12 @@ export const productPages: ProductPage[] = [
         { label: "ax-442-blue: no source photo", meta: "FLAGGED", status: "missing" },
       ],
     },
+    timeline: [
+      "You send whatever photos you have.",
+      "Backgrounds removed, sets built at every size.",
+      "Every image checked against the real product.",
+      "Uploaded to your store, named by SKU, with alt text.",
+    ],
     deliverables: {
       title: "Every set includes",
       items: [
@@ -184,6 +192,12 @@ export const productPages: ProductPage[] = [
         { label: "Price mismatch: store vs feed", meta: "0 FOUND", status: "ready", statusLabel: "CLEAR" },
       ],
     },
+    timeline: [
+      "You connect the store and channel accounts.",
+      "Products mapped to each channel’s required fields.",
+      "Feeds submitted, errors and disapprovals fixed.",
+      "Products approved and syncing on every channel.",
+    ],
     deliverables: {
       title: "Every channel setup includes",
       items: [
@@ -246,6 +260,12 @@ export const productPages: ProductPage[] = [
         { label: "Win-back · 60 / 90 days", meta: "2 EMAILS", status: "queued" },
       ],
     },
+    timeline: [
+      "Store connected, brand assets shared.",
+      "All 8 flows drafted: copy, design, timing.",
+      "You review and approve every flow.",
+      "Domain authenticated and flows switched on.",
+    ],
     deliverables: {
       title: "The 8 core flows",
       items: [
@@ -310,6 +330,12 @@ export const productPages: ProductPage[] = [
         { label: "Back-in-stock alert", meta: "TRIGGERED", status: "queued" },
       ],
     },
+    timeline: [
+      "Your business number and Meta account linked.",
+      "Message templates written and submitted.",
+      "Store events connected and tested end to end.",
+      "Cart recovery, COD and order updates live.",
+    ],
     deliverables: {
       title: "Every setup includes",
       items: [
@@ -336,6 +362,74 @@ export const productPages: ProductPage[] = [
     cta: "Set Up WhatsApp",
     need: "whatsapp",
     finalHeading: ["MEET CUSTOMERS", "WHERE THEY ALREADY ARE."],
+  },
+  {
+    id: "support",
+    name: "AI Customer Support",
+    href: "/ai-customer-support",
+    group: "retention",
+    isNew: true,
+    desc: "Answers order, product and shipping questions 24/7. Hands the rest to your team.",
+    price: { in: 9999, us: 279, uk: 229, au: 429 },
+    unit: "one-time setup",
+    turnaround: "From 48 hours",
+    metaTitle: "AI Customer Support for Ecommerce Stores",
+    metaDescription:
+      "An AI support agent for Shopify and WooCommerce stores that answers order status, product, sizing, shipping and returns questions on web chat and WhatsApp, and hands everything else to your team.",
+    eyebrow: "AI CUSTOMER SUPPORT",
+    headline: ["Most questions are the same ten.", "Let AI answer them. Instantly."],
+    lead: "Where is my order. Does it come in XL. Is COD available. Can I return it. We set up an AI support agent that answers these on your site chat and WhatsApp in seconds, any hour, using your real catalog, policies and order data. Anything sensitive or unusual goes straight to your team with the conversation summarised.",
+    facts: [
+      { k: "CHANNELS", v: "Website chat · WhatsApp · email" },
+      { k: "KNOWS", v: "Your catalog, policies and live order status" },
+      { k: "HANDOFF", v: "To your team, with a summary of the conversation" },
+      { k: "INFRASTRUCTURE", v: "Runs on Scenox infrastructure, no helpdesk to buy" },
+    ],
+    ledger: {
+      heading: "Answered in seconds. Escalated when it matters.",
+      title: "CONVERSATIONS · TODAY",
+      note: "ILLUSTRATIVE",
+      rows: [
+        { label: "“Where is my order #1042?”", meta: "ORDER DATA", status: "published", statusLabel: "ANSWERED" },
+        { label: "“Does the AX-442 chair come in blue?”", meta: "CATALOG", status: "published", statusLabel: "ANSWERED" },
+        { label: "“Is COD available for 560001?”", meta: "SHIPPING RULES", status: "published", statusLabel: "ANSWERED" },
+        { label: "“What is your return window?”", meta: "POLICY", status: "published", statusLabel: "ANSWERED" },
+        { label: "“My parcel arrived damaged”", meta: "TO YOUR TEAM", status: "missing", statusLabel: "HANDED OFF" },
+        { label: "“Can I get a bulk discount on 40 units?”", meta: "SALES LEAD", status: "validating", statusLabel: "ROUTED" },
+      ],
+    },
+    timeline: [
+      "Catalog, policies and store connected.",
+      "Agent trained on your data, tone of voice set.",
+      "You test it with your real customer questions.",
+      "Live on your site chat and WhatsApp.",
+    ],
+    deliverables: {
+      title: "Every setup includes",
+      items: [
+        "AI agent trained on your catalog, FAQs and policies",
+        "Live order-status lookups from your store",
+        "Website chat widget and WhatsApp connected",
+        "Handoff rules for refunds, complaints and sales leads",
+        "Tone of voice matched to your brand",
+        "Weekly report of top questions and unanswered gaps",
+      ],
+    },
+    edges: [
+      { title: "Answers from a catalog that's actually right.", body: "Support bots fail when product data is wrong. Ours reads the catalog we cleaned, so sizes, colours, materials and stock are accurate." },
+      { title: "It doesn't make things up.", body: "The agent only answers from your data and policies. If it isn't sure, it says so and passes the conversation to a person instead of guessing." },
+      { title: "Every gap becomes a fix.", body: "Questions it couldn't answer are reported weekly and added to its knowledge, and often point to missing details on the product page too." },
+    ],
+    faqs: [
+      { q: "Will the AI give customers wrong answers?", a: "It answers only from your catalog, policies and order data. When a question falls outside that, or the customer is upset, it hands the conversation to your team with a summary. You approve its knowledge and tone before it goes live." },
+      { q: "Can it check order status?", a: "Yes. It connects to your Shopify or WooCommerce store to look up an order by number, email or phone and reply with the current status and tracking." },
+      { q: "What happens when it can't answer?", a: "The conversation is routed to your team on WhatsApp, email or your helpdesk, with the customer's question and the conversation so far, so nobody has to start over." },
+      { q: "Do I need Gorgias, Zendesk or another helpdesk?", a: "No. It runs on our infrastructure. If you already use a helpdesk, we can hand conversations into it instead." },
+      { q: "Can it answer in languages other than English?", a: "Yes. It replies in the language the customer writes in. We test your most common languages during setup." },
+    ],
+    cta: "Set Up AI Support",
+    need: "support",
+    finalHeading: ["ANSWER EVERY CUSTOMER.", "IN SECONDS. AT 3 AM."],
   },
 ];
 

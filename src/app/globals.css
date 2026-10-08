@@ -424,13 +424,27 @@
   animation: fade-up var(--dur-reveal) var(--ease-out) both;
 }
 
+/* Hero headline: movement only, never invisible, so it paints immediately (LCP). */
+@keyframes rise {
+  from {
+    transform: translateY(10px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.anim-rise {
+  animation: rise 700ms var(--ease-out) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .anim-scan,
   .anim-pulse-dot,
   .anim-rail {
     animation: none;
   }
-  .anim-fade-up {
+  .anim-fade-up,
+  .anim-rise {
     animation-duration: 1ms;
   }
   *,

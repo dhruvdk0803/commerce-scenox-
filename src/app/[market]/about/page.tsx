@@ -1,3 +1,4 @@
+import { AudienceCards } from "@/components/home/AudienceCards";
 import { ArrowUpRight } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -151,6 +152,8 @@ export default function AboutPage() {
             </div>
           </Container>
         </Section>
+
+        <AudienceCards />
 
         <Section tone="dark">
           <Container>

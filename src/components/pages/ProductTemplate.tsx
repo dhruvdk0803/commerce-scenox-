@@ -50,6 +50,44 @@ function PriceBox({ p }: { p: ProductPage }) {
   );
 }
 
+const HOURS = ["00", "12", "24", "48"];
+
+/** Hour 0 → 48 ledger: makes the speed claim concrete for each product. */
+function Timeline({ p }: { p: ProductPage }) {
+  return (
+    <Section aria-labelledby="timeline-heading">
+      <Container>
+        <SectionHeader
+          id="timeline-heading"
+          eyebrow="YOUR FIRST 48 HOURS"
+          title={
+            <>
+              Day one to live.
+              <br />
+              <span className="text-ink-2">Hour by hour.</span>
+            </>
+          }
+          description={site.qualifier}
+        />
+        <ol className="mt-12 grid gap-px overflow-hidden rounded-[12px] border border-line bg-line md:mt-16 md:grid-cols-4">
+          {p.timeline.map((step, i) => (
+            <Reveal as="li" key={step} delay={i * 0.06} className="flex flex-col bg-bg p-5 md:p-6">
+              <div className="flex items-baseline justify-between">
+                <span className="mono-micro text-ink-3">HOUR</span>
+                {i === 3 && <Status kind="published" label="LIVE" />}
+              </div>
+              <span className="mt-1 text-[2.75rem] font-semibold leading-none tracking-[-0.04em] text-ink tabular">
+                {HOURS[i]}
+              </span>
+              <p className="mt-6 text-[0.975rem] leading-snug text-ink">{step}</p>
+            </Reveal>
+          ))}
+        </ol>
+      </Container>
+    </Section>
+  );
+}
+
 export function ProductTemplate({ id }: { id: string }) {
   const p = get(id);
   const cta = `/get-started?need=${p.need}`;
@@ -78,6 +116,8 @@ export function ProductTemplate({ id }: { id: string }) {
           }
           aside={<PriceBox p={p} />}
         />
+
+        <Timeline p={p} />
 
         <Section tone="muted" aria-labelledby="ledger-heading">
           <Container>

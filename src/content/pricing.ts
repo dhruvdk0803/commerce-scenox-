@@ -133,6 +133,7 @@ export const plans: Plan[] = [
     href: "/get-started?plan=retention",
     includes: [
       "Email + WhatsApp flows running and tuned",
+      "AI customer support, answers kept up to date",
       "4 campaigns a month, written and sent",
       "Abandoned cart & checkout recovery",
       "Recovered-revenue reporting",

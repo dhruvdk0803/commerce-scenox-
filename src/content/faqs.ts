@@ -63,6 +63,22 @@ export const faqs: FAQ[] = [
   },
 ];
 
+/** Homepage: the questions buyers ask first, across the whole offer. */
+export const homeFaqs: FAQ[] = [
+  "Can you really upload 1,000 products in 48 hours?",
+  "Do you only do catalogs?",
+  "Do you use AI?",
+  "Why do you cost less than an agency?",
+  "Do I need Klaviyo or a separate WhatsApp tool?",
+  "What data can I send?",
+  "What about 10,000+ products?",
+  "Do you offer ongoing catalog management?",
+].map((q) => {
+  const f = faqs.find((x) => x.q === q);
+  if (!f) throw new Error(`Missing FAQ: ${q}`);
+  return f;
+});
+
 export const catalogPageFaqs: FAQ[] = faqs.filter((f) =>
   [
     "Can you really upload 1,000 products in 48 hours?",

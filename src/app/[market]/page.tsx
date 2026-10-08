@@ -7,23 +7,16 @@ import { ClientStrip } from "@/components/home/ClientStrip";
 import { PlatformStrip, Statement } from "@/components/home/PlatformStrip";
 import { MessySpreadsheet } from "@/components/home/MessySpreadsheet";
 import { BeforeAfter } from "@/components/home/BeforeAfter";
-import { ServiceGrid } from "@/components/home/ServiceGrid";
-import { ProcessSteps } from "@/components/home/ProcessSteps";
 import { SystemSpec } from "@/components/home/SystemSpec";
-import { SpeedComparison } from "@/components/home/SpeedComparison";
-import { AudienceCards } from "@/components/home/AudienceCards";
-import { PlatformModules } from "@/components/home/PlatformModules";
 import { SampleOffer } from "@/components/home/SampleOffer";
-import { ProofModule } from "@/components/home/ProofModule";
-import { PricingCards } from "@/components/home/PricingCards";
 import { Advantages } from "@/components/home/Advantages";
 import { ProductMenu } from "@/components/pricing/ProductMenu";
-import { PlanCards } from "@/components/pricing/PlanCards";
+import { PricingTabs } from "@/components/pricing/PricingTabs";
 import { FAQ } from "@/components/home/FAQ";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { faqJsonLd, pageMeta, serviceJsonLd } from "@/lib/seo";
-import { faqs } from "@/content/faqs";
+import { homeFaqs } from "@/content/faqs";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({
@@ -43,19 +36,12 @@ export default function HomePage() {
         <Statement />
         <MessySpreadsheet />
         <BeforeAfter />
-        <ServiceGrid />
-        <ProductMenu tone="muted" />
-        <ProcessSteps />
+        <ProductMenu />
         <SystemSpec />
-        <SpeedComparison />
-        <AudienceCards />
-        <PlatformModules />
         <Advantages />
+        <PricingTabs />
         <SampleOffer />
-        <ProofModule />
-        <PricingCards preview />
-        <PlanCards />
-        <FAQ />
+        <FAQ items={homeFaqs} />
         <FinalCTA />
       </main>
       <Footer />
@@ -67,7 +53,7 @@ export default function HomePage() {
             description: site.description,
             path: "/",
           }),
-          faqJsonLd(faqs),
+          faqJsonLd(homeFaqs),
         ]}
       />
     </>

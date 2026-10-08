@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SpeedComparison } from "@/components/home/SpeedComparison";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
@@ -103,6 +104,7 @@ export default function CatalogPage() {
 
         <ServiceGrid />
         <SystemSpec compact />
+        <SpeedComparison />
         <ProcessSteps showLink={false} />
         <PricingCards preview />
         <SampleOffer />

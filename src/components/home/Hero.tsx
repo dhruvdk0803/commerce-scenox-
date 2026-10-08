@@ -2,18 +2,20 @@
 
 import type { CSSProperties } from "react";
 import { site } from "@/lib/site";
+import Link from "next/link";
 import { Button, TextLink } from "@/components/ui/Button";
 import { CatalogPipeline } from "./pipeline/CatalogPipeline";
 
-export function Hero({
-  headline = ["1000 PRODUCTS.", "48 HOURS.", "LIVE ON YOUR STORE."],
-  mobileHeadline = ["1000 PRODUCTS.", "48 HOURS.", "LIVE."],
-  compact = false,
-}: {
-  headline?: string[];
-  mobileHeadline?: string[];
-  compact?: boolean;
-}) {
+/** Services beyond the catalog, surfaced in the hero so the full offer is visible above the fold. */
+const AFTER_LAUNCH = [
+  { label: "Product imagery", href: "/product-imagery" },
+  { label: "Google & marketplaces", href: "/feeds-marketplaces" },
+  { label: "Email & abandoned cart", href: "/email-marketing" },
+  { label: "WhatsApp", href: "/whatsapp-automation" },
+  { label: "AI support", href: "/ai-customer-support" },
+];
+
+export function Hero({ compact = false }: { compact?: boolean }) {
   // CSS-driven entrance: runs off the main thread and respects reduced motion via globals.css
   const item = (i: number) => ({
     className: "anim-fade-up",
@@ -29,22 +31,13 @@ export function Hero({
       <div className="container-x pt-8 pb-12 md:pt-14 md:pb-20 lg:pt-16 lg:pb-24">
         <h1
           id="hero-heading"
-          className={`text-display text-ink lg:max-w-[16ch] ${item(1).className}`}
-          style={item(1).style}
+          className="anim-rise text-display text-ink lg:max-w-[16ch]"
+          style={{ animationDelay: "60ms" }}
         >
-          <span className="sm:hidden">
-            {mobileHeadline.map((l) => (
-              <span key={l} className="block">
-                {l}
-              </span>
-            ))}
-          </span>
-          <span className="hidden sm:block">
-            {headline.map((l) => (
-              <span key={l} className="block">
-                {l}
-              </span>
-            ))}
+          <span className="block">1000 PRODUCTS.</span>
+          <span className="block">48 HOURS.</span>
+          <span className="block">
+            LIVE<span className="max-sm:hidden"> ON YOUR STORE</span>.
           </span>
         </h1>
 
@@ -110,6 +103,28 @@ export function Hero({
             <CatalogPipeline />
           </div>
         </div>
+
+        {!compact && (
+          <nav
+            aria-label="After launch"
+            className={`mt-10 flex flex-col gap-3 border-t border-line pt-5 md:mt-14 lg:flex-row lg:items-center lg:gap-8 ${item(7).className}`}
+            style={item(7).style}
+          >
+            <p className="mono-label shrink-0 text-ink-3">THEN WE KEEP IT SELLING</p>
+            <ul className="flex flex-wrap gap-x-1 gap-y-1">
+              {AFTER_LAUNCH.map((a) => (
+                <li key={a.href}>
+                  <Link
+                    href={a.href}
+                    className="inline-flex h-8 items-center rounded-[6px] px-2.5 text-[0.925rem] text-ink-2 transition-colors duration-[160ms] hover:bg-bg-muted hover:text-ink"
+                  >
+                    {a.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
 
         {/* mobile capability checklist, directly under first viewport */}
         <ul

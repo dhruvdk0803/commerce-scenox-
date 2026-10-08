@@ -108,6 +108,7 @@ export function LeadForm() {
     const needs = [...(saved.needs ?? [])];
     if (need && NEED_QUERY_MAP[need] && !needs.includes(NEED_QUERY_MAP[need])) needs.push(NEED_QUERY_MAP[need]);
     if (plan && !needs.includes("Monthly plan")) needs.push("Monthly plan");
+    if (params.get("bundle") && !needs.includes("Bundle")) needs.push("Bundle");
     const d: Data = {
       ...empty,
       ...saved,

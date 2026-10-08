@@ -15,6 +15,7 @@ import { pricingFaqs } from "@/content/faqs";
 import { PageHero } from "@/components/ui/PageHero";
 import { ProductMenu } from "@/components/pricing/ProductMenu";
 import { PlanCards } from "@/components/pricing/PlanCards";
+import { BundleCards } from "@/components/pricing/BundleCards";
 import { Price } from "@/components/market/Price";
 import { plans, tiers } from "@/content/pricing";
 import { getMarket, getPrice } from "@/lib/market-server";
@@ -59,6 +60,7 @@ export default async function PricingPage() {
           ]}
         />
 
+        <BundleCards tone="muted" />
         <PricingCards heading={["Catalog upload.", "Four tiers, one completed catalog."]} />
         <ProductMenu
           tone="muted"

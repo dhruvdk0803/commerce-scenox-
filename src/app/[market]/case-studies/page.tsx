@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ProofModule } from "@/components/home/ProofModule";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Section, Container } from "@/components/ui/Section";
@@ -97,6 +98,7 @@ export default function CaseStudiesPage() {
           </Container>
         </Section>
 
+        <ProofModule />
         <CaseStudyTemplate cs={demoCase} />
         <CaseStudyTemplate cs={distributorCase} />
 

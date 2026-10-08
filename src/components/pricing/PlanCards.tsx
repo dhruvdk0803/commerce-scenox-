@@ -8,31 +8,13 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { MotionLi, Stagger, staggerChild } from "@/components/ui/Reveal";
 import { useMarket, usePrice } from "@/components/market/MarketProvider";
 
-export function PlanCards({ tone = "muted" }: { tone?: "light" | "muted" }) {
+export function PlanCards({ tone = "muted", bare = false }: { tone?: "light" | "muted"; bare?: boolean }) {
   const market = useMarket();
   const price = usePrice();
 
-  return (
-    <section
-      id="plans"
-      className={cn("section-y border-t border-line", tone === "muted" && "bg-bg-muted/40")}
-      aria-labelledby="plans-heading"
-    >
-      <div className="container-x">
-        <SectionHeader
-          id="plans-heading"
-          eyebrow="MONTHLY PLANS"
-          title={
-            <>
-              Launch once.
-              <br />
-              <span className="text-ink-2">Then let us run it.</span>
-            </>
-          }
-          description={`After setup, one monthly plan keeps the catalog, channels and retention running. Prices in ${market.currency}, per month.`}
-        />
-
-        <Stagger as="ul" className="mt-12 grid gap-4 md:mt-16 lg:grid-cols-3" amount={0.1}>
+  const content = (
+      <>
+        <Stagger as="ul" className={cn("grid gap-4 lg:grid-cols-3", !bare && "mt-12 md:mt-16")} amount={0.1}>
           {plans.map((p) => (
             <MotionLi
               key={p.id}
@@ -81,6 +63,31 @@ export function PlanCards({ tone = "muted" }: { tone?: "light" | "muted" }) {
         </Stagger>
 
         <p className="mt-8 text-[0.85rem] text-ink-3">{planNote}</p>
+      </>
+  );
+  if (bare) return content;
+
+  return (
+    <section
+      id="plans"
+      className={cn("section-y border-t border-line", tone === "muted" && "bg-bg-muted/40")}
+      aria-labelledby="plans-heading"
+    >
+      <div className="container-x">
+        <SectionHeader
+          id="plans-heading"
+          eyebrow="MONTHLY PLANS"
+          title={
+            <>
+              Launch once.
+              <br />
+              <span className="text-ink-2">Then let us run it.</span>
+            </>
+          }
+          description={`After setup, one monthly plan keeps the catalog, channels and retention running. Prices in ${market.currency}, per month.`}
+        />
+
+        {content}
       </div>
     </section>
   );

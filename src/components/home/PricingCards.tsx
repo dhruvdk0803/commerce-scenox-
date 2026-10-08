@@ -14,9 +14,12 @@ import { useMarket, usePrice } from "@/components/market/MarketProvider";
 
 export function PricingCards({
   preview = false,
+  bare = false,
   heading = ["Simple projects.", "Simple pricing."],
 }: {
   preview?: boolean;
+  /** grid + footnote only, for use inside PricingTabs */
+  bare?: boolean;
   heading?: [string, string];
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -27,23 +30,9 @@ export function PricingCards({
     if (inView) track("pricing_viewed", { preview });
   }, [inView, preview]);
 
-  return (
-    <section ref={ref} className="section-y border-t border-line" aria-labelledby="pricing-heading" id="pricing">
-      <div className="container-x">
-        <SectionHeader
-          id="pricing-heading"
-          eyebrow="PRICING"
-          title={
-            <>
-              {heading[0]}
-              <br />
-              {heading[1]}
-            </>
-          }
-          description={`Starting prices in ${market.currency} for completed catalog operations, not per-row data entry. We confirm a fixed quote after inspecting your files.`}
-        />
-
-        <Stagger as="ul" className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4 md:mt-16" amount={0.1}>
+  const content = (
+      <>
+        <Stagger as="ul" className={cn("grid gap-4 md:grid-cols-2 lg:grid-cols-4", !bare && "mt-12 md:mt-16")} amount={0.1}>
           {tiers.map((t) => {
             const p = price(t.price);
             const fixed = t.price[market.id] != null;
@@ -102,7 +91,7 @@ export function PricingCards({
           })}
         </Stagger>
 
-        {preview ? (
+        {preview || bare ? (
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-[0.85rem] text-ink-3">
               *48-hour turnaround applies to eligible catalogs. Final pricing depends on source-data quality, complexity, variants, images, enrichment and platform.
@@ -127,6 +116,27 @@ export function PricingCards({
             </dl>
           </div>
         )}
+      </>
+  );
+  if (bare) return <div ref={ref}>{content}</div>;
+
+  return (
+    <section ref={ref} className="section-y border-t border-line" aria-labelledby="pricing-heading" id="pricing">
+      <div className="container-x">
+        <SectionHeader
+          id="pricing-heading"
+          eyebrow="PRICING"
+          title={
+            <>
+              {heading[0]}
+              <br />
+              {heading[1]}
+            </>
+          }
+          description={`Starting prices in ${market.currency} for completed catalog operations, not per-row data entry. We confirm a fixed quote after inspecting your files.`}
+        />
+
+        {content}
       </div>
     </section>
   );
