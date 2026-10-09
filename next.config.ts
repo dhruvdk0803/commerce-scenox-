@@ -11,6 +11,10 @@ const RENAMED: Record<string, string> = {
 };
 
 const nextConfig: NextConfig = {
+  // Root layout lives under [market], so unmatched URLs need a global 404 (see app/global-not-found.tsx).
+  experimental: {
+    globalNotFound: true,
+  },
   async redirects() {
     return Object.entries(RENAMED).map(([source, destination]) => ({ source, destination, permanent: true }));
   },
