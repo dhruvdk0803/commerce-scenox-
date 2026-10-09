@@ -10,9 +10,9 @@ import { breadcrumbJsonLd, pageMeta } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({
-  title: "Get Started — Tell us about your catalog",
+  title: "Get Started — Tell Us About Your Store",
   description:
-    "Tell us what you have, where it needs to go and how many products you're working with. We'll review the scope and reply with what's possible, how long it should take and what it will cost.",
+    "Tell us about your store, catalog and what you need. We reply with a fixed quote and a realistic turnaround. No store passwords required.",
   path: "/get-started",
 });
 

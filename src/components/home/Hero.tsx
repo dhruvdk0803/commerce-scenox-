@@ -8,9 +8,9 @@ import { CatalogPipeline } from "./pipeline/CatalogPipeline";
 
 /** Services beyond the catalog, surfaced in the hero so the full offer is visible above the fold. */
 const AFTER_LAUNCH = [
-  { label: "Product imagery", href: "/product-imagery" },
-  { label: "Google & marketplaces", href: "/feeds-marketplaces" },
-  { label: "Email & abandoned cart", href: "/email-marketing" },
+  { label: "Product imagery", href: "/ai-product-photos" },
+  { label: "Google & marketplaces", href: "/product-feed-management" },
+  { label: "Email & abandoned cart", href: "/ecommerce-email-marketing" },
   { label: "WhatsApp", href: "/whatsapp-automation" },
   { label: "AI support", href: "/ai-customer-support" },
 ];
@@ -34,11 +34,22 @@ export function Hero({ compact = false }: { compact?: boolean }) {
           className="anim-rise text-display text-ink lg:max-w-[16ch]"
           style={{ animationDelay: "60ms" }}
         >
-          <span className="block">1000 PRODUCTS.</span>
-          <span className="block">48 HOURS.</span>
-          <span className="block">
-            LIVE<span className="max-sm:hidden"> ON YOUR STORE</span>.
-          </span>
+          {compact ? (
+            // service page: its own keyword headline so it doesn't compete with the homepage
+            <>
+              <span className="block">BULK PRODUCT</span>
+              <span className="block">UPLOAD.</span>
+              <span className="block">1000 IN 48 HOURS.</span>
+            </>
+          ) : (
+            <>
+              <span className="block">1000 PRODUCTS.</span>
+              <span className="block">48 HOURS.</span>
+              <span className="block">
+                LIVE<span className="max-sm:hidden"> ON YOUR STORE</span>.
+              </span>
+            </>
+          )}
         </h1>
 
         {/* row beneath: copy + system */}

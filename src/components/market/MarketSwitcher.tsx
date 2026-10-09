@@ -12,8 +12,7 @@ import { useMarket } from "./MarketProvider";
  */
 export function MarketSwitcher({ className }: { className?: string }) {
   const current = useMarket();
-  const pathname = usePathname() ?? "/";
-  const path = pathname === "/" ? "" : pathname;
+  const path = usePathname() ?? "/";
 
   return (
     <div className={cn("flex flex-wrap items-center gap-x-3 gap-y-2", className)}>
@@ -37,6 +36,7 @@ export function MarketSwitcher({ className }: { className?: string }) {
             <a
               key={id}
               href={`/${id}${path}`}
+              rel="nofollow"
               hrefLang={m.locale}
               className="mono-micro inline-flex h-6 items-center rounded-[4px] border border-transparent px-1.5 text-ink-3 transition-colors duration-[160ms] hover:border-line hover:text-ink"
               aria-label={`Show prices for ${m.label}`}

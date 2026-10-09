@@ -20,8 +20,9 @@ import { homeFaqs } from "@/content/faqs";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({
-  title: "1000 Products. 48 Hours. Live on Your Store",
-  description: site.description,
+  title: "Bulk Product Upload in 48 Hours, Run by AI",
+  description:
+    "Shopify and WooCommerce product upload in 48 hours, plus Google Shopping feeds, email, WhatsApp and AI support. An AI engine, checked by people.",
   path: "/",
 });
 

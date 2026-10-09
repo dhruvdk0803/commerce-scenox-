@@ -11,24 +11,26 @@ import { FAQ } from "@/components/home/FAQ";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { Reveal } from "@/components/ui/Reveal";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { breadcrumbJsonLd, pageMeta } from "@/lib/seo";
+import { breadcrumbJsonLd, faqJsonLd, pageMeta } from "@/lib/seo";
 import { faqs } from "@/content/faqs";
 import { PageHero } from "@/components/ui/PageHero";
 
 export const metadata: Metadata = pageMeta({
-  title: "How It Works — From raw catalog to live storefront",
+  title: "How It Works: AI Catalog Engine, Checked by People",
   description:
-    "Input, ingest, normalize, enrich, validate, approval, publish, QA. How Scenox Commerce turns messy product data into a live ecommerce catalog. Automation for speed, human review where it matters.",
+    "How Scenox turns raw spreadsheets and supplier files into a live, store-ready catalog: ingestion, AI enrichment, human review, validation and publishing.",
   path: "/how-it-works",
 });
 
+
+const HOW_FAQS = faqs.slice(0, 6);
 
 export default function HowItWorksPage() {
   return (
     <>
       <Header />
       <main id="main" className="flex-1">
-        <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "How It Works", path: "/how-it-works" }])} />
+        <JsonLd data={[breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "How It Works", path: "/how-it-works" }]), faqJsonLd(HOW_FAQS)]} />
 
         <PageHero
           eyebrow="HOW IT WORKS"
@@ -62,7 +64,7 @@ export default function HowItWorksPage() {
         <BeforeAfter />
         <ProcessSteps showLink={false} />
         <SampleOffer />
-        <FAQ items={faqs.slice(0, 6)} />
+        <FAQ items={HOW_FAQS} />
         <FinalCTA />
       </main>
       <Footer />

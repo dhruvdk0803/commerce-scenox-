@@ -98,7 +98,7 @@ export function Header({ minimal = false }: { minimal?: boolean }) {
                       exit={{ opacity: 0, transform: "translateY(-4px) scale(0.985)" }}
                       transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
                       style={{ transformOrigin: "top left" }}
-                      className="absolute left-0 top-[calc(100%+10px)] w-[620px] rounded-[12px] border border-line bg-bg-elevated p-2 shadow-[0_12px_40px_-16px_rgba(16,17,18,0.18)]"
+                      className="absolute left-0 top-[calc(100%+10px)] w-[680px] rounded-[12px] border border-line bg-bg-elevated p-2 shadow-[0_12px_40px_-16px_rgba(16,17,18,0.18)]"
                     >
                       <div className="grid grid-cols-2 gap-x-1">
                         {(["Catalog", "Sell & Retain"] as const).map((g) => (
@@ -120,7 +120,7 @@ export function Header({ minimal = false }: { minimal?: boolean }) {
                           </div>
                         ))}
                       </div>
-                      <div className="mt-1 grid grid-cols-2 gap-1 border-t border-line pt-1">
+                      <div className="mt-1 grid grid-cols-3 gap-1 border-t border-line pt-1">
                         {nav.more.map((s) => (
                           <Link
                             key={s.href}

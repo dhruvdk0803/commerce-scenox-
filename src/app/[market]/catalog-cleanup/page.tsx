@@ -10,14 +10,15 @@ import { ServiceGrid } from "@/components/home/ServiceGrid";
 import { FAQ } from "@/components/home/FAQ";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { pageMeta, serviceJsonLd, breadcrumbJsonLd } from "@/lib/seo";
+import { pageMeta, serviceJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
+import { products } from "@/content/products";
 import { CleanupDiff } from "@/components/pages/CleanupDiff";
 import { PageHero } from "@/components/ui/PageHero";
 
 export const metadata: Metadata = pageMeta({
-  title: "Catalog Cleanup & Enrichment",
+  title: "Product Catalog Cleanup & Enrichment Service",
   description:
-    "Fix inconsistent titles, missing descriptions, duplicate categories and unmatched images across your live storefront. Bulk catalog cleanup for Shopify, WooCommerce and custom platforms.",
+    "Fix messy titles, missing descriptions, duplicate categories and unmatched images across your live Shopify or WooCommerce store, in bulk, with no downtime.",
   path: "/catalog-cleanup",
 });
 
@@ -76,7 +77,7 @@ export default function CatalogCleanupPage() {
               <Button href="/get-started?need=cleanup" size="lg" arrow>
                 Get Your Catalog Audited
               </Button>
-              <TextLink href="/sample">Or send 10 products first</TextLink>
+              <TextLink href="/free-sample">Or send 10 products first</TextLink>
             </>
           }
           facts={[
@@ -142,11 +143,13 @@ export default function CatalogCleanupPage() {
             description:
               "Bulk cleanup of product titles, descriptions, categories, tags, images, variants and metafields for live ecommerce catalogs.",
             path: "/catalog-cleanup",
+            price: products.find((x) => x.id === "cleanup")!.price,
           }),
           breadcrumbJsonLd([
             { name: "Home", path: "/" },
             { name: "Catalog Cleanup & Enrichment", path: "/catalog-cleanup" },
           ]),
+          faqJsonLd(cleanupFaqs),
         ]}
       />
     </>

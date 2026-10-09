@@ -195,7 +195,7 @@ export function ProductTemplate({ id }: { id: string }) {
       <StickyMobileCTA href={cta} label={p.cta} />
       <JsonLd
         data={[
-          serviceJsonLd({ name: p.name, description: p.metaDescription, path: p.href }),
+          serviceJsonLd({ name: p.name, description: p.metaDescription, path: p.href, price: p.price }),
           breadcrumbJsonLd([
             { name: "Home", path: "/" },
             { name: p.name, path: p.href },

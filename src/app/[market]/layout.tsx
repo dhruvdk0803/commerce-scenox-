@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { site } from "@/lib/site";
-import { organizationJsonLd } from "@/lib/seo";
+import { OG_IMAGE, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { MARKET_IDS } from "@/lib/markets";
 import { getMarketId } from "@/lib/market-server";
@@ -41,6 +41,7 @@ export const metadata: Metadata = {
     siteName: site.name,
     locale: "en_IN",
     url: site.url,
+    images: [OG_IMAGE],
   },
   robots: { index: true, follow: true },
   icons: { icon: "/icon.svg" },
@@ -77,7 +78,7 @@ export default async function RootLayout({
           Skip to content
         </a>
         <MarketProvider market={market}>{children}</MarketProvider>
-        <JsonLd data={organizationJsonLd()} />
+        <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
       </body>
     </html>
   );

@@ -122,7 +122,7 @@ export function MobileNav({
                 Get Started
               </Button>
               <Button
-                href="/sample"
+                href="/free-sample"
                 variant="outline"
                 size="lg"
                 onClick={onClose}

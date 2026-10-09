@@ -11,9 +11,9 @@ import { site } from "@/lib/site";
 import { PageHero } from "@/components/ui/PageHero";
 
 export const metadata = pageMeta({
-  title: "About",
+  title: "About Scenox Commerce",
   description:
-    "Scenox Commerce is part of Scenox Studios. We apply the same engineering approach to ecommerce catalog operations: automation for speed, human review where it matters.",
+    "Scenox Commerce is the ecommerce operations arm of Scenox Studios: an AI engine and a review team running catalogs, channels and retention for stores.",
   path: "/about",
 });
 
@@ -166,7 +166,7 @@ export default function AboutPage() {
                   Get Started
                 </Button>
                 <Button
-                  href="/sample"
+                  href="/free-sample"
                   variant="outline"
                   className="border-line-dark-strong text-paper hover:bg-white/5 hover:border-paper"
                 >

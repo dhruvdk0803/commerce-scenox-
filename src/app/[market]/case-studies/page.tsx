@@ -15,9 +15,9 @@ import { clients, clientClaim } from "@/content/clients";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 
 export const metadata: Metadata = pageMeta({
-  title: "Case Studies",
+  title: "Case Studies & Clients",
   description:
-    "Clients and catalog workflows from Scenox Commerce: 250+ companies and enterprises worldwide, including Om Shanti Enterprises, Compliments Boutique, Katta Interior and Hardware and All Home Living.",
+    "Brands Scenox Commerce has worked with, plus sample catalog transformations showing messy product data turned into a store-ready catalog.",
   path: "/case-studies",
 });
 

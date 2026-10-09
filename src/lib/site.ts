@@ -6,7 +6,7 @@ export const site = {
   url: "https://commerce.scenoxstudios.com",
   tagline: "Ecommerce operations, run by AI.",
   description:
-    "Scenox Commerce runs the operations behind online stores: catalog upload and cleanup, product imagery, Google Shopping and marketplace feeds, email and abandoned cart recovery, and WhatsApp automation. An AI engine does the volume, a person reviews every output. Shopify, WooCommerce and custom platforms.",
+    "Scenox Commerce runs the operations behind online stores: catalog upload and cleanup, product imagery, Google Shopping and marketplace feeds, email and abandoned cart recovery, WhatsApp automation and AI customer support. An AI engine does the volume, a person reviews every output. Shopify, WooCommerce and custom platforms.",
   email: "commerce@scenoxstudios.com",
   /** Set to a full international number (e.g. "919999999999") to enable WhatsApp CTAs. Leave empty to hide. */
   whatsapp: "",
@@ -17,16 +17,17 @@ export const site = {
 
 export const nav = {
   services: [
-    { label: "Catalog Upload", href: "/catalog", desc: "Spreadsheets and supplier data, live on your store.", group: "Catalog" },
+    { label: "Catalog Upload", href: "/bulk-product-upload", desc: "Spreadsheets and supplier data, live on your store.", group: "Catalog" },
     { label: "Catalog Cleanup & Enrichment", href: "/catalog-cleanup", desc: "Fix what is already online, in bulk.", group: "Catalog" },
-    { label: "Platform Migration", href: "/migration", desc: "Move the store. Not the mess.", group: "Catalog" },
-    { label: "AI Product Imagery", href: "/product-imagery", desc: "Consistent, marketplace-ready photos.", group: "Catalog" },
-    { label: "Feeds & Marketplaces", href: "/feeds-marketplaces", desc: "Google Shopping, Meta, Amazon, Flipkart.", group: "Sell & Retain" },
-    { label: "Email & Abandoned Cart", href: "/email-marketing", desc: "Recovery, welcome and win-back flows.", group: "Sell & Retain" },
+    { label: "Platform Migration", href: "/store-migration", desc: "Move the store. Not the mess.", group: "Catalog" },
+    { label: "AI Product Imagery", href: "/ai-product-photos", desc: "Consistent, marketplace-ready photos.", group: "Catalog" },
+    { label: "Feeds & Marketplaces", href: "/product-feed-management", desc: "Google Shopping, Meta, Amazon, Flipkart.", group: "Sell & Retain" },
+    { label: "Email & Abandoned Cart", href: "/ecommerce-email-marketing", desc: "Recovery, welcome and win-back flows.", group: "Sell & Retain" },
     { label: "WhatsApp Automation", href: "/whatsapp-automation", desc: "Cart recovery, COD confirmation, updates.", group: "Sell & Retain" },
     { label: "AI Customer Support", href: "/ai-customer-support", desc: "Order and product questions answered 24/7.", group: "Sell & Retain" },
   ],
   more: [
+    { label: "All Services", href: "/services", desc: "Every product, kit and plan on one page." },
     { label: "Monthly Plans", href: "/pricing#plans", desc: "Catalog, channels and retention, run for you." },
     { label: "For Wholesalers & Distributors", href: "/wholesale-catalog", desc: "Thousands of SKUs from ERP and supplier files." },
   ],
@@ -37,12 +38,13 @@ export const nav = {
   ],
   footer: {
     services: [
-      { label: "Catalog Upload", href: "/catalog" },
+      { label: "All Services", href: "/services" },
+      { label: "Catalog Upload", href: "/bulk-product-upload" },
       { label: "Catalog Cleanup", href: "/catalog-cleanup" },
-      { label: "Migration", href: "/migration" },
-      { label: "AI Product Imagery", href: "/product-imagery" },
-      { label: "Feeds & Marketplaces", href: "/feeds-marketplaces" },
-      { label: "Email & Abandoned Cart", href: "/email-marketing" },
+      { label: "Migration", href: "/store-migration" },
+      { label: "AI Product Imagery", href: "/ai-product-photos" },
+      { label: "Feeds & Marketplaces", href: "/product-feed-management" },
+      { label: "Email & Abandoned Cart", href: "/ecommerce-email-marketing" },
       { label: "WhatsApp Automation", href: "/whatsapp-automation" },
       { label: "AI Customer Support", href: "/ai-customer-support" },
       { label: "Wholesalers & Distributors", href: "/wholesale-catalog" },

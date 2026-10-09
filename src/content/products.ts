@@ -57,7 +57,7 @@ const existing: ProductSummary[] = [
   {
     id: "upload",
     name: "Catalog Upload",
-    href: "/catalog",
+    href: "/bulk-product-upload",
     group: "catalog",
     desc: "Spreadsheets and supplier data, live on your store.",
     price: { in: 6999, us: 149, uk: 119, au: 229 },
@@ -77,7 +77,7 @@ const existing: ProductSummary[] = [
   {
     id: "migration",
     name: "Platform Migration",
-    href: "/migration",
+    href: "/store-migration",
     group: "catalog",
     desc: "Move the store. Not the mess.",
     price: { in: 19999, us: 499, uk: 399, au: 749 },
@@ -94,7 +94,7 @@ export const productPages: ProductPage[] = [
   {
     id: "imagery",
     name: "AI Product Imagery",
-    href: "/product-imagery",
+    href: "/ai-product-photos",
     group: "catalog",
     isNew: true,
     desc: "Clean, consistent product photos from the images you already have.",
@@ -103,7 +103,7 @@ export const productPages: ProductPage[] = [
     turnaround: "From 48 hours",
     metaTitle: "AI Product Photo Editing for Ecommerce",
     metaDescription:
-      "Background removal, consistent white-background sets, lifestyle scenes and marketplace-ready sizes from your existing product photos. Reviewed by a person before delivery.",
+      "Background removal, consistent white-background sets and lifestyle scenes from your existing product photos. Marketplace-ready, checked by a person.",
     eyebrow: "AI PRODUCT IMAGERY",
     headline: ["Same products.", "Better photos."],
     lead: "Supplier photos arrive in every size, background and lighting. Our image models cut them out, square them up and produce one consistent set, plus lifestyle scenes where you want them. A person checks every image before it reaches your store.",
@@ -162,16 +162,16 @@ export const productPages: ProductPage[] = [
   {
     id: "feeds",
     name: "Feeds & Marketplaces",
-    href: "/feeds-marketplaces",
+    href: "/product-feed-management",
     group: "channels",
     isNew: true,
     desc: "Google Shopping, Meta, Amazon and Flipkart from one clean catalog.",
     price: { in: 7999, us: 199, uk: 159, au: 299 },
     unit: "per channel, one-time setup",
     turnaround: "From 48 hours",
-    metaTitle: "Google Shopping, Meta & Marketplace Feed Management",
+    metaTitle: "Google Shopping & Marketplace Feed Management",
     metaDescription:
-      "Google Merchant Center, Meta catalog, Amazon, Flipkart and eBay listings built from your store catalog. Feed errors and disapprovals fixed, kept in sync as products change.",
+      "Google Merchant Center, Meta, Amazon and Flipkart feeds built from your catalog. Disapprovals fixed, prices and stock kept in sync on every channel.",
     eyebrow: "FEEDS & MARKETPLACES",
     headline: ["One catalog.", "Every channel."],
     lead: "Your store, Google Shopping, Meta ads and marketplaces all need the same products in different formats. We build each feed from your cleaned catalog, fix the errors that get products disapproved, and keep every channel in sync when prices and stock change.",
@@ -230,7 +230,7 @@ export const productPages: ProductPage[] = [
   {
     id: "email",
     name: "Email Marketing & Abandoned Cart",
-    href: "/email-marketing",
+    href: "/ecommerce-email-marketing",
     group: "retention",
     isNew: true,
     desc: "Cart recovery, welcome, post-purchase and win-back flows that run on their own.",
@@ -239,7 +239,7 @@ export const productPages: ProductPage[] = [
     turnaround: "From 48 hours",
     metaTitle: "Ecommerce Email Marketing & Abandoned Cart Recovery",
     metaDescription:
-      "Abandoned cart, checkout, welcome, post-purchase, back-in-stock and win-back email flows for Shopify and WooCommerce stores. Built and run on Scenox infrastructure, or in Klaviyo.",
+      "Abandoned cart, welcome, post-purchase, back-in-stock and win-back email flows for Shopify and WooCommerce, written, designed and switched on for you.",
     eyebrow: "EMAIL & ABANDONED CART",
     headline: ["Most carts don't buy.", "Most can be brought back."],
     lead: "Every store loses carts, and most first-time buyers never order again. We write, design and switch on the email flows that follow up automatically: cart and checkout recovery, welcome, post-purchase, reviews, back-in-stock and win-back. They run on our own sending infrastructure, so there's no separate email platform for you to buy.",
@@ -311,7 +311,7 @@ export const productPages: ProductPage[] = [
     turnaround: "From 48 hours",
     metaTitle: "WhatsApp Automation for Ecommerce Stores",
     metaDescription:
-      "Abandoned cart recovery, COD order confirmation, shipping updates, broadcasts and customer nurture on the official WhatsApp Business API. Built for Shopify and WooCommerce.",
+      "Abandoned cart recovery, COD order confirmation, shipping updates and broadcasts on the official WhatsApp Business API, for Shopify and WooCommerce.",
     eyebrow: "WHATSAPP AUTOMATION",
     headline: ["Your customers read WhatsApp.", "Your store should be there."],
     lead: "Messages on WhatsApp get read. We set up the official WhatsApp Business API for your store and switch on the messages that matter: cart recovery, cash-on-delivery confirmation, order and shipping updates, back-in-stock alerts and broadcasts. All on our own messaging infrastructure, with a person ready to take over any conversation.",
@@ -380,7 +380,7 @@ export const productPages: ProductPage[] = [
     turnaround: "From 48 hours",
     metaTitle: "AI Customer Support for Ecommerce Stores",
     metaDescription:
-      "An AI support agent for Shopify and WooCommerce stores that answers order status, product, sizing, shipping and returns questions on web chat and WhatsApp, and hands everything else to your team.",
+      "An AI agent that answers order status, product, sizing and returns questions on chat and WhatsApp 24/7 from your real store data, and hands off the rest.",
     eyebrow: "AI CUSTOMER SUPPORT",
     headline: ["Most questions are the same ten.", "Let AI answer them. Instantly."],
     lead: "Where is my order. Does it come in XL. Is COD available. Can I return it. We set up an AI support agent that answers these on your site chat and WhatsApp in seconds, any hour, using your real catalog, policies and order data. Anything sensitive or unusual goes straight to your team with the conversation summarised.",

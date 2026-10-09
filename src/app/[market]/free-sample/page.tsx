@@ -9,10 +9,10 @@ import { breadcrumbJsonLd, pageMeta } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({
-  title: "Send Us 10 Products — Free Catalog Sample",
+  title: "Free Sample: Send Us 10 Products",
   description:
-    "Share a small sample of the catalog you're working with. We'll review the structure and show you how Scenox Commerce would approach it. No store passwords required.",
-  path: "/sample",
+    "Send 10 products in any format and see exactly how your catalog will look once cleaned, structured and enriched, before you commit.",
+  path: "/free-sample",
 });
 
 const WHAT_YOU_GET = [
@@ -38,7 +38,7 @@ export default function SamplePage() {
       </header>
 
       <main id="main" className="flex-1" data-hide-sticky>
-        <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Send 10 Products", path: "/sample" }])} />
+        <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Send 10 Products", path: "/free-sample" }])} />
         <section className="container-x pt-10 pb-20 md:pt-16 md:pb-28">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">

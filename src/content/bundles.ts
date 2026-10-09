@@ -30,13 +30,13 @@ const product = (id: string) => {
 const launchTier = tiers.find((t) => t.id === "launch")!;
 
 const launchParts: BundlePart[] = [
-  { label: "Catalog Launch · up to 1,000 products", price: launchTier.price, qty: 1, href: "/catalog" },
-  { label: "AI Product Imagery · 200 products", price: product("imagery").price, qty: 4, href: "/product-imagery" },
-  { label: "Google Shopping + Meta catalog feeds", price: product("feeds").price, qty: 2, href: "/feeds-marketplaces" },
+  { label: "Catalog Launch · up to 1,000 products", price: launchTier.price, qty: 1, href: "/bulk-product-upload" },
+  { label: "AI Product Imagery · 200 products", price: product("imagery").price, qty: 4, href: "/ai-product-photos" },
+  { label: "Google Shopping + Meta catalog feeds", price: product("feeds").price, qty: 2, href: "/product-feed-management" },
 ];
 
 const revenueParts: BundlePart[] = [
-  { label: "Email & abandoned cart · 8 flows", price: product("email").price, qty: 1, href: "/email-marketing" },
+  { label: "Email & abandoned cart · 8 flows", price: product("email").price, qty: 1, href: "/ecommerce-email-marketing" },
   { label: "WhatsApp automation", price: product("whatsapp").price, qty: 1, href: "/whatsapp-automation" },
   { label: "AI customer support", price: product("support").price, qty: 1, href: "/ai-customer-support" },
 ];

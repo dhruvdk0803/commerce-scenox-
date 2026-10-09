@@ -60,7 +60,7 @@ export function SampleOffer() {
                 commit to a larger project.
               </p>
               <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
-                <Button href="/sample" size="lg" arrow event="cta_click" eventParams={{ cta: "send_10_products" }}>
+                <Button href="/free-sample" size="lg" arrow event="cta_click" eventParams={{ cta: "send_10_products" }}>
                   Send 10 Products
                 </Button>
                 <p className="text-[0.8rem] text-ink-3">Sample eligibility depends on project fit.</p>

@@ -18,12 +18,13 @@ import { Reveal } from "@/components/ui/Reveal";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbJsonLd, faqJsonLd, pageMeta, serviceJsonLd } from "@/lib/seo";
 import { catalogPageFaqs } from "@/content/faqs";
+import { tiers } from "@/content/pricing";
 
 export const metadata: Metadata = pageMeta({
-  title: "Shopify & WooCommerce Bulk Product Upload Service",
+  title: "Bulk Product Upload Service for Shopify & WooCommerce",
   description:
-    "Send spreadsheets, supplier catalogs and images. We clean, structure, enrich and upload your products to Shopify, WooCommerce or a custom store. 1000 products in as fast as 48 hours for eligible catalogs.",
-  path: "/catalog",
+    "Send spreadsheets, supplier files and images. We clean, structure and upload up to 1,000 products to Shopify or WooCommerce in as little as 48 hours.",
+  path: "/bulk-product-upload",
 });
 
 const SEND = ["Excel / CSV", "Supplier catalogs", "ERP or catalog exports", "Product PDFs", "Existing store exports", "Image folders", "Supplier websites", "Multiple fragmented sources"];
@@ -45,9 +46,10 @@ export default function CatalogPage() {
             serviceJsonLd({
               name: "Bulk product upload for Shopify, WooCommerce and custom stores",
               description: "Catalog cleanup, structuring, enrichment, upload and QA for ecommerce stores.",
-              path: "/catalog",
+              path: "/bulk-product-upload",
+              price: tiers[0].price,
             }),
-            breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Catalog Upload", path: "/catalog" }]),
+            breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Catalog Upload", path: "/bulk-product-upload" }]),
             faqJsonLd(catalogPageFaqs),
           ]}
         />

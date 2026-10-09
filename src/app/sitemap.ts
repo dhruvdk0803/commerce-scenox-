@@ -3,14 +3,15 @@ import { site } from "@/lib/site";
 
 const routes: { path: string; priority: number; freq: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
   { path: "/", priority: 1, freq: "weekly" },
-  { path: "/catalog", priority: 0.9, freq: "weekly" },
-  { path: "/sample", priority: 0.8, freq: "monthly" },
+  { path: "/services", priority: 0.9, freq: "monthly" },
+  { path: "/bulk-product-upload", priority: 0.9, freq: "weekly" },
+  { path: "/free-sample", priority: 0.8, freq: "monthly" },
   { path: "/catalog-cleanup", priority: 0.8, freq: "monthly" },
-  { path: "/migration", priority: 0.8, freq: "monthly" },
+  { path: "/store-migration", priority: 0.8, freq: "monthly" },
   { path: "/wholesale-catalog", priority: 0.9, freq: "monthly" },
-  { path: "/product-imagery", priority: 0.8, freq: "monthly" },
-  { path: "/feeds-marketplaces", priority: 0.8, freq: "monthly" },
-  { path: "/email-marketing", priority: 0.8, freq: "monthly" },
+  { path: "/ai-product-photos", priority: 0.8, freq: "monthly" },
+  { path: "/product-feed-management", priority: 0.8, freq: "monthly" },
+  { path: "/ecommerce-email-marketing", priority: 0.8, freq: "monthly" },
   { path: "/whatsapp-automation", priority: 0.8, freq: "monthly" },
   { path: "/ai-customer-support", priority: 0.8, freq: "monthly" },
   { path: "/how-it-works", priority: 0.8, freq: "monthly" },
@@ -24,11 +25,13 @@ const routes: { path: string; priority: number; freq: MetadataRoute.Sitemap[numb
   { path: "/terms", priority: 0.2, freq: "yearly" },
 ];
 
+/** Bump when page content meaningfully changes (not on every build). */
+const LAST_UPDATED = new Date("2026-10-09");
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
   return routes.map((r) => ({
-    url: `${site.url}${r.path}`,
-    lastModified: now,
+    url: `${site.url}${r.path === "/" ? "" : r.path}`,
+    lastModified: LAST_UPDATED,
     changeFrequency: r.freq,
     priority: r.priority,
   }));

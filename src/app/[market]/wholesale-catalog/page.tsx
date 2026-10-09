@@ -10,14 +10,14 @@ import { PlatformModules } from "@/components/home/PlatformModules";
 import { FAQ } from "@/components/home/FAQ";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { pageMeta, serviceJsonLd, breadcrumbJsonLd } from "@/lib/seo";
+import { pageMeta, serviceJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
 import { WholesaleFlow } from "@/components/pages/WholesaleFlow";
 import { PageHero } from "@/components/ui/PageHero";
 
 export const metadata: Metadata = pageMeta({
   title: "Wholesale & Distributor Catalog Upload",
   description:
-    "Wholesale ecommerce catalog management for large ecommerce catalog uploads. Turn ERP exports, supplier spreadsheets and image folders into structured Shopify or WooCommerce listings, published in batches.",
+    "Turn ERP exports and supplier files with 10,000+ SKUs into a structured Shopify or WooCommerce catalog, published in batches with a clear plan.",
   path: "/wholesale-catalog",
 });
 
@@ -165,6 +165,7 @@ export default function WholesaleCatalogPage() {
             { name: "Home", path: "/" },
             { name: "Wholesalers & Distributors", path: "/wholesale-catalog" },
           ]),
+          faqJsonLd(wholesaleFaqs),
         ]}
       />
     </>

@@ -11,15 +11,16 @@ import { ProcessSteps } from "@/components/home/ProcessSteps";
 import { FAQ } from "@/components/home/FAQ";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { pageMeta, serviceJsonLd, breadcrumbJsonLd } from "@/lib/seo";
+import { pageMeta, serviceJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
+import { products } from "@/content/products";
 import { MigrationFlow } from "@/components/pages/MigrationFlow";
 import { PageHero } from "@/components/ui/PageHero";
 
 export const metadata: Metadata = pageMeta({
-  title: "Platform Migration",
+  title: "Shopify & WooCommerce Store Migration Service",
   description:
-    "Move your ecommerce catalog from WooCommerce, legacy platforms or structured sources to Shopify or WooCommerce. Catalog extraction, normalization and rebuild handled end to end.",
-  path: "/migration",
+    "Move your catalog to Shopify or WooCommerce with products, variants, images, SEO handles and 301 redirects mapped. No downtime, cleaner than before.",
+  path: "/store-migration",
 });
 
 const COVERAGE = [
@@ -143,12 +144,14 @@ export default function MigrationPage() {
             name: "Platform Migration",
             description:
               "Ecommerce catalog migration between Shopify, WooCommerce and custom platforms: extraction, normalization, redirects and validation.",
-            path: "/migration",
+            path: "/store-migration",
+            price: products.find((x) => x.id === "migration")!.price,
           }),
           breadcrumbJsonLd([
             { name: "Home", path: "/" },
-            { name: "Platform Migration", path: "/migration" },
+            { name: "Platform Migration", path: "/store-migration" },
           ]),
+          faqJsonLd(migrationFaqs),
         ]}
       />
     </>

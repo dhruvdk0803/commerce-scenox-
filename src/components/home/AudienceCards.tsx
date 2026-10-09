@@ -9,14 +9,14 @@ const AUDIENCES = [
     label: "Growing brands",
     range: "100–500 products",
     copy: "New collection? Store launch? Old listings that need rebuilding? Send the files and skip the weeks of admin.",
-    href: "/catalog",
+    href: "/bulk-product-upload",
     bars: 2,
   },
   {
     label: "Retailers",
     range: "500–2,000 products",
     copy: "Large multi-category catalogs, structured and live without weeks of manual entry.",
-    href: "/catalog",
+    href: "/bulk-product-upload",
     bars: 3,
   },
   {
@@ -31,7 +31,7 @@ const AUDIENCES = [
     label: "Manufacturers",
     range: "Any catalog size",
     copy: "Move existing product information online with specifications, documents and images mapped correctly.",
-    href: "/catalog",
+    href: "/bulk-product-upload",
     bars: 4,
   },
   {
