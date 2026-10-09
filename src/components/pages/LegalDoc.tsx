@@ -27,7 +27,7 @@ export function LegalDoc({
       <div className="grid gap-10 lg:grid-cols-12 lg:gap-10">
         <nav
           aria-label="Contents"
-          className="lg:col-span-3 lg:sticky lg:top-24 lg:self-start"
+          className="min-w-0 lg:col-span-3 lg:sticky lg:top-24 lg:self-start"
         >
           <span className="mono-label text-ink-3">CONTENTS</span>
           <ol className="mt-4 flex gap-4 overflow-x-auto scrollbar-none pb-2 lg:block lg:gap-0 lg:space-y-3 lg:overflow-visible lg:pb-0">
