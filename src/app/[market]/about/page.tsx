@@ -55,10 +55,10 @@ export default function AboutPage() {
         <PageHero
           eyebrow="COMPANY"
           title="Commerce operations shouldn't scale with headcount."
-          lead="Scenox Commerce is part of Scenox Studios. Scenox Studios builds automation systems for repetitive operational work. Scenox Commerce applies the same engineering philosophy to ecommerce catalog operations."
+          lead="Scenox Commerce is part of Scenox Studios. Scenox Studios builds automation systems for repetitive operational work. Scenox Commerce applies it to ecommerce: catalogs, sales channels, email, WhatsApp and customer support, run by an AI engine and checked by people."
           facts={[
             { k: "PARENT", v: site.parent },
-            { k: "FOCUS", v: "Ecommerce catalog operations" },
+            { k: "FOCUS", v: "Ecommerce operations: catalog, channels, retention" },
             { k: "PLATFORMS", v: "Shopify · WooCommerce · Custom" },
             { k: "CONTACT", v: site.email },
           ]}
@@ -126,7 +126,7 @@ export default function AboutPage() {
                       Focus
                     </dt>
                     <dd className="text-[1.0625rem] text-ink">
-                      Ecommerce catalog operations
+                      Ecommerce operations: catalog, channels and retention
                     </dd>
                   </div>
                   <div className="flex flex-col gap-1 py-5 sm:flex-row sm:items-baseline sm:gap-6">

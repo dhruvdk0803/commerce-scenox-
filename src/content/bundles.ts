@@ -19,6 +19,8 @@ export type Bundle = {
   parts: BundlePart[];
   outcome: string;
   popular?: boolean;
+  /** Optional condensed rows for display (e.g. "Everything in the Launch Kit"). Pricing still uses `parts`. */
+  rows?: { label: string; href: string; price: PriceSet }[];
 };
 
 const product = (id: string) => {
@@ -40,6 +42,16 @@ const revenueParts: BundlePart[] = [
   { label: "WhatsApp automation", price: product("whatsapp").price, qty: 1, href: "/whatsapp-automation" },
   { label: "AI customer support", price: product("support").price, qty: 1, href: "/ai-customer-support" },
 ];
+
+/** Total of a set of parts bought one by one, per market. */
+function partsTotal(parts: BundlePart[]): PriceSet {
+  return Object.fromEntries(
+    MARKET_IDS.map((m: MarketId) => [
+      m,
+      parts.reduce((sum, p) => (sum == null || p.price[m] == null ? null : sum + p.price[m]! * p.qty), 0 as number | null),
+    ]),
+  ) as PriceSet;
+}
 
 export const bundles: Bundle[] = [
   {
@@ -67,6 +79,10 @@ export const bundles: Bundle[] = [
     forWho: "Brands launching or relaunching properly",
     price: { in: 54999, us: 1499, uk: 1199, au: 2249 },
     parts: [...launchParts, ...revenueParts],
+    rows: [
+      { label: "Everything in the Launch Kit", href: "/pricing#bundles", price: partsTotal(launchParts) },
+      { label: "Everything in the Revenue Kit", href: "/pricing#bundles", price: partsTotal(revenueParts) },
+    ],
     outcome: "Catalog, channels and retention set up together, by one team, on one timeline.",
     popular: true,
   },
@@ -74,10 +90,5 @@ export const bundles: Bundle[] = [
 
 /** What the parts would cost bought one by one, per market. */
 export function separatePrice(b: Bundle): PriceSet {
-  return Object.fromEntries(
-    MARKET_IDS.map((m: MarketId) => [
-      m,
-      b.parts.reduce((sum, p) => (sum == null || p.price[m] == null ? null : sum + p.price[m]! * p.qty), 0 as number | null),
-    ]),
-  ) as PriceSet;
+  return partsTotal(b.parts);
 }

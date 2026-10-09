@@ -3,16 +3,17 @@
 import type { CSSProperties } from "react";
 import { site } from "@/lib/site";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { Button, TextLink } from "@/components/ui/Button";
 import { CatalogPipeline } from "./pipeline/CatalogPipeline";
 
 /** Services beyond the catalog, surfaced in the hero so the full offer is visible above the fold. */
 const AFTER_LAUNCH = [
-  { label: "Product imagery", href: "/ai-product-photos" },
-  { label: "Google & marketplaces", href: "/product-feed-management" },
-  { label: "Email & abandoned cart", href: "/ecommerce-email-marketing" },
-  { label: "WhatsApp", href: "/whatsapp-automation" },
-  { label: "AI support", href: "/ai-customer-support" },
+  { label: "Product photos", note: "Clean, consistent sets", href: "/ai-product-photos" },
+  { label: "Google & marketplaces", note: "Shopping, Meta, Amazon", href: "/product-feed-management" },
+  { label: "Email & carts", note: "Recovery and win-back", href: "/ecommerce-email-marketing" },
+  { label: "WhatsApp", note: "COD, carts, order updates", href: "/whatsapp-automation" },
+  { label: "AI support", note: "Questions answered 24/7", href: "/ai-customer-support" },
 ];
 
 export function Hero({ compact = false }: { compact?: boolean }) {
@@ -118,18 +119,30 @@ export function Hero({ compact = false }: { compact?: boolean }) {
         {!compact && (
           <nav
             aria-label="After launch"
-            className={`mt-10 flex flex-col gap-3 border-t border-line pt-5 md:mt-14 lg:flex-row lg:items-center lg:gap-8 ${item(7).className}`}
+            className={`mt-10 grid overflow-hidden rounded-[12px] border border-line bg-bg-elevated md:mt-14 lg:grid-cols-[14rem_1fr] ${item(7).className}`}
             style={item(7).style}
           >
-            <p className="mono-label shrink-0 text-ink-3">THEN WE KEEP IT SELLING</p>
-            <ul className="flex flex-wrap gap-x-1 gap-y-1">
-              {AFTER_LAUNCH.map((a) => (
-                <li key={a.href}>
+            <div className="flex items-center justify-between gap-3 border-b border-line px-5 py-4 lg:flex-col lg:items-start lg:justify-center lg:border-b-0 lg:border-r">
+              <p className="mono-micro text-ink-3">AFTER LAUNCH</p>
+              <p className="text-[0.95rem] font-medium tracking-[-0.01em] text-ink lg:mt-1">We keep it selling.</p>
+            </div>
+            <ul className="grid grid-cols-2 gap-px bg-line md:grid-cols-5">
+              {AFTER_LAUNCH.map((a, i) => (
+                <li key={a.href} className="bg-bg-elevated last:col-span-2 md:last:col-span-1">
                   <Link
                     href={a.href}
-                    className="inline-flex h-8 items-center rounded-[6px] px-2.5 text-[0.925rem] text-ink-2 transition-colors duration-[160ms] hover:bg-bg-muted hover:text-ink"
+                    className="group flex h-full flex-col gap-1 px-5 py-4 transition-colors duration-[160ms] hover:bg-bg-muted/60"
                   >
-                    {a.label}
+                    <span className="flex items-center justify-between">
+                      <span className="mono-micro text-ink-3 tabular">{String(i + 1).padStart(2, "0")}</span>
+                      <ArrowUpRight
+                        aria-hidden
+                        className="size-3.5 text-ink-3 transition-[transform,color] duration-[200ms] ease-[var(--ease-out)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink"
+                        strokeWidth={2}
+                      />
+                    </span>
+                    <span className="mt-1 text-[0.95rem] font-medium tracking-[-0.01em] text-ink">{a.label}</span>
+                    <span className="text-[0.825rem] leading-snug text-ink-3">{a.note}</span>
                   </Link>
                 </li>
               ))}

@@ -56,7 +56,7 @@ export function BundleCards({ tone = "light", bare = false }: { tone?: "light" |
                 </div>
 
                 <ul className="divide-y divide-line border-y border-line">
-                  {b.parts.map((p) => (
+                  {(b.rows?.map((r) => ({ ...r, qty: 1 })) ?? b.parts).map((p) => (
                     <li key={p.label}>
                       <Link
                         href={p.href}

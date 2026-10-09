@@ -167,7 +167,7 @@ export const productPages: ProductPage[] = [
     isNew: true,
     desc: "Google Shopping, Meta, Amazon and Flipkart from one clean catalog.",
     price: { in: 7999, us: 199, uk: 159, au: 299 },
-    unit: "per channel, one-time setup",
+    unit: "per channel, setup",
     turnaround: "From 48 hours",
     metaTitle: "Google Shopping & Marketplace Feed Management",
     metaDescription:
@@ -235,7 +235,7 @@ export const productPages: ProductPage[] = [
     isNew: true,
     desc: "Cart recovery, welcome, post-purchase and win-back flows that run on their own.",
     price: { in: 12999, us: 349, uk: 279, au: 529 },
-    unit: "one-time setup, 8 core flows",
+    unit: "setup, 8 flows",
     turnaround: "From 48 hours",
     metaTitle: "Ecommerce Email Marketing & Abandoned Cart Recovery",
     metaDescription:

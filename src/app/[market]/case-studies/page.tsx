@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { ProofModule } from "@/components/home/ProofModule";
 import { Header } from "@/components/layout/Header";
@@ -93,6 +94,19 @@ export default function CaseStudiesPage() {
                     <span className="text-[1.15rem] font-semibold leading-tight tracking-[-0.02em] text-ink">{c.name}</span>
                   </li>
                 ))}
+                {/* closing cell spans whatever columns remain, so the grid never ends on an empty gap */}
+                <li
+                  className={cn(
+                    "flex min-h-[6.5rem] flex-col justify-between bg-bg-muted/60 p-5",
+                    clients.length % 2 === 0 ? "sm:col-span-2" : "sm:col-span-1",
+                    ({ 0: "lg:col-span-3", 1: "lg:col-span-2", 2: "lg:col-span-1" } as const)[(clients.length % 3) as 0 | 1 | 2],
+                  )}
+                >
+                  <span className="mono-micro text-ink-3">AND MORE</span>
+                  <span className="text-[1.15rem] font-semibold leading-tight tracking-[-0.02em] text-ink-2">
+                    {clientClaim.headline}
+                  </span>
+                </li>
               </ul>
             </div>
           </Container>

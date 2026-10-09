@@ -108,8 +108,8 @@
   --text-h1--letter-spacing: -0.04em;
   --text-h1--font-weight: 600;
 
-  --text-h2: clamp(2.125rem, 1.3rem + 2.8vw, 3.75rem);
-  --text-h2--line-height: 1.02;
+  --text-h2: clamp(2rem, 1.3rem + 2.2vw, 3.25rem);
+  --text-h2--line-height: 1.04;
   --text-h2--letter-spacing: -0.035em;
   --text-h2--font-weight: 600;
 
@@ -230,12 +230,12 @@
 }
 
 @utility section-y {
-  padding-block: 4.5rem;
+  padding-block: 4rem;
   @media (min-width: 48rem) {
-    padding-block: 6.5rem;
+    padding-block: 5.5rem;
   }
   @media (min-width: 64rem) {
-    padding-block: 8.5rem;
+    padding-block: 7rem;
   }
 }
 

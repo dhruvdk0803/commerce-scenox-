@@ -53,7 +53,7 @@ export function ProofModule({ cs = demoCase, showLink = true }: { cs?: CaseStudy
       <div className="container-x">
         <SectionHeader
           id="proof-heading"
-          eyebrow="REAL WORK. REAL CATALOGS."
+          eyebrow="SAMPLE WORKFLOW"
           title={cs.isDemo ? "Sample catalog transformation." : cs.customer}
           description={
             cs.isDemo
