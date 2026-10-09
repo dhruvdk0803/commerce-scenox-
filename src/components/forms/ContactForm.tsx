@@ -1,12 +1,13 @@
 "use client";
 
+import { site } from "@/lib/site";
 import { useRef, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { track, trackConversion } from "@/lib/analytics";
 import { isValidEmail, isValidPhone } from "@/lib/validation";
-import { ChipGroup, Field, TextArea, TextInput, readUtm } from "./fields";
+import { ChipGroup, Field, TextArea, TextInput, readUtm, focusFirstInvalid } from "./fields";
 
 const TOPICS = ["New catalog upload", "Catalog cleanup", "Migration", "Ongoing operations", "Partnership / agency", "Something else"] as const;
 
@@ -55,7 +56,7 @@ export function ContactForm() {
     const e = validate();
     setErrors(e);
     if (Object.keys(e).length) {
-      document.querySelector<HTMLElement>("[aria-invalid='true']")?.focus();
+      focusFirstInvalid();
       return;
     }
     setStatus("submitting");
@@ -71,7 +72,13 @@ export function ContactForm() {
           utm: readUtm(),
         }),
       });
-      const json = (await res.json()) as { ok: boolean; error?: string };
+      const json = (await res.json().catch(() => ({
+        ok: false,
+        error:
+          res.status === 413
+            ? "That file is too large. Keep it under 3 MB, or share a link in the notes."
+            : `Something went wrong sending this. Please try again, or email ${site.email}.`,
+      }))) as { ok: boolean; error?: string };
       if (!res.ok || !json.ok) throw new Error(json.error || "Something went wrong.");
       track("form_submitted", { form: "contact", topic: data.topic });
       trackConversion("lead", { form: "contact", topic: data.topic });

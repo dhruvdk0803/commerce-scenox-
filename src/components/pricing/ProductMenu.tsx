@@ -18,12 +18,10 @@ export function ProductMenu({
   eyebrow = "THE FULL CYCLE",
   title = (
     <>
-      Every stage after the store is built.
-      <br />
-      <span className="text-ink-2">One team. Fixed prices.</span>
+      From first upload to repeat order.
     </>
   ),
-  description = "Pick a single product or run the whole cycle. Each one has a set scope, a delivery time and a public starting price.",
+  description = "One team for every stage of the store. Each service has a set scope, a delivery time and a public starting price.",
   tone = "light",
 }: {
   eyebrow?: string;
@@ -92,7 +90,7 @@ export function ProductMenu({
             );
           })}
         </Reveal>
-        <p className="mt-5 text-[0.85rem] text-ink-3">Every service starts from 48 hours. {site.qualifier}</p>
+        <p className="mt-5 text-[0.85rem] text-ink-3">Most services can go live in as little as 48 hours. {site.qualifier}</p>
       </div>
     </section>
   );

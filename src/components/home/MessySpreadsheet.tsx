@@ -222,7 +222,7 @@ export function MessySpreadsheet() {
           title={
             <>
               Your supplier sent you 4,000 products.
-              <br className="hidden sm:block" /> Now someone has to upload them.
+              <br className="hidden sm:block" /> Now someone has to upload them.
             </>
           }
           description="Your team shouldn't spend days copying information between spreadsheets, supplier catalogs and ecommerce admin panels."
@@ -245,7 +245,7 @@ export function MessySpreadsheet() {
                   </span>
                 </div>
                 <div className="mono-micro flex shrink-0 items-center gap-4 pl-3 text-ink-3 tabular">
-                  <span className="hidden sm:inline">4,832 ROWS</span>
+                  <span className="hidden sm:inline">4,000 ROWS</span>
                   <span
                     className={cn(
                       "flex items-center gap-1.5 transition-colors duration-[400ms]",

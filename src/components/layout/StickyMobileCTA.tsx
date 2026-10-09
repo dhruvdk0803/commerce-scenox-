@@ -60,7 +60,7 @@ export function StickyMobileCTA({
     <AnimatePresence>
       {show && (
         <motion.div
-          className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-[rgba(245,244,239,0.92)] px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 backdrop-blur-[6px] md:hidden"
+          className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-bg px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 md:hidden"
           initial={reduce ? { opacity: 0 } : { opacity: 0, transform: "translateY(100%)" }}
           animate={{ opacity: 1, transform: "translateY(0%)" }}
           exit={{ opacity: 0, transform: "translateY(100%)" }}

@@ -47,7 +47,7 @@ export function Hero({ compact = false }: { compact?: boolean }) {
               <span className="block">1000 PRODUCTS.</span>
               <span className="block">48 HOURS.</span>
               <span className="block">
-                LIVE<span className="max-sm:hidden"> ON YOUR STORE</span>.
+                LIVE ON YOUR STORE.
               </span>
             </>
           )}
@@ -65,7 +65,7 @@ export function Hero({ compact = false }: { compact?: boolean }) {
 
             {!compact && (
               <p
-                className={`mt-5 hidden max-w-[38ch] text-[1.05rem] leading-[1.5] text-ink-2 sm:block ${item(3).className}`}
+                className={`mt-5 max-w-[38ch] text-[1.05rem] leading-[1.5] text-ink-2 ${item(3).className}`}
                 style={item(3).style}
               >
                 Send us your spreadsheets, supplier catalogs, images or existing
@@ -95,7 +95,7 @@ export function Hero({ compact = false }: { compact?: boolean }) {
               >
                 Get Started
               </Button>
-              <TextLink href="/how-it-works" className="max-sm:hidden">
+              <TextLink href="/how-it-works" className="max-sm:self-center">
                 See How It Works
               </TextLink>
             </div>
@@ -150,22 +150,6 @@ export function Hero({ compact = false }: { compact?: boolean }) {
           </nav>
         )}
 
-        {/* mobile capability checklist, directly under first viewport */}
-        <ul
-          aria-label="What is handled"
-          className="mt-8 grid grid-cols-2 gap-x-6 gap-y-2 border-t border-line pt-6 sm:hidden"
-        >
-          {["Cleanup", "Descriptions", "Variants", "Images", "Categories", "Upload", "QA"].map(
-            (c) => (
-              <li key={c} className="flex items-center gap-2 text-[0.95rem] text-ink">
-                <span aria-hidden className="text-success">
-                  ✓
-                </span>
-                {c}
-              </li>
-            ),
-          )}
-        </ul>
       </div>
     </section>
   );

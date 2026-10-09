@@ -26,8 +26,10 @@ export function Header({ minimal = false }: { minimal?: boolean }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const hoverOpenedAt = useRef(0);
   const openServices = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
+    if (!servicesOpen) hoverOpenedAt.current = Date.now();
     setServicesOpen(true);
   };
   const scheduleClose = () => {
@@ -43,7 +45,7 @@ export function Header({ minimal = false }: { minimal?: boolean }) {
         className={cn(
           "sticky top-0 z-50 w-full transition-[background-color,border-color,box-shadow] duration-[280ms] ease-[var(--ease-out)]",
           scrolled
-            ? "border-b border-line bg-[rgba(245,244,239,0.86)] backdrop-blur-[6px]"
+            ? "border-b border-line bg-bg"
             : "border-b border-transparent bg-transparent",
         )}
       >
@@ -64,13 +66,22 @@ export function Header({ minimal = false }: { minimal?: boolean }) {
                 className="relative"
                 onMouseEnter={openServices}
                 onMouseLeave={scheduleClose}
+                onKeyDown={(e) => {
+                  if (e.key === "Escape" && servicesOpen) {
+                    setServicesOpen(false);
+                    (e.currentTarget.querySelector("button") as HTMLButtonElement | null)?.focus();
+                  }
+                }}
+                onBlur={(e) => {
+                  if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setServicesOpen(false);
+                }}
               >
                 <button
                   type="button"
                   aria-expanded={servicesOpen}
-                  aria-haspopup="true"
-                  onClick={() => setServicesOpen((v) => !v)}
-                  onKeyDown={(e) => e.key === "Escape" && setServicesOpen(false)}
+                  aria-controls="services-panel"
+                  // toggle for keyboard/touch, but don't close a panel that hover opened a moment ago
+                  onClick={() => setServicesOpen((v) => (v && Date.now() - hoverOpenedAt.current > 400 ? false : true))}
                   className={cn(
                     "inline-flex h-9 items-center gap-1 rounded-[6px] px-3 text-[0.925rem] font-medium tracking-[-0.01em] text-ink transition-colors duration-[160ms] hover:bg-bg-muted",
                     servicesOpen && "bg-bg-muted",
@@ -89,6 +100,7 @@ export function Header({ minimal = false }: { minimal?: boolean }) {
                 <AnimatePresence>
                   {servicesOpen && (
                     <motion.div
+                      id="services-panel"
                       initial={
                         reduce
                           ? { opacity: 0 }
@@ -142,15 +154,16 @@ export function Header({ minimal = false }: { minimal?: boolean }) {
                 <Link
                   key={item.href}
                   href={item.href}
+                  aria-current={isActive(item.href) ? "page" : undefined}
                   className={cn(
                     "inline-flex h-9 items-center rounded-[6px] px-3 text-[0.925rem] font-medium tracking-[-0.01em] transition-colors duration-[160ms] hover:bg-bg-muted",
-                    isActive(item.href) ? "text-ink" : "text-ink",
+                    isActive(item.href) ? "text-ink" : "text-ink-2 hover:text-ink",
                   )}
                 >
                   <span
                     className={cn(
                       "link-underline",
-                      isActive(item.href) && "after:scale-x-100",
+                      isActive(item.href) && "after:[transform:scaleX(1)]",
                     )}
                   >
                     {item.label}
@@ -177,7 +190,7 @@ export function Header({ minimal = false }: { minimal?: boolean }) {
                 aria-label="Open menu"
                 aria-expanded={mobileOpen}
                 onClick={() => setMobileOpen(true)}
-                className="grid size-10 place-items-center rounded-[8px] text-ink transition-colors duration-[160ms] hover:bg-bg-muted lg:hidden"
+                className="grid size-11 place-items-center rounded-[8px] text-ink transition-colors duration-[160ms] hover:bg-bg-muted lg:hidden"
               >
                 <Menu className="size-5" strokeWidth={1.75} />
               </button>

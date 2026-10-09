@@ -4,7 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
 import { Hero } from "@/components/home/Hero";
 import { ClientStrip } from "@/components/home/ClientStrip";
-import { PlatformStrip, Statement } from "@/components/home/PlatformStrip";
+import { Statement } from "@/components/home/PlatformStrip";
 import { MessySpreadsheet } from "@/components/home/MessySpreadsheet";
 import { BeforeAfter } from "@/components/home/BeforeAfter";
 import { SystemSpec } from "@/components/home/SystemSpec";
@@ -32,7 +32,6 @@ export default function HomePage() {
       <Header />
       <main id="main" className="flex-1">
         <Hero />
-        <PlatformStrip />
         <ClientStrip />
         <Statement />
         <MessySpreadsheet />

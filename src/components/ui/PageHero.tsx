@@ -34,10 +34,10 @@ export function PageHero({
   const right = aside ?? (facts && facts.length > 0 ? <Facts label={factsLabel} facts={facts} /> : null);
   return (
     <section data-hero className={cn("container-x pt-10 pb-14 md:pt-16 md:pb-20", className)}>
-      <div className={cn("grid gap-10 lg:gap-12", right && "lg:grid-cols-12 lg:items-end")}>
+      <div className={cn("grid gap-10 lg:gap-12", right && "lg:grid-cols-12 lg:items-start")}>
         <Reveal className={cn(right ? "lg:col-span-7" : "max-w-[60rem]")}>
           <Eyebrow>{eyebrow}</Eyebrow>
-          <h1 className={cn("mt-5 text-ink", size === "display" ? "text-display" : "text-[clamp(2.375rem,1.2rem+3.6vw,4.25rem)] font-semibold leading-[0.98] tracking-[-0.04em]", "max-w-[22ch]")}>
+          <h1 className={cn("mt-5 text-ink", size === "display" ? "text-display" : "text-h1", "max-w-[22ch]")}>
             {title}
           </h1>
           {lead && <p className="mt-6 max-w-[50ch] text-lead text-ink-2">{lead}</p>}
@@ -46,7 +46,7 @@ export function PageHero({
           )}
         </Reveal>
         {right && (
-          <Reveal delay={0.1} className="lg:col-span-4 lg:col-start-9">
+          <Reveal delay={0.1} className="lg:col-span-4 lg:col-start-9 lg:pt-10">
             {right}
           </Reveal>
         )}

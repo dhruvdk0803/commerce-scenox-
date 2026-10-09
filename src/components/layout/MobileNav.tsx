@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { X } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { nav, site } from "@/lib/site";
@@ -17,15 +17,35 @@ export function MobileNav({
 }) {
   const reduce = useReducedMotion();
 
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+
   useEffect(() => {
     if (!open) return;
+    const trigger = document.activeElement as HTMLElement | null;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    closeRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") return onClose();
+      if (e.key !== "Tab" || !dialogRef.current) return;
+      // keep Tab inside the open menu
+      const items = dialogRef.current.querySelectorAll<HTMLElement>("a[href], button:not([disabled])");
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last?.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first?.focus();
+      }
+    };
     window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = prev;
       window.removeEventListener("keydown", onKey);
+      trigger?.focus();
     };
   }, [open, onClose]);
 
@@ -35,6 +55,7 @@ export function MobileNav({
     <AnimatePresence>
       {open && (
         <motion.div
+          ref={dialogRef}
           role="dialog"
           aria-modal="true"
           aria-label="Menu"
@@ -48,9 +69,10 @@ export function MobileNav({
             <Wordmark />
             <button
               type="button"
+              ref={closeRef}
               aria-label="Close menu"
               onClick={onClose}
-              className="grid size-10 place-items-center rounded-[8px] text-ink hover:bg-bg-muted"
+              className="grid size-11 place-items-center rounded-[8px] text-ink hover:bg-bg-muted"
             >
               <X className="size-5" strokeWidth={1.75} />
             </button>

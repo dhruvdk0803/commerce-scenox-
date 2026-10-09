@@ -235,7 +235,20 @@ export function ChipGroup<T extends string>({
 /* file drop (optional sample)                                          */
 /* ------------------------------------------------------------------ */
 
-export const MAX_FILE_BYTES = 5 * 1024 * 1024;
+/**
+ * Focus the first invalid field after React has rendered the error state.
+ * Chip groups mark a wrapper div invalid, so focus its first button instead.
+ */
+export function focusFirstInvalid() {
+  requestAnimationFrame(() => {
+    const el = document.querySelector<HTMLElement>("[aria-invalid='true']");
+    if (!el) return;
+    const target = el.matches("input, select, textarea, button") ? el : el.querySelector<HTMLElement>("button, input, select, textarea");
+    target?.focus();
+  });
+}
+
+export const MAX_FILE_BYTES = 3 * 1024 * 1024; // base64 inflates ~33%; keeps requests under Vercel's 4.5 MB body limit
 export const ACCEPTED = ".csv,.xlsx,.xls,.pdf,.zip,.json,.txt";
 
 export function FileDrop({
@@ -256,7 +269,7 @@ export function FileDrop({
   const accept = (f: File | undefined) => {
     if (!f) return;
     if (f.size > MAX_FILE_BYTES) {
-      onChange(null, "That file is over 5 MB. Send a smaller sample, or share a link in the notes.");
+      onChange(null, "That file is over 3 MB. Send a smaller sample, or share a link in the notes.");
       return;
     }
     onChange(f);
@@ -329,7 +342,7 @@ export function FileDrop({
               <span className="text-[0.925rem] font-medium text-ink">
                 Drop a sample file, or <span className="underline underline-offset-2">browse</span>
               </span>
-              <span className="mono-micro mt-1.5 text-ink-3">CSV · XLSX · PDF · ZIP · UP TO 5 MB</span>
+              <span className="mono-micro mt-1.5 text-ink-3">CSV · XLSX · PDF · ZIP · UP TO 3 MB</span>
             </span>
           </motion.button>
         )}

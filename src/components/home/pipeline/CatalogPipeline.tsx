@@ -75,7 +75,7 @@ export function CatalogPipeline({ className }: { className?: string }) {
               {published ? "catalog.store-ready.csv" : "supplier_catalog.xlsx"}
             </Swap>
           </span>
-          <span className="mono-micro hidden shrink-0 text-ink-3 tabular sm:inline">4,832 ROWS</span>
+          <span className="mono-micro hidden shrink-0 text-ink-3 tabular sm:inline">1,000 ROWS</span>
         </div>
         <Status kind={published ? "published" : processing ? "processing" : "queued"} />
       </div>

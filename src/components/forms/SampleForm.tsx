@@ -1,12 +1,13 @@
 "use client";
 
+import { site } from "@/lib/site";
 import { useRef, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { track, trackConversion } from "@/lib/analytics";
 import { isValidEmail, isValidPhone } from "@/lib/validation";
-import { ChipGroup, Field, FileDrop, Select, TextArea, TextInput, fileToBase64, readUtm } from "./fields";
+import { ChipGroup, Field, FileDrop, Select, TextArea, TextInput, fileToBase64, readUtm, focusFirstInvalid } from "./fields";
 import { PLATFORMS, PRODUCT_COUNTS, SOURCES } from "./options";
 
 type Data = {
@@ -69,7 +70,7 @@ export function SampleForm() {
     const e = validate();
     setErrors(e);
     if (Object.keys(e).length) {
-      document.querySelector<HTMLElement>("[aria-invalid='true']")?.focus();
+      focusFirstInvalid();
       return;
     }
     setStatus("submitting");
@@ -90,7 +91,13 @@ export function SampleForm() {
         headers: { "content-type": "application/json" },
         body: JSON.stringify(body),
       });
-      const json = (await res.json()) as { ok: boolean; error?: string };
+      const json = (await res.json().catch(() => ({
+        ok: false,
+        error:
+          res.status === 413
+            ? "That file is too large. Keep it under 3 MB, or share a link in the notes."
+            : `Something went wrong sending this. Please try again, or email ${site.email}.`,
+      }))) as { ok: boolean; error?: string };
       if (!res.ok || !json.ok) throw new Error(json.error || "Something went wrong.");
       track("sample_submitted", { platform: data.platform, productCount: data.productCount });
       trackConversion("sample", { platform: data.platform });

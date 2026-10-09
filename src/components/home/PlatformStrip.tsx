@@ -26,7 +26,7 @@ export function PlatformStrip() {
 
 export function Statement() {
   return (
-    <section className="section-y">
+    <section className="pt-16 md:pt-[5.5rem] lg:pt-28">
       <div className="container-x">
         <div className="grid gap-8 lg:grid-cols-12">
           <Reveal className="lg:col-span-9">
@@ -38,7 +38,7 @@ export function Statement() {
           </Reveal>
           <Reveal delay={0.1} className="lg:col-span-3 lg:pt-3">
             <p className="text-[1rem] leading-[1.55] text-ink-2">
-              The 48-hour launch is where most stores start. From 50 to
+              A 48-hour launch (for eligible catalogs) is where most stores start. From 50 to
               50,000+ SKUs, then on to Google Shopping, marketplaces, email
               and WhatsApp. One AI-powered engine, reviewed by people, from
               the first upload to the repeat order.

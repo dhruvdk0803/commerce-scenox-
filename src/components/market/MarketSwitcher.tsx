@@ -28,7 +28,7 @@ export function MarketSwitcher({ className }: { className?: string }) {
             <span
               key={id}
               aria-current="true"
-              className="mono-micro inline-flex h-6 items-center rounded-[4px] border border-ink px-1.5 text-ink"
+              className="mono-micro inline-flex h-9 items-center rounded-[4px] border border-ink px-2.5 sm:h-7 sm:px-1.5 text-ink"
             >
               {m.short}
             </span>
@@ -38,7 +38,7 @@ export function MarketSwitcher({ className }: { className?: string }) {
               href={`/${id}${path}`}
               rel="nofollow"
               hrefLang={m.locale}
-              className="mono-micro inline-flex h-6 items-center rounded-[4px] border border-transparent px-1.5 text-ink-3 transition-colors duration-[160ms] hover:border-line hover:text-ink"
+              className="mono-micro inline-flex h-9 items-center rounded-[4px] border border-transparent px-2.5 sm:h-7 sm:px-1.5 text-ink-3 transition-colors duration-[160ms] hover:border-line hover:text-ink"
               aria-label={`Show prices for ${m.label}`}
             >
               {m.short}

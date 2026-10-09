@@ -12,7 +12,7 @@ export function SpeedComparison() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.4 });
   const reduce = useReducedMotion();
-  const [tick, setTick] = useState(reduce ? TICKS.length - 1 : -1);
+  const [tick, setTick] = useState(-1);
 
   useEffect(() => {
     if (!inView || reduce) return;
@@ -28,8 +28,10 @@ export function SpeedComparison() {
     return () => clearInterval(id);
   }, [inView, reduce]);
 
-  const value = tick >= 0 ? TICKS[tick] : 0;
-  const done = tick === TICKS.length - 1;
+  // reduced motion: show the finished state directly (useReducedMotion is null on first render, so derive rather than store)
+  const t = reduce ? TICKS.length - 1 : tick;
+  const value = t >= 0 ? TICKS[t] : 0;
+  const done = t === TICKS.length - 1;
 
   return (
     <section
@@ -102,7 +104,7 @@ export function SpeedComparison() {
                   done ? "text-success" : "text-paper-2",
                 )}
               >
-                {done ? "CATALOG READY" : tick >= 0 ? "PROCESSING" : "QUEUED"}
+                {done ? "CATALOG READY" : t >= 0 ? "PROCESSING" : "QUEUED"}
               </p>
             </div>
             <div aria-hidden className="relative mt-4 h-px w-full bg-white/10">

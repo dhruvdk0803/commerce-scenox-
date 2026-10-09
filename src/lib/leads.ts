@@ -52,7 +52,7 @@ export type Payload = LeadPayload | SamplePayload | ContactPayload;
 import { isValidEmail, isValidPhone, looksLikeCredentials, normaliseUrl } from "./validation";
 export { isValidEmail, isValidPhone, isWorkEmail, looksLikeCredentials, normaliseUrl } from "./validation";
 
-const MAX_FILE_BYTES = 5 * 1024 * 1024;
+const MAX_FILE_BYTES = 3 * 1024 * 1024; // base64 inflates ~33%; keeps requests under Vercel's 4.5 MB body limit
 const SAFE_EXT = /\.(csv|xlsx|xls|pdf|zip|json|txt)$/i;
 
 function pickFile(o: Record<string, unknown>): { ok: true; file?: SampleFile } | { ok: false; error: string } {
@@ -65,7 +65,7 @@ function pickFile(o: Record<string, unknown>): { ok: true; file?: SampleFile } |
   if (!name || !base64) return { ok: true };
   if (!SAFE_EXT.test(name)) return { ok: false, error: "Send a CSV, Excel, PDF, ZIP, JSON or text file." };
   if (size > MAX_FILE_BYTES || base64.length > MAX_FILE_BYTES * 1.4) {
-    return { ok: false, error: "That file is over 5 MB. Send a smaller sample." };
+    return { ok: false, error: "That file is over 3 MB. Send a smaller sample." };
   }
   return { ok: true, file: { name, type: typeof r.type === "string" ? r.type.slice(0, 100) : "", size, base64 } };
 }

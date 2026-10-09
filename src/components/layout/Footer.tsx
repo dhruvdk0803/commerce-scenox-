@@ -14,7 +14,7 @@ function Col({
   return (
     <div>
       <p className="mono-label text-ink-3">{title}</p>
-      <ul className="mt-4 flex flex-col gap-2.5">
+      <ul className="mt-3 flex flex-col">
         {items.map((it) => (
           <li key={it.href}>
             {it.external ? (
@@ -22,7 +22,7 @@ function Col({
                 href={it.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-[0.95rem] text-ink-2 transition-colors duration-[160ms] hover:text-ink"
+                className="inline-flex min-h-10 items-center gap-1 text-[0.95rem] text-ink-2 transition-colors duration-[160ms] hover:text-ink"
               >
                 <span className="link-underline">{it.label}</span>
                 <ArrowUpRight className="size-3.5" strokeWidth={2} aria-hidden />
@@ -30,7 +30,7 @@ function Col({
             ) : (
               <Link
                 href={it.href}
-                className="text-[0.95rem] text-ink-2 transition-colors duration-[160ms] hover:text-ink"
+                className="inline-flex min-h-10 items-center text-[0.95rem] text-ink-2 transition-colors duration-[160ms] hover:text-ink"
               >
                 <span className="link-underline">{it.label}</span>
               </Link>
@@ -44,7 +44,7 @@ function Col({
 
 export function Footer() {
   return (
-    <footer className="border-t border-line bg-bg">
+    <footer data-hide-sticky className="border-t border-line bg-bg">
       <div className="container-x pt-16 pb-10 md:pt-20">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">

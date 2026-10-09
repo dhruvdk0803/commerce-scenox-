@@ -1,5 +1,6 @@
 "use client";
 
+import { site } from "@/lib/site";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -19,8 +20,7 @@ import {
   TextArea,
   TextInput,
   fileToBase64,
-  readUtm,
-} from "./fields";
+  readUtm, focusFirstInvalid } from "./fields";
 import {
   COUNTRIES,
   NEEDS,
@@ -156,8 +156,7 @@ export function LeadForm() {
     const e = validateStep(step, data);
     setErrors(e);
     if (Object.keys(e).length) {
-      const first = document.querySelector<HTMLElement>("[aria-invalid='true']");
-      first?.focus();
+      focusFirstInvalid();
       return;
     }
     track("form_step_completed", { form: "lead", step: step + 1 });
@@ -199,7 +198,13 @@ export function LeadForm() {
         headers: { "content-type": "application/json" },
         body: JSON.stringify(body),
       });
-      const json = (await res.json()) as { ok: boolean; error?: string };
+      const json = (await res.json().catch(() => ({
+        ok: false,
+        error:
+          res.status === 413
+            ? "That file is too large. Keep it under 3 MB, or share a link in the notes."
+            : `Something went wrong sending this. Please try again, or email ${site.email}.`,
+      }))) as { ok: boolean; error?: string };
       if (!res.ok || !json.ok) throw new Error(json.error || "Something went wrong.");
       track("form_submitted", { form: "lead", productCount: data.productCount, platform: data.platform });
       trackConversion("lead", { productCount: data.productCount, platform: data.platform });

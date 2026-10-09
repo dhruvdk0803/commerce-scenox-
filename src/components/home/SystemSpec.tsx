@@ -28,7 +28,7 @@ function ModeTag({ mode }: { mode: Mode }) {
       className={cn(
         "mono-micro inline-flex h-6 items-center rounded-[4px] border px-2 whitespace-nowrap",
         mode === "AUTOMATED" && "border-line bg-bg-muted text-ink-2",
-        mode === "AI + REVIEW" && "border-accent/30 bg-accent-soft text-accent",
+        mode === "AI + REVIEW" && "border-line-strong bg-bg text-ink",
         mode === "HUMAN" && "border-success/30 bg-success-soft text-success",
       )}
     >
