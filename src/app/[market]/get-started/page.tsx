@@ -32,7 +32,7 @@ export default function GetStartedPage() {
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
               <Eyebrow>GET STARTED</Eyebrow>
-              <h1 className="mt-5 text-h1 text-ink">Tell us about your store.</h1>
+              <h1 className="mt-5 text-h1 text-ink">Tell us<br /> about your store.</h1>
               <p className="mt-6 max-w-[40ch] text-lead text-ink-2">
                 We&apos;ll review the scope and tell you what&apos;s possible, how long it should take and what it will
                 cost.

@@ -521,3 +521,8 @@
     width: auto;
   }
 }
+
+/* active nav item: outside the utilities layer so it beats .link-underline's scaleX(0) */
+[aria-current="page"] .link-underline::after {
+  transform: scaleX(1);
+}

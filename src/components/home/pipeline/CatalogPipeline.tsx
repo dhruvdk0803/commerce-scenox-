@@ -19,7 +19,7 @@ type Row = {
 };
 
 const ROWS: Row[] = [
-  { sku: "AX-442", title: ["blk office chr", "Black Ergonomic Office Chair"], category: ["furniture?", "Office Furniture › Chairs"], image: ["IMG_99283.jpg", "ax-442-01.jpg"] },
+  { sku: "AX-442", title: ["blk office chr", "Black Ergonomic Office Chair"], category: ["furniture?", "Office › Chairs"], image: ["IMG_99283.jpg", "ax-442-01.jpg"] },
   { sku: "KT-1180", title: ["steel bottle 750", "Insulated Steel Bottle 750 ml"], category: ["kitchen/home", "Kitchen › Drinkware"], image: ["—", "kt-1180-01.jpg"] },
   { sku: "LG-77", title: ["LED desk lamp wht", "White LED Desk Lamp"], category: ["lighting", "Lighting › Desk Lamps"], image: ["lamp_v2 (1).png", "lg-77-01.jpg"] },
   { sku: "TX-310", title: ["cotton tshirt S,M,L", "Cotton Crew T-Shirt · 4 sizes"], category: ["apparel", "Apparel › T-Shirts"], image: ["tee.jpg", "tx-310-01.jpg"] },

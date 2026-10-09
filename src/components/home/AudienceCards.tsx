@@ -61,7 +61,7 @@ export function AudienceCards({ title = "Built for catalogs that don't belong in
                 href={a.href}
                 className={cn(
                   "group grid gap-4 py-6 transition-colors duration-[200ms] md:grid-cols-12 md:items-center md:gap-6 md:py-7",
-                  a.featured && "lg:-mx-8 lg:bg-bg-muted/40 lg:px-8",
+                  a.featured && "lg:bg-bg-muted/40",
                 )}
               >
                 <div className="flex items-center gap-4 md:col-span-1">

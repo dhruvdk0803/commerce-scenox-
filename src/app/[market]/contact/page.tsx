@@ -34,7 +34,7 @@ export default function ContactPage() {
             {/* left: copy + direct routes */}
             <div className="lg:col-span-4">
               <Eyebrow>CONTACT</Eyebrow>
-              <h1 className="mt-5 text-h1 text-ink">Talk to us about your store.</h1>
+              <h1 className="mt-5 text-h1 text-ink">Talk to us<br /> about your store.</h1>
               <p className="mt-6 max-w-[40ch] text-lead text-ink-2">
                 Scenox Commerce is part of Scenox Studios. We reply to every enquiry.
               </p>
@@ -54,7 +54,7 @@ export default function ContactPage() {
 
               <ul className="mt-6 divide-y divide-line border-y border-line">
                 {ROUTES.map((r) => (
-                  <li key={r.n} className="flex items-center justify-between gap-4 py-4">
+                  <li key={r.n} className="flex items-center justify-between gap-4 py-4 max-sm:flex-col max-sm:items-start max-sm:gap-3">
                     <div className="flex gap-3">
                       <span className="mono-micro tabular pt-1 text-ink-3">{r.n}</span>
                       <div>
@@ -89,7 +89,7 @@ export default function ContactPage() {
         <Section tone="dark">
           <Container>
             <div className="flex flex-col items-start gap-8 lg:flex-row lg:items-end lg:justify-between">
-              <h2 className="max-w-[16ch] text-h2 text-paper">No store passwords. Just what you need done.</h2>
+              <h2 className="max-w-[16ch] text-h2 text-paper">No store passwords.<br /> Just the work.</h2>
               <div className="flex flex-wrap gap-3">
                 <Button href="/get-started" variant="inverse" arrow>
                   Get Started

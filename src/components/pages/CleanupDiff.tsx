@@ -69,7 +69,7 @@ export function CleanupDiff() {
         ))}
       </dl>
 
-      <div className="flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-line px-4 py-3">
+      <div className="flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-line px-4 py-3 max-sm:gap-x-4">
         <span className="mono-micro text-ink-3">ONE RECORD · SKU AX-442</span>
         <span className="mono-micro text-danger">2 MISSING</span>
         <span className="mono-micro text-warning">6 INCONSISTENT</span>

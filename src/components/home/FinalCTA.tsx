@@ -25,7 +25,7 @@ export function FinalCTA({
           <h2 id="final-heading" className="max-w-[26ch] text-h1 text-paper">
             {heading[0]}
             <br />
-            <span className="text-paper-2">{heading[1]}</span>
+            <span className="block text-balance text-paper-2">{heading[1]}</span>
           </h2>
         </Reveal>
         <div className="mt-10 grid gap-8 md:mt-14 md:grid-cols-12 md:items-end">
@@ -41,7 +41,7 @@ export function FinalCTA({
                 href={secondary.href}
                 className="group inline-flex items-center gap-1.5 text-[1rem] font-medium text-paper-2 transition-colors duration-[160ms] hover:text-paper max-sm:self-center"
               >
-                <span className="link-underline">Or {secondary.label.charAt(0).toLowerCase() + secondary.label.slice(1)}</span>
+                <span className="link-underline">Or {secondary.label.toLowerCase()}</span>
                 <ArrowRight aria-hidden className="size-4 transition-transform duration-[200ms] ease-[var(--ease-out)] group-hover:translate-x-0.5" strokeWidth={2} />
               </Link>
             )}

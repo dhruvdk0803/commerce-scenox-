@@ -1,3 +1,4 @@
+import { clientClaim } from "@/content/clients";
 import { AudienceCards } from "@/components/home/AudienceCards";
 import { ArrowUpRight } from "lucide-react";
 import { Header } from "@/components/layout/Header";
@@ -57,10 +58,10 @@ export default function AboutPage() {
           title="Commerce operations shouldn't scale with headcount."
           lead="Scenox Commerce is part of Scenox Studios. Scenox Studios builds automation systems for repetitive operational work. Scenox Commerce applies it to ecommerce: catalogs, sales channels, email, WhatsApp and customer support, run by an AI engine and checked by people."
           facts={[
-            { k: "PARENT", v: site.parent },
-            { k: "FOCUS", v: "Ecommerce operations: catalog, channels, retention" },
-            { k: "PLATFORMS", v: "Shopify · WooCommerce · Custom" },
-            { k: "CONTACT", v: site.email },
+            { k: "WE RUN", v: "Catalogs, sales channels, email, WhatsApp, support" },
+            { k: "HOW", v: "AI engine, human review on every output" },
+            { k: "MARKETS", v: "India · United States · United Kingdom · Australia" },
+            { k: "CLIENTS", v: clientClaim.headline },
           ]}
         />
 

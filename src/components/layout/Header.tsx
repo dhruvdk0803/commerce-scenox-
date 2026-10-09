@@ -36,8 +36,9 @@ export function Header({ minimal = false }: { minimal?: boolean }) {
     closeTimer.current = setTimeout(() => setServicesOpen(false), 120);
   };
 
-  const isActive = (href: string) =>
-    href !== "/" && pathname?.startsWith(href.split("?")[0]);
+  // the proxy rewrites URLs to /{market}/..., so ignore a leading market segment
+  const path = (pathname ?? "/").replace(/^\/(in|us|uk|au)(?=\/|$)/, "") || "/";
+  const isActive = (href: string) => href !== "/" && path.startsWith(href.split("?")[0]);
 
   return (
     <>
@@ -163,8 +164,7 @@ export function Header({ minimal = false }: { minimal?: boolean }) {
                   <span
                     className={cn(
                       "link-underline",
-                      isActive(item.href) && "after:[transform:scaleX(1)]",
-                    )}
+                                          )}
                   >
                     {item.label}
                   </span>

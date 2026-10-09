@@ -200,7 +200,7 @@ export function ChipGroup<T extends string>({
             name={name}
             onClick={() => toggle(o.value)}
             className={cn(
-              "group flex min-h-[44px] items-center justify-between gap-2 rounded-[8px] border px-3 py-2.5 text-left text-[0.925rem] leading-tight transition-[border-color,background-color,transform] duration-[160ms] ease-[var(--ease-out)] active:scale-[0.985]",
+              "group flex min-h-[44px] items-center justify-between gap-3 rounded-[8px] border px-3 py-2.5 text-left text-[0.925rem] leading-tight transition-[border-color,background-color,transform] duration-[160ms] ease-[var(--ease-out)] active:scale-[0.985]",
               on
                 ? "border-ink bg-ink text-paper"
                 : invalid

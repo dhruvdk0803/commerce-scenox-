@@ -68,7 +68,8 @@ export default function ServicesPage() {
 
         {/* kits and plans live on /pricing; here, just point to them */}
         <section className="section-y-sm border-t border-line" aria-label="Kits and monthly plans">
-          <div className="container-x grid gap-px overflow-hidden rounded-[12px] border border-line bg-line md:grid-cols-2">
+          <div className="container-x">
+          <div className="grid gap-px overflow-hidden rounded-[12px] border border-line bg-line md:grid-cols-2">
             {[
               { k: "PREFER A BUNDLE?", t: <>Three kits from <Price set={cheapestKit} /></>, d: "Launch, Revenue and Complete kits, priced below buying the parts.", href: "/pricing#bundles" },
               { k: "WANT IT RUN MONTHLY?", t: <>Plans from <Price set={plans[0].price} /> a month</>, d: "Catalog upkeep, feeds, email and WhatsApp kept running by us.", href: "/pricing#plans" },
@@ -82,6 +83,7 @@ export default function ServicesPage() {
                 <span className="text-[0.95rem] text-ink-2">{x.d}</span>
               </Link>
             ))}
+          </div>
           </div>
         </section>
         <FAQ items={SERVICE_FAQS} heading="About our services." />

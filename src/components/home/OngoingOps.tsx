@@ -22,8 +22,7 @@ export function OngoingOps() {
           <Eyebrow>ONGOING OPERATIONS</Eyebrow>
           <h2 id="ops-heading" className="mt-5 text-[clamp(1.75rem,1rem+2.3vw,2.9rem)] font-semibold leading-[1.02] tracking-[-0.035em] text-ink">
             YOUR CATALOG DOESN&apos;T STOP CHANGING.
-            <br />
-            <span className="text-ink-2">NEITHER SHOULD YOUR SYSTEM.</span>
+            <span className="block text-balance text-ink-2">NEITHER SHOULD YOUR SYSTEM.</span>
           </h2>
           <p className="mt-6 max-w-[44ch] text-[1rem] leading-[1.55] text-ink-2">
             After the initial upload, Scenox Commerce can run as the operations

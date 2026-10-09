@@ -1,3 +1,4 @@
+import { Price } from "@/components/market/Price";
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -69,6 +70,7 @@ export default function CatalogCleanupPage() {
             </>
           }
           facts={[
+            { k: "STARTS FROM", v: <><Price set={products.find((x) => x.id === "cleanup")!.price} /> · up to 250 products</> },
             { k: "SCOPE", v: "Titles · descriptions · categories · tags · images · variants · SEO · metafields" },
             { k: "WORKS FROM", v: "A store export. No admin access needed to audit." },
             { k: "PLATFORMS", v: "Shopify · WooCommerce · Custom" },

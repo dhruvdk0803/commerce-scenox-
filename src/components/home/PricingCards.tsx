@@ -131,8 +131,7 @@ export function PricingCards({
           title={
             <>
               {heading[0]}
-              <br />
-              <span className="text-ink-2">{heading[1]}</span>
+              <span className="block text-balance text-ink-2">{heading[1]}</span>
             </>
           }
           description={`Starting prices in ${market.currency} for completed catalog operations, not per-row data entry. We confirm a fixed quote after inspecting your files.`}

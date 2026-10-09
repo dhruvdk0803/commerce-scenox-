@@ -80,9 +80,9 @@ export default function CatalogPage() {
               </div>
               <div className="bg-bg p-6">
                 <p className="mono-label text-ink-2">WHAT WE HANDLE</p>
-                <ul className="mt-5 grid grid-cols-2 gap-x-4 gap-y-2">
+                <ul className="mt-5 grid grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-2">
                   {HANDLE.map((h) => (
-                    <li key={h} className="flex items-center gap-2 text-[0.9rem] text-ink">
+                    <li key={h} className="flex items-baseline gap-2 text-[0.9rem] text-ink">
                       <span aria-hidden className="size-1.5 rounded-full bg-success" />
                       {h}
                     </li>

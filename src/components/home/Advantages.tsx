@@ -14,8 +14,7 @@ export function Advantages() {
           title={
             <>
               Faster because it&apos;s AI.
-              <br />
-              <span className="text-paper-2">Right because people check it.</span>
+              <span className="block text-balance text-paper-2">Right because people check it.</span>
             </>
           }
           description="Agencies bill hours. Apps leave the work to you. We run an AI engine with a review team on top, so you get finished work in days at a fraction of a manual team's cost."

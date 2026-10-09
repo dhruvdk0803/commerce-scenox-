@@ -1,3 +1,4 @@
+import { Price } from "@/components/market/Price";
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -84,9 +85,9 @@ export default function MigrationPage() {
             </Button>
           }
           facts={[
+            { k: "STARTS FROM", v: <><Price set={products.find((x) => x.id === "migration")!.price} /> · per store</> },
             { k: "TYPICAL PATHS", v: "WooCommerce → Shopify · Legacy → Shopify · Structured source → WooCommerce" },
             { k: "CARRIES OVER", v: "Products, variants, categories, images, SEO handles, redirects" },
-            { k: "REVIEWED FIRST", v: "Both platforms, before quoting" },
             { k: "DOWNTIME", v: "None on the catalog side; you switch when ready" },
           ]}
         />

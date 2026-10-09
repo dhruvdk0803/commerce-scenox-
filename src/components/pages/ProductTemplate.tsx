@@ -62,8 +62,7 @@ function Timeline({ p }: { p: ProductPage }) {
           title={
             <>
               Day one to live.
-              <br />
-              <span className="text-ink-2">Hour by hour.</span>
+              <span className="block text-balance text-ink-2">Hour by hour.</span>
             </>
           }
           description={`*${site.qualifier}`}
@@ -105,8 +104,7 @@ export function ProductTemplate({ id }: { id: string }) {
           title={
             <>
               {p.headline[0]}
-              <br />
-              <span className="text-ink-2">{p.headline[1]}</span>
+              <span className="block text-balance text-ink-2">{p.headline[1]}</span>
             </>
           }
           lead={p.lead}

@@ -120,8 +120,7 @@ export function BundleCards({
           title={
             <>
               Don&apos;t build a stack.
-              <br />
-              <span className="text-ink-2">Pick a kit.</span>
+              <span className="block text-balance text-ink-2">Pick a kit.</span>
             </>
           }
           description={`Three fixed kits that cover the jobs stores ask for most, priced below buying the parts. Prices in ${market.currency}, one-time.`}

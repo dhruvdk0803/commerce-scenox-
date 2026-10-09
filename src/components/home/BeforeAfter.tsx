@@ -43,7 +43,7 @@ export function BeforeAfter() {
           description="The same record, before and after. Use the tabs to see every field a finished product carries."
         />
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-[5fr_auto_7fr] lg:items-stretch lg:gap-0 md:mt-16">
+        <div className="mt-12 grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-[5fr_auto_7fr] lg:items-stretch lg:gap-0 md:mt-16">
           {/* WHAT YOU SEND */}
           <Reveal className="flex flex-col rounded-[12px] border border-line bg-bg-elevated lg:rounded-r-none">
             <div className="flex h-11 items-center justify-between border-b border-line px-4">
@@ -87,7 +87,7 @@ export function BeforeAfter() {
               className="absolute inset-y-0 left-1/2 w-px bg-line lg:hidden"
             />
             <motion.ol
-              className="relative flex gap-2 bg-bg px-2 py-2 lg:flex-col lg:gap-3 lg:px-0 lg:py-0"
+              className="relative flex gap-2 bg-bg px-2 py-2 max-sm:gap-1.5 max-sm:px-1 lg:flex-col lg:gap-3 lg:px-0 lg:py-0"
               initial={reduce ? false : "hidden"}
               whileInView="show"
               viewport={{ once: true, amount: 0.6 }}
@@ -100,7 +100,7 @@ export function BeforeAfter() {
                     hidden: { opacity: 0.35, transform: "translateY(4px)" },
                     show: { opacity: 1, transform: "translateY(0px)", transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1] } },
                   }}
-                  className="relative mx-auto flex items-center gap-2 rounded-[6px] border border-line bg-bg-elevated px-2.5 py-1.5 lg:w-[7rem] lg:justify-between"
+                  className="relative mx-auto flex items-center gap-2 rounded-[6px] border border-line bg-bg-elevated px-2.5 py-1.5 max-sm:gap-1.5 max-sm:px-2 lg:w-[7rem] lg:justify-between"
                 >
                   <span className="mono-micro text-ink">{r}</span>
                   <span

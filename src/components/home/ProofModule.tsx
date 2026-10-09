@@ -25,7 +25,7 @@ export type CaseStudy = {
 export const demoCase: CaseStudy = {
   slug: "sample-catalog-transformation",
   isDemo: true,
-  customer: "Sample catalog",
+  customer: "Sample: furniture catalog",
   industry: "Home & office furniture",
   platform: "Shopify",
   catalogSize: "500 products",

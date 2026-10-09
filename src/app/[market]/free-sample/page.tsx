@@ -88,13 +88,13 @@ export default function SamplePage() {
             .
           </p>
           <div className="flex gap-5">
-            <Link href="/privacy" className="hover:text-ink">
+            <Link href="/privacy" className="inline-flex min-h-11 items-center hover:text-ink">
               Privacy
             </Link>
-            <Link href="/data-handling" className="hover:text-ink">
+            <Link href="/data-handling" className="inline-flex min-h-11 items-center hover:text-ink">
               Data handling
             </Link>
-            <Link href="/terms" className="hover:text-ink">
+            <Link href="/terms" className="inline-flex min-h-11 items-center hover:text-ink">
               Terms
             </Link>
           </div>

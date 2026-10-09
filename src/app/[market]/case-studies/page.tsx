@@ -83,7 +83,7 @@ export default function CaseStudiesPage() {
                   Companies we&apos;ve worked with.
                 </h2>
                 <p className="mt-4 max-w-[36ch] text-[1rem] leading-[1.55] text-ink-2">
-                  {clientClaim.headline}. A selection of named clients:
+                  A selection of named clients.
                 </p>
               </div>
               <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-[12px] border border-line bg-line lg:col-span-8 lg:grid-cols-3">

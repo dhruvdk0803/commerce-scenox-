@@ -38,7 +38,7 @@ export function PlanCards({
             >
               {isFeatured(p) && (
                 <span className="mono-micro absolute -top-3 left-5 rounded-[4px] bg-ink px-2 py-1.5 text-paper">
-                  {p.id === "growth-stack" ? "CATALOG + RETENTION" : "RUNS THIS SERVICE"}
+                  {highlight ? "RUNS THIS SERVICE" : "CATALOG + RETENTION"}
                 </span>
               )}
               <h3 className="text-[1.15rem] font-semibold tracking-[-0.02em] text-ink">{p.name}</h3>
@@ -92,8 +92,7 @@ export function PlanCards({
           title={
             <>
               Launch once.
-              <br />
-              <span className="text-ink-2">Then let us run it.</span>
+              <span className="block text-balance text-ink-2">Then let us run it.</span>
             </>
           }
           description={`After setup, one monthly plan keeps the catalog, channels and retention running. Prices in ${market.currency}, per month.`}

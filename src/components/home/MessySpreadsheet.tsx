@@ -229,7 +229,7 @@ export function MessySpreadsheet() {
         />
 
         {/* scroll-driven transformation: tall wrapper, sticky sheet on lg */}
-        <div ref={wrapRef} className="relative mt-12 md:mt-16 lg:h-[135vh]">
+        <div ref={wrapRef} className={cn("relative mt-12 md:mt-16", !reduce && "lg:h-[135vh]")}>
           <div className="lg:sticky lg:top-[12vh]">
             <div className="overflow-hidden rounded-[12px] border border-line bg-bg-elevated">
               {/* title bar */}

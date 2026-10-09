@@ -19,7 +19,7 @@ export function MarketSwitcher({ className }: { className?: string }) {
       <span className="mono-micro text-ink-3">
         PRICES IN {current.currency} · {current.label.toUpperCase()}
       </span>
-      <span aria-hidden className="h-3 w-px bg-line-strong" />
+      <span aria-hidden className="h-3 w-px bg-line-strong max-sm:hidden" />
       <nav aria-label="Change region" className="flex items-center gap-1">
         {MARKET_IDS.map((id) => {
           const m = MARKETS[id];

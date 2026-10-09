@@ -20,8 +20,7 @@ export function ServiceGrid({
           title={
             <>
               {heading[0]}
-              <br />
-              <span className="text-ink-2">{heading[1]}</span>
+              <span className="block text-balance text-ink-2">{heading[1]}</span>
             </>
           }
           description={description}
@@ -50,7 +49,7 @@ export function ServiceGrid({
                 <p className="mt-1.5 text-[0.875rem] leading-snug text-ink-2 sm:pl-[calc(2ch+0.75rem)]">{s.desc}</p>
               </div>
 
-              <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
+              <div className="grid grid-cols-1 items-start gap-2 sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:gap-3">
                 <div className="min-w-0">
                   <p className="mono-micro text-ink-3">{s.beforeLabel ?? "BEFORE"}</p>
                   <ul className="mt-1.5 flex flex-col gap-1">
@@ -67,7 +66,7 @@ export function ServiceGrid({
                     ))}
                   </ul>
                 </div>
-                <ArrowRight className="size-3.5 text-ink-3" strokeWidth={2} aria-hidden />
+                <ArrowRight className="size-3.5 rotate-90 text-ink-3 sm:rotate-0" strokeWidth={2} aria-hidden />
                 <div className="min-w-0">
                   <p className="mono-micro text-ink-3">{s.afterLabel ?? "AFTER"}</p>
                   <ul className="mt-1.5 flex flex-col gap-1">

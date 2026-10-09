@@ -32,8 +32,7 @@ export function Statement() {
           <Reveal className="lg:col-span-9">
             <h2 className="text-h1 text-ink">
               50 products or 50,000.
-              <br />
-              <span className="text-ink-2">The workflow shouldn&apos;t be manual.</span>
+              <span className="block text-balance text-ink-2">The workflow shouldn&apos;t be manual.</span>
             </h2>
           </Reveal>
           <Reveal delay={0.1} className="lg:col-span-3 lg:pt-3">

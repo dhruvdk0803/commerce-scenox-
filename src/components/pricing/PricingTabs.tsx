@@ -11,9 +11,9 @@ import { PlanCards } from "./PlanCards";
 import { PricingCards } from "@/components/home/PricingCards";
 
 const TABS = [
-  { id: "kits", label: "Kits", hint: "One-time bundles" },
-  { id: "catalog", label: "Catalog upload", hint: "From 48 hours" },
-  { id: "plans", label: "Monthly plans", hint: "We run it for you" },
+  { id: "kits", label: "Kits", short: "Kits", hint: "One-time bundles" },
+  { id: "catalog", label: "Catalog upload", short: "Catalog", hint: "From 48 hours" },
+  { id: "plans", label: "Monthly plans", short: "Plans", hint: "We run it for you" },
 ] as const;
 
 type TabId = (typeof TABS)[number]["id"];
@@ -88,7 +88,10 @@ export function PricingTabs() {
                     transition={reduce ? { duration: 0 } : { type: "spring", duration: 0.32, bounce: 0 }}
                   />
                 )}
-                <span className="relative block text-[0.925rem] font-medium tracking-[-0.01em]">{t.label}</span>
+                <span className="relative block text-[0.925rem] font-medium tracking-[-0.01em] max-sm:text-center">
+                  <span className="sm:hidden">{t.short}</span>
+                  <span className="max-sm:hidden">{t.label}</span>
+                </span>
                 <span className="mono-micro relative mt-0.5 block text-ink-3 max-sm:hidden">{t.hint.toUpperCase()}</span>
               </button>
             );
