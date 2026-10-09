@@ -37,20 +37,20 @@ const AUDIENCES = [
   {
     label: "Ecommerce agencies",
     range: "Client launches",
-    copy: "Use Scenox Commerce as catalog fulfilment infrastructure. You own the client. We handle the product data.",
+    copy: "Use Scenox Commerce as white-label ecommerce operations. You own the client. We handle catalogs, feeds and retention flows.",
     href: "/get-started?need=agency",
     bars: 3,
   },
 ];
 
-export function AudienceCards() {
+export function AudienceCards({ title = "Built for catalogs that don't belong in someone's to-do list." }: { title?: string }) {
   return (
     <section className="section-y" aria-labelledby="audience-heading">
       <div className="container-x">
         <SectionHeader
           id="audience-heading"
           eyebrow="WHO IT'S FOR"
-          title="Built for catalogs that don't belong in someone's to-do list."
+          title={title}
           description="From a first collection to a distributor's full price list. The wider the catalog, the more the system earns its keep."
         />
 
@@ -61,7 +61,7 @@ export function AudienceCards() {
                 href={a.href}
                 className={cn(
                   "group grid gap-4 py-6 transition-colors duration-[200ms] md:grid-cols-12 md:items-center md:gap-6 md:py-7",
-                  a.featured && "bg-bg-muted/40 md:-mx-6 md:px-6 lg:-mx-8 lg:px-8",
+                  a.featured && "lg:-mx-8 lg:bg-bg-muted/40 lg:px-8",
                 )}
               >
                 <div className="flex items-center gap-4 md:col-span-1">
@@ -71,7 +71,7 @@ export function AudienceCards() {
                   <h3
                     className={cn(
                       "font-semibold leading-tight tracking-[-0.025em] text-ink",
-                      a.featured ? "text-[1.75rem] md:text-[2.1rem]" : "text-[1.5rem] md:text-[1.75rem]",
+                      a.featured ? "text-[1.5rem] md:text-[1.75rem] lg:text-[2.1rem]" : "text-[1.5rem] md:text-[1.75rem]",
                     )}
                   >
                     {a.label}

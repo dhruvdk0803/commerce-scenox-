@@ -72,7 +72,7 @@ function validateStep(step: number, d: Data): Errors {
   if (step === 0) {
     if (d.fullName.trim().length < 2) e.fullName = "Enter your full name.";
     if (!isValidEmail(d.email)) e.email = "Enter a valid work email.";
-    if (!isValidPhone(d.phone)) e.phone = "Enter a valid phone number, with country code if outside India.";
+    if (!isValidPhone(d.phone)) e.phone = "Enter a valid phone number, including the country code.";
     if (d.company.trim().length < 2) e.company = "Enter your company name.";
     if (!d.country) e.country = "Select your country.";
   }
@@ -239,7 +239,7 @@ export function LeadForm() {
           </span>
           RECEIVED
         </span>
-        <h2 className="mt-5 text-h2 text-ink">Catalog received.</h2>
+        <h2 className="mt-5 text-h2 text-ink">Request received.</h2>
         <p className="mt-4 max-w-[46ch] text-lead text-ink-2">
           We&apos;ll review the information and get back to you with the next step.
         </p>
@@ -257,7 +257,7 @@ export function LeadForm() {
           ))}
         </dl>
         <p className="mt-6 text-[0.85rem] text-ink-3">
-          A copy of what you sent is not emailed automatically yet. Reply to our first message if anything changes.
+          We reply by email with a fixed quote and a realistic timeline. Reply to that message if anything changes.
         </p>
       </motion.div>
     );
@@ -304,12 +304,12 @@ export function LeadForm() {
                         value={data.fullName}
                         onChange={(e) => set("fullName", e.target.value)}
                         aria-describedby={p.describedBy}
-                        placeholder="Priya Sharma"
+                        placeholder="Your name"
                       />
                     )}
                   </Field>
                   <Field
-                    label="Business email"
+                    label="Work email"
                     error={errors.email}
                     hint={data.email && isValidEmail(data.email) && !isWorkEmail(data.email) ? "A work address helps us verify the company faster." : undefined}
                   >
@@ -337,7 +337,7 @@ export function LeadForm() {
                         autoComplete="tel"
                         value={data.phone}
                         onChange={(e) => set("phone", e.target.value)}
-                        placeholder="+91 …"
+                        placeholder={`${market.dial} …`}
                       />
                     )}
                   </Field>
@@ -557,7 +557,7 @@ export function LeadForm() {
             </Button>
           ) : (
             <Button type="submit" size="lg" arrow loading={status === "submitting"} className={cn("w-full sm:w-auto")}>
-              Get My Catalog Reviewed
+              Send to Scenox
             </Button>
           )}
         </div>

@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import { ProofModule } from "@/components/home/ProofModule";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Section, Container } from "@/components/ui/Section";
@@ -66,7 +65,7 @@ export default function CaseStudiesPage() {
       <main id="main" className="flex-1">
         <PageHero
           eyebrow="CASE STUDIES"
-          title="Real work. Real catalogs."
+          title="Who we've worked with, and how the work runs."
           lead={`Catalog operations for ${clientClaim.headline}, from boutiques to manufacturers and distributors. Named clients below; the workflow write-ups are representative samples until each client clears a full case study for publication.`}
           facts={[
             { k: "WORKED WITH", v: clientClaim.headline },
@@ -87,7 +86,7 @@ export default function CaseStudiesPage() {
                   {clientClaim.headline}. A selection of named clients:
                 </p>
               </div>
-              <ul className="grid gap-px overflow-hidden rounded-[12px] border border-line bg-line sm:grid-cols-2 lg:col-span-8 lg:grid-cols-3">
+              <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-[12px] border border-line bg-line lg:col-span-8 lg:grid-cols-3">
                 {clients.map((c, i) => (
                   <li key={c.name} className="flex min-h-[6.5rem] flex-col justify-between bg-bg p-5">
                     <span className="mono-micro tabular text-ink-3">{String(i + 1).padStart(2, "0")}</span>
@@ -98,7 +97,7 @@ export default function CaseStudiesPage() {
                 <li
                   className={cn(
                     "flex min-h-[6.5rem] flex-col justify-between bg-bg-muted/60 p-5",
-                    clients.length % 2 === 0 ? "sm:col-span-2" : "sm:col-span-1",
+                    clients.length % 2 === 0 ? "col-span-2 lg:col-span-1" : "col-span-1",
                     ({ 0: "lg:col-span-3", 1: "lg:col-span-2", 2: "lg:col-span-1" } as const)[(clients.length % 3) as 0 | 1 | 2],
                   )}
                 >
@@ -112,7 +111,6 @@ export default function CaseStudiesPage() {
           </Container>
         </Section>
 
-        <ProofModule />
         <CaseStudyTemplate cs={demoCase} />
         <CaseStudyTemplate cs={distributorCase} />
 

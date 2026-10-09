@@ -174,16 +174,22 @@ export function Header({ minimal = false }: { minimal?: boolean }) {
           )}
 
           <div className="flex items-center gap-2">
-            <Button
-              href="/get-started"
-              variant="dark"
-              size="sm"
-              arrow
-              event="nav_get_started_click"
-              className={cn(!minimal && "max-sm:hidden")}
-            >
-              Get Started
-            </Button>
+            {minimal ? (
+              <Link href="/" className="inline-flex min-h-11 items-center text-[0.9rem] text-ink-2 hover:text-ink">
+                <span className="link-underline">Full website</span>
+              </Link>
+            ) : (
+              <Button
+                href="/get-started"
+                variant="dark"
+                size="sm"
+                arrow
+                event="nav_get_started_click"
+                className="max-sm:hidden"
+              >
+                Get Started
+              </Button>
+            )}
             {!minimal && (
               <button
                 type="button"

@@ -13,12 +13,12 @@ import { ContactForm } from "@/components/forms/ContactForm";
 export const metadata = pageMeta({
   title: "Contact",
   description:
-    "Talk to Scenox Commerce about your product catalog. Send a message, or start a project directly. No store passwords are ever needed to start.",
+    "Talk to Scenox Commerce about your store: catalog, channels, email, WhatsApp or support. Send a message, or start a project directly.",
   path: "/contact",
 });
 
 const ROUTES = [
-  { n: "01", label: "Start a project", desc: "Tell us about your catalog and we'll scope it.", href: "/get-started", cta: "Get Started" },
+  { n: "01", label: "Start a project", desc: "Tell us what your store needs and we'll scope it.", href: "/get-started", cta: "Get Started" },
   { n: "02", label: "Send 10 products", desc: "See what your catalog could look like first.", href: "/free-sample", cta: "Send 10 Products" },
 ];
 
@@ -34,7 +34,7 @@ export default function ContactPage() {
             {/* left: copy + direct routes */}
             <div className="lg:col-span-4">
               <Eyebrow>CONTACT</Eyebrow>
-              <h1 className="mt-5 text-h1 text-ink">Talk to us about your catalog.</h1>
+              <h1 className="mt-5 text-h1 text-ink">Talk to us about your store.</h1>
               <p className="mt-6 max-w-[40ch] text-lead text-ink-2">
                 Scenox Commerce is part of Scenox Studios. We reply to every enquiry.
               </p>
@@ -89,7 +89,7 @@ export default function ContactPage() {
         <Section tone="dark">
           <Container>
             <div className="flex flex-col items-start gap-8 lg:flex-row lg:items-end lg:justify-between">
-              <h2 className="max-w-[16ch] text-h2 text-paper">No store passwords. Just your catalog.</h2>
+              <h2 className="max-w-[16ch] text-h2 text-paper">No store passwords. Just what you need done.</h2>
               <div className="flex flex-wrap gap-3">
                 <Button href="/get-started" variant="inverse" arrow>
                   Get Started

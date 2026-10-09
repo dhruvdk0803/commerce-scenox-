@@ -25,13 +25,13 @@ const principles = [
   },
   {
     index: "02",
-    title: "The completed catalog is the product.",
-    body: "Not a dashboard, not a tool license. What we deliver is a working, store-ready catalog — reviewed and ready to publish.",
+    title: "The finished work is the product.",
+    body: "Not a dashboard, not a tool licence. What we deliver is finished: a live catalog, a running email flow, an answered inbox. Reviewed before it goes out.",
   },
   {
     index: "03",
-    title: "Structure before scale.",
-    body: "A catalog that isn't structured consistently breaks the moment you try to grow it, migrate it or hand it to someone else. We fix the structure first.",
+    title: "Clean data first, then everything else.",
+    body: "Feeds, emails, WhatsApp messages and support answers all read from the catalog. When the product data is right, every channel built on it is right too.",
   },
   {
     index: "04",
@@ -68,7 +68,7 @@ export default function AboutPage() {
           <Container>
             <div className="grid gap-10 lg:grid-cols-12">
               <div className="lg:col-span-4">
-                <Eyebrow index="§">HOW WE WORK</Eyebrow>
+                <Eyebrow>HOW WE WORK</Eyebrow>
                 <h2 className="text-h3 text-ink mt-4 max-w-[20ch]">
                   How we think about the work
                 </h2>
@@ -153,13 +153,13 @@ export default function AboutPage() {
           </Container>
         </Section>
 
-        <AudienceCards />
+        <AudienceCards title="Built for stores with more work than people." />
 
         <Section tone="dark">
           <Container>
             <div className="flex flex-col items-start gap-8 lg:flex-row lg:items-end lg:justify-between">
               <h2 className="text-h2 text-paper max-w-[16ch]">
-                Ready to see what your catalog could look like?
+                Ready to hand over the busywork?
               </h2>
               <div className="flex flex-wrap gap-3">
                 <Button href="/get-started" variant="inverse" arrow>

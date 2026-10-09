@@ -4,10 +4,10 @@
  * market's prices. URLs stay the same for every market.
  */
 export const MARKETS = {
-  in: { id: "in", label: "India", short: "IN", currency: "INR", locale: "en-IN", symbol: "₹" },
-  us: { id: "us", label: "United States", short: "US", currency: "USD", locale: "en-US", symbol: "$" },
-  uk: { id: "uk", label: "United Kingdom", short: "UK", currency: "GBP", locale: "en-GB", symbol: "£" },
-  au: { id: "au", label: "Australia", short: "AU", currency: "AUD", locale: "en-AU", symbol: "A$" },
+  in: { id: "in", label: "India", short: "IN", currency: "INR", locale: "en-IN", symbol: "₹", dial: "+91" },
+  us: { id: "us", label: "United States", short: "US", currency: "USD", locale: "en-US", symbol: "$", dial: "+1" },
+  uk: { id: "uk", label: "United Kingdom", short: "UK", currency: "GBP", locale: "en-GB", symbol: "£", dial: "+44" },
+  au: { id: "au", label: "Australia", short: "AU", currency: "AUD", locale: "en-AU", symbol: "A$", dial: "+61" },
 } as const;
 
 export type MarketId = keyof typeof MARKETS;

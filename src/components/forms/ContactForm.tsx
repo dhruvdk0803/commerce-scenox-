@@ -1,5 +1,6 @@
 "use client";
 
+import { useMarket } from "@/components/market/MarketProvider";
 import { site } from "@/lib/site";
 import { useRef, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
@@ -9,7 +10,7 @@ import { track, trackConversion } from "@/lib/analytics";
 import { isValidEmail, isValidPhone } from "@/lib/validation";
 import { ChipGroup, Field, TextArea, TextInput, readUtm, focusFirstInvalid } from "./fields";
 
-const TOPICS = ["New catalog upload", "Catalog cleanup", "Migration", "Ongoing operations", "Partnership / agency", "Something else"] as const;
+const TOPICS = ["Catalog upload or cleanup", "Migration", "Product photos", "Google & marketplaces", "Email & abandoned cart", "WhatsApp", "AI customer support", "Monthly plan", "Partnership / agency", "Something else"] as const;
 
 type Data = {
   fullName: string;
@@ -25,6 +26,7 @@ const empty: Data = { fullName: "", email: "", phone: "", company: "", website: 
 type Errors = Partial<Record<keyof Data, string>>;
 
 export function ContactForm() {
+  const market = useMarket();
   const reduce = useReducedMotion();
   const [data, setData] = useState<Data>(empty);
   const [errors, setErrors] = useState<Errors>({});
@@ -45,7 +47,7 @@ export function ContactForm() {
     const e: Errors = {};
     if (data.fullName.trim().length < 2) e.fullName = "Enter your name.";
     if (!isValidEmail(data.email)) e.email = "Enter a valid work email.";
-    if (!isValidPhone(data.phone)) e.phone = "Enter a valid phone number, with country code if outside India.";
+    if (!isValidPhone(data.phone)) e.phone = "Enter a valid phone number, including the country code.";
     if (data.company.trim().length < 2) e.company = "Enter your company name.";
     if (!data.topic) e.topic = "Pick the closest topic.";
     if (data.message.trim().length < 10) e.message = "Tell us a little more about what you need.";
@@ -134,7 +136,7 @@ export function ContactForm() {
           {(p) => <TextInput {...p} type="email" name="email" inputMode="email" autoComplete="email" value={data.email} onChange={(e) => set("email", e.target.value)} />}
         </Field>
         <Field label="Phone / WhatsApp" error={errors.phone}>
-          {(p) => <TextInput {...p} type="tel" name="phone" inputMode="tel" autoComplete="tel" value={data.phone} onChange={(e) => set("phone", e.target.value)} placeholder="+91 …" />}
+          {(p) => <TextInput {...p} type="tel" name="phone" inputMode="tel" autoComplete="tel" value={data.phone} onChange={(e) => set("phone", e.target.value)} placeholder={`${market.dial} …`} />}
         </Field>
         <Field label="Company" error={errors.company}>
           {(p) => <TextInput {...p} name="company" autoComplete="organization" value={data.company} onChange={(e) => set("company", e.target.value)} />}

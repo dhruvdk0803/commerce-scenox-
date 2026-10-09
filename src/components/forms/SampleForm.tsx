@@ -1,5 +1,6 @@
 "use client";
 
+import { useMarket } from "@/components/market/MarketProvider";
 import { site } from "@/lib/site";
 import { useRef, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
@@ -37,6 +38,7 @@ const empty: Data = {
 type Errors = Partial<Record<keyof Data | "file", string>>;
 
 export function SampleForm() {
+  const market = useMarket();
   const reduce = useReducedMotion();
   const [data, setData] = useState<Data>(empty);
   const [errors, setErrors] = useState<Errors>({});
@@ -58,7 +60,7 @@ export function SampleForm() {
     const e: Errors = {};
     if (data.fullName.trim().length < 2) e.fullName = "Enter your name.";
     if (!isValidEmail(data.email)) e.email = "Enter a valid work email.";
-    if (!isValidPhone(data.phone)) e.phone = "Enter a valid phone number, with country code if outside India.";
+    if (!isValidPhone(data.phone)) e.phone = "Enter a valid phone number, including the country code.";
     if (data.company.trim().length < 2) e.company = "Enter your company name.";
     if (!data.platform) e.platform = "Select a platform.";
     if (!data.productCount) e.productCount = "Roughly how many products in the full catalog?";
@@ -161,7 +163,7 @@ export function SampleForm() {
           </Field>
           <Field label="Phone / WhatsApp" error={errors.phone}>
             {(p) => (
-              <TextInput {...p} type="tel" name="phone" inputMode="tel" autoComplete="tel" value={data.phone} onChange={(e) => set("phone", e.target.value)} placeholder="+91 …" />
+              <TextInput {...p} type="tel" name="phone" inputMode="tel" autoComplete="tel" value={data.phone} onChange={(e) => set("phone", e.target.value)} placeholder={`${market.dial} …`} />
             )}
           </Field>
           <Field label="Company" error={errors.company}>

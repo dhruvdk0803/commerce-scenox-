@@ -43,11 +43,7 @@ export default function SamplePage() {
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
               <Eyebrow>FREE SAMPLE</Eyebrow>
-              <h1 className="mt-5 text-display text-ink">
-                SEND US
-                <br />
-                10 PRODUCTS.
-              </h1>
+              <h1 className="mt-5 text-h1 text-ink">Send us 10 products.</h1>
               <p className="mt-6 text-[1.35rem] font-medium leading-snug tracking-[-0.02em] text-ink">
                 We&apos;ll show you what your catalog could look like.
               </p>
@@ -59,7 +55,6 @@ export default function SamplePage() {
               <div className="mt-10 rounded-[12px] border border-line bg-bg-elevated">
                 <div className="flex h-11 items-center justify-between border-b border-line px-4">
                   <span className="mono-label text-ink-2">WHAT YOU GET BACK</span>
-                  <span className="mono-micro text-ink-3">10 / 10</span>
                 </div>
                 <ul className="p-4">
                   {WHAT_YOU_GET.map((w) => (

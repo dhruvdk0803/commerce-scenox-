@@ -32,7 +32,7 @@ export default function GetStartedPage() {
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
               <Eyebrow>GET STARTED</Eyebrow>
-              <h1 className="mt-5 text-h1 text-ink">Tell us about your catalog.</h1>
+              <h1 className="mt-5 text-h1 text-ink">Tell us about your store.</h1>
               <p className="mt-6 max-w-[40ch] text-lead text-ink-2">
                 We&apos;ll review the scope and tell you what&apos;s possible, how long it should take and what it will
                 cost.
@@ -70,6 +70,19 @@ export default function GetStartedPage() {
                 </Link>
                 . We use your details only to scope and deliver your project.
               </p>
+
+              {/* reassurance on mobile, below the form (desktop shows it in the left column) */}
+              <ul className="mt-8 flex flex-col divide-y divide-line border-y border-line lg:hidden">
+                {REASSURANCE.map(([n, t, d]) => (
+                  <li key={n} className="flex gap-4 py-3.5">
+                    <span className="mono-label tabular pt-0.5 text-ink-3">{n}</span>
+                    <div>
+                      <p className="text-[0.95rem] font-medium text-ink">{t}</p>
+                      <p className="mt-0.5 text-[0.875rem] leading-snug text-ink-2">{d}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>

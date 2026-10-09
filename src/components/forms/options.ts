@@ -9,6 +9,7 @@ export const PRODUCT_COUNTS = [
   "1,001–5,000",
   "5,001–10,000",
   "10,000+",
+  "Not catalog work",
 ] as const;
 
 export const SOURCES = [
@@ -17,8 +18,8 @@ export const SOURCES = [
   "PDF catalog",
   "Supplier data",
   "Existing store",
-  "Images",
   "Multiple sources",
+  "No files needed",
   "Other",
 ] as const;
 
