@@ -134,7 +134,19 @@ const sections: LegalSection[] = [
           in the cookie banner, and you can change your choice any time with &ldquo;Cookie settings&rdquo; in the
           footer.
         </p>
-        <div className="mt-4 max-w-[62ch] overflow-x-auto rounded-[10px] border border-line">
+        {/* phones: one entry per cookie; larger screens: table */}
+        <dl className="mt-4 divide-y divide-line rounded-[10px] border border-line sm:hidden">
+          {COOKIES.map(([n, t, p, k]) => (
+            <div key={n} className="px-3 py-3">
+              <dt className="font-mono text-[0.8rem] text-ink">{n}</dt>
+              <dd className="mono-micro mt-1 text-ink-3">
+                {t.toUpperCase()} · {k.toUpperCase()}
+              </dd>
+              <dd className="mt-1 text-[0.875rem] leading-snug text-ink-2">{p}</dd>
+            </div>
+          ))}
+        </dl>
+        <div className="mt-4 hidden max-w-[62ch] overflow-x-auto rounded-[10px] border border-line sm:block">
           <table className="w-full min-w-[34rem] text-left text-[0.875rem]">
             <thead className="bg-bg-muted/60">
               <tr>

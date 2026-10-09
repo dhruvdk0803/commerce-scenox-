@@ -75,21 +75,21 @@ export function LegalDoc({
               id={s.id}
               className="scroll-mt-28 border-t border-line py-8 md:py-10"
             >
-              <div className="grid grid-cols-[3rem_1fr]">
+              <div className="grid grid-cols-[3rem_minmax(0,1fr)]">
                 <span className="mono-label tabular text-ink-3">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <h2 className="text-h3 text-ink">{s.title}</h2>
               </div>
               <div
-                className="mt-4 grid grid-cols-[3rem_1fr]
+                className="mt-4 grid grid-cols-[3rem_minmax(0,1fr)]
                   [&_p]:text-[1rem] [&_p]:leading-[1.65] [&_p]:text-ink-2 [&_p]:max-w-[62ch]
                   [&_p+p]:mt-3
                   [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-1.5 [&_ul]:text-[1rem] [&_ul]:leading-[1.65] [&_ul]:text-ink-2 [&_ul]:max-w-[62ch]
                   [&_strong]:text-ink"
               >
                 <span aria-hidden />
-                <div>{s.body}</div>
+                <div className="min-w-0">{s.body}</div>
               </div>
             </section>
           ))}
