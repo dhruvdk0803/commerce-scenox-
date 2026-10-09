@@ -3,11 +3,11 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
 import { Section, Container } from "@/components/ui/Section";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { ProcessSteps } from "@/components/home/ProcessSteps";
+import { ProcessSteps, type ProcessStep } from "@/components/home/ProcessSteps";
+import { CheckBox } from "@/components/ui/Status";
 import { FAQ } from "@/components/home/FAQ";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -31,6 +31,13 @@ const COVERAGE = [
   "Metafields & attributes",
   "Inventory & pricing",
   "Validation on the target",
+];
+
+const MIGRATION_STEPS: ProcessStep[] = [
+  { n: "01", title: "Connect both stores", items: ["Source export", "Target access", "URL list", "Apps & integrations"], note: "Your current store stays live throughout." },
+  { n: "02", title: "Audit and map", items: ["Products & variants", "Categories → collections", "SEO handles", "Metafields"], note: "You get a fixed quote and a mapping plan." },
+  { n: "03", title: "Rebuild and redirect", items: ["Cleanup", "Rebuild on target", "301 redirects", "Validation"], note: "Automation for speed. Human review where it matters." },
+  { n: "04", title: "Review and switch", items: ["Approval", "Final sync", "Go-live", "QA"], note: "You switch over when you're ready." },
 ];
 
 const migrationFaqs = [
@@ -100,40 +107,37 @@ export default function MigrationPage() {
 
         <Section aria-labelledby="coverage-heading">
           <Container>
-            <div className="grid gap-10 lg:grid-cols-12">
-              <div className="lg:col-span-4">
-                <Reveal>
-                  <Eyebrow>SCOPE</Eyebrow>
-                  <h2 id="coverage-heading" className="mt-5 max-w-[18ch] text-h2 text-ink">
-                    What a migration covers
-                  </h2>
-                </Reveal>
-              </div>
-              <div className="lg:col-span-7 lg:col-start-6">
-                <Reveal delay={0.08}>
-                  <ul className="divide-y divide-line border-y border-line">
-                    {COVERAGE.map((c) => (
-                      <li key={c} className="py-4 text-[1.0625rem] text-ink">
-                        {c}
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="mt-8 rounded-[12px] border border-line bg-bg-elevated p-5 text-[0.95rem] leading-relaxed text-ink-2">
-                    Compatibility and migration scope depend on the platforms
-                    involved. We review both ends before quoting, and we tell
-                    you what can and cannot carry over.
-                  </p>
-                </Reveal>
-              </div>
-            </div>
+            <SectionHeader
+              id="coverage-heading"
+              eyebrow="SCOPE"
+              title={<>What a migration covers.</>}
+              description="Compatibility depends on the platforms involved. We review both ends before quoting and tell you what can and cannot carry over."
+            />
+            <Reveal delay={0.08}>
+              <ul className="mt-12 grid border-t border-line md:mt-16 md:grid-cols-2 md:gap-x-10">
+                {COVERAGE.map((c) => (
+                  <li key={c} className="flex items-center gap-3 border-b border-line py-4 text-[1.0625rem] text-ink">
+                    <CheckBox done />
+                    {c}
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
           </Container>
         </Section>
 
-        <ProcessSteps showLink={false} />
+        <ProcessSteps
+          showLink={false}
+          title="From old store to new store."
+          description="Four steps. Your current store stays live the whole time; you switch over when the new one is approved."
+          steps={MIGRATION_STEPS}
+        />
         <FAQ items={migrationFaqs} heading="Migration questions." />
         <FinalCTA
           heading={["MOVE THE CATALOG.", "LAUNCH CLEANER."]}
           primary={{ label: "Plan My Migration", href: "/get-started?need=migration" }}
+          body="Tell us where your store is now, where it needs to go, and roughly how many products it has."
+          secondary={null}
         />
       </main>
       <Footer />

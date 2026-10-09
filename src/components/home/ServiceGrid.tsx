@@ -6,8 +6,10 @@ import { MotionItem, Stagger, staggerChild } from "@/components/ui/Reveal";
 
 export function ServiceGrid({
   heading = ["Not just uploading.", "Everything before the upload too."],
+  description = "Ten kinds of work, each shown as a real before and after. This is what a finished catalog is made of.",
 }: {
   heading?: [string, string];
+  description?: string;
 }) {
   return (
     <section className="section-y border-t border-line" aria-labelledby="services-heading">
@@ -22,7 +24,7 @@ export function ServiceGrid({
               <span className="text-ink-2">{heading[1]}</span>
             </>
           }
-          description="Ten kinds of work, each shown as a real before and after. This is what a finished catalog is made of."
+          description={description}
         />
 
         <Stagger
@@ -56,7 +58,7 @@ export function ServiceGrid({
                       <li
                         key={b}
                         className={cn(
-                          "truncate font-mono text-[0.75rem] leading-snug text-ink-2",
+                          "break-words font-mono text-[0.75rem] leading-snug text-ink-2",
                           (b === "NULL" || b === "—") && "text-danger",
                         )}
                       >
@@ -70,7 +72,7 @@ export function ServiceGrid({
                   <p className="mono-micro text-ink-3">{s.afterLabel ?? "AFTER"}</p>
                   <ul className="mt-1.5 flex flex-col gap-1">
                     {s.after.map((a) => (
-                      <li key={a} className="truncate font-mono text-[0.75rem] leading-snug text-ink">
+                      <li key={a} className="break-words font-mono text-[0.75rem] leading-snug text-ink">
                         {a}
                       </li>
                     ))}

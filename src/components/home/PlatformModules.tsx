@@ -72,9 +72,9 @@ export function PlatformModules() {
               <ul className="flex-1 divide-y divide-line">
                 {p.map.map(([from, to]) => (
                   <li key={from} className="grid grid-cols-[1fr_auto_1.3fr] items-center gap-2 px-5 py-2.5 font-mono text-[0.75rem]">
-                    <span className="truncate text-ink-2">{from}</span>
+                    <span className="min-w-0 break-words text-ink-2">{from}</span>
                     <ArrowRight className="size-3 text-accent" strokeWidth={2} aria-hidden />
-                    <span className="truncate text-ink">{to}</span>
+                    <span className="min-w-0 break-words text-ink">{to}</span>
                   </li>
                 ))}
               </ul>

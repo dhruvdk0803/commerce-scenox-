@@ -5,7 +5,9 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { TextLink } from "@/components/ui/Button";
 import { MotionLi, Stagger } from "@/components/ui/Reveal";
 
-const STEPS = [
+export type ProcessStep = { n: string; title: string; items: string[]; note: string };
+
+const STEPS: ProcessStep[] = [
   {
     n: "01",
     title: "Send your data",
@@ -32,7 +34,17 @@ const STEPS = [
   },
 ];
 
-export function ProcessSteps({ showLink = true }: { showLink?: boolean }) {
+export function ProcessSteps({
+  showLink = true,
+  steps = STEPS,
+  title = "From supplier file to storefront.",
+  description = "Four steps. You are involved in the first and the last. We handle everything in between.",
+}: {
+  showLink?: boolean;
+  steps?: ProcessStep[];
+  title?: string;
+  description?: string;
+}) {
   const reduce = useReducedMotion();
   return (
     <section className="section-y border-t border-line" aria-labelledby="process-heading">
@@ -40,8 +52,8 @@ export function ProcessSteps({ showLink = true }: { showLink?: boolean }) {
         <SectionHeader
           id="process-heading"
           eyebrow="HOW IT WORKS"
-          title="From supplier file to storefront."
-          description="Four steps. You are involved in the first and the last. We handle everything in between."
+          title={title}
+          description={description}
           action={showLink ? <TextLink href="/how-it-works">See the full process</TextLink> : undefined}
         />
 
@@ -59,10 +71,10 @@ export function ProcessSteps({ showLink = true }: { showLink?: boolean }) {
           />
 
           <Stagger as="ol" className="grid gap-10 lg:grid-cols-4 lg:gap-8" amount={0.2}>
-            {STEPS.map((s, i) => (
+            {steps.map((s, i) => (
               <MotionLi key={s.n} className="relative flex gap-5 lg:block">
                 {/* vertical connector for mobile */}
-                {i < STEPS.length - 1 && (
+                {i < steps.length - 1 && (
                   <span aria-hidden className="absolute left-[11px] top-7 bottom-[-2.5rem] w-px bg-line lg:hidden" />
                 )}
                 <span className="relative z-10 grid size-6 shrink-0 place-items-center rounded-full border border-accent bg-bg">
@@ -73,7 +85,7 @@ export function ProcessSteps({ showLink = true }: { showLink?: boolean }) {
                   <h3 className="mt-2 text-[1.35rem] font-semibold leading-tight tracking-[-0.02em] text-ink">
                     {s.title}
                   </h3>
-                  <ul className="mt-4 flex flex-wrap gap-1.5 lg:flex-col lg:gap-1">
+                  <ul className="mt-4 flex flex-wrap gap-x-1.5 gap-y-1 lg:flex-col lg:gap-1 max-lg:[&>li:not(:last-child)]:after:ml-1.5 max-lg:[&>li:not(:last-child)]:after:text-ink-3 max-lg:[&>li:not(:last-child)]:after:content-['·']">
                     {s.items.map((it) => (
                       <li key={it} className="font-mono text-[0.78rem] text-ink-2">
                         {it}

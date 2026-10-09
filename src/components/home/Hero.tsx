@@ -40,7 +40,7 @@ export function Hero({ compact = false }: { compact?: boolean }) {
             <>
               <span className="block">BULK PRODUCT</span>
               <span className="block">UPLOAD.</span>
-              <span className="block">1000 IN 48 HOURS.</span>
+              <span className="block">1,000 IN 48 HOURS.*</span>
             </>
           ) : (
             <>

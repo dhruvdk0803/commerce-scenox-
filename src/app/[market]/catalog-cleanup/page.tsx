@@ -4,7 +4,6 @@ import { Footer } from "@/components/layout/Footer";
 import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
 import { Section, Container } from "@/components/ui/Section";
 import { Button, TextLink } from "@/components/ui/Button";
-import { Stagger, MotionItem } from "@/components/ui/Reveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ServiceGrid } from "@/components/home/ServiceGrid";
 import { FAQ } from "@/components/home/FAQ";
@@ -22,17 +21,6 @@ export const metadata: Metadata = pageMeta({
   path: "/catalog-cleanup",
 });
 
-const CLEAN_CATEGORIES = [
-  { title: "Titles", desc: "Abbreviations and inconsistent casing rewritten into clear, searchable names." },
-  { title: "Descriptions", desc: "Missing copy prepared from specifications and category context." },
-  { title: "Categories", desc: "Loose or duplicated labels merged into one consistent taxonomy." },
-  { title: "Tags", desc: "Variant spellings and casing consolidated into a single canonical set." },
-  { title: "Images", desc: "Files matched to SKUs, renamed and resized to platform requirements." },
-  { title: "Variants", desc: "Duplicate product rows consolidated into proper option structures." },
-  { title: "Attributes", desc: "Specifications structured into typed fields instead of free text." },
-  { title: "SEO", desc: "Handles, titles and meta descriptions written per product." },
-  { title: "Metafields", desc: "Technical details captured as queryable, filterable data." },
-];
 
 const cleanupFaqs = [
   {
@@ -102,32 +90,11 @@ export default function CatalogCleanupPage() {
           </Container>
         </Section>
 
-        <Section aria-labelledby="what-heading">
-          <Container>
-            <SectionHeader
-              id="what-heading"
-              eyebrow="WHAT GETS CLEANED"
-              title="Nine categories. One pass."
-              description="We review the catalog as a whole so fixes are consistent across the store, not applied one field at a time."
-            />
-            <Stagger
-              as="ul"
-              className="mt-12 grid gap-px overflow-hidden rounded-[12px] border border-line bg-line sm:grid-cols-3 md:mt-16"
-              amount={0.1}
-            >
-              {CLEAN_CATEGORIES.map((c) => (
-                <MotionItem key={c.title} className="bg-bg p-5">
-                  <h3 className="text-[1rem] font-semibold tracking-[-0.015em] text-ink">
-                    {c.title}
-                  </h3>
-                  <p className="mt-1.5 text-[0.85rem] leading-snug text-ink-2">{c.desc}</p>
-                </MotionItem>
-              ))}
-            </Stagger>
-          </Container>
-        </Section>
 
-        <ServiceGrid heading={["Bulk cleanup.", "Not row by row."]} />
+        <ServiceGrid
+          heading={["Bulk cleanup.", "Not row by row."]}
+          description="Every kind of fix, shown as a real before and after, applied across the whole catalog in one pass."
+        />
         <FAQ items={cleanupFaqs} heading="Cleanup questions." />
         <FinalCTA
           heading={["FIX THE CATALOG.", "KEEP THE STORE."]}

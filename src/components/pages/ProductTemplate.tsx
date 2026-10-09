@@ -41,9 +41,8 @@ function PriceBox({ p }: { p: ProductPage }) {
         <p className="mono-micro mt-2 text-ink-2">{p.unit.toUpperCase()}</p>
         <div className="mt-4 flex items-center justify-between border-t border-line pt-3">
           <span className="mono-micro text-ink-3">DELIVERY</span>
-          <span className="text-[0.9rem] text-ink">{p.turnaround}</span>
+          <span className="text-[0.9rem] text-ink">{p.turnaround}*</span>
         </div>
-        <p className="mt-2 text-[0.75rem] leading-snug text-ink-3">{site.qualifier}</p>
       </div>
       <Facts label="WHAT YOU GET" facts={p.facts} />
     </div>
@@ -67,19 +66,24 @@ function Timeline({ p }: { p: ProductPage }) {
               <span className="text-ink-2">Hour by hour.</span>
             </>
           }
-          description={site.qualifier}
+          description={`*${site.qualifier}`}
         />
         <ol className="mt-12 grid gap-px overflow-hidden rounded-[12px] border border-line bg-line md:mt-16 md:grid-cols-4">
           {p.timeline.map((step, i) => (
-            <Reveal as="li" key={step} delay={i * 0.06} className="flex flex-col bg-bg p-5 md:p-6">
-              <div className="flex items-baseline justify-between">
+            <Reveal
+              as="li"
+              key={step}
+              delay={i * 0.06}
+              className="grid grid-cols-[4.5rem_1fr] items-baseline gap-x-3 bg-bg p-4 md:flex md:flex-col md:items-stretch md:p-6"
+            >
+              <div className="flex items-baseline justify-between max-md:flex-col max-md:gap-0.5">
                 <span className="mono-micro text-ink-3">HOUR</span>
-                {i === 3 && <Status kind="published" label="LIVE" />}
+                {i === 3 && <Status kind="published" label="LIVE" className="max-md:hidden" />}
               </div>
-              <span className="mt-1 text-[2.75rem] font-semibold leading-none tracking-[-0.04em] text-ink tabular">
+              <span className="row-start-2 text-[1.75rem] font-semibold leading-none tracking-[-0.04em] text-ink tabular md:mt-1 md:text-[2.75rem]">
                 {HOURS[i]}
               </span>
-              <p className="mt-6 text-[0.975rem] leading-snug text-ink">{step}</p>
+              <p className="col-start-2 row-span-2 row-start-1 self-center text-[0.975rem] leading-snug text-ink md:mt-6">{step}</p>
             </Reveal>
           ))}
         </ol>
@@ -187,9 +191,9 @@ export function ProductTemplate({ id }: { id: string }) {
           </Container>
         </Section>
 
-        <PlanCards />
+        <PlanCards highlight={p.plan} />
         <FAQ items={p.faqs} heading={p.faqHeading} />
-        <FinalCTA heading={p.finalHeading} body={p.desc} primary={{ label: p.cta, href: cta }} />
+        <FinalCTA heading={p.finalHeading} body={p.desc} primary={{ label: p.cta, href: cta }} secondary={p.secondary} />
       </main>
       <Footer />
       <StickyMobileCTA href={cta} label={p.cta} />

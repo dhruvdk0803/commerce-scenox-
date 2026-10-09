@@ -39,7 +39,7 @@ const SIZES = [
 export default function CatalogPage() {
   return (
     <>
-      <Header minimal />
+      <Header />
       <main id="main" className="flex-1">
         <JsonLd
           data={[

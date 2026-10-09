@@ -44,6 +44,10 @@ export type ProductPage = ProductSummary & {
   edges: { title: string; body: string }[];
   faqs: FAQ[];
   faqHeading: string;
+  /** monthly plan that runs this service (highlighted on the page) */
+  plan: string;
+  /** secondary final CTA; null hides it */
+  secondary: { label: string; href: string } | null;
   cta: string;
   need: string;
   finalHeading: [string, string];
@@ -154,9 +158,11 @@ export const productPages: ProductPage[] = [
       { q: "Are the images marketplace compliant?", a: "Yes. We produce main images that meet Amazon, Flipkart and Google Merchant Center requirements, alongside your store set." },
     ],
     faqHeading: "Imagery questions.",
+    plan: "growth-stack",
+    secondary: { label: "Send 10 Photos", href: "/free-sample" },
     cta: "Fix My Product Photos",
     need: "imagery",
-    finalHeading: ["SEND THE PHOTOS.", "GET BACK A CATALOG THAT MATCHES."],
+    finalHeading: ["SEND THE PHOTOS.", "GET BACK ONE CONSISTENT SET."],
   },
   {
     id: "feeds",
@@ -221,6 +227,8 @@ export const productPages: ProductPage[] = [
       { q: "What happens when my prices or stock change?", a: "With the Catalog Ops or Growth Stack plan, we keep every channel in sync. Without a plan, the setup includes the sync rules your platform supports natively." },
     ],
     faqHeading: "Feed questions.",
+    plan: "catalog-ops",
+    secondary: null,
     cta: "Set Up My Channels",
     need: "feeds",
     finalHeading: ["FIX THE CATALOG ONCE.", "SELL IT EVERYWHERE."],
@@ -292,6 +300,8 @@ export const productPages: ProductPage[] = [
       { q: "Is it compliant with GDPR and Australian and US email law?", a: "Flows only go to customers who are eligible to receive them, every email has an unsubscribe link, and consent settings follow your market's rules. We'll flag anything in your current setup that needs fixing." },
     ],
     faqHeading: "Email questions.",
+    plan: "retention",
+    secondary: null,
     cta: "Recover My Carts",
     need: "email",
     finalHeading: ["STOP LOSING CARTS.", "START KEEPING CUSTOMERS."],
@@ -360,6 +370,8 @@ export const productPages: ProductPage[] = [
       { q: "Does this only make sense in India?", a: "COD confirmation is most useful in India, but cart recovery, order updates and broadcasts work in the UK, Australia and the US too, wherever your customers use WhatsApp." },
     ],
     faqHeading: "WhatsApp questions.",
+    plan: "retention",
+    secondary: null,
     cta: "Set Up WhatsApp",
     need: "whatsapp",
     finalHeading: ["MEET CUSTOMERS", "WHERE THEY ALREADY ARE."],
@@ -377,7 +389,7 @@ export const productPages: ProductPage[] = [
     metaDescription:
       "An AI agent that answers order status, product, sizing and returns questions on chat and WhatsApp 24/7 from your real store data, and hands off the rest.",
     eyebrow: "AI CUSTOMER SUPPORT",
-    headline: ["Most questions are the same ten.", "Let AI answer them. Instantly."],
+    headline: ["Most questions are the same ten.", "AI answers them. Your team gets the rest."],
     lead: "Where is my order. Does it come in XL. Is COD available. Can I return it. We set up an AI support agent that answers these on your site chat and WhatsApp in seconds, any hour, using your real catalog, policies and order data. Anything sensitive or unusual goes straight to your team with the conversation summarised.",
     facts: [
       { k: "CHANNELS", v: "Website chat · WhatsApp · email" },
@@ -428,6 +440,8 @@ export const productPages: ProductPage[] = [
       { q: "Can it answer in languages other than English?", a: "Yes. It replies in the language the customer writes in. We test your most common languages during setup." },
     ],
     faqHeading: "Support questions.",
+    plan: "retention",
+    secondary: null,
     cta: "Set Up AI Support",
     need: "support",
     finalHeading: ["ANSWER EVERY CUSTOMER.", "IN SECONDS. AT 3 AM."],

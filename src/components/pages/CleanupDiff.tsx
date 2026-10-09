@@ -25,13 +25,12 @@ export function CleanupDiff() {
   return (
     <Reveal className="overflow-hidden rounded-[12px] border border-line bg-bg-elevated" amount={0.1}>
       {/* header */}
-      <div className="grid grid-cols-[1fr_1fr] border-b border-line md:grid-cols-[8rem_1fr_2.5rem_1fr]">
+      <div className="hidden border-b border-line md:grid md:grid-cols-[8rem_1fr_2.5rem_1fr]">
         <div className="hidden h-11 items-center px-4 md:flex">
           <span className="mono-label text-ink-2">FIELD</span>
         </div>
-        <div className="flex h-11 items-center justify-between border-r border-line px-4 md:border-r-0">
+        <div className="flex h-11 items-center justify-between px-4">
           <span className="mono-label text-ink-2">CURRENT CATALOG</span>
-          <span className="mono-micro hidden text-ink-3 lg:inline">LIVE STOREFRONT</span>
         </div>
         <div aria-hidden className="hidden md:block" />
         <div className="flex h-11 items-center justify-between px-4">
@@ -47,20 +46,25 @@ export function CleanupDiff() {
       {/* rows */}
       <dl className="divide-y divide-line">
         {ROWS.map((r) => (
-          <div key={r.field} className="grid grid-cols-[1fr_1fr] md:grid-cols-[8rem_1fr_2.5rem_1fr]">
-            <dt className="mono-micro col-span-2 px-4 pt-3 text-ink-3 md:col-span-1 md:py-3.5">{r.field}</dt>
+          <div key={r.field} className="grid md:grid-cols-[8rem_1fr_2.5rem_1fr]">
+            <dt className="mono-micro px-4 pt-3 text-ink-3 md:py-3.5">{r.field}</dt>
             <dd
               className={cn(
-                "min-w-0 truncate border-r border-line px-4 pb-3 font-mono text-[0.8rem] md:border-r-0 md:py-3.5",
+                // mobile: before stacked above after, wrapping; desktop: side by side, truncated
+                "min-w-0 break-words px-4 pt-1.5 font-mono text-[0.8rem] md:truncate md:py-3.5",
                 r.tone === "danger" ? "text-danger" : "text-warning",
               )}
             >
+              <span className="mono-micro mr-2 text-ink-3 md:hidden">BEFORE</span>
               {r.before}
             </dd>
             <span aria-hidden className="hidden items-center justify-center text-ink-3 md:flex">
               <ArrowRight className="size-3.5" strokeWidth={2} />
             </span>
-            <dd className="min-w-0 truncate px-4 pb-3 font-mono text-[0.8rem] text-ink md:py-3.5">{r.after}</dd>
+            <dd className="min-w-0 break-words px-4 pb-3 pt-1 font-mono text-[0.8rem] text-ink md:truncate md:py-3.5">
+              <span className="mono-micro mr-2 text-success md:hidden">AFTER</span>
+              {r.after}
+            </dd>
           </div>
         ))}
       </dl>
