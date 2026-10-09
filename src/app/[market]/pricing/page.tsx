@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { PricingCards } from "@/components/home/PricingCards";
-import { SampleOffer } from "@/components/home/SampleOffer";
 import { FAQ } from "@/components/home/FAQ";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { Button } from "@/components/ui/Button";
@@ -120,7 +119,6 @@ export default async function PricingPage() {
           </div>
         </section>
 
-        <SampleOffer />
         <FAQ items={pricingFaqs} heading="Pricing questions." />
         <FinalCTA />
       </main>

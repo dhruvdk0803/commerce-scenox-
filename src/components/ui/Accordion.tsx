@@ -2,7 +2,6 @@
 
 import { useId, useState } from "react";
 import { Plus } from "lucide-react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 export type AccordionItem = { q: string; a: string };
@@ -19,7 +18,6 @@ export function Accordion({
   inverse?: boolean;
 }) {
   const [open, setOpen] = useState<number | null>(defaultOpen);
-  const reduce = useReducedMotion();
   const baseId = useId();
 
   return (
@@ -50,14 +48,15 @@ export function Accordion({
                 )}
               >
                 <span className="flex items-baseline gap-4">
+                  {/* number via ::before so it isn't part of the heading text crawlers read */}
                   <span
+                    aria-hidden
+                    data-n={String(i + 1).padStart(2, "0")}
                     className={cn(
-                      "mono-label tabular mt-[0.35em] hidden shrink-0 sm:inline",
+                      "mono-label tabular mt-[0.35em] hidden shrink-0 before:content-[attr(data-n)] sm:inline",
                       inverse ? "text-paper-2" : "text-ink-3",
                     )}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
+                  />
                   <span className="text-[1.05rem] font-medium tracking-[-0.015em] md:text-[1.15rem]">
                     {item.q}
                   </span>
@@ -76,33 +75,28 @@ export function Accordion({
                 </span>
               </button>
             </h3>
-            <AnimatePresence initial={false}>
-              {isOpen && (
-                <motion.div
-                  id={panelId}
-                  role="region"
-                  aria-labelledby={btnId}
-                  key="content"
-                  initial={reduce ? { opacity: 1 } : { height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
-                  transition={{
-                    height: { duration: 0.32, ease: [0.23, 1, 0.32, 1] },
-                    opacity: { duration: 0.22 },
-                  }}
-                  className="overflow-hidden"
-                >
-                  <p
-                    className={cn(
-                      "max-w-[64ch] pb-6 text-[1rem] leading-[1.6] sm:pl-[calc(1.5rem+1rem)] md:pb-7",
-                      inverse ? "text-paper-2" : "text-ink-2",
-                    )}
-                  >
-                    {item.a}
-                  </p>
-                </motion.div>
+            {/* Always rendered so answers are in the HTML for search and AI crawlers. */}
+            <div
+              id={panelId}
+              role="region"
+              aria-labelledby={btnId}
+              inert={!isOpen}
+              className={cn(
+                "grid transition-[grid-template-rows,opacity] duration-[320ms] ease-[var(--ease-out)]",
+                isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
               )}
-            </AnimatePresence>
+            >
+              <div className="overflow-hidden">
+                <p
+                  className={cn(
+                    "max-w-[64ch] pb-6 text-[1rem] leading-[1.6] sm:pl-[calc(1.5rem+1rem)] md:pb-7",
+                    inverse ? "text-paper-2" : "text-ink-2",
+                  )}
+                >
+                  {item.a}
+                </p>
+              </div>
+            </div>
           </div>
         );
       })}

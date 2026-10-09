@@ -188,7 +188,7 @@ export function ProductTemplate({ id }: { id: string }) {
         </Section>
 
         <PlanCards />
-        <FAQ items={p.faqs} heading={`${p.name.split(" ")[0]} questions.`} />
+        <FAQ items={p.faqs} heading={p.faqHeading} />
         <FinalCTA heading={p.finalHeading} body={p.desc} primary={{ label: p.cta, href: cta }} />
       </main>
       <Footer />

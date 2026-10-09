@@ -43,6 +43,7 @@ export type ProductPage = ProductSummary & {
   deliverables: { title: string; items: string[] };
   edges: { title: string; body: string }[];
   faqs: FAQ[];
+  faqHeading: string;
   cta: string;
   need: string;
   finalHeading: [string, string];
@@ -153,6 +154,7 @@ export const productPages: ProductPage[] = [
       { q: "Can you make lifestyle photos without a photoshoot?", a: "Yes, for most product types. We generate in-context scenes from your product photo. For products where fit or texture matters (apparel on body, for example), we tell you upfront what is realistic." },
       { q: "Are the images marketplace compliant?", a: "Yes. We produce main images that meet Amazon, Flipkart and Google Merchant Center requirements, alongside your store set." },
     ],
+    faqHeading: "Imagery questions.",
     cta: "Fix My Product Photos",
     need: "imagery",
     finalHeading: ["SEND THE PHOTOS.", "GET BACK A CATALOG THAT MATCHES."],
@@ -220,6 +222,7 @@ export const productPages: ProductPage[] = [
       { q: "Can you list my products on Amazon and Flipkart?", a: "Yes. We map your catalog to each marketplace's category templates and attributes and prepare the listings. Seller account approval and brand registration stay with you; we tell you exactly what's needed." },
       { q: "What happens when my prices or stock change?", a: "With the Catalog Ops or Growth Stack plan, we keep every channel in sync. Without a plan, the setup includes the sync rules your platform supports natively." },
     ],
+    faqHeading: "Feed questions.",
     cta: "Set Up My Channels",
     need: "feeds",
     finalHeading: ["FIX THE CATALOG ONCE.", "SELL IT EVERYWHERE."],
@@ -291,6 +294,7 @@ export const productPages: ProductPage[] = [
       { q: "How do I know it's working?", a: "You get reporting per flow: sends, clicks, orders and revenue attributed to each flow. With the Retention plan we review and improve the flows every month." },
       { q: "Is it compliant with GDPR and Australian and US email law?", a: "Flows only go to customers who are eligible to receive them, every email has an unsubscribe link, and consent settings follow your market's rules. We'll flag anything in your current setup that needs fixing." },
     ],
+    faqHeading: "Email questions.",
     cta: "Recover My Carts",
     need: "email",
     finalHeading: ["STOP LOSING CARTS.", "START KEEPING CUSTOMERS."],
@@ -359,6 +363,7 @@ export const productPages: ProductPage[] = [
       { q: "Will customers get spammed?", a: "No. Messages only go to customers who opted in, marketing broadcasts are capped, and recovery messages stop as soon as an order is placed." },
       { q: "Does this only make sense in India?", a: "COD confirmation is most useful in India, but cart recovery, order updates and broadcasts work in the UK, Australia and the US too, wherever your customers use WhatsApp." },
     ],
+    faqHeading: "WhatsApp questions.",
     cta: "Set Up WhatsApp",
     need: "whatsapp",
     finalHeading: ["MEET CUSTOMERS", "WHERE THEY ALREADY ARE."],
@@ -427,6 +432,7 @@ export const productPages: ProductPage[] = [
       { q: "Do I need Gorgias, Zendesk or another helpdesk?", a: "No. It runs on our infrastructure. If you already use a helpdesk, we can hand conversations into it instead." },
       { q: "Can it answer in languages other than English?", a: "Yes. It replies in the language the customer writes in. We test your most common languages during setup." },
     ],
+    faqHeading: "Support questions.",
     cta: "Set Up AI Support",
     need: "support",
     finalHeading: ["ANSWER EVERY CUSTOMER.", "IN SECONDS. AT 3 AM."],
