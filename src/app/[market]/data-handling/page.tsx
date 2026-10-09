@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -13,7 +14,7 @@ export const metadata = pageMeta({
   path: "/data-handling",
 });
 
-const UPDATED = "September 2026";
+const UPDATED = "October 2026";
 
 const sections: LegalSection[] = [
   {
@@ -69,6 +70,32 @@ const sections: LegalSection[] = [
           used to train third-party models. Where third-party model
           providers are used as part of the pipeline, only the specific
           product data needed for that task is sent to them.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "customer-data",
+    title: "Customer data for email, WhatsApp and support",
+    body: (
+      <>
+        <p>
+          When we run email flows, WhatsApp automation or AI customer support for you, we process your
+          customers&rsquo; contact details, order details and conversations on your instructions, as your
+          service provider.
+        </p>
+        <ul>
+          <li>We contact only customers you tell us have opted in, and every message honours unsubscribes and opt-outs.</li>
+          <li>Customer data is used only to run your services, never for our own marketing or to train third-party AI models.</li>
+          <li>Support conversations that need a person are passed to your team with a summary.</li>
+          <li>When the engagement ends, we delete or return the data on request.</li>
+        </ul>
+        <p>
+          See the{" "}
+          <Link href="/privacy#client-data" className="link-underline text-ink">
+            Privacy Policy
+          </Link>{" "}
+          for the full detail.
         </p>
       </>
     ),

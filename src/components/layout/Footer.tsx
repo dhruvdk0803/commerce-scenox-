@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { nav, site } from "@/lib/site";
 import { Wordmark } from "@/components/ui/Wordmark";
 import { MarketSwitcher } from "@/components/market/MarketSwitcher";
+import { CookieSettingsLink } from "@/components/consent/CookieSettingsLink";
 
 function Col({
   title,
@@ -87,6 +88,7 @@ export function Footer() {
             .
           </p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <CookieSettingsLink className="inline-flex min-h-10 items-center text-[0.85rem] text-ink-2 hover:text-ink" />
             <span className="mono-micro">
               {site.platforms.join(" • ")}
             </span>

@@ -6,6 +6,8 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { MARKET_IDS } from "@/lib/markets";
 import { getMarketId } from "@/lib/market-server";
 import { MarketProvider } from "@/components/market/MarketProvider";
+import { ConsentBanner } from "@/components/consent/ConsentBanner";
+import { AnalyticsScripts } from "@/components/consent/AnalyticsScripts";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -78,6 +80,8 @@ export default async function RootLayout({
           Skip to content
         </a>
         <MarketProvider market={market}>{children}</MarketProvider>
+        <ConsentBanner />
+        <AnalyticsScripts />
         <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
       </body>
     </html>

@@ -526,3 +526,8 @@
 [aria-current="page"] .link-underline::after {
   transform: scaleX(1);
 }
+
+/* the consent banner sits where the mobile sticky CTA would; hide the CTA while it is open */
+html[data-consent-open] [data-sticky-cta] {
+  display: none;
+}

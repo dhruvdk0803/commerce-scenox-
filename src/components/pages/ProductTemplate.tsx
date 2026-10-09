@@ -1,4 +1,10 @@
 import type { Metadata } from "next";
+import type { ComponentType } from "react";
+import { ImageryVisual } from "./illustrations/ImageryVisual";
+import { FeedsVisual } from "./illustrations/FeedsVisual";
+import { EmailVisual } from "./illustrations/EmailVisual";
+import { WhatsAppVisual } from "./illustrations/WhatsAppVisual";
+import { SupportVisual } from "./illustrations/SupportVisual";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -49,6 +55,38 @@ function PriceBox({ p }: { p: ProductPage }) {
   );
 }
 
+/** One bespoke visual per service; any product without one falls back to the status ledger. */
+const VISUALS: Record<string, ComponentType | undefined> = {
+  imagery: ImageryVisual,
+  feeds: FeedsVisual,
+  email: EmailVisual,
+  whatsapp: WhatsAppVisual,
+  support: SupportVisual,
+};
+
+function LedgerVisual({ p }: { p: ProductPage }) {
+  return (
+              <div className="overflow-hidden rounded-[12px] border border-line bg-bg">
+                <div className="flex h-11 items-center justify-between border-b border-line px-4 md:px-5">
+                  <span className="mono-label text-ink-2">{p.ledger.title}</span>
+                  <span className="mono-micro text-ink-3">{p.ledger.note}</span>
+                </div>
+                <ul className="divide-y divide-line">
+                  {p.ledger.rows.map((r) => (
+                    <li
+                      key={r.label}
+                      className="grid grid-cols-[1fr_auto] items-center gap-3 px-4 py-3.5 md:grid-cols-[1fr_10rem_8rem] md:px-5"
+                    >
+                      <span className="min-w-0 text-[0.95rem] text-ink">{r.label}</span>
+                      <span className="mono-micro hidden text-ink-3 tabular md:inline">{r.meta}</span>
+                      <Status kind={r.status} label={r.statusLabel} className="justify-self-end" />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+  );
+}
+
 const HOURS = ["00", "12", "24", "48"];
 
 /** Hour 0 → 48 ledger: makes the speed claim concrete for each product. */
@@ -94,6 +132,7 @@ function Timeline({ p }: { p: ProductPage }) {
 export function ProductTemplate({ id }: { id: string }) {
   const p = get(id);
   const cta = `/get-started?need=${p.need}`;
+  const Visual = VISUALS[p.id];
 
   return (
     <>
@@ -130,24 +169,7 @@ export function ProductTemplate({ id }: { id: string }) {
               description="AI does the volume. A person reviews anything uncertain before it reaches your store or your customers. Figures shown are illustrative."
             />
             <Reveal delay={0.06} className="mt-12 md:mt-16">
-              <div className="overflow-hidden rounded-[12px] border border-line bg-bg">
-                <div className="flex h-11 items-center justify-between border-b border-line px-4 md:px-5">
-                  <span className="mono-label text-ink-2">{p.ledger.title}</span>
-                  <span className="mono-micro text-ink-3">{p.ledger.note}</span>
-                </div>
-                <ul className="divide-y divide-line">
-                  {p.ledger.rows.map((r) => (
-                    <li
-                      key={r.label}
-                      className="grid grid-cols-[1fr_auto] items-center gap-3 px-4 py-3.5 md:grid-cols-[1fr_10rem_8rem] md:px-5"
-                    >
-                      <span className="min-w-0 text-[0.95rem] text-ink">{r.label}</span>
-                      <span className="mono-micro hidden text-ink-3 tabular md:inline">{r.meta}</span>
-                      <Status kind={r.status} label={r.statusLabel} className="justify-self-end" />
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {Visual ? <Visual /> : <LedgerVisual p={p} />}
             </Reveal>
           </Container>
         </Section>
