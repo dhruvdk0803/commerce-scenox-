@@ -8,9 +8,21 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { MotionLi, Stagger, staggerChild } from "@/components/ui/Reveal";
 import { useMarket, usePrice } from "@/components/market/MarketProvider";
 
-export function PlanCards({ tone = "muted", bare = false }: { tone?: "light" | "muted"; bare?: boolean }) {
+export function PlanCards({
+  tone = "muted",
+  bare = false,
+  eyebrow = "MONTHLY PLANS",
+  highlight,
+}: {
+  tone?: "light" | "muted";
+  bare?: boolean;
+  eyebrow?: string;
+  /** plan id to feature (e.g. the plan that runs the service on this page); defaults to the popular plan */
+  highlight?: string;
+}) {
   const market = useMarket();
   const price = usePrice();
+  const isFeatured = (p: (typeof plans)[number]) => (highlight ? p.id === highlight : !!p.popular);
 
   const content = (
       <>
@@ -21,12 +33,12 @@ export function PlanCards({ tone = "muted", bare = false }: { tone?: "light" | "
               variants={staggerChild}
               className={cn(
                 "relative flex flex-col rounded-[12px] border bg-bg p-6 md:p-7",
-                p.popular ? "border-ink" : "border-line",
+                isFeatured(p) ? "border-ink" : "border-line",
               )}
             >
-              {p.popular && (
+              {isFeatured(p) && (
                 <span className="mono-micro absolute -top-3 left-5 rounded-[4px] bg-ink px-2 py-1.5 text-paper">
-                  BEST VALUE
+                  {p.id === "growth-stack" ? "CATALOG + RETENTION" : "RUNS THIS SERVICE"}
                 </span>
               )}
               <h3 className="text-[1.15rem] font-semibold tracking-[-0.02em] text-ink">{p.name}</h3>
@@ -50,7 +62,7 @@ export function PlanCards({ tone = "muted", bare = false }: { tone?: "light" | "
 
               <Button
                 href={p.href}
-                variant={p.popular ? "primary" : "outline"}
+                variant={isFeatured(p) ? "dark" : "outline"}
                 className="mt-8 w-full"
                 arrow
                 event="cta_click"
@@ -76,7 +88,7 @@ export function PlanCards({ tone = "muted", bare = false }: { tone?: "light" | "
       <div className="container-x">
         <SectionHeader
           id="plans-heading"
-          eyebrow="MONTHLY PLANS"
+          eyebrow={eyebrow}
           title={
             <>
               Launch once.

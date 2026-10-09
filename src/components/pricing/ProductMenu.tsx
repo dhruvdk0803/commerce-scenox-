@@ -23,7 +23,10 @@ export function ProductMenu({
   ),
   description = "One team for every stage of the store. Each service has a set scope, a delivery time and a public starting price.",
   tone = "light",
+  exclude = [],
 }: {
+  /** product ids to leave out (e.g. catalog upload on /pricing, where its tiers are shown separately) */
+  exclude?: string[];
   eyebrow?: string;
   title?: React.ReactNode;
   description?: string;
@@ -54,7 +57,7 @@ export function ProductMenu({
                   <p className="mt-1 max-w-[30ch] text-[0.875rem] leading-snug text-ink-2">{meta.desc}</p>
                 </div>
                 <ul className="divide-y divide-line">
-                  {productsByGroup(g).map((p) => (
+                  {productsByGroup(g).filter((p) => !exclude.includes(p.id)).map((p) => (
                     <li key={p.id}>
                       <Link
                         href={p.href}
@@ -78,6 +81,7 @@ export function ProductMenu({
                         </span>
                         <span className="flex items-baseline gap-2 md:flex-col md:items-end md:gap-0.5">
                           <span className="text-[1.15rem] font-semibold tracking-[-0.02em] text-ink tabular">
+                            <span className="mono-micro mr-1.5 align-middle text-ink-3 lg:hidden">FROM</span>
                             <Price set={p.price} />
                           </span>
                           <span className="mono-micro text-ink-3 md:text-right">{p.unit.toUpperCase()}</span>

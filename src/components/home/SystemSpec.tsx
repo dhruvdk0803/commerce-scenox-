@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { MotionItem, Reveal, Stagger } from "@/components/ui/Reveal";
 
-type Mode = "AUTOMATED" | "AI + REVIEW" | "HUMAN";
+type Mode = "AUTOMATED" | "AI + REVIEW" | "HUMAN" | "AUTO + HUMAN QA";
 
 const LAYERS: { n: string; name: string; does: string; mode: Mode }[] = [
   { n: "01", name: "Ingestion", does: "Parsers for XLSX, CSV, XML, PDF and image folders. Multiple sources keyed into one dataset by SKU.", mode: "AUTOMATED" },
@@ -12,7 +12,7 @@ const LAYERS: { n: string; name: string; does: string; mode: Mode }[] = [
   { n: "05", name: "Image matching", does: "Files matched to products by SKU and name, de-duplicated, renamed and resized to platform limits.", mode: "AUTOMATED" },
   { n: "06", name: "Validation", does: "Every product checked against platform rules: required fields, option limits, prices, inventory, image formats.", mode: "AUTOMATED" },
   { n: "07", name: "Approval", does: "You review a representative sample and the category tree before anything goes live.", mode: "HUMAN" },
-  { n: "08", name: "Publishing & QA", does: "Batch publish through import or scoped access, then storefront checks by a person.", mode: "AUTOMATED" },
+  { n: "08", name: "Publishing & QA", does: "Batch publish through import or scoped access, then storefront checks by a person.", mode: "AUTO + HUMAN QA" },
 ];
 
 const FACTS = [
@@ -29,7 +29,7 @@ function ModeTag({ mode }: { mode: Mode }) {
         "mono-micro inline-flex h-6 items-center rounded-[4px] border px-2 whitespace-nowrap",
         mode === "AUTOMATED" && "border-line bg-bg-muted text-ink-2",
         mode === "AI + REVIEW" && "border-line-strong bg-bg text-ink",
-        mode === "HUMAN" && "border-success/30 bg-success-soft text-success",
+        (mode === "HUMAN" || mode === "AUTO + HUMAN QA") && "border-success/30 bg-success-soft text-success",
       )}
     >
       {mode}
@@ -45,11 +45,7 @@ export function SystemSpec({ compact = false }: { compact?: boolean }) {
           id="system-heading"
           eyebrow="THE SYSTEM"
           title={
-            <>
-              An AI-powered catalog engine.
-              <br />
-              <span className="text-ink-2">With people where it counts.</span>
-            </>
+            <>An AI-powered engine, with people where it counts.</>
           }
           description="Scenox Commerce runs on a purpose-built pipeline: parsers, a normalization engine, classification and language models, and a validation layer, operated by a team that reviews every flagged row. That is how a thousand products become store-ready in days, not weeks."
         />

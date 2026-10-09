@@ -16,7 +16,9 @@ export function PricingCards({
   preview = false,
   bare = false,
   heading = ["Simple projects.", "Simple pricing."],
+  eyebrow = "CATALOG UPLOAD",
 }: {
+  eyebrow?: string;
   preview?: boolean;
   /** grid + footnote only, for use inside PricingTabs */
   bare?: boolean;
@@ -91,20 +93,20 @@ export function PricingCards({
           })}
         </Stagger>
 
-        {preview || bare ? (
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-[0.85rem] text-ink-3">
-              *48-hour turnaround applies to eligible catalogs. Final pricing depends on source-data quality, complexity, variants, images, enrichment and platform.
-            </p>
-            <TextLink href="/pricing">Full pricing details</TextLink>
-          </div>
-        ) : (
+        {/* footnote always renders: the Catalog Launch card's asterisk points here */}
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-[0.85rem] text-ink-3">
+            *48-hour turnaround applies to eligible catalogs. Final pricing depends on source-data quality, complexity, variants, images, enrichment and platform.
+          </p>
+          {(preview || bare) && <TextLink href="/pricing">Full pricing details</TextLink>}
+        </div>
+        {preview || bare ? null : (
           <div className="mt-16 grid gap-10 border-t border-line pt-12 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <Eyebrow>WHAT AFFECTS PRICING</Eyebrow>
-              <p className="mt-4 max-w-[30ch] text-[1.15rem] font-medium leading-snug tracking-[-0.02em] text-ink">
+              <h3 className="mt-4 max-w-[30ch] text-[1.15rem] font-medium leading-snug tracking-[-0.02em] text-ink">
                 Two catalogs with the same product count can be very different projects.
-              </p>
+              </h3>
             </div>
             <dl className="grid gap-x-8 sm:grid-cols-2 lg:col-span-8">
               {pricingFactors.map((f) => (
@@ -125,12 +127,12 @@ export function PricingCards({
       <div className="container-x">
         <SectionHeader
           id="pricing-heading"
-          eyebrow="PRICING"
+          eyebrow={eyebrow}
           title={
             <>
               {heading[0]}
               <br />
-              {heading[1]}
+              <span className="text-ink-2">{heading[1]}</span>
             </>
           }
           description={`Starting prices in ${market.currency} for completed catalog operations, not per-row data entry. We confirm a fixed quote after inspecting your files.`}

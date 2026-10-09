@@ -111,8 +111,4 @@ export const pricingFaqs: FAQ[] = [
     q: "Why are prices different in each country?",
     a: "We price each market for that market: India in INR, the US in USD, the UK in GBP and Australia in AUD. You see the prices for your region and you're invoiced in that currency. The scope of every product is the same everywhere.",
   },
-  {
-    q: "Why are you cheaper than an agency or a freelancer?",
-    a: "Because an AI engine does the repetitive work that agencies bill by the hour: parsing files, mapping categories, drafting descriptions, matching images, building flows. People review the output instead of typing it. You pay for finished work, not hours.",
-  },
 ];

@@ -1,4 +1,5 @@
-import { site } from "@/lib/site";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -31,25 +32,21 @@ export function FinalCTA({
           <Reveal delay={0.08} className="md:col-span-6">
             <p className="max-w-[40ch] text-lead text-paper-2">{body}</p>
           </Reveal>
-          <Reveal delay={0.14} className="flex flex-col gap-4 sm:flex-row sm:items-center md:col-span-6 md:justify-end">
+          <Reveal delay={0.14} className="flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-7 md:col-span-6 md:justify-end">
             <Button href={primary.href} variant="inverse" size="lg" arrow event="cta_click" eventParams={{ cta: "final_primary" }}>
               {primary.label}
             </Button>
             {secondary && (
-              <Button
+              <Link
                 href={secondary.href}
-                variant="outline"
-                size="lg"
-                className="border-line-dark-strong text-paper hover:border-paper hover:bg-white/5"
-                event="cta_click"
-                eventParams={{ cta: "final_secondary" }}
+                className="group inline-flex items-center gap-1.5 text-[1rem] font-medium text-paper-2 transition-colors duration-[160ms] hover:text-paper max-sm:self-center"
               >
-                {secondary.label}
-              </Button>
+                <span className="link-underline">Or {secondary.label.charAt(0).toLowerCase() + secondary.label.slice(1)}</span>
+                <ArrowRight aria-hidden className="size-4 transition-transform duration-[200ms] ease-[var(--ease-out)] group-hover:translate-x-0.5" strokeWidth={2} />
+              </Link>
             )}
           </Reveal>
         </div>
-        <p className="mono-label mt-12 text-paper-2/80">{site.platforms.join(" • ")}</p>
       </div>
     </section>
   );

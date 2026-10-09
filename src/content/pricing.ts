@@ -74,7 +74,7 @@ export const tiers: Tier[] = [
     range: "1,000+ products",
     price: { in: null, us: null, uk: null, au: null },
     priceNote: "Assessed per catalog",
-    cta: "Request Assessment",
+    cta: "Get Your Catalog Audited",
     href: "/get-started?tier=scale",
     includes: [
       "Multi-source consolidation",
@@ -158,4 +158,4 @@ export const plans: Plan[] = [
 ];
 
 export const planNote =
-  "Monthly, cancel with 30 days' notice. WhatsApp conversation fees charged by Meta are passed through at cost.";
+  "Plans keep services running once they're set up; setup is bought once, as a single service or a kit. Monthly, cancel with 30 days' notice. WhatsApp conversation fees charged by Meta are passed through at cost.";

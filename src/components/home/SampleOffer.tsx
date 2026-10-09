@@ -79,7 +79,7 @@ export function SampleOffer() {
                 </div>
                 <ol className="p-2">
                   {RAW_ROWS.map((r, i) => (
-                    <li key={r} className="flex gap-2 px-1 py-[3px] font-mono text-[0.68rem] leading-tight">
+                    <li key={r} className="flex gap-2 px-1 py-[3px] font-mono text-[0.75rem] leading-tight">
                       <span className="w-[2ch] text-ink-3 tabular">{i + 1}</span>
                       <span className="truncate text-ink-2">
                         {r.split(",").map((c, ci) => (
@@ -116,7 +116,7 @@ export function SampleOffer() {
               </div>
 
               {/* clean */}
-              <Stagger as="ol" className="grid gap-1.5" amount={0.2}>
+              <Stagger as="ol" className="grid gap-1.5 max-sm:[&>li:nth-child(n+7)]:hidden" amount={0.2}>
                 {CLEAN.map(([t, c], i) => (
                   <MotionLi
                     key={t}
@@ -124,8 +124,8 @@ export function SampleOffer() {
                   >
                     <span className="mono-micro w-[2ch] shrink-0 tabular text-ink-3">{String(i + 1).padStart(2, "0")}</span>
                     <div className="min-w-0 flex-1">
-                      <p className="truncate text-[0.72rem] font-medium leading-tight text-ink">{t}</p>
-                      <p className="truncate font-mono text-[0.6rem] text-ink-3">{c}</p>
+                      <p className="truncate text-[0.8125rem] font-medium leading-tight text-ink">{t}</p>
+                      <p className="truncate font-mono text-[0.75rem] text-ink-3">{c}</p>
                     </div>
                     <CheckBox done size="sm" />
                   </MotionLi>

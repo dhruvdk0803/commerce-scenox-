@@ -49,11 +49,7 @@ export function PricingTabs() {
           id="pricing-heading"
           eyebrow="PRICING"
           title={
-            <>
-              Fixed products.
-              <br />
-              <span className="text-ink-2">Public prices.</span>
-            </>
+            <>Fixed products. Public prices.</>
           }
           description={`Every price is a starting price in ${market.currency} for a fixed scope. We confirm the final figure after seeing your store and data.`}
           action={<TextLink href="/pricing">Full pricing</TextLink>}

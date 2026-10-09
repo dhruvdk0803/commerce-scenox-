@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Armchair } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/ui/Reveal";
@@ -39,7 +40,7 @@ export function BeforeAfter() {
           id="ba-heading"
           eyebrow="INPUT → OUTPUT"
           title="One row in. One product page out."
-          description="The same record, before and after. Use the tabs on the right to see every field a finished product carries."
+          description="The same record, before and after. Use the tabs to see every field a finished product carries."
         />
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[5fr_auto_7fr] lg:items-stretch lg:gap-0 md:mt-16">
@@ -123,10 +124,12 @@ export function BeforeAfter() {
 
             <div className="grid gap-5 p-5 sm:grid-cols-[9rem_1fr] md:p-6">
               {/* image */}
-              <div className="relative flex aspect-square flex-col justify-between overflow-hidden rounded-[8px] border border-line bg-bg-muted p-3">
+              <div className="relative flex flex-col justify-between overflow-hidden rounded-[8px] border border-line bg-bg-muted p-3 max-sm:h-36 sm:aspect-square">
                 <span className="mono-micro text-ink-3">IMAGE 1 / 4</span>
-                <div>
-                  <p className="truncate font-mono text-[0.7rem] text-ink">ax-442-black-01.jpg</p>
+                {/* stand-in for the product photo: a simple line icon, not a fake image */}
+                <Armchair aria-hidden className="absolute left-1/2 top-1/2 size-12 -translate-x-1/2 -translate-y-1/2 text-ink-3/70" strokeWidth={1.25} />
+                <div className="relative">
+                  <p className="truncate font-mono text-[0.75rem] text-ink">ax-442-black-01.jpg</p>
                   <p className="mono-micro mt-1 text-success">2048 × 2048 · MATCHED</p>
                 </div>
               </div>

@@ -4,8 +4,12 @@ import { Footer } from "@/components/layout/Footer";
 import { PageHero } from "@/components/ui/PageHero";
 import { Button, TextLink } from "@/components/ui/Button";
 import { ProductMenu } from "@/components/pricing/ProductMenu";
-import { BundleCards } from "@/components/pricing/BundleCards";
-import { PlanCards } from "@/components/pricing/PlanCards";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { Price } from "@/components/market/Price";
+import { plans } from "@/content/pricing";
+import { bundles } from "@/content/bundles";
+import { MARKET_IDS, type PriceSet } from "@/lib/markets";
 import { FAQ } from "@/components/home/FAQ";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -20,6 +24,13 @@ export const metadata: Metadata = pageMeta({
   path: "/services",
 });
 
+const cheapestKit = Object.fromEntries(
+  MARKET_IDS.map((m) => {
+    const vals = bundles.map((b) => b.price[m]).filter((v): v is number => v != null);
+    return [m, vals.length ? Math.min(...vals) : null];
+  }),
+) as PriceSet;
+
 const SERVICE_FAQS = faqs.filter((f) =>
   ["Do you only do catalogs?", "Do I need Klaviyo or a separate WhatsApp tool?", "Why do you cost less than an agency?", "Do you offer ongoing catalog management?"].includes(f.q),
 );
@@ -32,7 +43,7 @@ export default function ServicesPage() {
         <PageHero
           eyebrow="SERVICES"
           title="Everything a store needs after it's built."
-          lead="Eight fixed products across the ecommerce cycle: get every product listed, sell it on every channel, then recover carts and keep customers coming back. Each one starts from 48 hours."
+          lead="Eight fixed products across the ecommerce cycle: get every product listed, sell it on every channel, then recover carts and keep customers coming back. Most can go live in as little as 48 hours for eligible projects."
           actions={
             <>
               <Button href="/get-started" size="lg" arrow>
@@ -48,9 +59,31 @@ export default function ServicesPage() {
             { k: "PLATFORMS", v: "Shopify · WooCommerce · Custom" },
           ]}
         />
-        <ProductMenu tone="muted" eyebrow="ALL SERVICES" />
-        <BundleCards />
-        <PlanCards />
+        <ProductMenu
+          tone="muted"
+          eyebrow="ALL SERVICES"
+          title={<>Eight services. Pick one or several.</>}
+          description="Every row opens the full service page: what's included, how the first 48 hours run, and the questions people ask."
+        />
+
+        {/* kits and plans live on /pricing; here, just point to them */}
+        <section className="section-y-sm border-t border-line" aria-label="Kits and monthly plans">
+          <div className="container-x grid gap-px overflow-hidden rounded-[12px] border border-line bg-line md:grid-cols-2">
+            {[
+              { k: "PREFER A BUNDLE?", t: <>Three kits from <Price set={cheapestKit} /></>, d: "Launch, Revenue and Complete kits, priced below buying the parts.", href: "/pricing#bundles" },
+              { k: "WANT IT RUN MONTHLY?", t: <>Plans from <Price set={plans[0].price} /> a month</>, d: "Catalog upkeep, feeds, email and WhatsApp kept running by us.", href: "/pricing#plans" },
+            ].map((x) => (
+              <Link key={x.href} href={x.href} className="group flex flex-col gap-2 bg-bg p-6 transition-colors duration-[160ms] hover:bg-bg-muted/50 md:p-8">
+                <span className="mono-micro text-ink-3">{x.k}</span>
+                <span className="flex items-center gap-2 text-[1.35rem] font-semibold tracking-[-0.02em] text-ink tabular">
+                  {x.t}
+                  <ArrowRight aria-hidden className="size-5 transition-transform duration-[200ms] ease-[var(--ease-out)] group-hover:translate-x-0.5" strokeWidth={2} />
+                </span>
+                <span className="text-[0.95rem] text-ink-2">{x.d}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
         <FAQ items={SERVICE_FAQS} heading="About our services." />
         <FinalCTA />
       </main>

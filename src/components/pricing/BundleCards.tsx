@@ -9,7 +9,15 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { MotionLi, Stagger } from "@/components/ui/Reveal";
 import { useMarket, usePrice } from "@/components/market/MarketProvider";
 
-export function BundleCards({ tone = "light", bare = false }: { tone?: "light" | "muted"; bare?: boolean }) {
+export function BundleCards({
+  tone = "light",
+  bare = false,
+  eyebrow = "KITS",
+}: {
+  tone?: "light" | "muted";
+  bare?: boolean;
+  eyebrow?: string;
+}) {
   const market = useMarket();
   const price = usePrice();
 
@@ -29,7 +37,7 @@ export function BundleCards({ tone = "light", bare = false }: { tone?: "light" |
               >
                 {b.popular && (
                   <span className="mono-micro absolute -top-3 left-5 rounded-[4px] bg-ink px-2 py-1.5 text-paper">
-                    MOST COMPLETE
+                    ALL THREE STAGES
                   </span>
                 )}
 
@@ -50,32 +58,40 @@ export function BundleCards({ tone = "light", bare = false }: { tone?: "light" |
                   </div>
                   {saving != null && saving > 0 && (
                     <p className="mono-micro mt-2 text-success">
-                      SAVE {formatPrice(saving, market.id)} VS. BUYING SEPARATELY
+                      SAVE {formatPrice(saving, market.id)} VS. PARTS AT STARTING PRICES
                     </p>
                   )}
                 </div>
 
                 <ul className="divide-y divide-line border-y border-line">
-                  {(b.rows?.map((r) => ({ ...r, qty: 1 })) ?? b.parts).map((p) => (
-                    <li key={p.label}>
-                      <Link
-                        href={p.href}
-                        className="flex items-baseline justify-between gap-3 px-6 py-2.5 text-[0.9rem] text-ink transition-colors duration-[160ms] hover:bg-bg-muted/60 md:px-7"
-                      >
-                        <span>{p.label}</span>
-                        <span className="mono-micro shrink-0 text-ink-3 tabular">
-                          {formatPrice((p.price[market.id] ?? 0) * p.qty, market.id)}
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
+                  {b.rows
+                    ? // summary rows ("Everything in the Launch Kit") describe kits on this same grid, so no link
+                      b.rows.map((r) => (
+                        <li key={r.label} className="flex items-baseline justify-between gap-3 px-6 py-2.5 text-[0.9rem] text-ink md:px-7">
+                          <span>{r.label}</span>
+                          <span className="mono-micro shrink-0 text-ink-3 tabular">{formatPrice(r.price[market.id] ?? 0, market.id)}</span>
+                        </li>
+                      ))
+                    : b.parts.map((p) => (
+                        <li key={p.label}>
+                          <Link
+                            href={p.href}
+                            className="flex items-baseline justify-between gap-3 px-6 py-2.5 text-[0.9rem] text-ink transition-colors duration-[160ms] hover:bg-bg-muted/60 md:px-7"
+                          >
+                            <span>{p.label}</span>
+                            <span className="mono-micro shrink-0 text-ink-3 tabular">
+                              {formatPrice((p.price[market.id] ?? 0) * p.qty, market.id)}
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
                 </ul>
 
                 <div className="flex flex-1 flex-col p-6 pt-5 md:p-7 md:pt-5">
                   <p className="flex-1 text-[0.9rem] leading-snug text-ink-2">{b.outcome}</p>
                   <Button
                     href={`/get-started?bundle=${b.id}`}
-                    variant={b.popular ? "primary" : "outline"}
+                    variant={b.popular ? "dark" : "outline"}
                     className="mt-6 w-full"
                     arrow
                     event="cta_click"
@@ -100,7 +116,7 @@ export function BundleCards({ tone = "light", bare = false }: { tone?: "light" |
       <div className="container-x">
         <SectionHeader
           id="bundles-heading"
-          eyebrow="BUNDLES"
+          eyebrow={eyebrow}
           title={
             <>
               Don&apos;t build a stack.
