@@ -21,7 +21,13 @@ function Mark({ c }: { c: Cell }) {
         <Check className="size-3.5" strokeWidth={2.5} aria-hidden />
       </span>
     );
-  if (c === "fixing") return <span className="mono-micro rounded-[4px] border border-warning/30 bg-warning-soft px-1.5 py-1 text-warning">FIXING</span>;
+  if (c === "fixing")
+    return (
+      <span className="mono-micro rounded-[4px] border border-warning/30 bg-warning-soft px-1 py-1 text-warning md:px-1.5">
+        <span className="md:hidden">FIX</span>
+        <span className="max-md:hidden">FIXING</span>
+      </span>
+    );
   return <span className="mono-micro text-ink-3" aria-label="Not used">—</span>;
 }
 
@@ -33,12 +39,12 @@ export function FeedsVisual() {
         <span className="mono-micro text-ink-3">ILLUSTRATIVE</span>
       </div>
       <div className="overflow-x-auto">
-        <table className="w-full min-w-[36rem] text-left">
+        <table className="w-full text-left md:min-w-[36rem]">
           <thead>
             <tr className="border-b border-line bg-bg-muted/50">
-              <th scope="col" className="mono-micro px-4 py-3 font-normal text-ink-3 md:px-5">FIELD</th>
+              <th scope="col" className="mono-micro py-3 pl-4 pr-2 font-normal text-ink-3 md:px-5">FIELD</th>
               {CHANNELS.map((c) => (
-                <th key={c} scope="col" className="px-3 py-3 text-center text-[0.875rem] font-medium text-ink">
+                <th key={c} scope="col" className="px-1 py-3 text-center text-[0.8rem] font-medium text-ink md:px-3 md:text-[0.875rem]">
                   {c}
                 </th>
               ))}
@@ -48,11 +54,11 @@ export function FeedsVisual() {
           <tbody className="divide-y divide-line">
             {ROWS.map((r) => (
               <tr key={r.field}>
-                <th scope="row" className="px-4 py-3 text-[0.925rem] font-normal text-ink md:px-5">
+                <th scope="row" className="py-3 pl-4 pr-2 text-[0.875rem] font-normal text-ink md:px-5 md:text-[0.925rem]">
                   {r.field}
                 </th>
                 {r.cells.map((c, i) => (
-                  <td key={CHANNELS[i]} className={cn("px-3 py-3 text-center", c === "fixing" && "bg-warning-soft/40")}>
+                  <td key={CHANNELS[i]} className={cn("px-1 py-3 text-center md:px-3", c === "fixing" && "bg-warning-soft/40")}>
                     <Mark c={c} />
                   </td>
                 ))}

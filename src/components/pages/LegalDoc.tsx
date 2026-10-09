@@ -67,7 +67,7 @@ export function LegalDoc({
           </div>
         </nav>
 
-        <div className="lg:col-span-8 lg:col-start-5">
+        <div className="min-w-0 lg:col-span-8 lg:col-start-5">
           {intro && <div className="pb-8 md:pb-10">{intro}</div>}
           {sections.map((s, i) => (
             <section

@@ -1,6 +1,6 @@
 import { Status, type StatusKind } from "@/components/ui/Status";
 
-const THREADS: { q: string; a: string; source: string; status: StatusKind; label: string }[] = [
+const THREADS: { q: string; a: string; source: string; status: StatusKind; label: string; escalated?: boolean }[] = [
   {
     q: "Where is my order #1042?",
     a: "It shipped yesterday and is out for delivery today. Tracking: yourstore.com/t/1042",
@@ -26,6 +26,7 @@ const THREADS: { q: string; a: string; source: string; status: StatusKind; label
     q: "My parcel arrived damaged. I want a refund.",
     a: "I'm sorry. I've passed this to the team with your order and photos; they'll reply within the hour.",
     source: "HANDED TO TEAM · SUMMARY ATTACHED",
+    escalated: true,
     status: "missing",
     label: "ESCALATED",
   },
@@ -40,13 +41,13 @@ export function SupportVisual() {
       </div>
       <ul className="divide-y divide-line">
         {THREADS.map((t) => (
-          <li key={t.q} className="grid gap-3 px-4 py-4 md:grid-cols-[1fr_1.2fr_auto] md:items-start md:gap-6 md:px-5">
+          <li key={t.q} className="grid gap-3 px-4 py-4 md:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)_8.5rem] md:items-start md:gap-6 md:px-5">
             <div>
               <p className="mono-micro text-ink-3">CUSTOMER</p>
               <p className="mt-1 text-[0.95rem] text-ink">“{t.q}”</p>
             </div>
             <div className="border-l-2 border-line pl-3 md:border-l-0 md:pl-0">
-              <p className="mono-micro text-ink-3">AI AGENT · FROM {t.source}</p>
+              <p className="mono-micro text-ink-3">AI AGENT · {t.escalated ? t.source : `FROM ${t.source}`}</p>
               <p className="mt-1 text-[0.925rem] leading-snug text-ink-2">{t.a}</p>
             </div>
             <Status kind={t.status} label={t.label} className="md:justify-self-end md:pt-0.5" />
