@@ -16,7 +16,7 @@ export function PricingCards({
   preview = false,
   bare = false,
   heading = ["Simple projects.", "Simple pricing."],
-  eyebrow = "CATALOG UPLOAD",
+  eyebrow = "CATALOG LISTING",
 }: {
   eyebrow?: string;
   preview?: boolean;

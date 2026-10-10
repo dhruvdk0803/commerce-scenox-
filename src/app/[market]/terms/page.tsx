@@ -13,7 +13,7 @@ export const metadata = pageMeta({
   path: "/terms",
 });
 
-const UPDATED = "September 2026";
+const UPDATED = "October 2026";
 
 const sections: LegalSection[] = [
   {
@@ -23,7 +23,8 @@ const sections: LegalSection[] = [
       <p>
         Scenox Commerce provides ecommerce catalog operations services,
         including catalog upload, cleanup, enrichment and platform
-        migration, for Shopify, WooCommerce and custom platforms.
+        migration, for Shopify, WooCommerce, Magento (Adobe Commerce),
+        BigCommerce, Wix and custom platforms.
       </p>
     ),
   },

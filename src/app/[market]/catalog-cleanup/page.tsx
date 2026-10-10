@@ -18,7 +18,7 @@ import { PageHero } from "@/components/ui/PageHero";
 export const metadata: Metadata = pageMeta({
   title: "Product Catalog Cleanup & Enrichment Service",
   description:
-    "Fix messy titles, missing descriptions, duplicate categories and unmatched images across your live Shopify or WooCommerce store, in bulk, with no downtime.",
+    "Fix messy titles, missing descriptions, duplicate categories and unmatched images across your live Shopify, WooCommerce or Magento store, in bulk, with no downtime.",
   path: "/catalog-cleanup",
 });
 
@@ -73,7 +73,7 @@ export default function CatalogCleanupPage() {
             { k: "STARTS FROM", v: <><Price set={products.find((x) => x.id === "cleanup")!.price} /> · up to 250 products</> },
             { k: "SCOPE", v: "Titles · descriptions · categories · tags · images · variants · SEO · metafields" },
             { k: "WORKS FROM", v: "A store export. No admin access needed to audit." },
-            { k: "PLATFORMS", v: "Shopify · WooCommerce · Custom" },
+            { k: "PLATFORMS", v: "Shopify · WooCommerce · Magento · BigCommerce · Custom" },
             { k: "OUTPUT", v: "Bulk-corrected catalog, approved before publish" },
           ]}
         />

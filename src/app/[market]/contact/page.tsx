@@ -52,6 +52,26 @@ export default function ContactPage() {
                 </div>
               </div>
 
+              {site.bookingUrl && (
+                <div className="mt-3 overflow-hidden rounded-[10px] border border-line bg-bg-elevated">
+                  <div className="flex h-10 items-center border-b border-line px-4">
+                    <span className="mono-label text-ink-2">BOOK A CALL</span>
+                  </div>
+                  <div className="p-4">
+                    <a
+                      href={site.bookingUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-underline inline-flex items-center gap-2 text-[1.1rem] font-medium text-ink"
+                    >
+                      Pick a time
+                      <ArrowUpRight className="size-4" strokeWidth={2} aria-hidden />
+                    </a>
+                    <p className="mt-3 text-[0.875rem] leading-snug text-ink-2">A short video call to go through your store, your data and what it would cost.</p>
+                  </div>
+                </div>
+              )}
+
               <ul className="mt-6 divide-y divide-line border-y border-line">
                 {ROUTES.map((r) => (
                   <li key={r.n} className="flex items-center justify-between gap-4 py-4 max-sm:flex-col max-sm:items-start max-sm:gap-3">

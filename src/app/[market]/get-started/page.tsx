@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PlatformList } from "@/components/ui/PlatformList";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Header } from "@/components/layout/Header";
@@ -7,7 +8,6 @@ import { LeadFormLoader } from "@/components/forms/LeadFormLoader";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbJsonLd, pageMeta } from "@/lib/seo";
-import { site } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({
   title: "Get Started — Tell Us About Your Store",
@@ -50,7 +50,7 @@ export default function GetStartedPage() {
                 ))}
               </ul>
 
-              <p className="mono-micro mt-8 hidden text-ink-3 lg:block">{site.platforms.join(" • ")}</p>
+              <p className="mono-micro mt-8 hidden text-ink-3 lg:block"><PlatformList /></p>
             </div>
 
             <div className="lg:col-span-8">

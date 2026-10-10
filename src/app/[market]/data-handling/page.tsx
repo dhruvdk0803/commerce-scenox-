@@ -105,7 +105,7 @@ const sections: LegalSection[] = [
     title: "When platform access may be required",
     body: (
       <p>
-        Some projects require access to your Shopify, WooCommerce or other
+        Some projects require access to your Shopify, WooCommerce, Magento, BigCommerce or other
         platform to publish the finished catalog. This is only requested
         after a project is approved, and only through scoped collaborator or
         staff accounts, or platform-native import tools where supported. We

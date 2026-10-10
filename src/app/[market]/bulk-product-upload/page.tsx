@@ -21,9 +21,9 @@ import { catalogPageFaqs } from "@/content/faqs";
 import { tiers } from "@/content/pricing";
 
 export const metadata: Metadata = pageMeta({
-  title: "Bulk Product Upload Service for Shopify & WooCommerce",
+  title: "Bulk Product Upload for Shopify, WooCommerce & Magento",
   description:
-    "Send spreadsheets, supplier files and images. We clean, structure and upload up to 1,000 products to Shopify or WooCommerce in as little as 48 hours.",
+    "Send spreadsheets, supplier files and images. We clean, structure and upload 1,000+ products to Shopify, WooCommerce, Magento or BigCommerce, from 48 hours.",
   path: "/bulk-product-upload",
 });
 
@@ -44,12 +44,12 @@ export default function CatalogPage() {
         <JsonLd
           data={[
             serviceJsonLd({
-              name: "Bulk product upload for Shopify, WooCommerce and custom stores",
+              name: "Bulk product upload for Shopify, WooCommerce, Magento, BigCommerce and custom stores",
               description: "Catalog cleanup, structuring, enrichment, upload and QA for ecommerce stores.",
               path: "/bulk-product-upload",
               price: tiers[0].price,
             }),
-            breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Catalog Upload", path: "/bulk-product-upload" }]),
+            breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Catalog Listing", path: "/bulk-product-upload" }]),
             faqJsonLd(catalogPageFaqs),
           ]}
         />

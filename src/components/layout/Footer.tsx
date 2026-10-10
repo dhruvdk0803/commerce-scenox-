@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PlatformList } from "@/components/ui/PlatformList";
 import { ArrowUpRight } from "lucide-react";
 import { nav, site } from "@/lib/site";
 import { Wordmark } from "@/components/ui/Wordmark";
@@ -54,8 +55,8 @@ export function Footer() {
               {site.tagline}
             </p>
             <p className="mt-4 max-w-[38ch] text-[0.95rem] leading-relaxed text-ink-2">
-              Catalog, channels, email and WhatsApp for Shopify, WooCommerce
-              and custom stores. AI does the volume. People check every output.
+              Catalog, channels, email and WhatsApp for Shopify, WooCommerce,
+              Magento, BigCommerce and custom stores. AI does the volume. People check every output.
             </p>
             <a
               href={`mailto:${site.email}`}
@@ -90,7 +91,7 @@ export function Footer() {
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             <CookieSettingsLink className="inline-flex min-h-10 items-center text-[0.85rem] text-ink-2 hover:text-ink" />
             <span className="mono-micro">
-              {site.platforms.join(" • ")}
+              <PlatformList />
             </span>
             <span className="mono-micro tabular">
               © {new Date().getFullYear()} Scenox Studios

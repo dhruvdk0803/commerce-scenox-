@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PlatformList } from "@/components/ui/PlatformList";
 import Link from "next/link";
 import { SampleForm } from "@/components/forms/SampleForm";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -66,7 +67,7 @@ export default function SamplePage() {
                 </ul>
               </div>
 
-              <p className="mono-micro mt-8 text-ink-3">{site.platforms.join(" • ")}</p>
+              <p className="mono-micro mt-8 text-ink-3"><PlatformList /></p>
             </div>
 
             <div className="lg:col-span-7">

@@ -1,10 +1,11 @@
 "use client";
+import { PlatformList } from "@/components/ui/PlatformList";
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { X } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { nav, site } from "@/lib/site";
+import { nav } from "@/lib/site";
 import { Button } from "@/components/ui/Button";
 import { Wordmark } from "@/components/ui/Wordmark";
 
@@ -153,7 +154,7 @@ export function MobileNav({
                 Send 10 Products
               </Button>
               <p className="mono-micro mt-3 text-center text-ink-3">
-                {site.platforms.join(" • ")}
+                <PlatformList />
               </p>
             </motion.div>
           </nav>

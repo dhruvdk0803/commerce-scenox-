@@ -18,9 +18,9 @@ import { MigrationFlow } from "@/components/pages/MigrationFlow";
 import { PageHero } from "@/components/ui/PageHero";
 
 export const metadata: Metadata = pageMeta({
-  title: "Shopify & WooCommerce Store Migration Service",
+  title: "Store Migration to Shopify: Magento, WooCommerce & BigCommerce",
   description:
-    "Move your catalog to Shopify or WooCommerce with products, variants, images, SEO handles and 301 redirects mapped. No downtime, cleaner than before.",
+    "Magento, WooCommerce, BigCommerce or Wix to Shopify, with products, variants, images, SEO handles and 301 redirects mapped. No downtime.",
   path: "/store-migration",
 });
 
@@ -78,7 +78,7 @@ export default function MigrationPage() {
               Not the mess.
             </>
           }
-          lead="WooCommerce to Shopify. Legacy platforms to Shopify. Structured sources to WooCommerce. We extract, normalize and rebuild the catalog so the new store launches cleaner than the old one."
+          lead="Magento to Shopify. WooCommerce to Shopify. BigCommerce, Wix or a legacy platform to Shopify or WooCommerce. We extract, normalize and rebuild the catalog so the new store launches cleaner than the old one."
           actions={
             <Button href="/get-started?need=migration" size="lg" arrow>
               Plan My Migration
@@ -86,7 +86,7 @@ export default function MigrationPage() {
           }
           facts={[
             { k: "STARTS FROM", v: <><Price set={products.find((x) => x.id === "migration")!.price} /> · per store</> },
-            { k: "TYPICAL PATHS", v: "WooCommerce → Shopify · Legacy → Shopify · Structured source → WooCommerce" },
+            { k: "TYPICAL PATHS", v: "Magento → Shopify · WooCommerce → Shopify · BigCommerce → Shopify · Wix → Shopify" },
             { k: "CARRIES OVER", v: "Products, variants, categories, images, SEO handles, redirects" },
             { k: "DOWNTIME", v: "None on the catalog side; you switch when ready" },
           ]}
@@ -148,7 +148,7 @@ export default function MigrationPage() {
           serviceJsonLd({
             name: "Platform Migration",
             description:
-              "Ecommerce catalog migration between Shopify, WooCommerce and custom platforms: extraction, normalization, redirects and validation.",
+              "Ecommerce catalog migration between Shopify, WooCommerce, Magento (Adobe Commerce), BigCommerce, Wix and custom platforms: extraction, normalization, redirects and validation.",
             path: "/store-migration",
             price: products.find((x) => x.id === "migration")!.price,
           }),

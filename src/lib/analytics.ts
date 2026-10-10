@@ -21,7 +21,10 @@ export type AnalyticsEvent =
   | "pricing_viewed"
   | "whatsapp_clicked"
   | "case_study_viewed"
-  | "cta_click";
+  | "cta_click"
+  | "chat_opened"
+  | "chat_message_sent"
+  | "book_call_click";
 
 type Params = Record<string, string | number | boolean | undefined>;
 

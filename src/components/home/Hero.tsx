@@ -1,6 +1,7 @@
 "use client";
 
 import type { CSSProperties } from "react";
+import { PlatformList } from "@/components/ui/PlatformList";
 import { site } from "@/lib/site";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
@@ -40,11 +41,11 @@ export function Hero({ compact = false }: { compact?: boolean }) {
             <>
               <span className="block">BULK PRODUCT</span>
               <span className="block">UPLOAD.</span>
-              <span className="block">1000 IN 48 HOURS.*</span>
+              <span className="block">1000+ IN 48 HOURS.*</span>
             </>
           ) : (
             <>
-              <span className="block">1000 PRODUCTS.</span>
+              <span className="block">1000+ PRODUCTS.</span>
               <span className="block">48 HOURS.</span>
               <span className="block">
                 LIVE ON YOUR STORE.
@@ -57,10 +58,7 @@ export function Hero({ compact = false }: { compact?: boolean }) {
         <div className="mt-8 grid items-start gap-8 md:mt-12 lg:grid-cols-12 lg:gap-10 xl:gap-14">
           <div className="min-w-0 lg:col-span-4">
             <p className={`mono-label text-ink-2 ${item(2).className}`} style={item(2).style}>
-              <span className="sm:hidden">Shopify • WooCommerce • Custom</span>
-              <span className="hidden sm:inline">
-                {site.platforms.join(" • ")}
-              </span>
+              <PlatformList />
             </p>
 
             {!compact && (

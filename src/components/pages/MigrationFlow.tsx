@@ -8,7 +8,7 @@ const STAGES = [
   { label: "TARGET PLATFORM", lines: ["Shopify", "2,088 products", "6,110 variants", "301 redirects"], success: true },
 ];
 
-const PATHS = ["WooCommerce → Shopify", "Legacy ecommerce → Shopify", "Structured source → WooCommerce"];
+const PATHS = ["Magento → Shopify", "WooCommerce → Shopify", "BigCommerce → Shopify", "Wix → Shopify", "Legacy ecommerce → WooCommerce"];
 
 /** Four stages in one bordered row. Figures are illustrative. */
 export function MigrationFlow() {

@@ -3,15 +3,17 @@ import { Reveal } from "@/components/ui/Reveal";
 export function PlatformStrip() {
   return (
     <section aria-label="Platforms" className="border-y border-line bg-bg-muted/60">
-      <div className="container-x flex flex-col gap-4 py-5 sm:flex-row sm:items-center sm:justify-between md:py-6">
+      <div className="container-x grid gap-5 py-6 md:py-7 lg:grid-cols-[7rem_minmax(0,1fr)] lg:items-center lg:gap-8">
         <span className="mono-label text-ink-3">Built for</span>
-        <ul className="flex flex-wrap items-center gap-x-8 gap-y-2 sm:gap-x-12">
+        <ul className="grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-3 lg:grid-cols-5 lg:gap-x-8">
           {[
-            ["Shopify", "Products · Variants · Metafields"],
-            ["WooCommerce", "Products · Attributes · Categories"],
-            ["Custom Ecommerce", "CSV · JSON · API import"],
+            ["Shopify", "Variants · Metafields"],
+            ["WooCommerce", "Attributes · Categories"],
+            ["Magento", "Configurable · Attribute sets"],
+            ["BigCommerce", "Variants · Custom fields"],
+            ["Wix & custom", "CSV · JSON · API import"],
           ].map(([name, meta]) => (
-            <li key={name} className="flex flex-col">
+            <li key={name} className="flex min-w-0 flex-col">
               <span className="text-[1.05rem] font-semibold tracking-[-0.02em] text-ink">
                 {name}
               </span>

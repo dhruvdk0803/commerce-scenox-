@@ -82,7 +82,7 @@ const STAGES: Stage[] = [
     label: "PUBLISH",
     mode: "AUTOMATED",
     summary: "The catalog goes live in controlled batches.",
-    detail: ["Formatted for Shopify, WooCommerce or your custom import.", "Published via import or scoped access, in batches for large catalogs.", "Draft or live state, as agreed."],
+    detail: ["Formatted for Shopify, WooCommerce, Magento, BigCommerce or your custom import.", "Published via import or scoped access, in batches for large catalogs.", "Draft or live state, as agreed."],
     inp: "4,790 products",
     out: "4,790 published",
     status: "published",

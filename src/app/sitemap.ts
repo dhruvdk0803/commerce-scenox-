@@ -26,7 +26,7 @@ const routes: { path: string; priority: number; freq: MetadataRoute.Sitemap[numb
 ];
 
 /** Bump when page content meaningfully changes (not on every build). */
-const LAST_UPDATED = new Date("2026-10-09");
+const LAST_UPDATED = new Date("2026-10-10");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((r) => ({

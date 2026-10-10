@@ -7,7 +7,7 @@ export const faqs: FAQ[] = [
   },
   {
     q: "What data can I send?",
-    a: "Excel and CSV files, supplier or manufacturer catalogs, ERP exports, product PDFs, existing Shopify or WooCommerce exports, image folders, and links to supplier websites. Multiple fragmented sources are normal. We consolidate them.",
+    a: "Excel and CSV files, supplier or manufacturer catalogs, ERP exports, product PDFs, existing Shopify, WooCommerce, Magento or BigCommerce exports, image folders, and links to supplier websites. Multiple fragmented sources are normal. We consolidate them.",
   },
   {
     q: "What if my catalog is messy?",
@@ -32,6 +32,10 @@ export const faqs: FAQ[] = [
   {
     q: "Can you process images?",
     a: "Yes. We match image files to products by SKU or name, rename them consistently, resize to platform requirements and flag products with missing images so nothing goes live incomplete.",
+  },
+  {
+    q: "Which platforms do you work with?",
+    a: "Shopify, WooCommerce, Magento (Adobe Commerce), BigCommerce and Wix, plus Squarespace, PrestaShop, OpenCart and custom-built stores. Every catalog is formatted for the platform's own product model: variants, attributes, categories and SEO fields.",
   },
   {
     q: "Do you support custom websites?",
@@ -67,6 +71,7 @@ export const faqs: FAQ[] = [
 export const homeFaqs: FAQ[] = [
   "Can you really upload 1,000 products in 48 hours?",
   "Do you only do catalogs?",
+  "Which platforms do you work with?",
   "Do you use AI?",
   "Why do you cost less than an agency?",
   "Do I need Klaviyo or a separate WhatsApp tool?",
@@ -86,6 +91,7 @@ export const catalogPageFaqs: FAQ[] = faqs.filter((f) =>
     "What if my catalog is messy?",
     "Do I need to prepare a Shopify CSV?",
     "Can you handle variants?",
+    "Which platforms do you work with?",
     "Do you support custom websites?",
   ].includes(f.q),
 );

@@ -10,7 +10,7 @@ import { track, trackConversion } from "@/lib/analytics";
 import { isValidEmail, isValidPhone } from "@/lib/validation";
 import { ChipGroup, Field, TextArea, TextInput, readUtm, focusFirstInvalid } from "./fields";
 
-const TOPICS = ["Catalog upload or cleanup", "Migration", "Product photos", "Google & marketplaces", "Email & abandoned cart", "WhatsApp", "AI customer support", "Monthly plan", "Partnership / agency", "Something else"] as const;
+const TOPICS = ["Catalog listing or cleanup", "Migration", "Product photos", "Google & marketplaces", "Email & abandoned cart", "WhatsApp", "AI customer support", "Monthly plan", "Partnership / agency", "Something else"] as const;
 
 type Data = {
   fullName: string;

@@ -7,7 +7,7 @@ const INPUTS = [
   { label: "Supplier spreadsheets", fmt: "XLSX", note: "One file per supplier is normal" },
   { label: "PDF catalog", fmt: "PDF", note: "Specifications and line drawings" },
   { label: "Image folders", fmt: "JPG · PNG · ZIP", note: "Named by SKU, or not at all" },
-  { label: "Existing store export", fmt: "CSV · JSON", note: "Shopify, WooCommerce, legacy" },
+  { label: "Existing store export", fmt: "CSV · JSON", note: "Shopify, WooCommerce, Magento, legacy" },
 ];
 
 const CAPABILITIES = [
@@ -25,6 +25,8 @@ const CAPABILITIES = [
 const OUTPUTS = [
   { label: "Shopify", via: "Import · staff access" },
   { label: "WooCommerce", via: "CSV · REST API" },
+  { label: "Magento", via: "Import · REST API" },
+  { label: "BigCommerce", via: "CSV · API" },
   { label: "Custom", via: "Schema reviewed per project" },
 ];
 

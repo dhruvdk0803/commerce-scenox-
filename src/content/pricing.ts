@@ -92,7 +92,7 @@ export const pricingFactors = [
   { label: "Number of variants", desc: "Size × colour × material multiplies the work." },
   { label: "Image work", desc: "Matching, renaming, resizing and background cleanup." },
   { label: "Enrichment", desc: "Descriptions, specifications and SEO fields." },
-  { label: "Target platform", desc: "Shopify, WooCommerce or a custom import format." },
+  { label: "Target platform", desc: "Shopify, WooCommerce, Magento, BigCommerce or a custom import format." },
   { label: "Custom requirements", desc: "Approval flows, metafield schemas, staged publishing." },
 ];
 

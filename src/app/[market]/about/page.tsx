@@ -135,7 +135,7 @@ export default function AboutPage() {
                       Platforms
                     </dt>
                     <dd className="text-[1.0625rem] text-ink">
-                      Shopify · WooCommerce · Custom
+                      Shopify · WooCommerce · Magento · BigCommerce · Wix · Custom
                     </dd>
                   </div>
                   <div className="flex flex-col gap-1 py-5 sm:flex-row sm:items-baseline sm:gap-6">

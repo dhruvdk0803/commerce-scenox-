@@ -1,4 +1,4 @@
-export const PLATFORMS = ["Shopify", "WooCommerce", "Custom", "Not launched yet", "Other"] as const;
+export const PLATFORMS = ["Shopify", "WooCommerce", "Magento", "BigCommerce", "Wix / Squarespace", "Custom", "Not launched yet", "Other"] as const;
 
 export const PRODUCT_COUNTS = [
   "1–50",

@@ -8,6 +8,7 @@ import { getMarketId } from "@/lib/market-server";
 import { MarketProvider } from "@/components/market/MarketProvider";
 import { ConsentBanner } from "@/components/consent/ConsentBanner";
 import { AnalyticsScripts } from "@/components/consent/AnalyticsScripts";
+import { ChatWidget } from "@/components/chat/ChatWidget";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -25,7 +26,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Scenox Commerce — 1000 Products. 48 Hours. Live on Your Store.",
+    default: "Scenox Commerce — 1000+ Products. 48 Hours. Live on Your Store.",
     template: "%s",
   },
   description: site.description,
@@ -34,6 +35,9 @@ export const metadata: Metadata = {
     "Shopify bulk product upload service",
     "Shopify catalog management",
     "WooCommerce bulk product upload",
+    "Magento product upload service",
+    "Magento to Shopify migration",
+    "BigCommerce product upload",
     "ecommerce catalog management",
     "ecommerce product catalog cleanup",
     "wholesale ecommerce catalog",
@@ -79,7 +83,11 @@ export default async function RootLayout({
         >
           Skip to content
         </a>
-        <MarketProvider market={market}>{children}</MarketProvider>
+        <MarketProvider market={market}>
+          {children}
+          {/* the assistant only renders when an API key was set at build time (see next.config.ts) */}
+          {process.env.CHAT_ENABLED === "1" && <ChatWidget />}
+        </MarketProvider>
         <ConsentBanner />
         <AnalyticsScripts />
         <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />

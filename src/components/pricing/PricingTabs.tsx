@@ -11,8 +11,8 @@ import { PlanCards } from "./PlanCards";
 import { PricingCards } from "@/components/home/PricingCards";
 
 const TABS = [
+  { id: "catalog", label: "Catalog listing", short: "Catalog", hint: "From 48 hours" },
   { id: "kits", label: "Kits", short: "Kits", hint: "One-time bundles" },
-  { id: "catalog", label: "Catalog upload", short: "Catalog", hint: "From 48 hours" },
   { id: "plans", label: "Monthly plans", short: "Plans", hint: "We run it for you" },
 ] as const;
 
@@ -25,7 +25,7 @@ type TabId = (typeof TABS)[number]["id"];
 export function PricingTabs() {
   const market = useMarket();
   const reduce = useReducedMotion();
-  const [active, setActive] = useState<TabId>("kits");
+  const [active, setActive] = useState<TabId>("catalog");
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const onKey = (e: KeyboardEvent<HTMLDivElement>) => {
@@ -49,7 +49,7 @@ export function PricingTabs() {
           id="pricing-heading"
           eyebrow="PRICING"
           title={
-            <>Fixed products. Public prices.</>
+            <>Know the cost before you call.</>
           }
           description={`Every price is a starting price in ${market.currency} for a fixed scope. We confirm the final figure after seeing your store and data.`}
           action={<TextLink href="/pricing">Full pricing</TextLink>}
@@ -108,8 +108,8 @@ export function PricingTabs() {
             className="mt-8 md:mt-10"
           >
             {/* remount on open so the reveal check runs once the panel is visible */}
-            {t.id === "kits" && <BundleCards bare key={`kits-${active === "kits"}`} />}
             {t.id === "catalog" && <PricingCards bare key={`catalog-${active === "catalog"}`} />}
+            {t.id === "kits" && <BundleCards bare key={`kits-${active === "kits"}`} />}
             {t.id === "plans" && <PlanCards bare key={`plans-${active === "plans"}`} />}
           </div>
         ))}

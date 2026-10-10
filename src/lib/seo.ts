@@ -7,7 +7,7 @@ export const OG_IMAGE = {
   url: "/opengraph-image",
   width: 1200,
   height: 630,
-  alt: "Scenox Commerce: 1000 products, 48 hours, live on your store",
+  alt: "Scenox Commerce: 1000+ products, 48 hours, live on your store",
 };
 
 /** Google truncates around 155–160 characters. */
@@ -80,6 +80,9 @@ export function organizationJsonLd() {
     knowsAbout: [
       "Shopify bulk product upload",
       "WooCommerce product upload",
+      "Magento product upload",
+      "BigCommerce product upload",
+      "Magento to Shopify migration",
       "Ecommerce catalog management",
       "Product data cleanup",
       "Google Shopping feed management",

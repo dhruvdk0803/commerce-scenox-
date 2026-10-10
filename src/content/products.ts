@@ -60,7 +60,7 @@ export type ProductPage = ProductSummary & {
 const existing: ProductSummary[] = [
   {
     id: "upload",
-    name: "Catalog Upload",
+    name: "Catalog Listing",
     href: "/bulk-product-upload",
     group: "catalog",
     desc: "Spreadsheets and supplier data, live on your store.",
@@ -181,7 +181,7 @@ export const productPages: ProductPage[] = [
     lead: "Your store, Google Shopping, Meta ads and marketplaces all need the same products in different formats. We build each feed from your cleaned catalog, fix the errors that get products disapproved, and keep every channel in sync when prices and stock change.",
     facts: [
       { k: "CHANNELS", v: "Google Merchant Center · Meta · Amazon · Flipkart · eBay" },
-      { k: "SOURCE", v: "Your Shopify, WooCommerce or custom catalog" },
+      { k: "SOURCE", v: "Your Shopify, WooCommerce, Magento, BigCommerce or custom catalog" },
       { k: "FIXES", v: "Disapprovals, missing GTINs, attribute and policy errors" },
       { k: "SYNC", v: "Price and stock kept matched across channels" },
     ],
@@ -244,7 +244,7 @@ export const productPages: ProductPage[] = [
     turnaround: "From 48 hours",
     metaTitle: "Ecommerce Email Marketing & Abandoned Cart Recovery",
     metaDescription:
-      "Abandoned cart, welcome, post-purchase, back-in-stock and win-back email flows for Shopify and WooCommerce, written, designed and switched on for you.",
+      "Abandoned cart, welcome, post-purchase, back-in-stock and win-back email flows for Shopify, WooCommerce, Magento and BigCommerce, written, designed and switched on for you.",
     eyebrow: "EMAIL & ABANDONED CART",
     headline: ["Most carts don't buy.", "Most can be brought back."],
     lead: "Every store loses carts, and most first-time buyers never order again. We write, design and switch on the email flows that follow up automatically: cart and checkout recovery, welcome, post-purchase, reviews, back-in-stock and win-back. They run on our own sending infrastructure, so there's no separate email platform for you to buy.",
@@ -293,7 +293,7 @@ export const productPages: ProductPage[] = [
       { title: "Email and WhatsApp together.", body: "If you also use our WhatsApp automation, the two are coordinated so a customer gets one well-timed nudge, not five." },
     ],
     faqs: [
-      { q: "Do I have to use Klaviyo?", a: "No. Flows run on our own sending infrastructure by default, connected to your Shopify or WooCommerce store. If you already use Klaviyo or Shopify Email, we build the flows there instead." },
+      { q: "Do I have to use Klaviyo?", a: "No. Flows run on our own sending infrastructure by default, connected to your Shopify, WooCommerce, Magento or BigCommerce store. If you already use Klaviyo or Shopify Email, we build the flows there instead." },
       { q: "Will my emails land in spam?", a: "We set up SPF, DKIM and DMARC on your sending domain, warm up sending gradually and follow consent rules, which is what inbox providers check. No one can promise 100% inbox placement, but these steps are what make the difference." },
       { q: "Who writes the emails?", a: "We do. Copy is drafted with AI from your brand, products and tone, then edited by a person. You approve every flow before it goes live." },
       { q: "How do I know it's working?", a: "You get reporting per flow: sends, clicks, orders and revenue attributed to each flow. With the Retention plan we review and improve the flows every month." },
@@ -317,7 +317,7 @@ export const productPages: ProductPage[] = [
     turnaround: "From 48 hours",
     metaTitle: "WhatsApp Automation for Ecommerce Stores",
     metaDescription:
-      "Abandoned cart recovery, COD order confirmation, shipping updates and broadcasts on the official WhatsApp Business API, for Shopify and WooCommerce.",
+      "Abandoned cart recovery, COD order confirmation, shipping updates and broadcasts on the official WhatsApp Business API, for Shopify, WooCommerce, Magento and BigCommerce.",
     eyebrow: "WHATSAPP AUTOMATION",
     headline: ["Your customers read WhatsApp.", "Your store should be there."],
     lead: "Messages on WhatsApp get read. We set up the official WhatsApp Business API for your store and switch on the messages that matter: cart recovery, cash-on-delivery confirmation, order and shipping updates, back-in-stock alerts and broadcasts. All on our own messaging infrastructure, with a person ready to take over any conversation.",
@@ -434,7 +434,7 @@ export const productPages: ProductPage[] = [
     ],
     faqs: [
       { q: "Will the AI give customers wrong answers?", a: "It answers only from your catalog, policies and order data. When a question falls outside that, or the customer is upset, it hands the conversation to your team with a summary. You approve its knowledge and tone before it goes live." },
-      { q: "Can it check order status?", a: "Yes. It connects to your Shopify or WooCommerce store to look up an order by number, email or phone and reply with the current status and tracking." },
+      { q: "Can it check order status?", a: "Yes. It connects to your Shopify, WooCommerce, Magento or BigCommerce store to look up an order by number, email or phone and reply with the current status and tracking." },
       { q: "What happens when it can't answer?", a: "The conversation is routed to your team on WhatsApp, email or your helpdesk, with the customer's question and the conversation so far, so nobody has to start over." },
       { q: "Do I need Gorgias, Zendesk or another helpdesk?", a: "No. It runs on our infrastructure. If you already use a helpdesk, we can hand conversations into it instead." },
       { q: "Can it answer in languages other than English?", a: "Yes. It replies in the language the customer writes in. We test your most common languages during setup." },
@@ -486,7 +486,7 @@ export const advantages: { n: string; title: string; body: string }[] = [
   },
   {
     n: "06",
-    title: "Fixed scope. Public prices.",
+    title: "Prices on the page.",
     body: "Every service is a product with a set scope, delivery time and starting price in your currency. No hourly billing, no 'contact sales' to find out the cost.",
   },
 ];

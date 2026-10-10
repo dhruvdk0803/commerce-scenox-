@@ -4,7 +4,8 @@ import { Footer } from "@/components/layout/Footer";
 import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
 import { Hero } from "@/components/home/Hero";
 import { ClientStrip } from "@/components/home/ClientStrip";
-import { Statement } from "@/components/home/PlatformStrip";
+import { PlatformStrip, Statement } from "@/components/home/PlatformStrip";
+import { BeforeYouPay } from "@/components/pricing/BeforeYouPay";
 import { MessySpreadsheet } from "@/components/home/MessySpreadsheet";
 import { BeforeAfter } from "@/components/home/BeforeAfter";
 import { SystemSpec } from "@/components/home/SystemSpec";
@@ -22,7 +23,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = pageMeta({
   title: "Bulk Product Upload in 48 Hours, Run by AI",
   description:
-    "Shopify and WooCommerce product upload in 48 hours, plus Google Shopping feeds, email, WhatsApp and AI support. An AI engine, checked by people.",
+    "1000+ products live on Shopify, WooCommerce, Magento or BigCommerce from 48 hours, plus feeds, email, WhatsApp and AI support. AI engine, checked by people.",
   path: "/",
 });
 
@@ -34,12 +35,16 @@ export default function HomePage() {
         <Hero />
         <ClientStrip />
         <Statement />
+        <div className="mt-14 md:mt-20">
+          <PlatformStrip />
+        </div>
         <MessySpreadsheet />
         <BeforeAfter />
         <ProductMenu />
         <SystemSpec />
         <Advantages />
         <PricingTabs />
+        <BeforeYouPay tone="muted" />
         <SampleOffer />
         <FAQ items={homeFaqs} />
         <FinalCTA />

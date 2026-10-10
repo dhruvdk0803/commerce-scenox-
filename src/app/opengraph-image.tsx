@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Scenox Commerce: 1000 products, 48 hours, live on your store";
+export const alt = "Scenox Commerce: 1000+ products, 48 hours, live on your store";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -26,7 +26,7 @@ export default function OpengraphImage() {
           <span style={{ color: "#6B6B66", marginLeft: 12 }}>/ COMMERCE</span>
         </div>
         <div style={{ display: "flex", flexDirection: "column", fontSize: 92, fontWeight: 700, lineHeight: 1, letterSpacing: -3 }}>
-          <span>1000 PRODUCTS.</span>
+          <span>1000+ PRODUCTS.</span>
           <span>48 HOURS.</span>
           <span>LIVE ON YOUR STORE.</span>
         </div>

@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { site } from "@/lib/site";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -47,6 +48,19 @@ export function FinalCTA({
             )}
           </Reveal>
         </div>
+        {site.bookingUrl && (
+          <Reveal delay={0.2} className="mt-10 border-t border-line-dark pt-6 md:mt-14">
+            <a
+              href={site.bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-1.5 text-[0.95rem] text-paper-2 transition-colors duration-[160ms] hover:text-paper"
+            >
+              Prefer to talk it through? <span className="link-underline font-medium text-paper">Book a call</span>
+              <ArrowUpRight aria-hidden className="size-4" strokeWidth={2} />
+            </a>
+          </Reveal>
+        )}
       </div>
     </section>
   );

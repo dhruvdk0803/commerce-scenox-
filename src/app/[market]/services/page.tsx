@@ -56,7 +56,7 @@ export default function ServicesPage() {
             { k: "LIST", v: "Product upload, cleanup, migration, AI product photos" },
             { k: "SELL", v: "Google Shopping, Meta, Amazon and Flipkart feeds" },
             { k: "RETAIN", v: "Email, abandoned cart, WhatsApp, AI customer support" },
-            { k: "PLATFORMS", v: "Shopify · WooCommerce · Custom" },
+            { k: "PLATFORMS", v: "Shopify · WooCommerce · Magento · BigCommerce · Wix · Custom" },
           ]}
         />
         <ProductMenu

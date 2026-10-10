@@ -531,3 +531,28 @@
 html[data-consent-open] [data-sticky-cta] {
   display: none;
 }
+
+/* chat launcher: out of the way of the consent banner and the mobile sticky CTA */
+html[data-consent-open] [data-chat-launcher] {
+  display: none;
+}
+@media (max-width: 767px) {
+  html:has([data-sticky-cta]) [data-chat-launcher] {
+    bottom: calc(5.25rem + env(safe-area-inset-bottom));
+  }
+}
+
+.chat-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background: currentColor;
+  animation: chat-dot 1s ease-in-out infinite;
+}
+@keyframes chat-dot {
+  0%, 80%, 100% { opacity: 0.25; }
+  40% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chat-dot { animation: none; opacity: 0.6; }
+}

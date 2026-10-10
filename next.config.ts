@@ -11,6 +11,10 @@ const RENAMED: Record<string, string> = {
 };
 
 const nextConfig: NextConfig = {
+  // Only a yes/no reaches the bundle, never the key. The chat button shows when a key exists at build time.
+  env: {
+    CHAT_ENABLED: process.env.ANTHROPIC_API_KEY ? "1" : "",
+  },
   // Root layout lives under [market], so unmatched URLs need a global 404 (see app/global-not-found.tsx).
   experimental: {
     globalNotFound: true,

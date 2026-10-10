@@ -14,6 +14,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { ProductMenu } from "@/components/pricing/ProductMenu";
 import { PlanCards } from "@/components/pricing/PlanCards";
 import { BundleCards } from "@/components/pricing/BundleCards";
+import { BeforeYouPay } from "@/components/pricing/BeforeYouPay";
 import { Price } from "@/components/market/Price";
 import { plans, tiers } from "@/content/pricing";
 import { products } from "@/content/products";
@@ -24,9 +25,9 @@ import { getMarket, getPrice } from "@/lib/market-server";
 export async function generateMetadata(): Promise<Metadata> {
   const from = await getPrice(tiers[0].price);
   return pageMeta({
-    title: `Pricing & Plans — Catalog upload from ${from}`,
+    title: `Pricing & Plans — Catalog listing from ${from}`,
     description:
-      "Public starting prices for catalog upload, cleanup, imagery, feeds, email and WhatsApp automation, plus monthly plans. Fixed scope for every product.",
+      "Public starting prices for catalog listing, cleanup, imagery, feeds, email and WhatsApp automation, plus monthly plans. Fixed scope for every product.",
     path: "/pricing",
   });
 }
@@ -61,19 +62,19 @@ export default async function PricingPage() {
 
         <PageHero
           eyebrow="PRICING"
-          title="Fixed products. Public prices."
+          title="Every price, before you call."
           lead="Every service is a product with a set scope, a delivery time and a starting price in your currency. Run one, combine them in a kit, or let a monthly plan keep it all running."
           className="pb-2 md:pb-4"
           factsLabel="FOUR WAYS TO BUY"
           facts={[
-            { k: "01 · CATALOG", v: <>Upload tiers from <Price set={tiers[0].price} /></> },
+            { k: "01 · CATALOG", v: <>Listing tiers from <Price set={tiers[0].price} /></> },
             { k: "02 · SERVICES", v: <>Single services from <Price set={cheapestService} /></> },
             { k: "03 · KITS", v: <>Bundles from <Price set={cheapestKit} /></> },
             { k: "04 · PLANS", v: <>Monthly from <Price set={plans[0].price} /> · {market.currency}</> },
           ]}
         />
 
-        <PricingCards eyebrow="01 / CATALOG UPLOAD" heading={["Catalog upload.", "Four tiers by product count."]} />
+        <PricingCards eyebrow="01 / CATALOG LISTING" heading={["Catalog listing.", "Four tiers by product count."]} />
 
         <section className="section-y-sm border-t border-line bg-bg-muted/40" aria-labelledby="included-heading">
           <div className="container-x grid gap-8 lg:grid-cols-12 lg:gap-10">
@@ -104,6 +105,7 @@ export default async function PricingPage() {
         />
         <BundleCards tone="muted" eyebrow="03 / KITS" />
         <PlanCards tone="light" eyebrow="04 / MONTHLY PLANS" />
+        <BeforeYouPay tone="muted" />
 
         <FAQ items={pricingFaqs} heading="Pricing questions." />
         <FinalCTA />
