@@ -25,7 +25,7 @@ const ROW_B: Tile[] = [
 ];
 
 /** Photos are shot on porcelain; multiply lets each tile take its own surface colour. */
-const SURFACES = ["bg-bg-tint", "bg-bg-elevated", "bg-[#e4e7ff]", "bg-bg-muted"];
+const SURFACES = ["bg-bg-elevated", "bg-bg-muted", "bg-[#ebe8e1]", "bg-bg-elevated"];
 
 function Row({ tiles, reverse, offset = 0 }: { tiles: Tile[]; reverse?: boolean; offset?: number }) {
   // the list is rendered twice so the loop is seamless; the copy is hidden from assistive tech
@@ -69,7 +69,7 @@ export function Showcase() {
           <Eyebrow>WHAT GOES LIVE</Eyebrow>
           <h2 id="showcase-heading" className="mt-5 text-h2 text-ink">
             50 products or 50,000.
-            <span className="block text-balance text-accent">Every one store-ready.</span>
+            <span className="block text-balance text-ink-2">Every one store-ready.</span>
           </h2>
         </Reveal>
         <Reveal delay={0.08} className="lg:col-span-4 lg:col-start-9">

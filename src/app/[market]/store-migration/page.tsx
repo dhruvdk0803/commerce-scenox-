@@ -16,6 +16,7 @@ import { pageMeta, serviceJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo"
 import { products } from "@/content/products";
 import { MigrationFlow } from "@/components/pages/MigrationFlow";
 import { PageHero } from "@/components/ui/PageHero";
+import { MigrationArt } from "@/components/pages/HeroArt";
 
 export const metadata: Metadata = pageMeta({
   title: "Store Migration to Shopify: Magento, WooCommerce & BigCommerce",
@@ -70,6 +71,7 @@ export default function MigrationPage() {
       <Header />
       <main id="main" className="flex-1">
         <PageHero
+          art={<MigrationArt />}
           eyebrow="PLATFORM MIGRATION"
           title={
             <>

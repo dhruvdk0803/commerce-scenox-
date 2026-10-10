@@ -10,6 +10,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { pageMeta, breadcrumbJsonLd } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { PageHero } from "@/components/ui/PageHero";
+import { AboutArt } from "@/components/pages/HeroArt";
 
 export const metadata = pageMeta({
   title: "About Scenox Commerce",
@@ -54,6 +55,7 @@ export default function AboutPage() {
         />
 
         <PageHero
+          art={<AboutArt />}
           eyebrow="COMPANY"
           title="Commerce operations shouldn't scale with headcount."
           lead="Scenox Commerce is part of Scenox Studios. Scenox Studios builds automation systems for repetitive operational work. Scenox Commerce applies it to ecommerce: catalogs, sales channels, email, WhatsApp and customer support, run by an AI engine and checked by people."

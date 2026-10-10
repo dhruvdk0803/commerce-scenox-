@@ -14,6 +14,7 @@ import { pageMeta, serviceJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo"
 import { products } from "@/content/products";
 import { CleanupDiff } from "@/components/pages/CleanupDiff";
 import { PageHero } from "@/components/ui/PageHero";
+import { CleanupArt } from "@/components/pages/HeroArt";
 
 export const metadata: Metadata = pageMeta({
   title: "Product Catalog Cleanup & Enrichment Service",
@@ -52,6 +53,7 @@ export default function CatalogCleanupPage() {
       <Header />
       <main id="main" className="flex-1">
         <PageHero
+          art={<CleanupArt />}
           eyebrow="CATALOG CLEANUP & ENRICHMENT"
           title={
             <>

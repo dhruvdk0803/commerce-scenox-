@@ -16,6 +16,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbJsonLd, faqJsonLd, pageMeta } from "@/lib/seo";
 import { faqs } from "@/content/faqs";
 import { PageHero } from "@/components/ui/PageHero";
+import { RowToProductArt } from "@/components/pages/HeroArt";
 
 export const metadata: Metadata = pageMeta({
   title: "How It Works: AI Catalog Engine, Checked by People",
@@ -44,6 +45,7 @@ export default function HowItWorksPage() {
         <JsonLd data={[breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "How It Works", path: "/how-it-works" }]), faqJsonLd(HOW_FAQS)]} />
 
         <PageHero
+          art={<RowToProductArt />}
           eyebrow="HOW IT WORKS"
           title={
             <>

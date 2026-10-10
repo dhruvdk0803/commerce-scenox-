@@ -26,14 +26,14 @@
   --border-dark-strong: rgba(255, 255, 255, 0.22);
 
   /* semantic */
-  /* electric ultramarine: one solid brand colour, used for actions and highlights */
-  --accent: #2b3bff;
-  --accent-hover: #1d2be0;
-  --accent-soft: rgba(43, 59, 255, 0.08);
-  /* lighter ultramarine for text on carbon (AA on #101112) */
-  --accent-on-dark: #9aa3ff;
-  /* ultramarine-tinted surface for colour blocks */
-  --bg-tint: #eceeff;
+  /* warm signal ember: operational, used sparingly for actions and highlights */
+  --accent: #c2410c;
+  --accent-hover: #a5370a;
+  --accent-soft: rgba(194, 65, 12, 0.08);
+  /* lighter ember for text on carbon (AA on #101112) */
+  --accent-on-dark: #f4936a;
+  /* warm ember-tinted surface for the odd colour block */
+  --bg-tint: #f3e9e1;
   --success: #16754a;
   --success-soft: rgba(28, 140, 89, 0.1);
   --warning: #8f560e;

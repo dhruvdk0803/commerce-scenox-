@@ -16,7 +16,8 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Button, TextLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { PageHero, Facts } from "@/components/ui/PageHero";
+import { PageHero } from "@/components/ui/PageHero";
+import { EmailArt, FeedsArt, ImageryArt, SupportArt, VoiceArt, WhatsAppArt } from "./HeroArt";
 import { CheckBox, Status } from "@/components/ui/Status";
 import { FAQ } from "@/components/home/FAQ";
 import { FinalCTA } from "@/components/home/FinalCTA";
@@ -38,24 +39,15 @@ export function productMeta(id: string): Metadata {
   return pageMeta({ title: p.metaTitle, description: p.metaDescription, path: p.href });
 }
 
-function PriceBox({ p }: { p: ProductPage }) {
-  return (
-    <div className="flex flex-col gap-3">
-      <div className="rounded-[10px] border border-ink bg-bg-elevated p-5">
-        <p className="mono-micro text-ink-3">STARTS FROM</p>
-        <p className="mt-2 text-[2.5rem] font-semibold leading-none tracking-[-0.035em] text-ink tabular">
-          <Price set={p.price} />
-        </p>
-        <p className="mono-micro mt-2 text-ink-2">{p.unit.toUpperCase()}</p>
-        <div className="mt-4 flex items-center justify-between border-t border-line pt-3">
-          <span className="mono-micro text-ink-3">DELIVERY</span>
-          <span className="text-[0.9rem] text-ink">{p.turnaround}*</span>
-        </div>
-      </div>
-      <Facts label="WHAT YOU GET" facts={p.facts} />
-    </div>
-  );
-}
+/** Hero visual per service: what it produces, not a description of it. */
+const ART: Record<string, ComponentType> = {
+  imagery: ImageryArt,
+  feeds: FeedsArt,
+  email: EmailArt,
+  whatsapp: WhatsAppArt,
+  support: SupportArt,
+  voice: VoiceArt,
+};
 
 /** One bespoke visual per service; any product without one falls back to the status ledger. */
 const VISUALS: Record<string, ComponentType | undefined> = {
@@ -136,6 +128,7 @@ export function ProductTemplate({ id }: { id: string }) {
   const p = get(id);
   const cta = `/get-started?need=${p.need}`;
   const Visual = VISUALS[p.id];
+  const Art = ART[p.id];
 
   return (
     <>
@@ -158,7 +151,12 @@ export function ProductTemplate({ id }: { id: string }) {
               <TextLink href="#plans">Or run it monthly</TextLink>
             </>
           }
-          aside={<PriceBox p={p} />}
+          art={Art ? <Art /> : undefined}
+          facts={[
+            { k: "STARTS FROM", v: <><span className="font-semibold tabular"><Price set={p.price} /></span> <span className="text-ink-3">· {p.unit}</span></> },
+            { k: "DELIVERY", v: `${p.turnaround}*` },
+            ...p.facts,
+          ]}
         />
 
         {p.id === "imagery" && <PhotoStudio showLink={false} />}

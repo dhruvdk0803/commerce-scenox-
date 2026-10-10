@@ -4,18 +4,18 @@ import type { CSSProperties } from "react";
 import { PlatformList } from "@/components/ui/PlatformList";
 import { site } from "@/lib/site";
 import Link from "next/link";
-import { Camera, Check, Headset, Mail, MessageCircle, Mic, Store } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import { Button, TextLink } from "@/components/ui/Button";
 import { CatalogPipeline } from "./pipeline/CatalogPipeline";
 
 /** Services beyond the catalog, surfaced in the hero so the full offer is visible above the fold. */
 const AFTER_LAUNCH = [
-  { label: "Photos", href: "/ai-product-photos", icon: Camera },
-  { label: "Marketplaces", href: "/product-feed-management", icon: Store },
-  { label: "Email & carts", href: "/ecommerce-email-marketing", icon: Mail },
-  { label: "WhatsApp", href: "/whatsapp-automation", icon: MessageCircle },
-  { label: "AI support", href: "/ai-customer-support", icon: Headset },
-  { label: "Voice & chat", href: "/ai-voice-shopping-assistant", icon: Mic },
+  { label: "Product photos", note: "Clean, consistent sets", href: "/ai-product-photos" },
+  { label: "Google & marketplaces", note: "Shopping, Meta, Amazon", href: "/product-feed-management" },
+  { label: "Email & carts", note: "Recovery and win-back", href: "/ecommerce-email-marketing" },
+  { label: "WhatsApp", note: "COD, carts, order updates", href: "/whatsapp-automation" },
+  { label: "AI support", note: "Questions answered 24/7", href: "/ai-customer-support" },
+  { label: "Voice & chat", note: "Buy in chat, COD calls", href: "/ai-voice-shopping-assistant" },
 ];
 
 const PROMISES = ["Free 10-product sample", "Fixed quote before work", "No store passwords"];
@@ -49,7 +49,7 @@ export function Hero({ compact = false }: { compact?: boolean }) {
           ) : (
             <>
               <span className="block">1000+ PRODUCTS.</span>
-              <span className="block text-accent">48 HOURS.</span>
+              <span className="block">48 HOURS.</span>
               <span className="block">
                 LIVE ON YOUR STORE.
               </span>
@@ -125,23 +125,30 @@ export function Hero({ compact = false }: { compact?: boolean }) {
         {!compact && (
           <nav
             aria-label="After launch"
-            className={`mt-10 flex flex-col gap-4 border-t border-line pt-6 md:mt-14 lg:flex-row lg:items-center lg:gap-8 ${item(7).className}`}
+            className={`mt-10 grid overflow-hidden rounded-[12px] border border-line bg-bg-elevated md:mt-14 lg:grid-cols-[14rem_1fr] ${item(7).className}`}
             style={item(7).style}
           >
-            <p className="shrink-0 text-[1rem] font-medium tracking-[-0.01em] text-ink">
-              Live is day one. <span className="text-ink-3">Then we run:</span>
-            </p>
-            <ul className="flex flex-wrap gap-2">
-              {AFTER_LAUNCH.map(({ label, href, icon: Icon }) => (
-                <li key={href}>
+            <div className="flex items-center justify-between gap-3 border-b border-line px-5 py-4 lg:flex-col lg:items-start lg:justify-center lg:border-b-0 lg:border-r">
+              <p className="mono-micro text-ink-3">AFTER LAUNCH</p>
+              <p className="text-[0.95rem] font-medium tracking-[-0.01em] text-ink lg:mt-1">The rest of the store, run for you.</p>
+            </div>
+            <ul className="grid grid-cols-2 gap-px bg-line md:grid-cols-3 xl:grid-cols-6">
+              {AFTER_LAUNCH.map((a, i) => (
+                <li key={a.href} className="bg-bg-elevated">
                   <Link
-                    href={href}
-                    className="group inline-flex h-10 items-center gap-2 rounded-full border border-line bg-bg-elevated pl-2 pr-3.5 text-[0.9rem] text-ink transition-[border-color,background-color] duration-[160ms] hover:border-accent hover:bg-bg-tint"
+                    href={a.href}
+                    className="group flex h-full flex-col gap-1 px-5 py-4 transition-colors duration-[160ms] hover:bg-bg-muted/60"
                   >
-                    <span className="grid size-7 place-items-center rounded-full bg-bg-tint text-accent transition-colors duration-[160ms] group-hover:bg-accent group-hover:text-white">
-                      <Icon className="size-3.5" strokeWidth={2} aria-hidden />
+                    <span className="flex items-center justify-between">
+                      <span className="mono-micro text-ink-3 tabular">{String(i + 1).padStart(2, "0")}</span>
+                      <ArrowUpRight
+                        aria-hidden
+                        className="size-3.5 text-ink-3 transition-[transform,color] duration-[200ms] ease-[var(--ease-out)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink"
+                        strokeWidth={2}
+                      />
                     </span>
-                    {label}
+                    <span className="mt-1 text-[0.95rem] font-medium tracking-[-0.01em] text-ink">{a.label}</span>
+                    <span className="text-[0.825rem] leading-snug text-ink-3">{a.note}</span>
                   </Link>
                 </li>
               ))}

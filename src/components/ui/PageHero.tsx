@@ -17,6 +17,7 @@ export function PageHero({
   facts,
   factsLabel = "AT A GLANCE",
   aside,
+  art,
   size = "h1",
   className,
 }: {
@@ -28,9 +29,32 @@ export function PageHero({
   factsLabel?: string;
   /** custom right-hand content instead of facts */
   aside?: ReactNode;
+  /** a visual for the right-hand side; facts then move to a strip under the hero */
+  art?: ReactNode;
   size?: "h1" | "display";
   className?: string;
 }) {
+  if (art) {
+    return (
+      <section data-hero className={cn("container-x pt-10 pb-14 md:pt-14 md:pb-20", className)}>
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-12 lg:items-center lg:gap-12">
+          <Reveal className="lg:col-span-6">
+            <Eyebrow>{eyebrow}</Eyebrow>
+            <h1 className={cn("mt-5 text-balance text-ink", size === "display" ? "text-display" : "text-h1", "max-w-[20ch]")}>
+              {title}
+            </h1>
+            {lead && <p className="mt-6 max-w-[46ch] text-lead text-ink-2">{lead}</p>}
+            {actions && <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">{actions}</div>}
+          </Reveal>
+          <Reveal delay={0.1} className="min-w-0 lg:col-span-6">
+            {art}
+          </Reveal>
+        </div>
+        {facts && facts.length > 0 && <FactStrip facts={facts} />}
+      </section>
+    );
+  }
+
   const right = aside ?? (facts && facts.length > 0 ? <Facts label={factsLabel} facts={facts} /> : null);
   return (
     <section data-hero className={cn("container-x pt-10 pb-14 md:pt-16 md:pb-20", className)}>
@@ -52,6 +76,22 @@ export function PageHero({
         )}
       </div>
     </section>
+  );
+}
+
+/** Facts as one horizontal row under a visual hero. */
+export function FactStrip({ facts }: { facts: Fact[] }) {
+  return (
+    <Reveal delay={0.16} className="mt-12 md:mt-16">
+      <dl className={cn("grid grid-cols-1 border-t border-line sm:grid-cols-2", facts.length > 4 ? "lg:grid-cols-3" : "lg:grid-cols-4")}>
+        {facts.map((f) => (
+          <div key={f.k} className={cn("border-b border-line py-4 sm:pr-6", facts.length <= 4 && "lg:border-b-0 lg:pt-5")}>
+            <dt className="mono-micro text-ink-3">{f.k}</dt>
+            <dd className="mt-1.5 text-[0.95rem] leading-snug text-ink [overflow-wrap:anywhere]">{f.v}</dd>
+          </div>
+        ))}
+      </dl>
+    </Reveal>
   );
 }
 

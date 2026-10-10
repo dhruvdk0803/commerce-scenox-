@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { PlatformList } from "@/components/ui/PlatformList";
 import Link from "next/link";
+import Image from "next/image";
+import { img } from "@/lib/images";
 import { SampleForm } from "@/components/forms/SampleForm";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Wordmark } from "@/components/ui/Wordmark";
@@ -56,6 +58,14 @@ export default function SamplePage() {
               <div className="mt-10 rounded-[12px] border border-line bg-bg-elevated">
                 <div className="flex h-11 items-center justify-between border-b border-line px-4">
                   <span className="mono-label text-ink-2">WHAT YOU GET BACK</span>
+                  <span className="mono-micro text-ink-3">EXAMPLE</span>
+                </div>
+                <div className="grid grid-cols-5 gap-px border-b border-line bg-line">
+                  {[img.chair, img.bottle, img.lamp, img.sneaker, img.mug].map((src, i) => (
+                    <div key={i} className="relative aspect-square bg-[#f5f4ef]">
+                      <Image src={src} alt="" sizes="96px" className="size-full object-cover" />
+                    </div>
+                  ))}
                 </div>
                 <ul className="p-4">
                   {WHAT_YOU_GET.map((w) => (

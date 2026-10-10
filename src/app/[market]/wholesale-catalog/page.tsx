@@ -13,6 +13,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { pageMeta, serviceJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
 import { WholesaleFlow } from "@/components/pages/WholesaleFlow";
 import { PageHero } from "@/components/ui/PageHero";
+import { CatalogMosaicArt } from "@/components/pages/HeroArt";
 
 export const metadata: Metadata = pageMeta({
   title: "Wholesale & Distributor Catalog Upload",
@@ -73,6 +74,7 @@ export default function WholesaleCatalogPage() {
       <Header />
       <main id="main" className="flex-1">
         <PageHero
+          art={<CatalogMosaicArt />}
           eyebrow="FOR WHOLESALERS & DISTRIBUTORS"
           title={
             <>

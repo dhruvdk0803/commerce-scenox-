@@ -11,6 +11,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { pageMeta, breadcrumbJsonLd } from "@/lib/seo";
 import { CaseStudyTemplate } from "@/components/pages/CaseStudyTemplate";
 import { PageHero } from "@/components/ui/PageHero";
+import { CatalogMosaicArt } from "@/components/pages/HeroArt";
 import { clients, clientClaim } from "@/content/clients";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 
@@ -64,6 +65,7 @@ export default function CaseStudiesPage() {
       <Header />
       <main id="main" className="flex-1">
         <PageHero
+          art={<CatalogMosaicArt label="SAMPLE OUTPUT" note="ILLUSTRATIVE" footer={<span className="text-[0.85rem] text-ink-2">Representative samples, shown with sample data.</span>} />}
           eyebrow="CASE STUDIES"
           title="Who we've worked with, and how the work runs."
           lead={`Catalog operations for ${clientClaim.headline}, from boutiques to manufacturers and distributors. Named clients below; the workflow write-ups are representative samples until each client clears a full case study for publication.`}

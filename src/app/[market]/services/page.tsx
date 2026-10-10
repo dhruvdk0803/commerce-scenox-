@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { PageHero } from "@/components/ui/PageHero";
+import { ServicesArt } from "@/components/pages/HeroArt";
 import { Button, TextLink } from "@/components/ui/Button";
 import { ProductMenu } from "@/components/pricing/ProductMenu";
 import Link from "next/link";
@@ -41,6 +42,7 @@ export default function ServicesPage() {
       <Header />
       <main id="main" className="flex-1">
         <PageHero
+          art={<ServicesArt />}
           eyebrow="SERVICES"
           title="Everything a store needs after it's built."
           lead="Eight fixed products across the ecommerce cycle: get every product listed, sell it on every channel, then recover carts and keep customers coming back. Most can go live in as little as 48 hours for eligible projects."
