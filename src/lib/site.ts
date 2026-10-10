@@ -6,7 +6,7 @@ export const site = {
   url: "https://commerce.scenoxstudios.com",
   tagline: "Ecommerce operations, run by AI.",
   description:
-    "Scenox Commerce runs the operations behind online stores: catalog upload and cleanup, product imagery, Google Shopping and marketplace feeds, email and abandoned cart recovery, WhatsApp automation and AI customer support. An AI engine does the volume, a person reviews every output. Shopify, WooCommerce, Magento (Adobe Commerce), BigCommerce, Wix and custom platforms.",
+    "Scenox Commerce runs the operations behind online stores: catalog upload and cleanup, product imagery, Google Shopping and marketplace feeds, email and abandoned cart recovery, WhatsApp automation, AI customer support and AI voice and chat shopping assistants. An AI engine does the volume, a person reviews every output. Shopify, WooCommerce, Magento (Adobe Commerce), BigCommerce, Wix and custom platforms.",
   email: "commerce@scenoxstudios.com",
   /** Set to a full international number (e.g. "919999999999") to enable WhatsApp CTAs. Leave empty to hide. */
   whatsapp: "",
@@ -27,6 +27,7 @@ export const nav = {
     { label: "Email & Abandoned Cart", href: "/ecommerce-email-marketing", desc: "Recovery, welcome and win-back flows.", group: "Sell & Retain" },
     { label: "WhatsApp Automation", href: "/whatsapp-automation", desc: "Cart recovery, COD confirmation, updates.", group: "Sell & Retain" },
     { label: "AI Customer Support", href: "/ai-customer-support", desc: "Order and product questions answered 24/7.", group: "Sell & Retain" },
+    { label: "AI Voice & Chat Shopping", href: "/ai-voice-shopping-assistant", desc: "Shoppers buy in chat. Voice agents confirm orders.", group: "Sell & Retain" },
   ],
   more: [
     { label: "All Services", href: "/services", desc: "Every product, kit and plan on one page." },
@@ -49,6 +50,7 @@ export const nav = {
       { label: "Email & Abandoned Cart", href: "/ecommerce-email-marketing" },
       { label: "WhatsApp Automation", href: "/whatsapp-automation" },
       { label: "AI Customer Support", href: "/ai-customer-support" },
+      { label: "AI Voice & Chat Shopping", href: "/ai-voice-shopping-assistant" },
       { label: "Wholesalers & Distributors", href: "/wholesale-catalog" },
     ],
     company: [

@@ -8,8 +8,8 @@ import { Check } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { track, trackConversion } from "@/lib/analytics";
 import { isValidEmail, isValidPhone } from "@/lib/validation";
-import { ChipGroup, Field, FileDrop, Select, TextArea, TextInput, fileToBase64, readUtm, focusFirstInvalid } from "./fields";
-import { PLATFORMS, PRODUCT_COUNTS, SOURCES } from "./options";
+import { ChipGroup, Field, FileDrop, PhoneInput, Select, TextArea, TextInput, fileToBase64, readUtm, focusFirstInvalid } from "./fields";
+import { MARKET_ISO, PLATFORMS, PRODUCT_COUNTS, SOURCES } from "./options";
 
 type Data = {
   fullName: string;
@@ -163,7 +163,7 @@ export function SampleForm() {
           </Field>
           <Field label="Phone / WhatsApp" error={errors.phone}>
             {(p) => (
-              <TextInput {...p} type="tel" name="phone" inputMode="tel" autoComplete="tel" value={data.phone} onChange={(e) => set("phone", e.target.value)} placeholder={`${market.dial} …`} />
+              <PhoneInput {...p} value={data.phone} onChange={(v) => set("phone", v)} defaultIso={MARKET_ISO[market.id]} />
             )}
           </Field>
           <Field label="Company" error={errors.company}>

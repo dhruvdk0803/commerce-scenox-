@@ -1,3 +1,4 @@
+import { Showcase } from "@/components/home/Showcase";
 import type { Metadata } from "next";
 import { SpeedComparison } from "@/components/home/SpeedComparison";
 import { Header } from "@/components/layout/Header";
@@ -57,6 +58,7 @@ export default function CatalogPage() {
         <Hero compact />
         <PlatformStrip />
         <ClientStrip />
+        <Showcase />
 
         {/* what you send / what we handle / sizes */}
         <section className="section-y" aria-labelledby="scope-heading">

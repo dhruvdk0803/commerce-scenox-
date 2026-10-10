@@ -15,6 +15,7 @@ import {
   ChipGroup,
   Field,
   FileDrop,
+  PhoneInput,
   Select,
   StepProgress,
   TextArea,
@@ -23,6 +24,7 @@ import {
   readUtm, focusFirstInvalid } from "./fields";
 import {
   COUNTRIES,
+  MARKET_ISO,
   NEEDS,
   NEED_QUERY_MAP,
   PLATFORMS,
@@ -106,7 +108,10 @@ export function LeadForm() {
     const platform = params.get("platform");
     const plan = params.get("plan");
     const needs = [...(saved.needs ?? [])];
-    if (need && NEED_QUERY_MAP[need] && !needs.includes(NEED_QUERY_MAP[need])) needs.push(NEED_QUERY_MAP[need]);
+    // ?need=imagery,feeds from the estimator, or a single value from a service page
+    for (const n of need?.split(",") ?? []) {
+      if (NEED_QUERY_MAP[n] && !needs.includes(NEED_QUERY_MAP[n])) needs.push(NEED_QUERY_MAP[n]);
+    }
     if (plan && !needs.includes("Monthly plan")) needs.push("Monthly plan");
     if (params.get("bundle") && !needs.includes("Bundle")) needs.push("Bundle");
     const d: Data = {
@@ -115,6 +120,7 @@ export function LeadForm() {
       needs,
       country: saved.country || (COUNTRIES as readonly string[]).find((c) => c === market.label) || "",
       productCount: saved.productCount || (tier && TIER_COUNT_MAP[tier]) || "",
+      notes: saved.notes || (params.get("est") ? `Estimator: ${params.get("est")!.slice(0, 200)}` : ""),
       platform:
         saved.platform || (platform && PLATFORMS.find((p) => p.toLowerCase() === platform.toLowerCase())) || "",
     };
@@ -329,15 +335,12 @@ export function LeadForm() {
                   </Field>
                   <Field label="Phone / WhatsApp" error={errors.phone}>
                     {(p) => (
-                      <TextInput
+                      <PhoneInput
                         {...p}
-                        type="tel"
-                        name="phone"
-                        inputMode="tel"
-                        autoComplete="tel"
                         value={data.phone}
-                        onChange={(e) => set("phone", e.target.value)}
-                        placeholder={`${market.dial} …`}
+                        onChange={(v) => set("phone", v)}
+                        defaultIso={MARKET_ISO[market.id]}
+                        onCountry={(c) => set("country", (COUNTRIES as readonly string[]).includes(c) ? c : "Other")}
                       />
                     )}
                   </Field>

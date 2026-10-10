@@ -1,6 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
+import { img, type ImgKey } from "@/lib/images";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -20,17 +22,17 @@ const RAW_ROWS = [
   "CL-07,wall clock 30cm,decor,NULL",
 ];
 
-const CLEAN = [
-  ["Black Ergonomic Office Chair", "Office Furniture › Chairs"],
-  ["Insulated Steel Bottle 750 ml", "Kitchen › Drinkware"],
-  ["White LED Desk Lamp", "Lighting › Desk Lamps"],
-  ["Garden Hose 20 m", "Garden › Watering"],
-  ["Cotton Crew T-Shirt", "Apparel › T-Shirts"],
-  ["5-Tier Oak Bookshelf", "Furniture › Shelving"],
-  ["Mini Bluetooth Speaker", "Electronics › Audio"],
-  ["Ceramic Mug 350 ml", "Kitchen › Tableware"],
-  ["Wool Rug 5 × 8 ft", "Home › Rugs"],
-  ["Wall Clock 30 cm", "Decor › Clocks"],
+const CLEAN: [string, string, ImgKey][] = [
+  ["Black Ergonomic Office Chair", "Office Furniture › Chairs", "chair"],
+  ["Insulated Steel Bottle 750 ml", "Kitchen › Drinkware", "bottle"],
+  ["White LED Desk Lamp", "Lighting › Desk Lamps", "lamp"],
+  ["Garden Hose 20 m", "Garden › Watering", "hose"],
+  ["Cotton Crew T-Shirt", "Apparel › T-Shirts", "tshirt"],
+  ["5-Tier Oak Bookshelf", "Furniture › Shelving", "shelf"],
+  ["Mini Bluetooth Speaker", "Electronics › Audio", "speaker"],
+  ["Ceramic Mug 350 ml", "Kitchen › Tableware", "mug"],
+  ["Wool Rug 5 × 8 ft", "Home › Rugs", "rug"],
+  ["Wall Clock 30 cm", "Decor › Clocks", "clock"],
 ];
 
 export function SampleOffer() {
@@ -117,12 +119,14 @@ export function SampleOffer() {
 
               {/* clean */}
               <Stagger as="ol" className="grid gap-1.5 max-sm:[&>li:nth-child(n+7)]:hidden" amount={0.2}>
-                {CLEAN.map(([t, c], i) => (
+                {CLEAN.map(([t, c, ph]) => (
                   <MotionLi
                     key={t}
-                    className="flex items-center gap-2.5 rounded-[6px] border border-line bg-bg px-2.5 py-1.5"
+                    className="flex items-center gap-2.5 rounded-[6px] border border-line bg-bg py-1 pl-1 pr-2.5"
                   >
-                    <span className="mono-micro w-[2ch] shrink-0 tabular text-ink-3">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="relative size-8 shrink-0 overflow-hidden rounded-[4px] bg-[#f5f4ef]">
+                      <Image src={img[ph]} alt="" sizes="32px" className="size-full object-cover" />
+                    </span>
                     <div className="min-w-0 flex-1">
                       <p className="truncate text-[0.8125rem] font-medium leading-tight text-ink">{t}</p>
                       <p className="truncate font-mono text-[0.75rem] text-ink-3">{c}</p>

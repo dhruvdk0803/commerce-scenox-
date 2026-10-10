@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import { img } from "@/lib/images";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { site } from "@/lib/site";
 import { Button } from "@/components/ui/Button";
@@ -22,13 +24,23 @@ export function FinalCTA({
       aria-labelledby="final-heading"
     >
       <div className="container-x relative section-y">
-        <Reveal>
-          <h2 id="final-heading" className="max-w-[26ch] text-h1 text-paper">
-            {heading[0]}
-            <br />
-            <span className="block text-balance text-paper-2">{heading[1]}</span>
-          </h2>
-        </Reveal>
+        <div className="xl:grid xl:grid-cols-[minmax(0,1fr)_auto] xl:items-center xl:gap-12">
+          <Reveal>
+            <h2 id="final-heading" className="max-w-[26ch] text-h1 text-paper">
+              {heading[0]}
+              <br />
+              <span className="block text-balance text-paper-2">{heading[1]}</span>
+            </h2>
+          </Reveal>
+          {/* finished products, as a reminder of the outcome */}
+          <Reveal delay={0.1} className="hidden grid-cols-3 gap-2 xl:grid">
+            {([img.chair, img.sneaker, img.lamp, img.serum, img.bottle, img.clock] as const).map((src, i) => (
+              <div key={i} className="relative size-[6.5rem] overflow-hidden rounded-[10px] bg-[#f5f4ef]">
+                <Image src={src} alt="" sizes="104px" className="size-full object-cover" />
+              </div>
+            ))}
+          </Reveal>
+        </div>
         <div className="mt-10 grid gap-8 md:mt-14 md:grid-cols-12 md:items-end">
           <Reveal delay={0.08} className="md:col-span-6">
             <p className="max-w-[40ch] text-lead text-paper-2">{body}</p>

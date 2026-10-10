@@ -4,11 +4,13 @@ import { Footer } from "@/components/layout/Footer";
 import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
 import { Hero } from "@/components/home/Hero";
 import { ClientStrip } from "@/components/home/ClientStrip";
-import { PlatformStrip, Statement } from "@/components/home/PlatformStrip";
+import { PlatformStrip } from "@/components/home/PlatformStrip";
+import { Showcase } from "@/components/home/Showcase";
+import { PhotoStudio } from "@/components/home/PhotoStudio";
+import { QuoteEstimator } from "@/components/pricing/QuoteEstimator";
 import { BeforeYouPay } from "@/components/pricing/BeforeYouPay";
 import { MessySpreadsheet } from "@/components/home/MessySpreadsheet";
 import { BeforeAfter } from "@/components/home/BeforeAfter";
-import { SystemSpec } from "@/components/home/SystemSpec";
 import { SampleOffer } from "@/components/home/SampleOffer";
 import { Advantages } from "@/components/home/Advantages";
 import { ProductMenu } from "@/components/pricing/ProductMenu";
@@ -34,15 +36,14 @@ export default function HomePage() {
       <main id="main" className="flex-1">
         <Hero />
         <ClientStrip />
-        <Statement />
-        <div className="mt-14 md:mt-20">
-          <PlatformStrip />
-        </div>
+        <Showcase />
+        <PlatformStrip />
         <MessySpreadsheet />
         <BeforeAfter />
+        <PhotoStudio />
         <ProductMenu />
-        <SystemSpec />
         <Advantages />
+        <QuoteEstimator />
         <PricingTabs />
         <BeforeYouPay tone="muted" />
         <SampleOffer />

@@ -20,7 +20,7 @@ import { products } from "@/content/products";
 export const metadata: Metadata = pageMeta({
   title: "Ecommerce Services: Catalog, Feeds, Email & WhatsApp",
   description:
-    "Every Scenox Commerce service in one place: product upload, catalog cleanup, AI product photos, Google Shopping feeds, email, WhatsApp and AI customer support.",
+    "Every Scenox Commerce service in one place: product upload, catalog cleanup, AI product photos, Google Shopping feeds, email, WhatsApp, AI customer support and AI voice and chat shopping.",
   path: "/services",
 });
 
@@ -55,7 +55,7 @@ export default function ServicesPage() {
           facts={[
             { k: "LIST", v: "Product upload, cleanup, migration, AI product photos" },
             { k: "SELL", v: "Google Shopping, Meta, Amazon and Flipkart feeds" },
-            { k: "RETAIN", v: "Email, abandoned cart, WhatsApp, AI customer support" },
+            { k: "RETAIN", v: "Email, abandoned cart, WhatsApp, AI support, voice & chat shopping" },
             { k: "PLATFORMS", v: "Shopify · WooCommerce · Magento · BigCommerce · Wix · Custom" },
           ]}
         />

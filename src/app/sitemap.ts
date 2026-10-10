@@ -14,6 +14,7 @@ const routes: { path: string; priority: number; freq: MetadataRoute.Sitemap[numb
   { path: "/ecommerce-email-marketing", priority: 0.8, freq: "monthly" },
   { path: "/whatsapp-automation", priority: 0.8, freq: "monthly" },
   { path: "/ai-customer-support", priority: 0.8, freq: "monthly" },
+  { path: "/ai-voice-shopping-assistant", priority: 0.8, freq: "monthly" },
   { path: "/how-it-works", priority: 0.8, freq: "monthly" },
   { path: "/pricing", priority: 0.9, freq: "monthly" },
   { path: "/case-studies", priority: 0.6, freq: "monthly" },

@@ -149,17 +149,19 @@ export function TextLink({
   className,
   inverse,
   event,
+  eventParams,
 }: {
   href: string;
   children: ReactNode;
   className?: string;
   inverse?: boolean;
   event?: AnalyticsEvent;
+  eventParams?: Record<string, string | number | boolean | undefined>;
 }) {
   return (
     <Link
       href={href}
-      onClick={() => event && track(event)}
+      onClick={() => event && track(event, eventParams)}
       className={cn(
         "group inline-flex items-center gap-1.5 font-medium tracking-[-0.01em] arrow-nudge",
         inverse ? "text-paper" : "text-ink",

@@ -4,6 +4,7 @@ import { useId, useRef, useState, type InputHTMLAttributes, type ReactNode, type
 import { Check, ChevronDown, FileUp, X } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
+import { DIAL_CODES, type DialIso } from "./options";
 
 /* ------------------------------------------------------------------ */
 /* wrapper                                                              */
@@ -132,6 +133,110 @@ export function Select({
         className="pointer-events-none absolute right-3.5 top-1/2 size-4 -translate-y-1/2 text-ink-2"
         strokeWidth={2}
         aria-hidden
+      />
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* phone with country code                                              */
+/* ------------------------------------------------------------------ */
+
+/** Longest matching dial prefix wins (+353 before +35…); on a tie (+1 for US and Canada) prefer `hint`. */
+function matchDial(v: string, hint: DialIso) {
+  const sorted = [...DIAL_CODES].sort((a, b) => b.dial.length - a.dial.length);
+  const hit = sorted.filter((d) => v.startsWith(d.dial));
+  if (!hit.length) return null;
+  const best = hit.filter((d) => d.dial === hit[0].dial);
+  return best.find((d) => d.iso === hint) ?? best[0];
+}
+
+/**
+ * Country-code picker + number. Emits one string, e.g. "+44 7700 900123", so
+ * the server and validators keep working with a single `phone` field.
+ */
+export function PhoneInput({
+  value,
+  onChange,
+  defaultIso,
+  onCountry,
+  id,
+  invalid,
+  describedBy,
+  name = "phone",
+}: {
+  value: string;
+  onChange: (v: string) => void;
+  defaultIso: DialIso;
+  /** Called with the country name when the visitor picks a code. */
+  onCountry?: (name: string) => void;
+  id?: string;
+  invalid?: boolean;
+  describedBy?: string;
+  name?: string;
+}) {
+  const [iso, setIso] = useState<DialIso>(() => matchDial(value, defaultIso)?.iso ?? defaultIso);
+  const entry = DIAL_CODES.find((d) => d.iso === iso) ?? DIAL_CODES[0];
+  const local = value.startsWith(entry.dial) ? value.slice(entry.dial.length).trimStart() : value.replace(/^\+\d*\s?/, "");
+
+  const emit = (dial: string, num: string) => onChange(num.trim() ? `${dial} ${num.trimStart()}` : "");
+
+  return (
+    <div
+      className={cn(
+        "flex h-12 w-full overflow-hidden rounded-[8px] border bg-bg-elevated transition-[border-color,box-shadow] duration-[160ms] focus-within:ring-2",
+        invalid ? "border-danger focus-within:ring-danger/10" : "border-line focus-within:border-ink focus-within:ring-ink/10",
+      )}
+    >
+      <div className="relative w-[6.75rem] shrink-0 border-r border-line">
+        <select
+          aria-label="Country code"
+          value={iso}
+          onChange={(e) => {
+            const next = DIAL_CODES.find((d) => d.iso === e.target.value)!;
+            setIso(next.iso);
+            emit(next.dial, local);
+            onCountry?.(next.name);
+          }}
+          className="h-full w-[6.75rem] appearance-none bg-transparent pl-3 pr-7 font-mono text-[0.9rem] text-transparent outline-none"
+        >
+          {DIAL_CODES.map((d) => (
+            <option key={d.iso} value={d.iso}>
+              {d.iso} {d.dial} · {d.name}
+            </option>
+          ))}
+        </select>
+        {/* the closed select shows only "IN +91"; the full name lives in the list */}
+        <span aria-hidden className="pointer-events-none absolute inset-0 flex items-center gap-1 bg-bg-elevated pl-3 pr-7 font-mono text-[0.9rem] text-ink">
+          <span className="text-ink-3">{entry.iso}</span> {entry.dial}
+        </span>
+        <ChevronDown className="pointer-events-none absolute right-2 top-1/2 size-3.5 -translate-y-1/2 text-ink-2" strokeWidth={2} aria-hidden />
+      </div>
+      <input
+        id={id}
+        type="tel"
+        name={name}
+        inputMode="tel"
+        autoComplete="tel-national"
+        value={local}
+        onChange={(e) => {
+          const raw = e.target.value;
+          // pasted a full international number: switch the code to match
+          if (raw.trim().startsWith("+")) {
+            const m = matchDial(raw.trim(), iso);
+            if (m) {
+              setIso(m.iso);
+              emit(m.dial, raw.trim().slice(m.dial.length));
+              if (m.iso !== iso) onCountry?.(m.name);
+              return;
+            }
+          }
+          emit(entry.dial, raw);
+        }}
+        aria-invalid={invalid || undefined}
+        aria-describedby={describedBy}
+        placeholder="Phone number"
+        className="h-full w-0 min-w-0 flex-1 bg-transparent px-3.5 text-[1rem] text-ink outline-none placeholder:text-ink-3"
       />
     </div>
   );

@@ -90,6 +90,8 @@ export function organizationJsonLd() {
       "Abandoned cart recovery",
       "WhatsApp automation for ecommerce",
       "AI customer support",
+      "AI shopping assistant",
+      "AI voice agent",
     ],
   };
 }

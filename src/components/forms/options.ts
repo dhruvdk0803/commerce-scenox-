@@ -37,6 +37,7 @@ export const NEEDS = [
   "Email & abandoned cart",
   "WhatsApp automation",
   "AI customer support",
+  "AI voice & chat shopping",
   "Bundle",
   "Ongoing management",
   "Monthly plan",
@@ -50,18 +51,60 @@ export const TIMELINES = [
   { value: "Exploring", label: "Exploring", meta: "NO DATE YET" },
 ] as const;
 
-export const COUNTRIES = [
-  "India",
-  "United States",
-  "United Kingdom",
-  "United Arab Emirates",
-  "Australia",
-  "Canada",
-  "Singapore",
-  "Germany",
-  "Netherlands",
-  "Other",
+/** Phone country codes. Our four markets first, then alphabetical. */
+export const DIAL_CODES = [
+  { iso: "US", name: "United States", dial: "+1" },
+  { iso: "GB", name: "United Kingdom", dial: "+44" },
+  { iso: "AU", name: "Australia", dial: "+61" },
+  { iso: "IN", name: "India", dial: "+91" },
+  { iso: "BD", name: "Bangladesh", dial: "+880" },
+  { iso: "BE", name: "Belgium", dial: "+32" },
+  { iso: "BR", name: "Brazil", dial: "+55" },
+  { iso: "CA", name: "Canada", dial: "+1" },
+  { iso: "DK", name: "Denmark", dial: "+45" },
+  { iso: "EG", name: "Egypt", dial: "+20" },
+  { iso: "FR", name: "France", dial: "+33" },
+  { iso: "DE", name: "Germany", dial: "+49" },
+  { iso: "HK", name: "Hong Kong", dial: "+852" },
+  { iso: "ID", name: "Indonesia", dial: "+62" },
+  { iso: "IE", name: "Ireland", dial: "+353" },
+  { iso: "IL", name: "Israel", dial: "+972" },
+  { iso: "IT", name: "Italy", dial: "+39" },
+  { iso: "JP", name: "Japan", dial: "+81" },
+  { iso: "KE", name: "Kenya", dial: "+254" },
+  { iso: "KW", name: "Kuwait", dial: "+965" },
+  { iso: "MY", name: "Malaysia", dial: "+60" },
+  { iso: "MX", name: "Mexico", dial: "+52" },
+  { iso: "NP", name: "Nepal", dial: "+977" },
+  { iso: "NL", name: "Netherlands", dial: "+31" },
+  { iso: "NZ", name: "New Zealand", dial: "+64" },
+  { iso: "NG", name: "Nigeria", dial: "+234" },
+  { iso: "NO", name: "Norway", dial: "+47" },
+  { iso: "OM", name: "Oman", dial: "+968" },
+  { iso: "PK", name: "Pakistan", dial: "+92" },
+  { iso: "PH", name: "Philippines", dial: "+63" },
+  { iso: "PL", name: "Poland", dial: "+48" },
+  { iso: "PT", name: "Portugal", dial: "+351" },
+  { iso: "QA", name: "Qatar", dial: "+974" },
+  { iso: "SA", name: "Saudi Arabia", dial: "+966" },
+  { iso: "SG", name: "Singapore", dial: "+65" },
+  { iso: "ZA", name: "South Africa", dial: "+27" },
+  { iso: "KR", name: "South Korea", dial: "+82" },
+  { iso: "ES", name: "Spain", dial: "+34" },
+  { iso: "LK", name: "Sri Lanka", dial: "+94" },
+  { iso: "SE", name: "Sweden", dial: "+46" },
+  { iso: "CH", name: "Switzerland", dial: "+41" },
+  { iso: "TH", name: "Thailand", dial: "+66" },
+  { iso: "TR", name: "Türkiye", dial: "+90" },
+  { iso: "AE", name: "United Arab Emirates", dial: "+971" },
+  { iso: "VN", name: "Vietnam", dial: "+84" },
 ] as const;
+
+export type DialIso = (typeof DIAL_CODES)[number]["iso"];
+
+export const MARKET_ISO: Record<string, DialIso> = { in: "IN", us: "US", uk: "GB", au: "AU" };
+
+export const COUNTRIES = [...DIAL_CODES.map((d) => d.name), "Other"] as const;
 
 /** Map ?need=… query values to the NEEDS option label. */
 export const NEED_QUERY_MAP: Record<string, (typeof NEEDS)[number]> = {
@@ -76,6 +119,7 @@ export const NEED_QUERY_MAP: Record<string, (typeof NEEDS)[number]> = {
   email: "Email & abandoned cart",
   whatsapp: "WhatsApp automation",
   support: "AI customer support",
+  voice: "AI voice & chat shopping",
 };
 
 export const TIER_COUNT_MAP: Record<string, (typeof PRODUCT_COUNTS)[number]> = {

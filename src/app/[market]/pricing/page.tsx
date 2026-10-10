@@ -15,6 +15,7 @@ import { ProductMenu } from "@/components/pricing/ProductMenu";
 import { PlanCards } from "@/components/pricing/PlanCards";
 import { BundleCards } from "@/components/pricing/BundleCards";
 import { BeforeYouPay } from "@/components/pricing/BeforeYouPay";
+import { QuoteEstimator } from "@/components/pricing/QuoteEstimator";
 import { Price } from "@/components/market/Price";
 import { plans, tiers } from "@/content/pricing";
 import { products } from "@/content/products";
@@ -27,7 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return pageMeta({
     title: `Pricing & Plans — Catalog listing from ${from}`,
     description:
-      "Public starting prices for catalog listing, cleanup, imagery, feeds, email and WhatsApp automation, plus monthly plans. Fixed scope for every product.",
+      "Public starting prices for catalog listing, cleanup, imagery, feeds, email, WhatsApp, AI support and voice shopping, plus monthly plans. Fixed scope for every product.",
     path: "/pricing",
   });
 }
@@ -105,7 +106,8 @@ export default async function PricingPage() {
         />
         <BundleCards tone="muted" eyebrow="03 / KITS" />
         <PlanCards tone="light" eyebrow="04 / MONTHLY PLANS" />
-        <BeforeYouPay tone="muted" />
+        <QuoteEstimator tone="muted" />
+        <BeforeYouPay />
 
         <FAQ items={pricingFaqs} heading="Pricing questions." />
         <FinalCTA />

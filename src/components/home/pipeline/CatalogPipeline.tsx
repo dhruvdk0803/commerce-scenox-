@@ -1,7 +1,9 @@
 "use client";
 
 import { useMemo, useRef } from "react";
+import Image from "next/image";
 import { motion } from "motion/react";
+import { img, type ImgKey } from "@/lib/images";
 import { cn, pad } from "@/lib/utils";
 import { Status } from "@/components/ui/Status";
 import { useCounter, useTimeline } from "./useTimeline";
@@ -16,15 +18,16 @@ type Row = {
   title: [string, string];
   category: [string, string];
   image: [string, string];
+  photo: ImgKey;
 };
 
 const ROWS: Row[] = [
-  { sku: "AX-442", title: ["blk office chr", "Black Ergonomic Office Chair"], category: ["furniture?", "Office › Chairs"], image: ["IMG_99283.jpg", "ax-442-01.jpg"] },
-  { sku: "KT-1180", title: ["steel bottle 750", "Insulated Steel Bottle 750 ml"], category: ["kitchen/home", "Kitchen › Drinkware"], image: ["—", "kt-1180-01.jpg"] },
-  { sku: "LG-77", title: ["LED desk lamp wht", "White LED Desk Lamp"], category: ["lighting", "Lighting › Desk Lamps"], image: ["lamp_v2 (1).png", "lg-77-01.jpg"] },
-  { sku: "TX-310", title: ["cotton tshirt S,M,L", "Cotton Crew T-Shirt · 4 sizes"], category: ["apparel", "Apparel › T-Shirts"], image: ["tee.jpg", "tx-310-01.jpg"] },
-  { sku: "GR-09", title: ["garden hose 20m", "Garden Hose 20 m"], category: ["outdoor?", "Garden › Watering"], image: ["IMG_20211.jpg", "gr-09-01.jpg"] },
-  { sku: "SP-88", title: ["speaker bt mini", "Mini Bluetooth Speaker"], category: ["electronics?", "Electronics › Audio"], image: ["NULL", "sp-88-01.jpg"] },
+  { sku: "AX-442", title: ["blk office chr", "Black Ergonomic Office Chair"], category: ["furniture?", "Office › Chairs"], image: ["IMG_99283.jpg", "ax-442-01.jpg"], photo: "chair" },
+  { sku: "KT-1180", title: ["steel bottle 750", "Insulated Steel Bottle 750 ml"], category: ["kitchen/home", "Kitchen › Drinkware"], image: ["—", "kt-1180-01.jpg"], photo: "bottle" },
+  { sku: "LG-77", title: ["LED desk lamp wht", "White LED Desk Lamp"], category: ["lighting", "Lighting › Desk Lamps"], image: ["lamp_v2 (1).png", "lg-77-01.jpg"], photo: "lamp" },
+  { sku: "TX-310", title: ["cotton tshirt S,M,L", "Cotton Crew T-Shirt · 4 sizes"], category: ["apparel", "Apparel › T-Shirts"], image: ["tee.jpg", "tx-310-01.jpg"], photo: "tshirt" },
+  { sku: "GR-09", title: ["garden hose 20m", "Garden Hose 20 m"], category: ["outdoor?", "Garden › Watering"], image: ["IMG_20211.jpg", "gr-09-01.jpg"], photo: "hose" },
+  { sku: "SP-88", title: ["speaker bt mini", "Mini Bluetooth Speaker"], category: ["electronics?", "Electronics › Audio"], image: ["NULL", "sp-88-01.jpg"], photo: "speaker" },
 ];
 
 const STAGES = ["INGEST", "NORMALIZE", "ENRICH", "VALIDATE", "PUBLISH"] as const;
@@ -105,7 +108,7 @@ export function CatalogPipeline({ className }: { className?: string }) {
                   active && "bg-accent-soft",
                 )}
               >
-                <td className="py-[11px] pl-4 align-middle">
+                <td className="py-[7px] pl-4 align-middle">
                   <span className="relative block">
                     {active && (
                       <span aria-hidden className="absolute -left-4 top-1/2 h-[18px] w-[2px] -translate-y-1/2 bg-accent" />
@@ -113,31 +116,45 @@ export function CatalogPipeline({ className }: { className?: string }) {
                     <span className="mono-micro tabular text-ink-3">{String(i + 1).padStart(2, "0")}</span>
                   </span>
                 </td>
-                <td className="hidden py-[11px] pr-3 align-middle sm:table-cell">
+                <td className="hidden py-[7px] pr-3 align-middle sm:table-cell">
                   <span className="font-mono text-[0.78rem] text-ink">{r.sku}</span>
                 </td>
-                <td className="py-[11px] pr-3 align-middle">
-                  <span className="block truncate font-mono text-[0.78rem]">
-                    <Swap id={k} y={4} className="max-w-full">
-                      <span className={cn("block truncate", clean ? "text-ink" : "text-ink-2")}>{r.title[k]}</span>
-                    </Swap>
+                <td className="py-[7px] pr-3 align-middle">
+                  <span className="flex min-w-0 items-center gap-2.5">
+                    {/* the photo arrives with the clean row; before that, an empty slot */}
+                    <span className="relative size-[30px] shrink-0 overflow-hidden rounded-[6px] border border-line bg-bg-muted">
+                      <Image
+                        src={img[r.photo]}
+                        alt=""
+                        sizes="30px"
+                        className={cn(
+                          "size-full object-cover transition-[opacity,transform] duration-[420ms] ease-[var(--ease-out)]",
+                          clean ? "scale-100 opacity-100" : "scale-90 opacity-0",
+                        )}
+                      />
+                    </span>
+                    <span className="block min-w-0 truncate font-mono text-[0.78rem]">
+                      <Swap id={k} y={4} className="max-w-full">
+                        <span className={cn("block truncate", clean ? "text-ink" : "text-ink-2")}>{r.title[k]}</span>
+                      </Swap>
+                    </span>
                   </span>
                 </td>
-                <td className="hidden py-[11px] pr-3 align-middle md:table-cell">
+                <td className="hidden py-[7px] pr-3 align-middle md:table-cell">
                   <span className="block truncate font-mono text-[0.78rem]">
                     <Swap id={k} y={4} className="max-w-full">
                       <span className={cn("block truncate", clean ? "text-ink" : tone(r.category[0]))}>{r.category[k]}</span>
                     </Swap>
                   </span>
                 </td>
-                <td className="hidden py-[11px] pr-3 align-middle lg:table-cell">
+                <td className="hidden py-[7px] pr-3 align-middle lg:table-cell">
                   <span className="block truncate font-mono text-[0.78rem]">
                     <Swap id={k} y={4} className="max-w-full">
                       <span className={cn("block truncate", clean ? "text-ink" : tone(r.image[0]))}>{r.image[k]}</span>
                     </Swap>
                   </span>
                 </td>
-                <td className="py-[11px] pr-4 text-right align-middle">
+                <td className="py-[7px] pr-4 text-right align-middle">
                   <Status kind={clean ? "ready" : active ? "processing" : "queued"} className="justify-end" />
                 </td>
               </tr>

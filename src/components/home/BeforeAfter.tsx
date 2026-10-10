@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Armchair } from "lucide-react";
+import Image from "next/image";
+import { img } from "@/lib/images";
 import { motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/ui/Reveal";
@@ -124,14 +125,10 @@ export function BeforeAfter() {
 
             <div className="grid gap-5 p-5 sm:grid-cols-[9rem_1fr] md:p-6">
               {/* image */}
-              <div className="relative flex flex-col justify-between overflow-hidden rounded-[8px] border border-line bg-bg-muted p-3 max-sm:h-36 sm:aspect-square">
-                <span className="mono-micro text-ink-3">IMAGE 1 / 4</span>
-                {/* stand-in for the product photo: a simple line icon, not a fake image */}
-                <Armchair aria-hidden className="absolute left-1/2 top-1/2 size-12 -translate-x-1/2 -translate-y-1/2 text-ink-3/70" strokeWidth={1.25} />
-                <div className="relative">
-                  <p className="truncate font-mono text-[0.75rem] text-ink">ax-442-black-01.jpg</p>
-                  <p className="mono-micro mt-1 text-success">2048 × 2048 · MATCHED</p>
-                </div>
+              <div className="relative overflow-hidden rounded-[8px] border border-line bg-[#f5f4ef] max-sm:mx-auto max-sm:w-48 aspect-square">
+                <Image src={img.chair} alt="Black ergonomic office chair, finished product photo" placeholder="blur" sizes="(min-width: 640px) 144px, 192px" className="size-full object-cover" />
+                <span className="mono-micro absolute left-1.5 top-1.5 rounded-full bg-bg-elevated/90 px-1.5 py-0.5 text-ink-3 tabular">1/4</span>
+                <p className="mono-micro absolute inset-x-0 bottom-0 bg-bg-elevated/90 px-2 py-1 text-success backdrop-blur-sm">MATCHED</p>
               </div>
 
               {/* details */}

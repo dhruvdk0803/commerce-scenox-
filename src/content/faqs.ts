@@ -51,7 +51,7 @@ export const faqs: FAQ[] = [
   },
   {
     q: "Do you only do catalogs?",
-    a: "The catalog is where we start, because every other channel depends on it. From the same clean product data we also run AI product imagery, Google Shopping and marketplace feeds, email marketing with abandoned cart recovery, WhatsApp automation and AI customer support.",
+    a: "The catalog is where we start, because every other channel depends on it. From the same clean product data we also run AI product imagery, Google Shopping and marketplace feeds, email marketing with abandoned cart recovery, WhatsApp automation, AI customer support and AI shopping assistants with voice agents.",
   },
   {
     q: "Do I need Klaviyo or a separate WhatsApp tool?",

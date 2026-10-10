@@ -4,7 +4,7 @@ import type { CSSProperties } from "react";
 import { PlatformList } from "@/components/ui/PlatformList";
 import { site } from "@/lib/site";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import { Button, TextLink } from "@/components/ui/Button";
 import { CatalogPipeline } from "./pipeline/CatalogPipeline";
 
@@ -15,7 +15,10 @@ const AFTER_LAUNCH = [
   { label: "Email & carts", note: "Recovery and win-back", href: "/ecommerce-email-marketing" },
   { label: "WhatsApp", note: "COD, carts, order updates", href: "/whatsapp-automation" },
   { label: "AI support", note: "Questions answered 24/7", href: "/ai-customer-support" },
+  { label: "Voice & chat shopping", note: "Buy in chat, COD calls", href: "/ai-voice-shopping-assistant" },
 ];
+
+const PROMISES = ["Free 10-product sample", "Fixed quote before work", "No store passwords"];
 
 export function Hero({ compact = false }: { compact?: boolean }) {
   // CSS-driven entrance: runs off the main thread and respects reduced motion via globals.css
@@ -66,19 +69,11 @@ export function Hero({ compact = false }: { compact?: boolean }) {
                 className={`mt-5 max-w-[38ch] text-[1.05rem] leading-[1.5] text-ink-2 ${item(3).className}`}
                 style={item(3).style}
               >
-                Send us your spreadsheets, supplier catalogs, images or existing
-                product data. Our AI-powered catalog engine cleans, structures and
-                enriches it. Our team checks it and takes it live.
+                Send spreadsheets, supplier files or photos. Our AI engine cleans,
+                structures and enriches every product. Our team checks it and
+                takes it live.
               </p>
             )}
-
-            <p
-              className={`mt-4 text-[1.2rem] font-medium leading-snug tracking-[-0.02em] text-ink sm:mt-5 sm:text-[1.3rem] ${item(4).className}`}
-              style={item(4).style}
-            >
-              You send the data.
-              <br /> We handle the rest.
-            </p>
 
             <div
               className={`mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6 ${item(5).className}`}
@@ -93,13 +88,26 @@ export function Hero({ compact = false }: { compact?: boolean }) {
               >
                 Get Started
               </Button>
-              <TextLink href="/how-it-works" className="max-sm:self-center">
-                See How It Works
+              <TextLink href="/free-sample" className="max-sm:self-center" event="cta_click" eventParams={{ cta: "hero_free_sample" }}>
+                Try 10 products free
               </TextLink>
             </div>
 
+            <ul
+              className={`mt-6 flex flex-wrap gap-x-5 gap-y-2 ${item(6).className}`}
+              style={item(6).style}
+              aria-label="What you can count on"
+            >
+              {PROMISES.map((t) => (
+                <li key={t} className="flex items-center gap-1.5 text-[0.875rem] text-ink">
+                  <Check aria-hidden className="size-3.5 text-success" strokeWidth={2.5} />
+                  {t}
+                </li>
+              ))}
+            </ul>
+
             <p
-              className={`mt-5 max-w-[42ch] text-[0.8rem] leading-relaxed text-ink-3 md:mt-6 ${item(6).className}`}
+              className={`mt-4 max-w-[44ch] text-[0.75rem] leading-relaxed text-ink-3 ${item(6).className}`}
               style={item(6).style}
             >
               {site.qualifier}
@@ -124,9 +132,9 @@ export function Hero({ compact = false }: { compact?: boolean }) {
               <p className="mono-micro text-ink-3">AFTER LAUNCH</p>
               <p className="text-[0.95rem] font-medium tracking-[-0.01em] text-ink lg:mt-1">We keep it selling.</p>
             </div>
-            <ul className="grid grid-cols-2 gap-px bg-line md:grid-cols-5">
+            <ul className="grid grid-cols-2 gap-px bg-line md:grid-cols-3 xl:grid-cols-6">
               {AFTER_LAUNCH.map((a, i) => (
-                <li key={a.href} className="bg-bg-elevated last:col-span-2 md:last:col-span-1">
+                <li key={a.href} className="bg-bg-elevated">
                   <Link
                     href={a.href}
                     className="group flex h-full flex-col gap-1 px-5 py-4 transition-colors duration-[160ms] hover:bg-bg-muted/60"

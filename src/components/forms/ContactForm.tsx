@@ -8,9 +8,10 @@ import { Check } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { track, trackConversion } from "@/lib/analytics";
 import { isValidEmail, isValidPhone } from "@/lib/validation";
-import { ChipGroup, Field, TextArea, TextInput, readUtm, focusFirstInvalid } from "./fields";
+import { ChipGroup, Field, PhoneInput, TextArea, TextInput, readUtm, focusFirstInvalid } from "./fields";
+import { MARKET_ISO } from "./options";
 
-const TOPICS = ["Catalog listing or cleanup", "Migration", "Product photos", "Google & marketplaces", "Email & abandoned cart", "WhatsApp", "AI customer support", "Monthly plan", "Partnership / agency", "Something else"] as const;
+const TOPICS = ["Catalog listing or cleanup", "Migration", "Product photos", "Google & marketplaces", "Email & abandoned cart", "WhatsApp", "AI customer support", "AI voice & chat shopping", "Monthly plan", "Partnership / agency", "Something else"] as const;
 
 type Data = {
   fullName: string;
@@ -136,7 +137,7 @@ export function ContactForm() {
           {(p) => <TextInput {...p} type="email" name="email" inputMode="email" autoComplete="email" value={data.email} onChange={(e) => set("email", e.target.value)} />}
         </Field>
         <Field label="Phone / WhatsApp" error={errors.phone}>
-          {(p) => <TextInput {...p} type="tel" name="phone" inputMode="tel" autoComplete="tel" value={data.phone} onChange={(e) => set("phone", e.target.value)} placeholder={`${market.dial} …`} />}
+          {(p) => <PhoneInput {...p} value={data.phone} onChange={(v) => set("phone", v)} defaultIso={MARKET_ISO[market.id]} />}
         </Field>
         <Field label="Company" error={errors.company}>
           {(p) => <TextInput {...p} name="company" autoComplete="organization" value={data.company} onChange={(e) => set("company", e.target.value)} />}

@@ -5,6 +5,8 @@ import { FeedsVisual } from "./illustrations/FeedsVisual";
 import { EmailVisual } from "./illustrations/EmailVisual";
 import { WhatsAppVisual } from "./illustrations/WhatsAppVisual";
 import { SupportVisual } from "./illustrations/SupportVisual";
+import { VoiceVisual } from "./illustrations/VoiceVisual";
+import { PhotoStudio } from "@/components/home/PhotoStudio";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -62,6 +64,7 @@ const VISUALS: Record<string, ComponentType | undefined> = {
   email: EmailVisual,
   whatsapp: WhatsAppVisual,
   support: SupportVisual,
+  voice: VoiceVisual,
 };
 
 function LedgerVisual({ p }: { p: ProductPage }) {
@@ -158,6 +161,7 @@ export function ProductTemplate({ id }: { id: string }) {
           aside={<PriceBox p={p} />}
         />
 
+        {p.id === "imagery" && <PhotoStudio showLink={false} />}
         <Timeline p={p} />
 
         <Section tone="muted" aria-labelledby="ledger-heading">
