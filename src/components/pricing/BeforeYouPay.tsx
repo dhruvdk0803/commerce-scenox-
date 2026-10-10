@@ -48,7 +48,7 @@ export function BeforeYouPay({ tone = "light", className }: { tone?: "light" | "
         <SectionHeader
           id="before-pay-heading"
           eyebrow="NO SURPRISES"
-          title={<>Before you pay.</>}
+          title={<>Before you commit.</>}
           description="The questions worth asking any provider, answered up front."
         />
         <Stagger as="ul" className="mt-12 grid gap-px overflow-hidden rounded-[12px] border border-line bg-line md:mt-16 md:grid-cols-2 lg:grid-cols-3" amount={0.1}>

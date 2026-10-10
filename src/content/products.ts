@@ -556,7 +556,7 @@ export const advantages: { n: string; title: string; body: string }[] = [
   },
   {
     n: "06",
-    title: "Prices on the page.",
-    body: "Every service has a set scope, delivery time and starting price in your currency. No hourly billing.",
+    title: "Scope agreed up front.",
+    body: "Every service has a set scope and delivery time, confirmed in writing before work starts. No hourly billing.",
   },
 ];

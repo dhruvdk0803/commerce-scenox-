@@ -26,10 +26,14 @@
   --border-dark-strong: rgba(255, 255, 255, 0.22);
 
   /* semantic */
-  /* warm signal ember — operational, not "AI blue" */
-  --accent: #c2410c;
-  --accent-hover: #a5370a;
-  --accent-soft: rgba(194, 65, 12, 0.08);
+  /* electric ultramarine: one solid brand colour, used for actions and highlights */
+  --accent: #2b3bff;
+  --accent-hover: #1d2be0;
+  --accent-soft: rgba(43, 59, 255, 0.08);
+  /* lighter ultramarine for text on carbon (AA on #101112) */
+  --accent-on-dark: #9aa3ff;
+  /* ultramarine-tinted surface for colour blocks */
+  --bg-tint: #eceeff;
   --success: #16754a;
   --success-soft: rgba(28, 140, 89, 0.1);
   --warning: #8f560e;
@@ -57,6 +61,7 @@
 @theme inline {
   --color-bg: var(--bg-primary);
   --color-bg-muted: var(--bg-muted);
+  --color-bg-tint: var(--bg-tint);
   --color-bg-elevated: var(--bg-elevated);
   --color-bg-dark: var(--bg-dark);
   --color-bg-dark-2: var(--bg-dark-2);
@@ -75,6 +80,7 @@
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-accent-soft: var(--accent-soft);
+  --color-accent-on-dark: var(--accent-on-dark);
   --color-success: var(--success);
   --color-success-soft: var(--success-soft);
   --color-warning: var(--warning);
@@ -568,4 +574,27 @@ html[data-consent-open] [data-chat-launcher] {
 }
 @media (prefers-reduced-motion: reduce) {
   .wave-bar { animation: none; }
+}
+
+/* product wall: two rows drifting in opposite directions, paused on hover */
+.marquee-track {
+  animation: marquee 60s linear infinite;
+}
+.marquee-reverse {
+  animation-direction: reverse;
+  animation-duration: 70s;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+  .marquee { overflow-x: auto; }
 }

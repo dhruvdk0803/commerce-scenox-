@@ -101,7 +101,7 @@ export function VoiceVisual() {
           <ol className="flex flex-col gap-3 border-t border-line-dark px-4 py-4">
             {CALL.map((l) => (
               <li key={l.text} className="grid grid-cols-[5.5rem_1fr] gap-3 text-[0.875rem] leading-snug">
-                <span className={l.who === "AI" ? "mono-micro pt-0.5 text-accent" : "mono-micro pt-0.5 text-paper-2"}>{l.who}</span>
+                <span className={l.who === "AI" ? "mono-micro pt-0.5 text-accent-on-dark" : "mono-micro pt-0.5 text-paper-2"}>{l.who}</span>
                 <span className={l.who === "AI" ? "text-paper" : "text-paper-2"}>{l.text}</span>
               </li>
             ))}

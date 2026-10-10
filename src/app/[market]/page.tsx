@@ -13,8 +13,7 @@ import { MessySpreadsheet } from "@/components/home/MessySpreadsheet";
 import { BeforeAfter } from "@/components/home/BeforeAfter";
 import { SampleOffer } from "@/components/home/SampleOffer";
 import { Advantages } from "@/components/home/Advantages";
-import { ProductMenu } from "@/components/pricing/ProductMenu";
-import { PricingTabs } from "@/components/pricing/PricingTabs";
+import { ServiceBento } from "@/components/home/ServiceBento";
 import { FAQ } from "@/components/home/FAQ";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -41,10 +40,9 @@ export default function HomePage() {
         <MessySpreadsheet />
         <BeforeAfter />
         <PhotoStudio />
-        <ProductMenu />
+        <ServiceBento />
         <Advantages />
         <QuoteEstimator />
-        <PricingTabs />
         <BeforeYouPay tone="muted" />
         <SampleOffer />
         <FAQ items={homeFaqs} />

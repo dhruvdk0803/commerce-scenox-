@@ -32,7 +32,7 @@ export default function OpengraphImage() {
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", borderTop: "1px solid #D9D7CF", paddingTop: 24, fontSize: 24, color: "#4A4A46" }}>
           <span>Catalog · Feeds · Email · WhatsApp · AI support</span>
-          <span style={{ color: "#C2410C", fontWeight: 600 }}>Run by AI. Checked by people.</span>
+          <span style={{ color: "#2B3BFF", fontWeight: 600 }}>Run by AI. Checked by people.</span>
         </div>
       </div>
     ),

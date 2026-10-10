@@ -1,82 +1,92 @@
 import Image from "next/image";
-import type { PriceSet } from "@/lib/markets";
 import { img, type ImgKey } from "@/lib/images";
-import { Price } from "@/components/market/Price";
-import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { TextLink } from "@/components/ui/Button";
-import { MotionLi, Stagger, staggerChild } from "@/components/ui/Reveal";
+import { Reveal } from "@/components/ui/Reveal";
+import { cn } from "@/lib/utils";
 
-type Card = { photo: ImgKey; title: string; path: string; price: PriceSet; options: string };
+type Tile = { photo: ImgKey; title: string; path: string };
 
-/** Example storefront output. Prices are demo retail prices, not our service prices. */
-const CARDS: Card[] = [
-  { photo: "chair", title: "Black Ergonomic Office Chair", path: "Office › Chairs", price: { in: 8499, us: 229, uk: 189, au: 349 }, options: "3 colours" },
-  { photo: "bottle", title: "Insulated Steel Bottle 750 ml", path: "Kitchen › Drinkware", price: { in: 1299, us: 34, uk: 28, au: 49 }, options: "4 finishes" },
-  { photo: "sneaker", title: "White Leather Low-Top Sneaker", path: "Footwear › Sneakers", price: { in: 5999, us: 129, uk: 109, au: 189 }, options: "9 sizes" },
-  { photo: "lamp", title: "White LED Desk Lamp", path: "Lighting › Desk Lamps", price: { in: 2499, us: 59, uk: 49, au: 89 }, options: "3 colour temps" },
-  { photo: "serum", title: "Vitamin C Face Serum 30 ml", path: "Beauty › Serums", price: { in: 1499, us: 38, uk: 32, au: 55 }, options: "2 sizes" },
-  { photo: "speaker", title: "Mini Bluetooth Speaker", path: "Electronics › Audio", price: { in: 2999, us: 69, uk: 59, au: 99 }, options: "2 colours" },
-  { photo: "mug", title: "Stoneware Coffee Mug 350 ml", path: "Kitchen › Tableware", price: { in: 799, us: 22, uk: 18, au: 32 }, options: "5 glazes" },
-  { photo: "clock", title: "Oak Frame Wall Clock 30 cm", path: "Decor › Clocks", price: { in: 1899, us: 45, uk: 38, au: 69 }, options: "2 frames" },
+const ROW_A: Tile[] = [
+  { photo: "chair", title: "Black Ergonomic Office Chair", path: "Office › Chairs" },
+  { photo: "bottle", title: "Insulated Steel Bottle 750 ml", path: "Kitchen › Drinkware" },
+  { photo: "sneaker", title: "White Leather Low-Top Sneaker", path: "Footwear › Sneakers" },
+  { photo: "lamp", title: "White LED Desk Lamp", path: "Lighting › Desk Lamps" },
+  { photo: "serum", title: "Vitamin C Face Serum 30 ml", path: "Beauty › Serums" },
+  { photo: "shelf", title: "5-Tier Oak Bookshelf", path: "Furniture › Shelving" },
+];
+const ROW_B: Tile[] = [
+  { photo: "speaker", title: "Mini Bluetooth Speaker", path: "Electronics › Audio" },
+  { photo: "mug", title: "Stoneware Coffee Mug 350 ml", path: "Kitchen › Tableware" },
+  { photo: "clock", title: "Oak Frame Wall Clock 30 cm", path: "Decor › Clocks" },
+  { photo: "tshirt", title: "Cotton Crew T-Shirt", path: "Apparel › T-Shirts" },
+  { photo: "rug", title: "Wool Rug 5 × 8 ft", path: "Home › Rugs" },
+  { photo: "hose", title: "Garden Hose 20 m", path: "Garden › Watering" },
 ];
 
-export function Showcase() {
-  return (
-    <section className="section-y" aria-labelledby="showcase-heading">
-      <div className="container-x">
-        <SectionHeader
-          id="showcase-heading"
-          eyebrow="WHAT GOES LIVE"
-          title={
-            <>
-              50 products or 50,000.
-              <span className="block text-balance text-ink-2">Every one store-ready.</span>
-            </>
-          }
-          description="Clear titles, real categories, matched photos and variants. Every product, not just the first page."
-          action={<TextLink href="/free-sample">See it on 10 of yours, free</TextLink>}
-        />
+/** Photos are shot on porcelain; multiply lets each tile take its own surface colour. */
+const SURFACES = ["bg-bg-tint", "bg-bg-elevated", "bg-[#e4e7ff]", "bg-bg-muted"];
 
-        <Stagger
-          as="ul"
-          amount={0.1}
-          className="-mx-5 mt-12 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-2 min-[30rem]:-mx-6 min-[30rem]:scroll-px-6 min-[30rem]:px-6 [scrollbar-width:none] md:mx-0 md:mt-16 md:grid md:grid-cols-4 md:gap-4 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden"
+function Row({ tiles, reverse, offset = 0 }: { tiles: Tile[]; reverse?: boolean; offset?: number }) {
+  // the list is rendered twice so the loop is seamless; the copy is hidden from assistive tech
+  return (
+    <div className="marquee group/row flex overflow-hidden">
+      {[0, 1].map((copy) => (
+        <ul
+          key={copy}
+          aria-hidden={copy === 1 || undefined}
+          className={cn("marquee-track flex shrink-0 gap-3 pr-3 md:gap-4 md:pr-4", reverse && "marquee-reverse")}
         >
-          {CARDS.map((c, i) => (
-            <MotionLi
-              key={c.photo}
-              variants={staggerChild}
-              className="group w-[68%] shrink-0 snap-start sm:w-[42%] md:w-auto"
-            >
-              <div className="relative aspect-square overflow-hidden rounded-[12px] border border-line bg-[#f5f4ef]">
+          {tiles.map((t, i) => (
+            <li key={t.photo} className="w-[10.5rem] shrink-0 md:w-[13rem]">
+              <div className={cn("relative aspect-square overflow-hidden rounded-[14px]", SURFACES[(i + offset) % SURFACES.length])}>
                 <Image
-                  src={img[c.photo]}
-                  alt={c.title}
-                  placeholder="blur"
-                  sizes="(min-width: 768px) 25vw, 68vw"
-                  className="size-full object-cover transition-transform duration-[600ms] ease-[var(--ease-out)] group-hover:scale-[1.03]"
+                  src={img[t.photo]}
+                  alt={copy === 0 ? t.title : ""}
+                  sizes="(min-width: 768px) 208px, 168px"
+                  className="size-full object-cover mix-blend-multiply"
                 />
-                <span className="mono-micro absolute left-3 top-3 flex items-center gap-1.5 rounded-full border border-line bg-bg-elevated/90 px-2 py-1 text-success backdrop-blur-sm">
+                <span className="mono-micro absolute left-2.5 top-2.5 flex items-center gap-1 rounded-full bg-bg-elevated/90 px-2 py-0.5 text-success">
                   <span className="size-1.5 rounded-full bg-success" />
                   LIVE
                 </span>
-                <span className="mono-micro absolute right-3 top-3 text-ink-3 tabular">{String(i + 1).padStart(2, "0")}</span>
               </div>
-              <div className="mt-3 px-0.5">
-                <p className="mono-micro truncate text-ink-3">{c.path}</p>
-                <p className="mt-1 truncate text-[0.975rem] font-medium tracking-[-0.01em] text-ink">{c.title}</p>
-                <p className="mt-1 flex items-baseline justify-between gap-3">
-                  <span className="text-[0.95rem] text-ink tabular">
-                    <Price set={c.price} />
-                  </span>
-                  <span className="mono-micro text-ink-3">{c.options}</span>
-                </p>
-              </div>
-            </MotionLi>
+              <p className="mono-micro mt-2.5 truncate text-ink-3">{t.path}</p>
+              <p className="mt-0.5 truncate text-[0.9rem] font-medium tracking-[-0.01em] text-ink">{t.title}</p>
+            </li>
           ))}
-        </Stagger>
-        <p className="mono-micro mt-6 text-ink-3">EXAMPLE OUTPUT · ILLUSTRATIVE PRODUCTS AND PRICES</p>
+        </ul>
+      ))}
+    </div>
+  );
+}
+
+export function Showcase() {
+  return (
+    <section className="overflow-hidden py-16 md:py-24" aria-labelledby="showcase-heading">
+      <div className="container-x grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-10">
+        <Reveal className="lg:col-span-7">
+          <Eyebrow>WHAT GOES LIVE</Eyebrow>
+          <h2 id="showcase-heading" className="mt-5 text-h2 text-ink">
+            50 products or 50,000.
+            <span className="block text-balance text-accent">Every one store-ready.</span>
+          </h2>
+        </Reveal>
+        <Reveal delay={0.08} className="lg:col-span-4 lg:col-start-9">
+          <p className="max-w-[38ch] text-[1rem] leading-[1.55] text-ink-2">
+            Clear titles, real categories, matched photos and variants. Every product, not just the first page.
+          </p>
+          <div className="mt-5">
+            <TextLink href="/free-sample">See it on 10 of yours, free</TextLink>
+          </div>
+        </Reveal>
       </div>
+
+      <div className="marquee-mask mt-10 flex flex-col gap-5 md:mt-14 md:gap-6">
+        <Row tiles={ROW_A} />
+        <Row tiles={ROW_B} reverse offset={2} />
+      </div>
+      <p className="container-x mono-micro mt-6 text-ink-3">EXAMPLE OUTPUT · ILLUSTRATIVE PRODUCTS</p>
     </section>
   );
 }

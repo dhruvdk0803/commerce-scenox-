@@ -6,7 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { formatPrice } from "@/lib/markets";
 import { useMarket } from "@/components/market/MarketProvider";
-import { Button } from "@/components/ui/Button";
+import { Button, TextLink } from "@/components/ui/Button";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { tiers } from "@/content/pricing";
@@ -88,6 +88,7 @@ export function QuoteEstimator({ tone = "default" }: { tone?: "default" | "muted
             </>
           }
           description={`Starting prices in ${market.currency}. Your fixed quote follows once we've seen your files, before any work starts.`}
+          action={<TextLink href="/pricing">Full pricing, kits and monthly plans</TextLink>}
         />
 
         <Reveal delay={0.06} className="mt-12 grid overflow-hidden rounded-[14px] border border-line bg-bg-elevated md:mt-16 lg:grid-cols-[minmax(0,1fr)_24rem]">
