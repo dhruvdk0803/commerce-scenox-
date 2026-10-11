@@ -3,7 +3,8 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
 
 /** Why the full AI-run stack beats a row of point solutions. Dark section. */
-export function Advantages() {
+export function Advantages({ compact = false }: { compact?: boolean }) {
+  const items = compact ? advantages.slice(0, 3) : advantages;
   return (
     <section className="section-y bg-bg-dark text-paper" aria-labelledby="adv-heading">
       <div className="container-x">
@@ -17,16 +18,22 @@ export function Advantages() {
               <span className="block text-balance text-paper-2">Right because people check it.</span>
             </>
           }
-          description="Agencies bill hours. Apps leave the work to you. We run an AI engine with a review team on top, so you get finished work in days at a fraction of a manual team's cost."
+          description={compact ? undefined : "Agencies bill hours. Apps leave the work to you. We run an AI engine with a review team on top, so you get finished work in days at a fraction of a manual team's cost."}
         />
 
-        <ol className="mt-12 grid gap-px overflow-hidden rounded-[12px] border border-line-dark bg-line-dark md:mt-16 md:grid-cols-2 lg:grid-cols-3">
-          {advantages.map((a, i) => (
+        <ol
+          className={
+            compact
+              ? "mt-12 grid gap-10 md:mt-16 md:grid-cols-3 md:gap-12"
+              : "mt-12 grid gap-px overflow-hidden rounded-[12px] border border-line-dark bg-line-dark md:mt-16 md:grid-cols-2 lg:grid-cols-3"
+          }
+        >
+          {items.map((a, i) => (
             <Reveal
               as="li"
               key={a.n}
               delay={(i % 3) * 0.05}
-              className="bg-bg-dark p-6 md:p-7"
+              className={compact ? "border-t border-line-dark pt-6" : "bg-bg-dark p-6 md:p-7"}
             >
               <p className="mono-micro text-paper-2 tabular">{a.n}</p>
               <h3 className="mt-3 text-[1.15rem] font-semibold tracking-[-0.02em] text-paper">{a.title}</h3>

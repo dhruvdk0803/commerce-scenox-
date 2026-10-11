@@ -1,24 +1,8 @@
 "use client";
 
 import type { CSSProperties } from "react";
-import { PlatformList } from "@/components/ui/PlatformList";
-import { site } from "@/lib/site";
-import Link from "next/link";
-import { ArrowUpRight, Check } from "lucide-react";
 import { Button, TextLink } from "@/components/ui/Button";
 import { CatalogPipeline } from "./pipeline/CatalogPipeline";
-
-/** Services beyond the catalog, surfaced in the hero so the full offer is visible above the fold. */
-const AFTER_LAUNCH = [
-  { label: "Product photos", note: "Clean, consistent sets", href: "/ai-product-photos" },
-  { label: "Google & marketplaces", note: "Shopping, Meta, Amazon", href: "/product-feed-management" },
-  { label: "Email & carts", note: "Recovery and win-back", href: "/ecommerce-email-marketing" },
-  { label: "WhatsApp", note: "COD, carts, order updates", href: "/whatsapp-automation" },
-  { label: "AI support", note: "Questions answered 24/7", href: "/ai-customer-support" },
-  { label: "Voice & chat", note: "Buy in chat, COD calls", href: "/ai-voice-shopping-assistant" },
-];
-
-const PROMISES = ["Free 10-product sample", "Fixed quote before work", "No store passwords"];
 
 export function Hero({ compact = false }: { compact?: boolean }) {
   // CSS-driven entrance: runs off the main thread and respects reduced motion via globals.css
@@ -58,22 +42,16 @@ export function Hero({ compact = false }: { compact?: boolean }) {
         </h1>
 
         {/* row beneath: copy + system */}
-        <div className="mt-8 grid items-start gap-8 md:mt-12 lg:grid-cols-12 lg:gap-10 xl:gap-14">
+        <div className="mt-10 grid items-center gap-10 md:mt-14 lg:grid-cols-12 lg:gap-12 xl:gap-16">
           <div className="min-w-0 lg:col-span-4">
-            <p className={`mono-label text-ink-2 ${item(2).className}`} style={item(2).style}>
-              <PlatformList />
+            <p
+              className={`max-w-[36ch] text-[1.125rem] leading-[1.5] text-ink-2 ${item(3).className}`}
+              style={item(3).style}
+            >
+              {compact
+                ? "Spreadsheets and supplier files, cleaned and published by our AI engine and checked by people."
+                : "Send spreadsheets, supplier files or photos. We clean, enrich and publish every product on Shopify, WooCommerce, Magento or BigCommerce."}
             </p>
-
-            {!compact && (
-              <p
-                className={`mt-5 max-w-[38ch] text-[1.05rem] leading-[1.5] text-ink-2 ${item(3).className}`}
-                style={item(3).style}
-              >
-                Send spreadsheets, supplier files or photos. Our AI engine cleans,
-                structures and enriches every product. Our team checks it and
-                takes it live.
-              </p>
-            )}
 
             <div
               className={`mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6 ${item(5).className}`}
@@ -93,24 +71,12 @@ export function Hero({ compact = false }: { compact?: boolean }) {
               </TextLink>
             </div>
 
-            <ul
-              className={`mt-6 flex flex-wrap gap-x-5 gap-y-2 ${item(6).className}`}
-              style={item(6).style}
-              aria-label="What you can count on"
-            >
-              {PROMISES.map((t) => (
-                <li key={t} className="flex items-center gap-1.5 text-[0.875rem] text-ink">
-                  <Check aria-hidden className="size-3.5 text-success" strokeWidth={2.5} />
-                  {t}
-                </li>
-              ))}
-            </ul>
-
             <p
-              className={`mt-4 max-w-[44ch] text-[0.75rem] leading-relaxed text-ink-3 ${item(6).className}`}
+              className={`mt-6 max-w-[44ch] text-[0.8rem] leading-relaxed text-ink-3 ${item(6).className}`}
               style={item(6).style}
             >
-              {site.qualifier}
+              Free 10-product sample · fixed quote before work · no store passwords. 48 hours is for eligible
+              projects; turnaround depends on scope and your data.
             </p>
           </div>
 
@@ -122,39 +88,6 @@ export function Hero({ compact = false }: { compact?: boolean }) {
           </div>
         </div>
 
-        {!compact && (
-          <nav
-            aria-label="After launch"
-            className={`mt-10 grid overflow-hidden rounded-[12px] border border-line bg-bg-elevated md:mt-14 lg:grid-cols-[14rem_1fr] ${item(7).className}`}
-            style={item(7).style}
-          >
-            <div className="flex items-center justify-between gap-3 border-b border-line px-5 py-4 lg:flex-col lg:items-start lg:justify-center lg:border-b-0 lg:border-r">
-              <p className="mono-micro text-ink-3">AFTER LAUNCH</p>
-              <p className="text-[0.95rem] font-medium tracking-[-0.01em] text-ink lg:mt-1">The rest of the store, run for you.</p>
-            </div>
-            <ul className="grid grid-cols-2 gap-px bg-line md:grid-cols-3 xl:grid-cols-6">
-              {AFTER_LAUNCH.map((a, i) => (
-                <li key={a.href} className="bg-bg-elevated">
-                  <Link
-                    href={a.href}
-                    className="group flex h-full flex-col gap-1 px-5 py-4 transition-colors duration-[160ms] hover:bg-bg-muted/60"
-                  >
-                    <span className="flex items-center justify-between">
-                      <span className="mono-micro text-ink-3 tabular">{String(i + 1).padStart(2, "0")}</span>
-                      <ArrowUpRight
-                        aria-hidden
-                        className="size-3.5 text-ink-3 transition-[transform,color] duration-[200ms] ease-[var(--ease-out)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink"
-                        strokeWidth={2}
-                      />
-                    </span>
-                    <span className="mt-1 text-[0.95rem] font-medium tracking-[-0.01em] text-ink">{a.label}</span>
-                    <span className="text-[0.825rem] leading-snug text-ink-3">{a.note}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        )}
 
       </div>
     </section>

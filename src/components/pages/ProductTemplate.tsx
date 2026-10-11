@@ -21,7 +21,6 @@ import { EmailArt, FeedsArt, ImageryArt, SupportArt, VoiceArt, WhatsAppArt } fro
 import { CheckBox, Status } from "@/components/ui/Status";
 import { FAQ } from "@/components/home/FAQ";
 import { FinalCTA } from "@/components/home/FinalCTA";
-import { PlanCards } from "@/components/pricing/PlanCards";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Price } from "@/components/market/Price";
 import { productPages, type ProductPage } from "@/content/products";
@@ -148,14 +147,14 @@ export function ProductTemplate({ id }: { id: string }) {
               <Button href={cta} size="lg" arrow event="cta_click" eventParams={{ cta: "product_hero", product: p.id }}>
                 {p.cta}
               </Button>
-              <TextLink href="#plans">Or run it monthly</TextLink>
+              <TextLink href="/pricing#plans">Or run it monthly</TextLink>
             </>
           }
           art={Art ? <Art /> : undefined}
           facts={[
             { k: "STARTS FROM", v: <><span className="font-semibold tabular"><Price set={p.price} /></span> <span className="text-ink-3">· {p.unit}</span></> },
             { k: "DELIVERY", v: `${p.turnaround}*` },
-            ...p.facts,
+            p.facts[0],
           ]}
         />
 
@@ -213,7 +212,6 @@ export function ProductTemplate({ id }: { id: string }) {
           </Container>
         </Section>
 
-        <PlanCards highlight={p.plan} />
         <FAQ items={p.faqs} heading={p.faqHeading} />
         <FinalCTA heading={p.finalHeading} body={p.desc} primary={{ label: p.cta, href: cta }} secondary={p.secondary} />
       </main>

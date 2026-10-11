@@ -1,143 +1,49 @@
-"use client";
-
 import Image from "next/image";
-import { motion, useReducedMotion } from "motion/react";
-import { img, type ImgKey } from "@/lib/images";
-import { cn } from "@/lib/utils";
+import { img } from "@/lib/images";
 import { Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { MotionLi, Reveal, Stagger } from "@/components/ui/Reveal";
-import { CheckBox } from "@/components/ui/Status";
+import { Reveal } from "@/components/ui/Reveal";
 
-const RAW_ROWS = [
-  "AX-442,blk office chr,furniture?,NULL",
-  "KT-1180,steel bottle 750,kitchen/home,",
-  "LG-77,LED desk lamp wht,lighting,see pdf",
-  "GR-09,garden hose 20m,outdoor?,NULL",
-  "TX-310,cotton tshirt,apparel,NULL",
-  "BK-201,bkshelf 5 tier oak,furniture,NULL",
-  "SP-88,speaker bt mini,electronics?,NULL",
-  "MG-14,mug ceramic 350,kitchen,NULL",
-  "RG-550,rug wool 5x8,home,NULL",
-  "CL-07,wall clock 30cm,decor,NULL",
-];
+const PHOTOS = [img.chair, img.bottle, img.sneaker, img.lamp, img.mug] as const;
 
-const CLEAN: [string, string, ImgKey][] = [
-  ["Black Ergonomic Office Chair", "Office Furniture › Chairs", "chair"],
-  ["Insulated Steel Bottle 750 ml", "Kitchen › Drinkware", "bottle"],
-  ["White LED Desk Lamp", "Lighting › Desk Lamps", "lamp"],
-  ["Garden Hose 20 m", "Garden › Watering", "hose"],
-  ["Cotton Crew T-Shirt", "Apparel › T-Shirts", "tshirt"],
-  ["5-Tier Oak Bookshelf", "Furniture › Shelving", "shelf"],
-  ["Mini Bluetooth Speaker", "Electronics › Audio", "speaker"],
-  ["Ceramic Mug 350 ml", "Kitchen › Tableware", "mug"],
-  ["Wool Rug 5 × 8 ft", "Home › Rugs", "rug"],
-  ["Wall Clock 30 cm", "Decor › Clocks", "clock"],
-];
-
+/** The no-risk first step. One message, one button, the outcome shown as photos. */
 export function SampleOffer() {
-  const reduce = useReducedMotion();
-  const ease = [0.23, 1, 0.32, 1] as const;
-
   return (
-    <section
-      className="relative overflow-hidden border-y border-line bg-bg-elevated"
-      aria-labelledby="sample-heading"
-    >
-      <div className="container-x relative section-y">
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
-          <div className="lg:col-span-6">
-            <Reveal>
-              <Eyebrow>RISK-FREE START</Eyebrow>
-              <p className="mt-5 text-h4 font-medium text-ink-2">
-                Not sure what we&apos;ll do with your data?
-              </p>
-              <h2 id="sample-heading" className="mt-3 text-[clamp(2.75rem,1rem+4.2vw,4.5rem)] font-semibold leading-[0.96] tracking-[-0.045em] text-ink">
-                SEND US
-                <br />
-                10 PRODUCTS.
-              </h2>
-              <p className="mt-6 max-w-[42ch] text-lead text-ink-2">
-                We&apos;ll show you what your catalog can look like before you
-                commit to a larger project.
-              </p>
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
-                <Button href="/free-sample" size="lg" arrow event="cta_click" eventParams={{ cta: "send_10_products" }}>
-                  Send 10 Products
-                </Button>
-                <p className="text-[0.8rem] text-ink-3">Sample eligibility depends on project fit.</p>
-              </div>
-            </Reveal>
+    <section className="relative overflow-hidden border-y border-line bg-bg-elevated" aria-labelledby="sample-heading">
+      <div className="container-x section-y grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
+        <Reveal className="lg:col-span-5">
+          <Eyebrow>RISK-FREE START</Eyebrow>
+          <h2 id="sample-heading" className="mt-5 text-[clamp(2.75rem,1rem+4.2vw,4.5rem)] font-semibold leading-[0.96] tracking-[-0.045em] text-ink">
+            SEND US
+            <br />
+            10 PRODUCTS.
+          </h2>
+          <p className="mt-6 max-w-[36ch] text-lead text-ink-2">See what your catalog can look like before you commit to anything.</p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
+            <Button href="/free-sample" size="lg" arrow event="cta_click" eventParams={{ cta: "send_10_products" }}>
+              Send 10 Products
+            </Button>
+            <p className="text-[0.8rem] text-ink-3">Free if your project is a fit.</p>
           </div>
+        </Reveal>
 
-          {/* 10 rows → 10 cards */}
-          <div className="lg:col-span-6">
-            <div className="grid gap-3 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
-              {/* raw */}
-              <Reveal className="overflow-hidden rounded-[10px] border border-line bg-bg" amount={0.2}>
-                <div className="flex h-9 items-center justify-between border-b border-line px-3">
-                  <span className="mono-micro text-ink-2">sample.csv</span>
-                  <span className="mono-micro text-ink-3 tabular">10 ROWS</span>
-                </div>
-                <ol className="p-2">
-                  {RAW_ROWS.map((r, i) => (
-                    <li key={r} className="flex gap-2 px-1 py-[3px] font-mono text-[0.75rem] leading-tight">
-                      <span className="w-[2ch] text-ink-3 tabular">{i + 1}</span>
-                      <span className="truncate text-ink-2">
-                        {r.split(",").map((c, ci) => (
-                          <span key={ci} className={cn(c === "NULL" && "text-danger", c.endsWith("?") && "text-warning")}>
-                            {c}
-                            {ci < 3 && <span className="text-ink-3">,</span>}
-                          </span>
-                        ))}
-                      </span>
-                    </li>
-                  ))}
-                </ol>
-              </Reveal>
-
-              {/* rail */}
-              <div className="flex items-center justify-center sm:flex-col sm:gap-1.5">
-                <motion.span
-                  aria-hidden
-                  className="block h-px w-10 bg-accent sm:h-10 sm:w-px"
-                  initial={reduce ? false : { transform: "scale(0)" }}
-                  whileInView={{ transform: "scale(1)" }}
-                  viewport={{ once: true, amount: 0.5 }}
-                  transition={{ duration: 0.6, delay: 0.3, ease }}
-                />
-                <span className="mono-micro mx-2 text-accent sm:mx-0">PROCESS</span>
-                <motion.span
-                  aria-hidden
-                  className="block h-px w-10 bg-accent sm:h-10 sm:w-px"
-                  initial={reduce ? false : { transform: "scale(0)" }}
-                  whileInView={{ transform: "scale(1)" }}
-                  viewport={{ once: true, amount: 0.5 }}
-                  transition={{ duration: 0.6, delay: 0.5, ease }}
-                />
+        <Reveal delay={0.08} className="lg:col-span-7">
+          <div className="grid grid-cols-6 gap-3">
+            {PHOTOS.map((src, i) => (
+              <div
+                key={i}
+                className={
+                  i < 2
+                    ? "relative col-span-3 aspect-square overflow-hidden rounded-[18px] bg-[#f5f4ef]"
+                    : "relative col-span-2 aspect-square overflow-hidden rounded-[18px] bg-[#f5f4ef]"
+                }
+              >
+                <Image src={src} alt="" sizes="(min-width: 1024px) 300px, 50vw" className="size-full object-cover" />
               </div>
-
-              {/* clean */}
-              <Stagger as="ol" className="grid gap-1.5 max-sm:[&>li:nth-child(n+7)]:hidden" amount={0.2}>
-                {CLEAN.map(([t, c, ph]) => (
-                  <MotionLi
-                    key={t}
-                    className="flex items-center gap-2.5 rounded-[6px] border border-line bg-bg py-1 pl-1 pr-2.5"
-                  >
-                    <span className="relative size-8 shrink-0 overflow-hidden rounded-[4px] bg-[#f5f4ef]">
-                      <Image src={img[ph]} alt="" sizes="32px" className="size-full object-cover" />
-                    </span>
-                    <div className="min-w-0 flex-1">
-                      <p className="truncate text-[0.8125rem] font-medium leading-tight text-ink">{t}</p>
-                      <p className="truncate font-mono text-[0.75rem] text-ink-3">{c}</p>
-                    </div>
-                    <CheckBox done size="sm" />
-                  </MotionLi>
-                ))}
-              </Stagger>
-            </div>
+            ))}
           </div>
-        </div>
+          <p className="mono-micro mt-3 text-ink-3">ILLUSTRATIVE · 10 ROWS IN, 10 STORE-READY PRODUCTS BACK</p>
+        </Reveal>
       </div>
     </section>
   );

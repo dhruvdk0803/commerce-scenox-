@@ -7,27 +7,23 @@ import { cn } from "@/lib/utils";
 
 type Tile = { photo: ImgKey; title: string; path: string };
 
-const ROW_A: Tile[] = [
+const ROW: Tile[] = [
   { photo: "chair", title: "Black Ergonomic Office Chair", path: "Office › Chairs" },
   { photo: "bottle", title: "Insulated Steel Bottle 750 ml", path: "Kitchen › Drinkware" },
   { photo: "sneaker", title: "White Leather Low-Top Sneaker", path: "Footwear › Sneakers" },
   { photo: "lamp", title: "White LED Desk Lamp", path: "Lighting › Desk Lamps" },
   { photo: "serum", title: "Vitamin C Face Serum 30 ml", path: "Beauty › Serums" },
   { photo: "shelf", title: "5-Tier Oak Bookshelf", path: "Furniture › Shelving" },
-];
-const ROW_B: Tile[] = [
   { photo: "speaker", title: "Mini Bluetooth Speaker", path: "Electronics › Audio" },
   { photo: "mug", title: "Stoneware Coffee Mug 350 ml", path: "Kitchen › Tableware" },
   { photo: "clock", title: "Oak Frame Wall Clock 30 cm", path: "Decor › Clocks" },
   { photo: "tshirt", title: "Cotton Crew T-Shirt", path: "Apparel › T-Shirts" },
-  { photo: "rug", title: "Wool Rug 5 × 8 ft", path: "Home › Rugs" },
-  { photo: "hose", title: "Garden Hose 20 m", path: "Garden › Watering" },
 ];
 
 /** Photos are shot on porcelain; multiply lets each tile take its own surface colour. */
 const SURFACES = ["bg-bg-elevated", "bg-bg-muted", "bg-[#ebe8e1]", "bg-bg-elevated"];
 
-function Row({ tiles, reverse, offset = 0 }: { tiles: Tile[]; reverse?: boolean; offset?: number }) {
+function Row({ tiles, offset = 0 }: { tiles: Tile[]; offset?: number }) {
   // the list is rendered twice so the loop is seamless; the copy is hidden from assistive tech
   return (
     <div className="marquee group/row flex overflow-hidden">
@@ -35,24 +31,19 @@ function Row({ tiles, reverse, offset = 0 }: { tiles: Tile[]; reverse?: boolean;
         <ul
           key={copy}
           aria-hidden={copy === 1 || undefined}
-          className={cn("marquee-track flex shrink-0 gap-3 pr-3 md:gap-4 md:pr-4", reverse && "marquee-reverse")}
+          className="marquee-track flex shrink-0 gap-4 pr-4 md:gap-5 md:pr-5"
         >
           {tiles.map((t, i) => (
-            <li key={t.photo} className="w-[10.5rem] shrink-0 md:w-[13rem]">
-              <div className={cn("relative aspect-square overflow-hidden rounded-[14px]", SURFACES[(i + offset) % SURFACES.length])}>
+            <li key={t.photo} className="w-[12.5rem] shrink-0 md:w-[16rem]">
+              <div className={cn("relative aspect-square overflow-hidden rounded-[18px]", SURFACES[(i + offset) % SURFACES.length])}>
                 <Image
                   src={img[t.photo]}
                   alt={copy === 0 ? t.title : ""}
                   sizes="(min-width: 768px) 208px, 168px"
                   className="size-full object-cover mix-blend-multiply"
                 />
-                <span className="mono-micro absolute left-2.5 top-2.5 flex items-center gap-1 rounded-full bg-bg-elevated/90 px-2 py-0.5 text-success">
-                  <span className="size-1.5 rounded-full bg-success" />
-                  LIVE
-                </span>
               </div>
-              <p className="mono-micro mt-2.5 truncate text-ink-3">{t.path}</p>
-              <p className="mt-0.5 truncate text-[0.9rem] font-medium tracking-[-0.01em] text-ink">{t.title}</p>
+              <p className="mt-3 truncate text-[0.9rem] font-medium tracking-[-0.01em] text-ink">{t.title}</p>
             </li>
           ))}
         </ul>
@@ -73,20 +64,14 @@ export function Showcase() {
           </h2>
         </Reveal>
         <Reveal delay={0.08} className="lg:col-span-4 lg:col-start-9">
-          <p className="max-w-[38ch] text-[1rem] leading-[1.55] text-ink-2">
-            Clear titles, real categories, matched photos and variants. Every product, not just the first page.
-          </p>
-          <div className="mt-5">
-            <TextLink href="/free-sample">See it on 10 of yours, free</TextLink>
-          </div>
+          <TextLink href="/free-sample">See it on 10 of yours, free</TextLink>
         </Reveal>
       </div>
 
-      <div className="marquee-mask mt-10 flex flex-col gap-5 md:mt-14 md:gap-6">
-        <Row tiles={ROW_A} />
-        <Row tiles={ROW_B} reverse offset={2} />
+      <div className="marquee-mask mt-12 md:mt-16">
+        <Row tiles={ROW} />
       </div>
-      <p className="container-x mono-micro mt-6 text-ink-3">EXAMPLE OUTPUT · ILLUSTRATIVE PRODUCTS</p>
+      <p className="container-x mono-micro mt-6 text-ink-3">ILLUSTRATIVE</p>
     </section>
   );
 }

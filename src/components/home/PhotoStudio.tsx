@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image, { type StaticImageData } from "next/image";
-import { Check } from "lucide-react";
 import { useInView, useReducedMotion } from "motion/react";
 import { img } from "@/lib/images";
 import { cn } from "@/lib/utils";
@@ -30,7 +29,6 @@ const OUTPUTS: { id: Output; label: string; note: string }[] = [
   { id: "marketplace", label: "Marketplace main", note: "Pure white, Amazon and Google ready" },
 ];
 
-const CHECKS = ["Background removed", "Colour matched to source", "2048 × 2048 · named by SKU"];
 
 export function PhotoStudio({ showLink = true }: { showLink?: boolean }) {
   const [p, setP] = useState(0);
@@ -89,15 +87,6 @@ export function PhotoStudio({ showLink = true }: { showLink?: boolean }) {
               <span className="mono-micro absolute left-4 top-4 rounded-full bg-ink/80 px-2.5 py-1 text-paper backdrop-blur-sm">BEFORE</span>
               <span className="mono-micro absolute right-4 top-4 rounded-full bg-accent px-2.5 py-1 text-white">AFTER</span>
 
-              {/* checks, pinned to the finished side */}
-              <ul className="pointer-events-none absolute bottom-4 right-4 hidden flex-col items-end gap-1.5 sm:flex">
-                {CHECKS.map((c) => (
-                  <li key={c} className="mono-micro flex items-center gap-1.5 rounded-full bg-bg-elevated/95 px-2.5 py-1 text-ink backdrop-blur-sm">
-                    <Check className="size-3 text-success" strokeWidth={3} aria-hidden />
-                    {c}
-                  </li>
-                ))}
-              </ul>
 
               <div aria-hidden className={cn("pointer-events-none absolute inset-y-0 w-0.5 bg-white transition-[left]", ease)} style={{ left: `${pos}%` }}>
                 <span className="absolute left-1/2 top-1/2 grid size-11 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-accent text-white">

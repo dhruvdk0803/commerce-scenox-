@@ -4,13 +4,9 @@ import { Footer } from "@/components/layout/Footer";
 import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
 import { Hero } from "@/components/home/Hero";
 import { ClientStrip } from "@/components/home/ClientStrip";
-import { PlatformStrip } from "@/components/home/PlatformStrip";
 import { Showcase } from "@/components/home/Showcase";
 import { PhotoStudio } from "@/components/home/PhotoStudio";
 import { QuoteEstimator } from "@/components/pricing/QuoteEstimator";
-import { BeforeYouPay } from "@/components/pricing/BeforeYouPay";
-import { MessySpreadsheet } from "@/components/home/MessySpreadsheet";
-import { BeforeAfter } from "@/components/home/BeforeAfter";
 import { SampleOffer } from "@/components/home/SampleOffer";
 import { Advantages } from "@/components/home/Advantages";
 import { ServiceBento } from "@/components/home/ServiceBento";
@@ -36,16 +32,12 @@ export default function HomePage() {
         <Hero />
         <ClientStrip />
         <Showcase />
-        <PlatformStrip />
-        <MessySpreadsheet />
-        <BeforeAfter />
         <PhotoStudio />
         <ServiceBento />
-        <Advantages />
+        <Advantages compact />
         <QuoteEstimator />
-        <BeforeYouPay tone="muted" />
         <SampleOffer />
-        <FAQ items={homeFaqs} />
+        <FAQ items={homeFaqs.slice(0, 6)} />
         <FinalCTA />
       </main>
       <Footer />
