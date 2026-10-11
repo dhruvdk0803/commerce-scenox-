@@ -18,7 +18,7 @@ export const metadata = pageMeta({
 });
 
 const ROUTES = [
-  { n: "01", label: "Start a project", desc: "Tell us what your store needs and we'll scope it.", href: "/get-started", cta: "Get Started" },
+  { n: "01", label: "Start a project", desc: "Tell us what your store needs and we'll scope it.", href: "/get-started", cta: "Get a Quote" },
   { n: "02", label: "Send 10 products", desc: "See what your catalog could look like first.", href: "/free-sample", cta: "Send 10 Products" },
 ];
 
@@ -112,7 +112,7 @@ export default function ContactPage() {
               <h2 className="max-w-[16ch] text-h2 text-paper">No store passwords.<br /> Just the work.</h2>
               <div className="flex flex-wrap gap-3">
                 <Button href="/get-started" variant="inverse" arrow>
-                  Get Started
+                  Get a Quote
                 </Button>
                 <Button href="/free-sample" variant="outline" className="border-line-dark-strong text-paper hover:border-paper hover:bg-white/5">
                   Send 10 Products

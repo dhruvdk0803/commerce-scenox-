@@ -25,7 +25,7 @@ export const tiers: Tier[] = [
     range: "Up to 250 products",
     price: { in: 6999, us: 149, uk: 119, au: 229 },
     priceNote: "Starting from",
-    cta: "Get Started",
+    cta: "Get a Quote",
     href: "/get-started?tier=starter",
     includes: [
       "Data cleanup & normalization",
@@ -41,7 +41,7 @@ export const tiers: Tier[] = [
     range: "Up to 500 products",
     price: { in: 9999, us: 249, uk: 199, au: 379 },
     priceNote: "Starting from",
-    cta: "Get Started",
+    cta: "Get a Quote",
     href: "/get-started?tier=growth",
     includes: [
       "Everything in Starter",
@@ -58,7 +58,7 @@ export const tiers: Tier[] = [
     price: { in: 14999, us: 399, uk: 319, au: 599 },
     priceNote: "Starting from",
     popular: true,
-    cta: "Get Started",
+    cta: "Get a Quote",
     href: "/get-started?tier=launch",
     includes: [
       "Everything in Growth",

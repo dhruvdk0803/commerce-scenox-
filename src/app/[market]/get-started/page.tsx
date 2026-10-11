@@ -10,7 +10,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbJsonLd, pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "Get Started — Tell Us About Your Store",
+  title: "Get a Fixed Quote",
   description:
     "Tell us about your store, catalog and what you need. We reply with a fixed quote and a realistic turnaround. No store passwords required.",
   path: "/get-started",
@@ -31,11 +31,10 @@ export default function GetStartedPage() {
         <section className="container-x pt-10 pb-20 md:pt-16 md:pb-28">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
-              <Eyebrow>GET STARTED</Eyebrow>
-              <h1 className="mt-5 text-h1 text-ink">Tell us<br /> about your store.</h1>
+              <Eyebrow>GET A QUOTE</Eyebrow>
+              <h1 className="mt-5 text-h1 text-ink">Get a<br /> fixed quote.</h1>
               <p className="mt-6 max-w-[40ch] text-lead text-ink-2">
-                We&apos;ll review the scope and tell you what&apos;s possible, how long it should take and what it will
-                cost.
+                One short form. We reply with a fixed price and a realistic timeline.
               </p>
 
               <ul className="mt-10 hidden flex-col divide-y divide-line border-y border-line lg:flex">

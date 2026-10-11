@@ -166,7 +166,7 @@ export default function AboutPage() {
               </h2>
               <div className="flex flex-wrap gap-3">
                 <Button href="/get-started" variant="inverse" arrow>
-                  Get Started
+                  Get a Quote
                 </Button>
                 <Button
                   href="/free-sample"

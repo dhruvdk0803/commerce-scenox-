@@ -4,9 +4,6 @@ import { Footer } from "@/components/layout/Footer";
 import { PricingCards } from "@/components/home/PricingCards";
 import { FAQ } from "@/components/home/FAQ";
 import { FinalCTA } from "@/components/home/FinalCTA";
-import { Eyebrow } from "@/components/ui/Eyebrow";
-import { Reveal } from "@/components/ui/Reveal";
-import { CheckBox } from "@/components/ui/Status";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbJsonLd, faqJsonLd, pageMeta } from "@/lib/seo";
 import { pricingFaqs } from "@/content/faqs";
@@ -32,15 +29,6 @@ export async function generateMetadata(): Promise<Metadata> {
     path: "/pricing",
   });
 }
-
-const INCLUDED = [
-  "Source-file inspection and a fixed quote",
-  "Cleanup and normalization of every field",
-  "Titles, categories, variants and images structured",
-  "Formatting for your platform",
-  "An approval round before anything publishes",
-  "Upload, publishing and a QA pass",
-];
 
 const lowest = (sets: PriceSet[]): PriceSet =>
   Object.fromEntries(
@@ -77,26 +65,6 @@ export default async function PricingPage() {
 
         <PricingCards eyebrow="01 / CATALOG LISTING" heading={["Catalog listing.", "Four tiers by product count."]} />
 
-        <section className="section-y-sm border-t border-line bg-bg-muted/40" aria-labelledby="included-heading">
-          <div className="container-x grid gap-8 lg:grid-cols-12 lg:gap-10">
-            <Reveal className="lg:col-span-4">
-              <Eyebrow>IN EVERY TIER</Eyebrow>
-              <h2 id="included-heading" className="mt-4 text-h3 text-ink">
-                What every catalog project includes.
-              </h2>
-            </Reveal>
-            <Reveal delay={0.08} className="lg:col-span-8">
-              <ul className="grid border-t border-line sm:grid-cols-2 sm:gap-x-8">
-                {INCLUDED.map((i) => (
-                  <li key={i} className="flex items-center gap-3 border-b border-line py-3.5 text-[1rem] text-ink">
-                    <CheckBox done />
-                    {i}
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-          </div>
-        </section>
 
         <ProductMenu
           exclude={["upload"]}

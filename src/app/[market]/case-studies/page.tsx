@@ -6,7 +6,7 @@ import { Section, Container } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { FinalCTA } from "@/components/home/FinalCTA";
-import { demoCase, type CaseStudy } from "@/components/home/ProofModule";
+import { demoCase } from "@/components/home/ProofModule";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { pageMeta, breadcrumbJsonLd } from "@/lib/seo";
 import { CaseStudyTemplate } from "@/components/pages/CaseStudyTemplate";
@@ -21,43 +21,6 @@ export const metadata: Metadata = pageMeta({
     "Brands Scenox Commerce has worked with, plus sample catalog transformations showing messy product data turned into a store-ready catalog.",
   path: "/case-studies",
 });
-
-const distributorCase: CaseStudy = {
-  slug: "sample-distributor-catalog",
-  isDemo: true,
-  customer: "Sample: distributor catalog",
-  industry: "Industrial supplies",
-  platform: "WooCommerce",
-  catalogSize: "12,400 SKUs",
-  problem:
-    "An ERP export with inconsistent part numbers, PDF spec sheets for half the range and roughly 40 overlapping categories built up over several years.",
-  input: ["1 ERP export (CSV)", "PDF spec sheets, ~1,900 products", "Legacy WooCommerce category tree"],
-  workflow: [
-    "SKU and category audit",
-    "Category tree rebuilt",
-    "Spec sheets parsed into attributes",
-    "Batch cleanup and enrichment",
-    "Staged publish with QA",
-  ],
-  handled: [
-    "Part numbers normalized",
-    "40 categories consolidated to 14",
-    "Specifications extracted into metafields",
-    "Duplicate listings merged",
-    "Images matched by part number",
-    "Published in 6 scheduled batches",
-  ],
-  turnaround: "Illustrative",
-  result:
-    "A 12,400-SKU catalog restructured into a consistent category tree with structured specifications, published in batches with QA between each.",
-  before: ["blk-04-M8x40", "Hardware / Fasteners / misc", "spec: steel, M8, zinc", "no image on file"],
-  after: [
-    "Hex Bolt M8x40, Zinc-Plated Steel",
-    "Fasteners › Bolts › Hex Bolts",
-    "material: Steel · coating: Zinc · thread: M8",
-    "hex-bolt-m8x40-zinc-01.jpg",
-  ],
-};
 
 export default function CaseStudiesPage() {
   return (
@@ -114,7 +77,6 @@ export default function CaseStudiesPage() {
         </Section>
 
         <CaseStudyTemplate cs={demoCase} />
-        <CaseStudyTemplate cs={distributorCase} />
 
         <Section compact aria-labelledby="note-heading">
           <Container>
@@ -125,7 +87,7 @@ export default function CaseStudiesPage() {
                 study follows.
               </p>
               <Button href="/get-started" arrow>
-                Get Started
+                Get a Quote
               </Button>
             </Reveal>
           </Container>

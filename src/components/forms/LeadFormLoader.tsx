@@ -10,23 +10,18 @@ import dynamic from "next/dynamic";
 const LeadForm = dynamic(() => import("./LeadForm").then((m) => m.LeadForm), {
   ssr: false,
   loading: () => (
-    <div aria-busy="true" aria-label="Loading form" className="animate-pulse">
-      <div className="h-3 w-40 rounded bg-bg-muted" />
-      <div className="mt-3 grid grid-cols-4 gap-1.5">
+    <div aria-busy="true" aria-label="Loading form" className="grid animate-pulse gap-6">
+      <div className="grid gap-5 sm:grid-cols-2">
         {[0, 1, 2, 3].map((i) => (
-          <div key={i} className="h-[3px] rounded-full bg-line" />
-        ))}
-      </div>
-      <div className="mt-8 grid gap-6 sm:grid-cols-2">
-        {[0, 1, 2, 3, 4, 5].map((i) => (
           <div key={i}>
             <div className="h-3 w-24 rounded bg-bg-muted" />
             <div className="mt-2 h-12 rounded-[8px] border border-line bg-bg-elevated" />
           </div>
         ))}
       </div>
-      <div className="mt-10 h-px bg-line" />
-      <div className="mt-6 ml-auto h-[52px] w-40 rounded-[8px] bg-bg-muted" />
+      <div className="h-36 rounded-[8px] bg-bg-muted/60" />
+      <div className="h-12 rounded-[8px] border border-line" />
+      <div className="ml-auto h-[52px] w-48 rounded-[8px] bg-bg-muted" />
     </div>
   ),
 });

@@ -2,40 +2,19 @@
 
 import { site } from "@/lib/site";
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { ArrowLeft, Check } from "lucide-react";
+import { Check, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { track, trackConversion } from "@/lib/analytics";
 import { isValidEmail, isValidPhone, isWorkEmail } from "@/lib/validation";
 import { cn } from "@/lib/utils";
 import { useMarket } from "@/components/market/MarketProvider";
-import {
-  ChipGroup,
-  Field,
-  FileDrop,
-  PhoneInput,
-  Select,
-  StepProgress,
-  TextArea,
-  TextInput,
-  fileToBase64,
-  readUtm, focusFirstInvalid } from "./fields";
-import {
-  COUNTRIES,
-  MARKET_ISO,
-  NEEDS,
-  NEED_QUERY_MAP,
-  PLATFORMS,
-  PRODUCT_COUNTS,
-  SOURCES,
-  TIER_COUNT_MAP,
-  TIMELINES,
-} from "./options";
+import { ChipGroup, Field, FileDrop, PhoneInput, Select, TextArea, TextInput, fileToBase64, readUtm, focusFirstInvalid } from "./fields";
+import { COUNTRIES, MARKET_ISO, NEEDS, NEED_QUERY_MAP, PLATFORMS, PRODUCT_COUNTS, TIER_COUNT_MAP, TIMELINES } from "./options";
 
-const STEPS = ["Your business", "Your catalog", "What you need", "Upload & submit"] as const;
-const STORAGE_KEY = "scenox.lead.v1";
+const STORAGE_KEY = "scenox.lead.v2";
 
 type Data = {
   fullName: string;
@@ -46,7 +25,6 @@ type Data = {
   country: string;
   platform: string;
   productCount: string;
-  sources: string[];
   needs: string[];
   timeline: string;
   notes: string;
@@ -61,7 +39,6 @@ const empty: Data = {
   country: "",
   platform: "",
   productCount: "",
-  sources: [],
   needs: [],
   timeline: "",
   notes: "",
@@ -69,85 +46,73 @@ const empty: Data = {
 
 type Errors = Partial<Record<keyof Data | "file", string>>;
 
-function validateStep(step: number, d: Data): Errors {
+function validate(d: Data): Errors {
   const e: Errors = {};
-  if (step === 0) {
-    if (d.fullName.trim().length < 2) e.fullName = "Enter your full name.";
-    if (!isValidEmail(d.email)) e.email = "Enter a valid work email.";
-    if (!isValidPhone(d.phone)) e.phone = "Enter a valid phone number, including the country code.";
-    if (d.company.trim().length < 2) e.company = "Enter your company name.";
-    if (!d.country) e.country = "Select your country.";
-  }
-  if (step === 1) {
-    if (!d.platform) e.platform = "Select the platform your store runs on.";
-    if (!d.productCount) e.productCount = "Roughly how many products?";
-    if (d.sources.length === 0) e.sources = "Pick at least one source format.";
-  }
-  if (step === 2) {
-    if (d.needs.length === 0) e.needs = "Select what you need help with.";
-    if (!d.timeline) e.timeline = "Select a timeline.";
-  }
+  if (d.fullName.trim().length < 2) e.fullName = "Enter your name.";
+  if (!isValidEmail(d.email)) e.email = "Enter a valid email.";
+  if (!isValidPhone(d.phone)) e.phone = "Enter your phone or WhatsApp number.";
+  if (d.company.trim().length < 2) e.company = "Enter your company or store name.";
+  if (d.needs.length === 0) e.needs = "Pick at least one.";
+  if (!d.platform) e.platform = "Select your platform.";
+  if (!d.productCount) e.productCount = "Pick a rough range.";
   return e;
 }
 
+/**
+ * One-step quote request. Only what we need to reply with a quote is
+ * required; everything else sits behind "Add details".
+ */
 export function LeadForm() {
   const market = useMarket();
   const params = useSearchParams();
   const reduce = useReducedMotion();
   // Client-only component (see LeadFormLoader): safe to read storage + params lazily.
   const [initial] = useState(() => {
-    let saved: Partial<Data> & { step?: number } = {};
+    let saved: Partial<Data> = {};
     try {
       const raw = sessionStorage.getItem(STORAGE_KEY);
-      if (raw) saved = JSON.parse(raw) as Partial<Data> & { step?: number };
+      if (raw) saved = JSON.parse(raw) as Partial<Data>;
     } catch {
       /* ignore */
     }
-    const need = params.get("need");
     const tier = params.get("tier");
     const platform = params.get("platform");
-    const plan = params.get("plan");
     const needs = [...(saved.needs ?? [])];
     // ?need=imagery,feeds from the estimator, or a single value from a service page
-    for (const n of need?.split(",") ?? []) {
+    for (const n of params.get("need")?.split(",") ?? []) {
       if (NEED_QUERY_MAP[n] && !needs.includes(NEED_QUERY_MAP[n])) needs.push(NEED_QUERY_MAP[n]);
     }
-    if (plan && !needs.includes("Monthly plan")) needs.push("Monthly plan");
-    if (params.get("bundle") && !needs.includes("Bundle")) needs.push("Bundle");
-    const d: Data = {
+    if ((params.get("plan") || params.get("bundle")) && !needs.includes("Monthly plan")) needs.push("Monthly plan");
+    const est = params.get("est");
+    return {
       ...empty,
       ...saved,
       needs,
       country: saved.country || (COUNTRIES as readonly string[]).find((c) => c === market.label) || "",
       productCount: saved.productCount || (tier && TIER_COUNT_MAP[tier]) || "",
-      notes: saved.notes || (params.get("est") ? `Estimator: ${params.get("est")!.slice(0, 200)}` : ""),
-      platform:
-        saved.platform || (platform && PLATFORMS.find((p) => p.toLowerCase() === platform.toLowerCase())) || "",
-    };
-    return { data: d, step: Math.min(saved.step ?? 0, STEPS.length - 1) };
+      platform: saved.platform || (platform && PLATFORMS.find((p) => p.toLowerCase() === platform.toLowerCase())) || "",
+      notes: saved.notes || (est ? `Estimator: ${est.slice(0, 200)}` : ""),
+    } satisfies Data;
   });
-  const [step, setStep] = useState(initial.step);
-  const [dir, setDir] = useState<1 | -1>(1);
-  const [data, setData] = useState<Data>(initial.data);
+  const [data, setData] = useState<Data>(initial);
   const [errors, setErrors] = useState<Errors>({});
+  const [more, setMore] = useState(() => !!(initial.notes || initial.timeline));
   const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [serverError, setServerError] = useState<string | null>(null);
   const started = useRef(false);
-  const topRef = useRef<HTMLDivElement>(null);
 
-  // persist
   useEffect(() => {
     if (status === "success") {
       sessionStorage.removeItem(STORAGE_KEY);
       return;
     }
     try {
-      sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ ...data, step }));
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     } catch {
       /* ignore */
     }
-  }, [data, step, status]);
+  }, [data, status]);
 
   const set = useCallback(<K extends keyof Data>(k: K, v: Data[K]) => {
     if (!started.current) {
@@ -158,33 +123,12 @@ export function LeadForm() {
     setErrors((e) => (e[k] ? { ...e, [k]: undefined } : e));
   }, []);
 
-  const next = () => {
-    const e = validateStep(step, data);
+  const submit = async () => {
+    const e = validate(data);
     setErrors(e);
     if (Object.keys(e).length) {
       focusFirstInvalid();
       return;
-    }
-    track("form_step_completed", { form: "lead", step: step + 1 });
-    setDir(1);
-    setStep((s) => Math.min(s + 1, STEPS.length - 1));
-    topRef.current?.scrollIntoView({ block: "start", behavior: reduce ? "auto" : "smooth" });
-  };
-
-  const back = () => {
-    setDir(-1);
-    setStep((s) => Math.max(0, s - 1));
-  };
-
-  const submit = async () => {
-    for (let i = 0; i < 3; i++) {
-      const e = validateStep(i, data);
-      if (Object.keys(e).length) {
-        setErrors(e);
-        setDir(-1);
-        setStep(i);
-        return;
-      }
     }
     setStatus("submitting");
     setServerError(null);
@@ -192,6 +136,8 @@ export function LeadForm() {
       const body: Record<string, unknown> = {
         kind: "lead",
         ...data,
+        country: data.country || market.label,
+        sources: [],
         website_confirm: (document.getElementById("website_confirm") as HTMLInputElement | null)?.value ?? "",
         utm: readUtm(),
       };
@@ -221,22 +167,12 @@ export function LeadForm() {
     }
   };
 
-  const variants = useMemo(
-    () => ({
-      enter: (d: number) => (reduce ? { opacity: 0 } : { opacity: 0, transform: `translateX(${d * 16}px)` }),
-      center: { opacity: 1, transform: "translateX(0px)" },
-      exit: (d: number) => (reduce ? { opacity: 0 } : { opacity: 0, transform: `translateX(${d * -16}px)` }),
-    }),
-    [reduce],
-  );
-
   if (status === "success") {
     return (
       <motion.div
         initial={reduce ? false : { opacity: 0, transform: "translateY(8px)" }}
         animate={{ opacity: 1, transform: "translateY(0px)" }}
         transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-        className="rounded-[12px] border border-line bg-bg-elevated p-8 md:p-10"
         role="status"
       >
         <span className="mono-label flex items-center gap-2 text-success">
@@ -245,326 +181,188 @@ export function LeadForm() {
           </span>
           RECEIVED
         </span>
-        <h2 className="mt-5 text-h2 text-ink">Request received.</h2>
+        <h2 className="mt-5 text-h2 text-ink">Thanks, {data.fullName.split(" ")[0]}.</h2>
         <p className="mt-4 max-w-[46ch] text-lead text-ink-2">
-          We&apos;ll review the information and get back to you with the next step.
+          We&apos;ll reply by email with a fixed quote and a realistic timeline.
         </p>
-        <dl className="mt-8 grid gap-x-8 gap-y-3 border-t border-line pt-6 text-[0.95rem] sm:grid-cols-2">
-          {[
-            ["Company", data.company],
-            ["Platform", data.platform],
-            ["Products", data.productCount],
-            ["Timeline", data.timeline],
-          ].map(([k, v]) => (
-            <div key={k} className="flex justify-between gap-4 border-b border-line pb-2">
-              <dt className="text-ink-3">{k}</dt>
-              <dd className="text-right font-medium text-ink">{v}</dd>
-            </div>
-          ))}
-        </dl>
-        <p className="mt-6 text-[0.85rem] text-ink-3">
-          We reply by email with a fixed quote and a realistic timeline. Reply to that message if anything changes.
+        <p className="mt-6 text-[0.9rem] text-ink-2">
+          Want it faster?{" "}
+          <Link href="/free-sample" className="font-medium text-ink underline underline-offset-2">
+            Send 10 products
+          </Link>{" "}
+          and we&apos;ll quote from your real data.
         </p>
       </motion.div>
     );
   }
 
   return (
-    <div ref={topRef} className="scroll-mt-28">
-      <StepProgress steps={STEPS} current={step} />
+    <form
+      noValidate
+      onSubmit={(e) => {
+        e.preventDefault();
+        void submit();
+      }}
+      className="grid gap-6"
+    >
+      {/* honeypot */}
+      <div className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden" aria-hidden>
+        <label htmlFor="website_confirm">Leave this empty</label>
+        <input id="website_confirm" name="website_confirm" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
 
-      <form
-        noValidate
-        onSubmit={(e) => {
-          e.preventDefault();
-          if (step < STEPS.length - 1) next();
-          else void submit();
-        }}
-        className="mt-8"
-      >
-        {/* honeypot */}
-        <div className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden" aria-hidden>
-          <label htmlFor="website_confirm">Leave this empty</label>
-          <input id="website_confirm" name="website_confirm" type="text" tabIndex={-1} autoComplete="off" />
-        </div>
-
-        <div className="relative overflow-hidden">
-          <AnimatePresence mode="wait" custom={dir} initial={false}>
-            <motion.div
-              key={step}
-              custom={dir}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.26, ease: [0.23, 1, 0.32, 1] }}
-            >
-              {step === 0 && (
-                <div className="grid gap-6 sm:grid-cols-2">
-                  <Field label="Full name" error={errors.fullName}>
-                    {(p) => (
-                      <TextInput
-                        {...p}
-                        name="fullName"
-                        autoComplete="name"
-                        value={data.fullName}
-                        onChange={(e) => set("fullName", e.target.value)}
-                        aria-describedby={p.describedBy}
-                        placeholder="Your name"
-                      />
-                    )}
-                  </Field>
-                  <Field
-                    label="Work email"
-                    error={errors.email}
-                    hint={data.email && isValidEmail(data.email) && !isWorkEmail(data.email) ? "A work address helps us verify the company faster." : undefined}
-                  >
-                    {(p) => (
-                      <TextInput
-                        {...p}
-                        type="email"
-                        name="email"
-                        inputMode="email"
-                        autoComplete="email"
-                        value={data.email}
-                        onChange={(e) => set("email", e.target.value)}
-                        aria-describedby={p.describedBy}
-                        placeholder="you@company.com"
-                      />
-                    )}
-                  </Field>
-                  <Field label="Phone / WhatsApp" error={errors.phone}>
-                    {(p) => (
-                      <PhoneInput
-                        {...p}
-                        value={data.phone}
-                        onChange={(v) => set("phone", v)}
-                        defaultIso={MARKET_ISO[market.id]}
-                        onCountry={(c) => set("country", (COUNTRIES as readonly string[]).includes(c) ? c : "Other")}
-                      />
-                    )}
-                  </Field>
-                  <Field label="Company" error={errors.company}>
-                    {(p) => (
-                      <TextInput
-                        {...p}
-                        name="company"
-                        autoComplete="organization"
-                        value={data.company}
-                        onChange={(e) => set("company", e.target.value)}
-                        aria-describedby={p.describedBy}
-                        placeholder="Company name"
-                      />
-                    )}
-                  </Field>
-                  <Field label="Website" optional>
-                    {(p) => (
-                      <TextInput
-                        {...p}
-                        name="website"
-                        inputMode="url"
-                        autoComplete="url"
-                        value={data.website}
-                        onChange={(e) => set("website", e.target.value)}
-                        placeholder="yourstore.com"
-                      />
-                    )}
-                  </Field>
-                  <Field label="Country" error={errors.country}>
-                    {(p) => (
-                      <Select
-                        {...p}
-                        name="country"
-                        autoComplete="country-name"
-                        value={data.country}
-                        onChange={(e) => set("country", e.target.value)}
-                        aria-describedby={p.describedBy}
-                      >
-                        <option value="">Select…</option>
-                        {COUNTRIES.map((c) => (
-                          <option key={c} value={c}>
-                            {c}
-                          </option>
-                        ))}
-                      </Select>
-                    )}
-                  </Field>
-                </div>
-              )}
-
-              {step === 1 && (
-                <div className="grid gap-8">
-                  <Field label="Which platform?" error={errors.platform}>
-                    {(p) => (
-                      <ChipGroup
-                        id={p.id}
-                        name="platform"
-                        options={PLATFORMS}
-                        value={data.platform as (typeof PLATFORMS)[number] | ""}
-                        onChange={(v) => set("platform", v as string)}
-                        invalid={p.invalid}
-                      />
-                    )}
-                  </Field>
-                  <Field label="How many products?" error={errors.productCount} hint="A rough range is fine. We confirm the exact count from your files.">
-                    {(p) => (
-                      <ChipGroup
-                        id={p.id}
-                        name="productCount"
-                        options={PRODUCT_COUNTS}
-                        value={data.productCount as (typeof PRODUCT_COUNTS)[number] | ""}
-                        onChange={(v) => set("productCount", v as string)}
-                        invalid={p.invalid}
-                        columns={4}
-                      />
-                    )}
-                  </Field>
-                  <Field label="What does the data look like today?" error={errors.sources} hint="Select everything that applies.">
-                    {(p) => (
-                      <ChipGroup
-                        id={p.id}
-                        name="sources"
-                        multiple
-                        options={SOURCES}
-                        value={data.sources as (typeof SOURCES)[number][]}
-                        onChange={(v) => set("sources", v as string[])}
-                        invalid={p.invalid}
-                        columns={4}
-                      />
-                    )}
-                  </Field>
-                </div>
-              )}
-
-              {step === 2 && (
-                <div className="grid gap-8">
-                  <Field label="What do you need?" error={errors.needs} hint="Select everything that applies.">
-                    {(p) => (
-                      <ChipGroup
-                        id={p.id}
-                        name="needs"
-                        multiple
-                        options={NEEDS}
-                        value={data.needs as (typeof NEEDS)[number][]}
-                        onChange={(v) => set("needs", v as string[])}
-                        invalid={p.invalid}
-                      />
-                    )}
-                  </Field>
-                  <Field label="Timeline" error={errors.timeline}>
-                    {(p) => (
-                      <ChipGroup
-                        id={p.id}
-                        name="timeline"
-                        options={TIMELINES}
-                        value={data.timeline as (typeof TIMELINES)[number]["value"] | ""}
-                        onChange={(v) => set("timeline", v as string)}
-                        invalid={p.invalid}
-                        columns={4}
-                      />
-                    )}
-                  </Field>
-                  <Field label="Anything else we should know?" optional hint="Category depth, image situation, deadlines. No passwords, please.">
-                    {(p) => (
-                      <TextArea
-                        {...p}
-                        name="notes"
-                        value={data.notes}
-                        onChange={(e) => set("notes", e.target.value)}
-                        placeholder="e.g. 3 supplier files with overlapping SKUs, images named by SKU, launch on the 20th."
-                      />
-                    )}
-                  </Field>
-                </div>
-              )}
-
-              {step === 3 && (
-                <div className="grid gap-8 lg:grid-cols-[1fr_18rem]">
-                  <div className="grid gap-8">
-                    <Field
-                      label="Sample catalog"
-                      optional
-                      error={errors.file}
-                      hint="A few rows are enough. We use it to confirm structure and give an accurate quote."
-                    >
-                      {(p) => (
-                        <FileDrop
-                          id={p.id}
-                          file={file}
-                          error={errors.file}
-                          onChange={(f, err) => {
-                            setFile(f);
-                            setErrors((e) => ({ ...e, file: err }));
-                          }}
-                        />
-                      )}
-                    </Field>
-                    <div className="rounded-[8px] border border-line bg-bg-muted/50 p-4 text-[0.875rem] leading-relaxed text-ink-2">
-                      <p className="mono-micro mb-2 text-ink-3">ACCESS & DATA</p>
-                      We never ask for store passwords. Publishing access is arranged after project approval using scoped
-                      collaborator or staff accounts where supported. Files are used only for your project. Read our{" "}
-                      <Link href="/data-handling" className="text-ink underline underline-offset-2">
-                        data-handling policy
-                      </Link>
-                      .
-                    </div>
-                  </div>
-
-                  {/* summary */}
-                  <aside className="rounded-[10px] border border-line bg-bg-elevated p-5">
-                    <p className="mono-label text-ink-2">SUMMARY</p>
-                    <dl className="mt-4 flex flex-col gap-3 text-[0.875rem]">
-                      {[
-                        ["Company", data.company],
-                        ["Platform", data.platform],
-                        ["Products", data.productCount],
-                        ["Sources", data.sources.join(", ")],
-                        ["Needs", data.needs.join(", ")],
-                        ["Timeline", data.timeline],
-                      ].map(([k, v]) => (
-                        <div key={k}>
-                          <dt className="mono-micro text-ink-3">{k}</dt>
-                          <dd className="mt-1 text-ink">{v || "—"}</dd>
-                        </div>
-                      ))}
-                    </dl>
-                  </aside>
-                </div>
-              )}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* controls */}
-        <div className="mt-10 flex flex-col-reverse gap-4 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-center gap-4">
-            {step > 0 && (
-              <button
-                type="button"
-                onClick={back}
-                className="inline-flex h-11 items-center gap-1.5 rounded-[8px] px-3 text-[0.925rem] font-medium text-ink-2 transition-colors hover:bg-bg-muted hover:text-ink"
-              >
-                <ArrowLeft className="size-4" strokeWidth={2} aria-hidden />
-                Back
-              </button>
-            )}
-            {serverError && (
-              <p role="alert" className="text-[0.875rem] text-danger">
-                {serverError}
-              </p>
-            )}
-          </div>
-          {step < STEPS.length - 1 ? (
-            <Button type="submit" size="lg" arrow className="w-full sm:w-auto">
-              Continue
-            </Button>
-          ) : (
-            <Button type="submit" size="lg" arrow loading={status === "submitting"} className={cn("w-full sm:w-auto")}>
-              Send to Scenox
-            </Button>
+      <div className="grid gap-5 sm:grid-cols-2">
+        <Field label="Your name" error={errors.fullName}>
+          {(p) => <TextInput {...p} name="fullName" autoComplete="name" value={data.fullName} onChange={(e) => set("fullName", e.target.value)} />}
+        </Field>
+        <Field
+          label="Email"
+          error={errors.email}
+          hint={data.email && isValidEmail(data.email) && !isWorkEmail(data.email) ? "A work address helps us reply faster." : undefined}
+        >
+          {(p) => (
+            <TextInput {...p} type="email" name="email" inputMode="email" autoComplete="email" value={data.email} onChange={(e) => set("email", e.target.value)} placeholder="you@company.com" />
           )}
+        </Field>
+        <Field label="Phone / WhatsApp" error={errors.phone}>
+          {(p) => (
+            <PhoneInput
+              {...p}
+              value={data.phone}
+              onChange={(v) => set("phone", v)}
+              defaultIso={MARKET_ISO[market.id]}
+              onCountry={(c) => set("country", (COUNTRIES as readonly string[]).includes(c) ? c : "Other")}
+            />
+          )}
+        </Field>
+        <Field label="Company or store" error={errors.company}>
+          {(p) => <TextInput {...p} name="company" autoComplete="organization" value={data.company} onChange={(e) => set("company", e.target.value)} />}
+        </Field>
+      </div>
+
+      <Field label="What do you need?" error={errors.needs}>
+        {(p) => (
+          <ChipGroup
+            id={p.id}
+            name="needs"
+            multiple
+            options={NEEDS}
+            value={data.needs as (typeof NEEDS)[number][]}
+            onChange={(v) => set("needs", v as string[])}
+            invalid={p.invalid}
+          />
+        )}
+      </Field>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <Field label="Platform" error={errors.platform}>
+          {(p) => (
+            <Select {...p} name="platform" value={data.platform} onChange={(e) => set("platform", e.target.value)}>
+              <option value="">Select…</option>
+              {PLATFORMS.map((x) => (
+                <option key={x} value={x}>
+                  {x}
+                </option>
+              ))}
+            </Select>
+          )}
+        </Field>
+        <Field label="Products in your catalog" error={errors.productCount}>
+          {(p) => (
+            <Select {...p} name="productCount" value={data.productCount} onChange={(e) => set("productCount", e.target.value)}>
+              <option value="">Select…</option>
+              {PRODUCT_COUNTS.map((x) => (
+                <option key={x} value={x}>
+                  {x}
+                </option>
+              ))}
+            </Select>
+          )}
+        </Field>
+      </div>
+
+      {/* optional extras */}
+      <div className="rounded-[10px] border border-line">
+        <button
+          type="button"
+          aria-expanded={more}
+          onClick={() => setMore((m) => !m)}
+          className="flex w-full items-center justify-between gap-3 px-4 py-3.5 text-left"
+        >
+          <span className="text-[0.95rem] font-medium text-ink">
+            Add details <span className="font-normal text-ink-3">· website, timeline, notes, sample file</span>
+          </span>
+          <ChevronDown className={cn("size-4 shrink-0 text-ink-2 transition-transform duration-[200ms]", more && "rotate-180")} strokeWidth={2} aria-hidden />
+        </button>
+        <AnimatePresence initial={false}>
+          {more && (
+            <motion.div
+              initial={reduce ? false : { height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={reduce ? { opacity: 0 } : { height: 0, opacity: 0 }}
+              transition={{ duration: 0.24, ease: [0.23, 1, 0.32, 1] }}
+              className="overflow-hidden"
+            >
+              <div className="grid gap-5 border-t border-line p-4">
+                <Field label="Website" optional>
+                  {(p) => (
+                    <TextInput {...p} name="website" inputMode="url" autoComplete="url" value={data.website} onChange={(e) => set("website", e.target.value)} placeholder="yourstore.com" />
+                  )}
+                </Field>
+                <Field label="Timeline" optional>
+                  {(p) => (
+                    <ChipGroup
+                      id={p.id}
+                      name="timeline"
+                      options={TIMELINES}
+                      value={data.timeline as (typeof TIMELINES)[number]["value"] | ""}
+                      onChange={(v) => set("timeline", v as string)}
+                      columns={4}
+                    />
+                  )}
+                </Field>
+                <Field label="Notes" optional hint="No passwords, please. We arrange access securely after approval.">
+                  {(p) => (
+                    <TextArea {...p} name="notes" value={data.notes} onChange={(e) => set("notes", e.target.value)} placeholder="e.g. 3 supplier files, images named by SKU, launch on the 20th." />
+                  )}
+                </Field>
+                <Field label="Sample file" optional error={errors.file}>
+                  {(p) => (
+                    <FileDrop
+                      id={p.id}
+                      file={file}
+                      error={errors.file}
+                      onChange={(f, err) => {
+                        setFile(f);
+                        setErrors((e) => ({ ...e, file: err }));
+                      }}
+                    />
+                  )}
+                </Field>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      <div className="flex flex-col gap-4 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-[0.8rem] leading-relaxed text-ink-3">
+          No store passwords. We reply with a fixed quote.{" "}
+          <Link href="/data-handling" className="underline underline-offset-2 hover:text-ink">
+            How we handle data
+          </Link>
+        </p>
+        <div className="flex flex-col items-stretch gap-2 sm:items-end">
+          {serverError && (
+            <p role="alert" className="text-[0.875rem] text-danger">
+              {serverError}
+            </p>
+          )}
+          <Button type="submit" size="lg" arrow loading={status === "submitting"} className="w-full sm:w-auto">
+            Get my fixed quote
+          </Button>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }

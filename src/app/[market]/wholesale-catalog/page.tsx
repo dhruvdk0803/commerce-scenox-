@@ -3,15 +3,14 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
 import { Section, Container } from "@/components/ui/Section";
-import { Button, TextLink } from "@/components/ui/Button";
-import { Reveal } from "@/components/ui/Reveal";
+import { Button } from "@/components/ui/Button";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { PlatformModules } from "@/components/home/PlatformModules";
+import { PlatformStrip } from "@/components/home/PlatformStrip";
+import { SampleOffer } from "@/components/home/SampleOffer";
 import { FAQ } from "@/components/home/FAQ";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { pageMeta, serviceJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
-import { WholesaleFlow } from "@/components/pages/WholesaleFlow";
 import { PageHero } from "@/components/ui/PageHero";
 import { CatalogMosaicArt } from "@/components/pages/HeroArt";
 
@@ -97,19 +96,6 @@ export default function WholesaleCatalogPage() {
           ]}
         />
 
-        <Section tone="muted" aria-labelledby="flow-heading">
-          <Container>
-            <SectionHeader
-              id="flow-heading"
-              eyebrow="HOW IT FLOWS"
-              title="From supplier file to published catalog."
-              description="Every source you have goes in at the top. One structured catalog comes out at the bottom, published in batches you approve."
-            />
-            <div className="mt-12 md:mt-16">
-              <WholesaleFlow />
-            </div>
-          </Container>
-        </Section>
 
         <Section aria-labelledby="highsku-heading">
           <Container>
@@ -133,19 +119,9 @@ export default function WholesaleCatalogPage() {
           </Container>
         </Section>
 
-        <PlatformModules />
+        <PlatformStrip />
+        <SampleOffer />
 
-        <Section compact aria-labelledby="pricing-note-heading">
-          <Container>
-            <Reveal className="flex flex-col items-start gap-4 rounded-[12px] border border-line bg-bg-elevated p-6 sm:flex-row sm:items-center sm:justify-between">
-              <p id="pricing-note-heading" className="text-[1rem] text-ink-2">
-                Scale projects (1,000+ products) are quoted per catalog after
-                assessment.
-              </p>
-              <TextLink href="/pricing">See pricing tiers</TextLink>
-            </Reveal>
-          </Container>
-        </Section>
 
         <FAQ items={wholesaleFaqs} heading="High-SKU questions." />
         <FinalCTA

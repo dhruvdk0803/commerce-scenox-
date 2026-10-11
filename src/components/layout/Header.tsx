@@ -187,7 +187,7 @@ export function Header({ minimal = false }: { minimal?: boolean }) {
                 event="nav_get_started_click"
                 className="max-sm:hidden"
               >
-                Get Started
+                Get a Quote
               </Button>
             )}
             {!minimal && (

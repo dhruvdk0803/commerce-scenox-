@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/Button";
  */
 export function StickyMobileCTA({
   href = "/get-started",
-  label = "Get Started",
+  label = "Get a Quote",
   hideNear = "[data-hide-sticky]",
 }: {
   href?: string;

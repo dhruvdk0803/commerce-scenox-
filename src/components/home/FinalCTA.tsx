@@ -9,7 +9,7 @@ import { Reveal } from "@/components/ui/Reveal";
 export function FinalCTA({
   heading = ["SEND THE CATALOG.", "WE'LL TAKE IT FROM HERE."],
   body = "Tell us what you have, where it needs to go, and how many products you're working with.",
-  primary = { label: "Get Started", href: "/get-started" },
+  primary = { label: "Get a Quote", href: "/get-started" },
   secondary = { label: "Send 10 Products", href: "/free-sample" },
 }: {
   heading?: [string, string];

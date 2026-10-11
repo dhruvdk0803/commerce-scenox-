@@ -49,7 +49,7 @@ export default function ServicesPage() {
           actions={
             <>
               <Button href="/get-started" size="lg" arrow>
-                Get Started
+                Get a Quote
               </Button>
               <TextLink href="#bundles">See the kits</TextLink>
             </>

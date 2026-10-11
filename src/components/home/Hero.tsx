@@ -3,6 +3,7 @@
 import type { CSSProperties } from "react";
 import { Button, TextLink } from "@/components/ui/Button";
 import { CatalogPipeline } from "./pipeline/CatalogPipeline";
+import { RowToProductArt } from "@/components/pages/HeroArt";
 
 export function Hero({ compact = false }: { compact?: boolean }) {
   // CSS-driven entrance: runs off the main thread and respects reduced motion via globals.css
@@ -64,7 +65,7 @@ export function Hero({ compact = false }: { compact?: boolean }) {
                 event="hero_get_started_click"
                 className="w-full sm:w-auto"
               >
-                Get Started
+                Get a Quote
               </Button>
               <TextLink href="/free-sample" className="max-sm:self-center" event="cta_click" eventParams={{ cta: "hero_free_sample" }}>
                 Try 10 products free
@@ -84,7 +85,13 @@ export function Hero({ compact = false }: { compact?: boolean }) {
             className="anim-fade-up relative min-w-0 lg:col-span-8"
             style={{ animationDelay: "320ms", animationDuration: "900ms" }}
           >
-            <CatalogPipeline />
+            {/* the animated ledger needs width; phones get the simpler before/after card */}
+            <div className="max-md:hidden">
+              <CatalogPipeline />
+            </div>
+            <div className="md:hidden">
+              <RowToProductArt />
+            </div>
           </div>
         </div>
 

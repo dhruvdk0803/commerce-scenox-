@@ -59,7 +59,7 @@ export const nav = {
       { label: "Case Studies", href: "/case-studies" },
       { label: "About", href: "/about" },
       { label: "Contact", href: "/contact" },
-      { label: "Get Started", href: "/get-started" },
+      { label: "Get a Quote", href: "/get-started" },
       { label: "Scenox Studios", href: "https://scenoxstudios.com", external: true },
     ],
     legal: [

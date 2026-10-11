@@ -7,8 +7,6 @@ import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
 import { Hero } from "@/components/home/Hero";
 import { ClientStrip } from "@/components/home/ClientStrip";
 import { PlatformStrip } from "@/components/home/PlatformStrip";
-import { ServiceGrid } from "@/components/home/ServiceGrid";
-import { SystemSpec } from "@/components/home/SystemSpec";
 import { ProcessSteps } from "@/components/home/ProcessSteps";
 import { PricingCards } from "@/components/home/PricingCards";
 import { SampleOffer } from "@/components/home/SampleOffer";
@@ -106,8 +104,6 @@ export default function CatalogPage() {
           </div>
         </section>
 
-        <ServiceGrid />
-        <SystemSpec compact />
         <SpeedComparison />
         <ProcessSteps showLink={false} />
         <PricingCards preview />

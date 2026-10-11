@@ -3,16 +3,15 @@ import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
-import { Section, Container } from "@/components/ui/Section";
 import { Button, TextLink } from "@/components/ui/Button";
-import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ServiceGrid } from "@/components/home/ServiceGrid";
 import { FAQ } from "@/components/home/FAQ";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { pageMeta, serviceJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
 import { products } from "@/content/products";
-import { CleanupDiff } from "@/components/pages/CleanupDiff";
+import { Showcase } from "@/components/home/Showcase";
+import { SampleOffer } from "@/components/home/SampleOffer";
 import { PageHero } from "@/components/ui/PageHero";
 import { CleanupArt } from "@/components/pages/HeroArt";
 
@@ -80,25 +79,14 @@ export default function CatalogCleanupPage() {
           ]}
         />
 
-        <Section tone="muted" aria-labelledby="diff-heading">
-          <Container>
-            <SectionHeader
-              id="diff-heading"
-              eyebrow="CURRENT CATALOG → CLEAN CATALOG"
-              title="Same store. Same URLs. Structured data."
-              description="One product record as it sits on a live storefront today, and the same record after a cleanup pass."
-            />
-            <div className="mt-12 md:mt-16">
-              <CleanupDiff />
-            </div>
-          </Container>
-        </Section>
+        <Showcase />
 
 
         <ServiceGrid
           heading={["Bulk cleanup.", "Not row by row."]}
           description="Every kind of fix, shown as a real before and after, applied across the whole catalog in one pass."
         />
+        <SampleOffer />
         <FAQ items={cleanupFaqs} heading="Cleanup questions." />
         <FinalCTA
           heading={["FIX THE CATALOG.", "KEEP THE STORE."]}

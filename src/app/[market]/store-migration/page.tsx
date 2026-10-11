@@ -14,7 +14,6 @@ import { FinalCTA } from "@/components/home/FinalCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { pageMeta, serviceJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
 import { products } from "@/content/products";
-import { MigrationFlow } from "@/components/pages/MigrationFlow";
 import { PageHero } from "@/components/ui/PageHero";
 import { MigrationArt } from "@/components/pages/HeroArt";
 
@@ -94,19 +93,6 @@ export default function MigrationPage() {
           ]}
         />
 
-        <Section tone="muted" aria-labelledby="flow-heading">
-          <Container>
-            <SectionHeader
-              id="flow-heading"
-              eyebrow="HOW A MIGRATION MOVES"
-              title="Source to target. Fully mapped."
-              description="Extraction, normalization and a target-ready catalog with redirects in place. Figures shown are illustrative."
-            />
-            <div className="mt-12 md:mt-16">
-              <MigrationFlow />
-            </div>
-          </Container>
-        </Section>
 
         <Section aria-labelledby="coverage-heading">
           <Container>

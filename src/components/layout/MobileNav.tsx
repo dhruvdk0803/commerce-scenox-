@@ -142,7 +142,7 @@ export function MobileNav({
                 onClick={onClose}
                 className="w-full"
               >
-                Get Started
+                Get a Quote
               </Button>
               <Button
                 href="/free-sample"

@@ -24,24 +24,17 @@ export const SOURCES = [
 ] as const;
 
 export const NEEDS = [
-  "New upload",
+  "Catalog listing",
   "Catalog cleanup",
   "Migration",
-  "Descriptions / content",
-  "Images",
-  "Categories",
-  "Variants",
-  "SEO",
-  "Product imagery",
-  "Google Shopping / marketplaces",
-  "Email & abandoned cart",
-  "WhatsApp automation",
-  "AI customer support",
-  "AI voice & chat shopping",
-  "Bundle",
-  "Ongoing management",
+  "Product photos",
+  "Google & marketplaces",
+  "Email & carts",
+  "WhatsApp",
+  "AI support",
+  "Voice & chat shopping",
   "Monthly plan",
-  "Other",
+  "Not sure yet",
 ] as const;
 
 export const TIMELINES = [
@@ -108,18 +101,18 @@ export const COUNTRIES = [...DIAL_CODES.map((d) => d.name), "Other"] as const;
 
 /** Map ?need=… query values to the NEEDS option label. */
 export const NEED_QUERY_MAP: Record<string, (typeof NEEDS)[number]> = {
-  ongoing: "Ongoing management",
+  upload: "Catalog listing",
+  wholesale: "Catalog listing",
+  agency: "Catalog listing",
   cleanup: "Catalog cleanup",
   migration: "Migration",
-  wholesale: "New upload",
-  agency: "New upload",
-  upload: "New upload",
-  imagery: "Product imagery",
-  feeds: "Google Shopping / marketplaces",
-  email: "Email & abandoned cart",
-  whatsapp: "WhatsApp automation",
-  support: "AI customer support",
-  voice: "AI voice & chat shopping",
+  imagery: "Product photos",
+  feeds: "Google & marketplaces",
+  email: "Email & carts",
+  whatsapp: "WhatsApp",
+  support: "AI support",
+  voice: "Voice & chat shopping",
+  ongoing: "Monthly plan",
 };
 
 export const TIER_COUNT_MAP: Record<string, (typeof PRODUCT_COUNTS)[number]> = {

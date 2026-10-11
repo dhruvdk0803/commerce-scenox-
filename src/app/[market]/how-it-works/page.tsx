@@ -5,8 +5,6 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ProcessExplorer } from "@/components/pages/ProcessExplorer";
-import { SystemSpec } from "@/components/home/SystemSpec";
-import { Advantages } from "@/components/home/Advantages";
 import { BeforeAfter } from "@/components/home/BeforeAfter";
 import { SampleOffer } from "@/components/home/SampleOffer";
 import { FAQ } from "@/components/home/FAQ";
@@ -54,22 +52,16 @@ export default function HowItWorksPage() {
               To live storefront.
             </>
           }
-          lead="Eight stages. Most run as software. The ones that need judgement run through people. Select a stage to see what happens inside it."
+          lead="Software does the repetitive work. People make the judgement calls. Here is every stage, from your files to a live store."
           className="pb-12 md:pb-16"
           actions={
             <>
               <Button href="/get-started" size="lg" arrow>
-                Get Started
+                Get a Quote
               </Button>
               <TextLink href="/pricing">See prices</TextLink>
             </>
           }
-          facts={[
-            { k: "STAGES", v: "8 · Input → QA" },
-            { k: "AUTOMATED", v: "Ingest · normalize · validate · publish" },
-            { k: "AI + REVIEW", v: "Category mapping · enrichment" },
-            { k: "HUMAN", v: "Approval · flagged rows · storefront QA" },
-          ]}
         />
 
         <section className="container-x pb-20 md:pb-28" aria-label="Interactive process">
@@ -77,10 +69,6 @@ export default function HowItWorksPage() {
             <ProcessExplorer />
           </Reveal>
         </section>
-
-        <SystemSpec />
-        <Advantages />
-
 
         <BeforeAfter />
 
