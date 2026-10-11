@@ -17,7 +17,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { RowToProductArt } from "@/components/pages/HeroArt";
 
 export const metadata: Metadata = pageMeta({
-  title: "How It Works: AI Catalog Engine, Checked by People",
+  title: "How It Works: AI Engine, Checked by People",
   description:
     "How Scenox turns raw spreadsheets and supplier files into a live, store-ready catalog: ingestion, AI enrichment, human review, validation and publishing.",
   path: "/how-it-works",

@@ -179,13 +179,13 @@ export function ProcessExplorer() {
                     ? "border-ink/20 bg-bg-muted text-ink"
                     : stage.mode === "HUMAN"
                       ? "border-success/30 bg-success-soft text-success"
-                      : "border-accent/30 bg-accent-soft text-accent",
+                      : "border-accent/30 bg-accent-soft text-accent-hover",
                 )}
               >
                 {stage.mode}
               </span>
             </div>
-            <h3 className="mt-4 text-h3 text-ink">{stage.summary}</h3>
+            <h2 className="mt-4 text-h3 text-ink">{stage.summary}</h2>
             <ul className="mt-5 flex flex-col gap-2">
               {stage.detail.map((d) => (
                 <li key={d} className="flex items-start gap-3 text-[0.95rem] leading-relaxed text-ink-2">

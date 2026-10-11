@@ -49,7 +49,7 @@ export function Tag({
       className={cn(
         "mono-micro inline-flex h-6 items-center gap-1.5 rounded-[4px] border px-2 tabular",
         tone === "neutral" && "border-line bg-bg-elevated text-ink-2",
-        tone === "accent" && "border-accent/30 bg-accent-soft text-accent",
+        tone === "accent" && "border-accent/30 bg-accent-soft text-accent-hover",
         tone === "success" && "border-success/30 bg-success-soft text-success",
         tone === "warning" && "border-warning/30 bg-warning-soft text-warning",
         tone === "danger" && "border-danger/30 bg-danger-soft text-danger",

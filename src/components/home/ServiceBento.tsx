@@ -48,11 +48,11 @@ function Tile({
     >
       <div className="relative z-10 flex items-start justify-between gap-3">
         <div>
-          <p className={cn("mono-micro", dark ? "text-white/70" : "text-ink-3")}>{eyebrow}</p>
+          <p className={cn("mono-micro", dark ? "text-white" : "text-ink-3")}>{eyebrow}</p>
           <h3 className={cn("mt-2 text-[1.3rem] font-semibold leading-tight tracking-[-0.025em]", dark ? "text-white" : "text-ink")}>
             {title}
           </h3>
-          {desc && <p className={cn("mt-1.5 max-w-[34ch] text-[0.925rem] leading-snug", dark ? "text-white/75" : "text-ink-2")}>{desc}</p>}
+          {desc && <p className={cn("mt-1.5 max-w-[34ch] text-[0.925rem] leading-snug", dark ? "text-white" : "text-ink-2")}>{desc}</p>}
         </div>
         <span
           aria-hidden
@@ -150,7 +150,7 @@ export function ServiceBento() {
                 ))}
               </span>
             </div>
-            <p className="mono-micro mt-2.5 flex items-center gap-1.5 text-white/85">
+            <p className="mono-micro mt-2.5 flex items-center gap-1.5 text-white">
               <Check className="size-3" strokeWidth={3} aria-hidden /> COD ORDER CONFIRMED · 0:48
             </p>
           </Tile>

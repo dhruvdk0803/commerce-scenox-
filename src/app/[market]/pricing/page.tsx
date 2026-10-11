@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return pageMeta({
     title: `Pricing & Plans — Catalog listing from ${from}`,
     description:
-      "Public starting prices for catalog listing, cleanup, imagery, feeds, email, WhatsApp, AI support and voice shopping, plus monthly plans. Fixed scope for every product.",
+      "Public starting prices for catalog listing, cleanup, photos, feeds, email, WhatsApp, AI support and voice shopping, plus monthly plans. Fixed scope.",
     path: "/pricing",
   });
 }

@@ -11,7 +11,7 @@ import { site } from "@/lib/site";
 import { ContactForm } from "@/components/forms/ContactForm";
 
 export const metadata = pageMeta({
-  title: "Contact",
+  title: "Contact Us: Talk to the Team",
   description:
     "Talk to Scenox Commerce about your store: catalog, channels, email, WhatsApp or support. Send a message, or start a project directly.",
   path: "/contact",

@@ -20,7 +20,7 @@ import { catalogPageFaqs } from "@/content/faqs";
 import { tiers } from "@/content/pricing";
 
 export const metadata: Metadata = pageMeta({
-  title: "Bulk Product Upload for Shopify, WooCommerce & Magento",
+  title: "Bulk Product Upload: Shopify, WooCommerce, Magento",
   description:
     "Send spreadsheets, supplier files and images. We clean, structure and upload 1,000+ products to Shopify, WooCommerce, Magento or BigCommerce, from 48 hours.",
   path: "/bulk-product-upload",

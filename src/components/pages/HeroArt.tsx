@@ -140,7 +140,7 @@ export function WhatsAppArt() {
               <p className="mt-1 text-[0.875rem] leading-snug text-ink">Vitamin C Face Serum 30 ml. Shall we send it today?</p>
             </div>
           </div>
-          <div className="grid grid-cols-2 border-t border-line text-center text-[0.85rem] font-medium text-[#0a7cff]">
+          <div className="grid grid-cols-2 border-t border-line text-center text-[0.85rem] font-medium text-[#0061c9]">
             <span className="py-2.5">Confirm order</span>
             <span className="border-l border-line py-2.5">Cancel</span>
           </div>

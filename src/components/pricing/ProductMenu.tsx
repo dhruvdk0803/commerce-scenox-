@@ -67,7 +67,7 @@ export function ProductMenu({
                           <span className="flex flex-wrap items-center gap-2 text-[1rem] font-medium tracking-[-0.01em] text-ink">
                             {p.name}
                             {p.isNew && (
-                              <span className="mono-micro rounded-[4px] border border-accent/30 bg-accent-soft px-1.5 py-0.5 text-accent">
+                              <span className="mono-micro rounded-[4px] border border-accent/30 bg-accent-soft px-1.5 py-0.5 text-accent-hover">
                                 NEW
                               </span>
                             )}

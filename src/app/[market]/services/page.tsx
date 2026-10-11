@@ -19,9 +19,9 @@ import { faqs } from "@/content/faqs";
 import { products } from "@/content/products";
 
 export const metadata: Metadata = pageMeta({
-  title: "Ecommerce Services: Catalog, Feeds, Email & WhatsApp",
+  title: "Ecommerce Services: Catalog, Channels & Retention",
   description:
-    "Every Scenox Commerce service in one place: product upload, catalog cleanup, AI product photos, Google Shopping feeds, email, WhatsApp, AI customer support and AI voice and chat shopping.",
+    "Every Scenox Commerce service: product upload, cleanup, AI photos, Google Shopping feeds, email, WhatsApp, AI support and voice shopping. Fixed scope, public prices.",
   path: "/services",
 });
 

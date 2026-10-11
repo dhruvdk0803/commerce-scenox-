@@ -245,7 +245,7 @@ export const productPages: ProductPage[] = [
     isNew: true,
     metaTitle: "AI Shopping Assistant & Voice Agent for Ecommerce",
     metaDescription:
-      "An AI shopping assistant that recommends products and builds the cart inside chat and WhatsApp, plus voice agents for COD confirmation, cart callbacks and order calls. Shopify, WooCommerce, Magento, BigCommerce.",
+      "AI shopping assistant that recommends products and builds the cart in chat and WhatsApp, plus voice agents for COD confirmation and cart callbacks.",
     eyebrow: "AI VOICE & CHAT SHOPPING",
     headline: ["Shoppers ask.", "AI helps them buy."],
     lead: "Most visitors leave with a question nobody answered. We set up an AI shopping assistant that recommends from your real catalog, compares options and puts products in the cart inside the chat, on your site and WhatsApp. Add voice agents that confirm cash-on-delivery orders, call back abandoned carts and answer order calls in your customers' language.",
@@ -314,7 +314,7 @@ export const productPages: ProductPage[] = [
     turnaround: "From 48 hours",
     metaTitle: "Ecommerce Email Marketing & Abandoned Cart Recovery",
     metaDescription:
-      "Abandoned cart, welcome, post-purchase, back-in-stock and win-back email flows for Shopify, WooCommerce, Magento and BigCommerce, written, designed and switched on for you.",
+      "Abandoned cart, welcome, post-purchase, back-in-stock and win-back email flows for Shopify, WooCommerce and Magento, written and switched on for you.",
     eyebrow: "EMAIL & ABANDONED CART",
     headline: ["Most carts don't buy.", "Most can be brought back."],
     lead: "Every store loses carts, and most first-time buyers never order again. We write, design and switch on the email flows that follow up automatically: cart and checkout recovery, welcome, post-purchase, reviews, back-in-stock and win-back. They run on our own sending infrastructure, so there's no separate email platform for you to buy.",
@@ -387,7 +387,7 @@ export const productPages: ProductPage[] = [
     turnaround: "From 48 hours",
     metaTitle: "WhatsApp Automation for Ecommerce Stores",
     metaDescription:
-      "Abandoned cart recovery, COD order confirmation, shipping updates and broadcasts on the official WhatsApp Business API, for Shopify, WooCommerce, Magento and BigCommerce.",
+      "Cart recovery, COD confirmation, shipping updates and broadcasts on the official WhatsApp Business API, for Shopify, WooCommerce, Magento and BigCommerce.",
     eyebrow: "WHATSAPP AUTOMATION",
     headline: ["Your customers read WhatsApp.", "Your store should be there."],
     lead: "Messages on WhatsApp get read. We set up the official WhatsApp Business API for your store and switch on the messages that matter: cart recovery, cash-on-delivery confirmation, order and shipping updates, back-in-stock alerts and broadcasts. All on our own messaging infrastructure, with a person ready to take over any conversation.",

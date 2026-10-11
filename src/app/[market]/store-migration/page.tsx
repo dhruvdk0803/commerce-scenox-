@@ -18,7 +18,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import { MigrationArt } from "@/components/pages/HeroArt";
 
 export const metadata: Metadata = pageMeta({
-  title: "Store Migration to Shopify: Magento, WooCommerce & BigCommerce",
+  title: "Migrate to Shopify from Magento, WooCommerce & More",
   description:
     "Magento, WooCommerce, BigCommerce or Wix to Shopify, with products, variants, images, SEO handles and 301 redirects mapped. No downtime.",
   path: "/store-migration",
