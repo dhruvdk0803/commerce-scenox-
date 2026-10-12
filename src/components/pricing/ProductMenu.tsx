@@ -24,7 +24,10 @@ export function ProductMenu({
   description = "One team for every stage of the store. Each service has a set scope, a delivery time and a public starting price.",
   tone = "light",
   exclude = [],
+  hidePrices = false,
 }: {
+  /** homepage: list the services without prices (the estimator carries those) */
+  hidePrices?: boolean;
   /** product ids to leave out (e.g. catalog upload on /pricing, where its tiers are shown separately) */
   exclude?: string[];
   eyebrow?: string;
@@ -42,11 +45,13 @@ export function ProductMenu({
         <SectionHeader id="menu-heading" eyebrow={eyebrow} title={title} description={description} />
 
         <Reveal className="mt-12 overflow-hidden rounded-[12px] border border-line bg-bg md:mt-16">
-          <div className="hidden h-11 grid-cols-[15rem_1fr_13rem] items-center border-b border-line bg-bg-muted/50 px-6 lg:grid">
-            <span className="mono-micro text-ink-3">STAGE</span>
-            <span className="mono-micro text-ink-3">SERVICE</span>
-            <span className="mono-micro text-right text-ink-3">STARTS FROM</span>
-          </div>
+          {!hidePrices && (
+            <div className="hidden h-11 grid-cols-[15rem_1fr_13rem] items-center border-b border-line bg-bg-muted/50 px-6 lg:grid">
+              <span className="mono-micro text-ink-3">STAGE</span>
+              <span className="mono-micro text-ink-3">SERVICE</span>
+              <span className="mono-micro text-right text-ink-3">STARTS FROM</span>
+            </div>
+          )}
           {ORDER.map((g) => {
             const meta = groups[g];
             return (
@@ -61,7 +66,10 @@ export function ProductMenu({
                     <li key={p.id}>
                       <Link
                         href={p.href}
-                        className="group grid gap-x-6 gap-y-2 px-5 py-4 transition-colors duration-[160ms] hover:bg-bg-muted/50 md:grid-cols-[1fr_13rem] md:items-center md:px-6 md:py-5"
+                        className={cn(
+                          "group grid gap-x-6 gap-y-2 px-5 py-4 transition-colors duration-[160ms] hover:bg-bg-muted/50 md:items-center md:px-6 md:py-5",
+                          hidePrices ? "grid-cols-[minmax(0,1fr)_auto] items-center" : "md:grid-cols-[1fr_13rem]",
+                        )}
                       >
                         <span className="min-w-0">
                           <span className="flex flex-wrap items-center gap-2 text-[1rem] font-medium tracking-[-0.01em] text-ink">
@@ -73,12 +81,20 @@ export function ProductMenu({
                             )}
                             <ArrowUpRight
                               aria-hidden
-                              className="size-3.5 shrink-0 text-ink-3 opacity-0 transition-[opacity,transform] duration-[200ms] ease-[var(--ease-out)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100"
+                              className={cn(hidePrices && "hidden", "size-3.5 shrink-0 text-ink-3 opacity-0 transition-[opacity,transform] duration-[200ms] ease-[var(--ease-out)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100")}
                               strokeWidth={2}
                             />
                           </span>
                           <span className="mt-1 block text-[0.9rem] leading-snug text-ink-2">{p.desc}</span>
                         </span>
+                        {hidePrices ? (
+                          <span
+                            aria-hidden
+                            className="grid size-8 place-items-center rounded-full border border-line text-ink transition-colors duration-[200ms] group-hover:border-ink group-hover:bg-ink group-hover:text-paper"
+                          >
+                            <ArrowUpRight className="size-4" strokeWidth={2} />
+                          </span>
+                        ) : (
                         <span className="flex items-baseline gap-2 md:flex-col md:items-end md:gap-0.5">
                           <span className="text-[1.15rem] font-semibold tracking-[-0.02em] text-ink tabular">
                             <span className="mono-micro mr-1.5 align-middle text-ink-3 lg:hidden">FROM</span>
@@ -86,6 +102,7 @@ export function ProductMenu({
                           </span>
                           <span className="mono-micro text-ink-3 md:text-right">{p.unit.toUpperCase()}</span>
                         </span>
+                        )}
                       </Link>
                     </li>
                   ))}

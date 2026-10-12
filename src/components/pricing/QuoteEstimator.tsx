@@ -48,7 +48,7 @@ export function QuoteEstimator({ tone = "default" }: { tone?: "default" | "muted
     // Scale has no list price; estimate add-ons at the 1,000-product level and say so
     const n = s.n || 1000;
     return [
-      { label: `${tier.name} catalog listing`, amount: catalogPrice },
+      { label: catalogPrice == null ? "1,000+ products · catalog listing" : `${tier.name} catalog listing`, amount: catalogPrice },
       ...ADDONS.filter((a) => picked.includes(a.id)).map((a) => {
         const unit = product(a.id).price[market.id];
         const q = a.qty(n);
@@ -60,14 +60,17 @@ export function QuoteEstimator({ tone = "default" }: { tone?: "default" | "muted
   const known = lines.filter((l) => l.amount != null).reduce((sum, l) => sum + (l.amount ?? 0), 0);
   const custom = catalogPrice == null;
   const total = formatPrice(known, market.id);
+  // what the big number says: never "0" for a catalog we price per project
+  const headline = custom ? "Custom quote" : total;
+  const addonsOnly = custom && known > 0;
 
   const href = useMemo(() => {
     const q = new URLSearchParams({ tier: size });
     const needs = ["upload", ...picked];
     q.set("need", needs.join(","));
-    q.set("est", `${custom ? `${total} + catalog quote` : total} · ${lines.map((l) => l.label).join(", ")}`);
+    q.set("est", `${custom ? (addonsOnly ? `Custom catalog quote + ${total} add-ons` : "Custom quote, 1,000+ products") : total} · ${lines.map((l) => l.label).join(", ")}`);
     return `/get-started?${q.toString()}`;
-  }, [size, picked, total, custom, lines]);
+  }, [size, picked, total, custom, addonsOnly, lines]);
 
   const toggle = (id: AddonId) => setPicked((p) => (p.includes(id) ? p.filter((x) => x !== id) : [...p, id]));
 
@@ -160,36 +163,41 @@ export function QuoteEstimator({ tone = "default" }: { tone?: "default" | "muted
 
           {/* result */}
           <div className="flex flex-col border-t border-line bg-bg-dark p-5 text-paper md:p-8 lg:border-l lg:border-t-0">
-            <p className="mono-label text-paper-2">ESTIMATED STARTING PRICE</p>
+            <p className="mono-label text-paper-2">{custom ? "LARGE CATALOG · PRICED PER PROJECT" : "ESTIMATED STARTING PRICE"}</p>
             <p className="mt-3 text-[clamp(2.4rem,1.6rem+2.4vw,3.25rem)] font-semibold leading-none tracking-[-0.04em] tabular" aria-live="polite">
               <AnimatePresence mode="popLayout" initial={false}>
                 <motion.span
-                  key={total + custom}
+                  key={headline + total}
                   className="inline-block"
                   initial={reduce ? false : { opacity: 0, transform: "translateY(8px)" }}
                   animate={{ opacity: 1, transform: "translateY(0px)" }}
                   exit={{ opacity: 0, transform: "translateY(-8px)" }}
                   transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
                 >
-                  {total}
-                  {custom && <span className="text-[0.45em] font-medium tracking-[-0.02em] text-paper-2"> + catalog quote</span>}
+                  {headline}
                 </motion.span>
               </AnimatePresence>
             </p>
-            <p className="mono-micro mt-2 text-paper-2">ONE-TIME · {market.currency}</p>
+            <p className="mono-micro mt-2 text-paper-2">
+              {custom
+                ? addonsOnly
+                  ? `ADD-ONS FROM ${total} · CATALOG QUOTED ON YOUR FILES`
+                  : "FIXED PRICE ONCE WE SEE YOUR FILES"
+                : `ONE-TIME · ${market.currency}`}
+            </p>
 
             <ul className="mt-6 flex flex-col divide-y divide-line-dark border-y border-line-dark">
               {lines.map((l) => (
                 <li key={l.label} className="flex items-baseline justify-between gap-4 py-2.5 text-[0.9rem]">
                   <span className="min-w-0 text-paper-2">{l.label}</span>
-                  <span className="shrink-0 tabular text-paper">{l.amount == null ? "Quoted" : formatPrice(l.amount, market.id)}</span>
+                  <span className="shrink-0 tabular text-paper">{l.amount == null ? "Custom quote" : formatPrice(l.amount, market.id)}</span>
                 </li>
               ))}
             </ul>
 
             <div className="mt-auto pt-6">
               <Button href={href} size="lg" arrow className="w-full" event="cta_click" eventParams={{ cta: "estimator", tier: size, addons: picked.length }}>
-                Get my fixed quote
+                {custom ? "Get my custom quote" : "Get my fixed quote"}
               </Button>
               <p className="mt-3 text-[0.75rem] leading-relaxed text-paper-2">
                 Estimate only. Final price depends on your data, variants and platform. {site.qualifier}

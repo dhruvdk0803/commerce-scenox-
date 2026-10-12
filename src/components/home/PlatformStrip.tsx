@@ -1,8 +1,9 @@
+import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/ui/Reveal";
 
-export function PlatformStrip() {
+export function PlatformStrip({ className }: { className?: string }) {
   return (
-    <section aria-label="Platforms" className="border-y border-line bg-bg-muted/60">
+    <section aria-label="Platforms" className={cn("border-y border-line bg-bg-muted/60", className)}>
       <div className="container-x grid gap-5 py-6 md:py-7 lg:grid-cols-[7rem_minmax(0,1fr)] lg:items-center lg:gap-8">
         <span className="mono-label text-ink-3">Built for</span>
         <ul className="grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-3 lg:grid-cols-5 lg:gap-x-8">

@@ -9,7 +9,11 @@ import { PhotoStudio } from "@/components/home/PhotoStudio";
 import { QuoteEstimator } from "@/components/pricing/QuoteEstimator";
 import { SampleOffer } from "@/components/home/SampleOffer";
 import { Advantages } from "@/components/home/Advantages";
-import { ServiceBento } from "@/components/home/ServiceBento";
+import { ProductMenu } from "@/components/pricing/ProductMenu";
+import { BeforeYouPay } from "@/components/pricing/BeforeYouPay";
+import { PlatformStrip } from "@/components/home/PlatformStrip";
+import { MessySpreadsheet } from "@/components/home/MessySpreadsheet";
+import { BeforeAfter } from "@/components/home/BeforeAfter";
 import { FAQ } from "@/components/home/FAQ";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -31,11 +35,15 @@ export default function HomePage() {
       <main id="main" className="flex-1">
         <Hero />
         <ClientStrip />
+        <PlatformStrip className="border-t-0" />
+        <MessySpreadsheet />
+        <BeforeAfter />
         <Showcase />
         <PhotoStudio />
-        <ServiceBento />
-        <Advantages compact />
+        <ProductMenu hidePrices description="One team for every stage of the store, each with a set scope and delivery time." />
+        <Advantages />
         <QuoteEstimator />
+        <BeforeYouPay tone="muted" />
         <SampleOffer />
         <FAQ items={homeFaqs.slice(0, 6)} />
         <FinalCTA />
