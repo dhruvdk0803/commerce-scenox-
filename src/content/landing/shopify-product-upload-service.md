@@ -1,6 +1,6 @@
 ---
 kind: platform
-title: "Shopify Product Upload Service: Bulk Listing, Fixed Price"
+title: "Shopify Product Upload & Listing Services, Fixed Price"
 description: "Shopify product upload service for catalogs of 250 to 1,000+ products. Variants, metafields, collections and SEO fields built, human-checked, fixed quote."
 eyebrow: "SHOPIFY PRODUCT UPLOAD"
 heading: "Shopify product upload, done for you."
