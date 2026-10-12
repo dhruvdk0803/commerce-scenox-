@@ -15,6 +15,11 @@ Research date: October 2026. Based on live SERP sampling (US-biased search tool,
 
 Rewriting competitor pages is copyright infringement and triggers Google's scaled content abuse policy, which demotes the whole domain. Every page must add something competitors don't have: our prices, worked examples, real error fixes, templates, market-specific detail. Brief: `docs/guide-writing.md`.
 
+## Status (12 Oct 2026)
+
+Live: 49 landing pages (/solutions hub), 55 guides (/guides), 22 core pages. 128 URLs in the sitemap.
+Markets: US, UK, Australia, Canada, India, plus UAE/Dubai, New Zealand, Ireland.
+
 ## Wave 1 (live): 16 guides at /guides
 
 Costs (3), platform imports (5), migration (2), Merchant Center, product content, image requirements, WhatsApp COD, abandoned cart.
