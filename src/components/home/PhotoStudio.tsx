@@ -54,23 +54,23 @@ export function PhotoStudio({ showLink = true, start = 0 }: { showLink?: boolean
   const ease = !dragging && "duration-[900ms] ease-[var(--ease-in-out)]";
 
   return (
-    <section className="section-y relative overflow-hidden bg-bg-dark text-paper" aria-labelledby="studio-heading">
+    <section className="relative py-14 md:py-20 overflow-hidden bg-bg-dark text-paper" aria-labelledby="studio-heading">
       <div className="container-x">
         <Reveal className="mx-auto max-w-[44rem] text-center">
           <Eyebrow inverse>AI PRODUCT IMAGERY</Eyebrow>
-          <h2 id="studio-heading" className="mt-5 text-h1 text-paper">
+          <h2 id="studio-heading" className="mt-4 text-h2 text-paper">
             Phone photo in.
             <span className="block text-accent-on-dark">Studio set out.</span>
           </h2>
-          <p className="mx-auto mt-5 max-w-[46ch] text-[1.05rem] leading-[1.55] text-paper-2">
+          <p className="mx-auto mt-4 max-w-[46ch] text-[1rem] leading-[1.55] text-paper-2">
             Drag across the photo. One snapshot from your supplier becomes every image your store and marketplaces need.
           </p>
         </Reveal>
 
-        <div className="mt-12 grid grid-cols-[minmax(0,1fr)] gap-6 md:mt-16 lg:grid-cols-12 lg:gap-8">
+        <div className="mx-auto mt-10 grid max-w-[64rem] grid-cols-[minmax(0,1fr)] gap-6 md:mt-12 lg:grid-cols-12 lg:gap-8">
           {/* compare frame */}
-          <Reveal delay={0.06} className="min-w-0 lg:col-span-8">
-            <div ref={frame} className="relative aspect-square select-none overflow-hidden rounded-[20px] bg-[#f5f4ef] sm:aspect-[4/3]">
+          <Reveal delay={0.06} className="min-w-0 lg:col-span-7">
+            <div ref={frame} className="relative aspect-square select-none overflow-hidden rounded-[20px] bg-[#f5f4ef] sm:aspect-[5/4]">
               <Image src={prod.raw} alt={`${prod.label}: original phone photo`} placeholder="blur" sizes="(min-width: 1024px) 60vw, 100vw" className="absolute inset-0 size-full object-cover" />
               <div className={cn("absolute inset-0 bg-white transition-[clip-path]", ease)} style={{ clipPath: `inset(0 0 0 ${pos}%)` }}>
                 <Image
@@ -116,7 +116,7 @@ export function PhotoStudio({ showLink = true, start = 0 }: { showLink?: boolean
           </Reveal>
 
           {/* controls */}
-          <Reveal delay={0.12} className="flex min-w-0 flex-col gap-6 lg:col-span-4">
+          <Reveal delay={0.12} className="flex min-w-0 flex-col gap-6 lg:col-span-5">
             <div>
               <p className="mono-label text-paper-2">01 · PICK A PRODUCT</p>
               <div role="radiogroup" aria-label="Example product" className="mt-3 grid grid-cols-3 gap-2">
