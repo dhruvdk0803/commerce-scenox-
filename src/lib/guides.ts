@@ -50,7 +50,7 @@ const slugify = (s: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
 
-function render(md: string) {
+export function renderMarkdown(md: string) {
   const toc: { id: string; text: string }[] = [];
   const marked = new Marked({
     gfm: true,
@@ -83,7 +83,7 @@ export function getGuides(): Guide[] {
   cache = files
     .map((f) => {
       const { data, content } = matter(readFileSync(join(DIR, f), "utf8"));
-      const { html, toc } = render(content);
+      const { html, toc } = renderMarkdown(content);
       const words = content.split(/\s+/).length;
       return {
         slug: f.replace(/\.md$/, ""),

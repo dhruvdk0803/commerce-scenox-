@@ -33,6 +33,7 @@ export const nav = {
     { label: "All Services", href: "/services", desc: "Every product, kit and plan on one page." },
     { label: "Monthly Plans", href: "/pricing#plans", desc: "Catalog, channels and retention, run for you." },
     { label: "For Wholesalers & Distributors", href: "/wholesale-catalog", desc: "Thousands of SKUs from ERP and supplier files." },
+    { label: "By Platform, Industry & Country", href: "/solutions", desc: "Shopify, WooCommerce, fashion, India, UK and more." },
   ],
   primary: [
     { label: "How It Works", href: "/how-it-works" },
@@ -53,6 +54,7 @@ export const nav = {
       { label: "AI Customer Support", href: "/ai-customer-support" },
       { label: "AI Voice & Chat Shopping", href: "/ai-voice-shopping-assistant" },
       { label: "Wholesalers & Distributors", href: "/wholesale-catalog" },
+      { label: "By Platform, Industry & Country", href: "/solutions" },
     ],
     company: [
       { label: "How It Works", href: "/how-it-works" },

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
 import { getGuides } from "@/lib/guides";
+import { getLandings } from "@/lib/landing";
 
 const routes: { path: string; priority: number; freq: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
   { path: "/", priority: 1, freq: "weekly" },
@@ -19,6 +20,7 @@ const routes: { path: string; priority: number; freq: MetadataRoute.Sitemap[numb
   { path: "/how-it-works", priority: 0.8, freq: "monthly" },
   { path: "/pricing", priority: 0.9, freq: "monthly" },
   { path: "/guides", priority: 0.7, freq: "weekly" },
+  { path: "/solutions", priority: 0.8, freq: "weekly" },
   { path: "/case-studies", priority: 0.6, freq: "monthly" },
   { path: "/about", priority: 0.5, freq: "yearly" },
   { path: "/contact", priority: 0.6, freq: "yearly" },
@@ -44,5 +46,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }));
-  return [...pages, ...guides];
+  const landings = getLandings().map((l) => ({
+    url: `${site.url}/${l.slug}`,
+    lastModified: new Date(l.updated),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+  return [...pages, ...landings, ...guides];
 }

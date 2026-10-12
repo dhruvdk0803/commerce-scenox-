@@ -78,3 +78,24 @@ faqs:
 - /guides/product-image-requirements — Image requirements for Shopify, Google, Amazon, Meta, Flipkart (imagery, imagery)
 - /guides/whatsapp-cod-confirmation — Confirm COD orders on WhatsApp and cut RTO (retention, whatsapp)
 - /guides/abandoned-cart-email-sequence — Abandoned cart email sequence with templates (retention, email)
+
+## Planned guides (wave 2)
+
+- /guides/shopify-variants-csv — Shopify variants and options via CSV (catalog, upload)
+- /guides/shopify-metafields-import — Importing Shopify metafields in bulk (catalog, upload)
+- /guides/shopify-collections — Shopify collections: manual vs automated, rules, bulk setup (catalog, upload)
+- /guides/migration-301-redirects — 301 redirect mapping for a platform migration, with templates (migration, migration)
+- /guides/migrate-without-losing-seo — Replatforming without losing rankings (migration, migration)
+- /guides/google-product-category — Choosing Google product categories and product types (feeds, feeds)
+- /guides/gtin-mpn-brand — GTIN, MPN and brand: what to do when you don't have them (feeds, feeds)
+- /guides/product-title-seo — Product title formulas for SEO, Google Shopping and marketplaces (content, cleanup)
+- /guides/sku-naming-conventions — SKU naming conventions with examples (content, cleanup)
+- /guides/product-attributes-taxonomy — Designing product attributes and taxonomy (content, cleanup)
+- /guides/catalog-data-quality-checklist — Catalog data quality audit checklist (content, cleanup)
+- /guides/shopify-gst-india — Shopify for India: GST, HSN codes, invoices, COD, payments (catalog, upload)
+- /guides/shopify-vat-uk — Shopify for the UK: VAT, prices incl. VAT, shipping and duties basics (catalog, upload)
+- /guides/shopify-gst-australia — Shopify for Australia: GST, AfterPay-style payments, shipping (catalog, upload)
+- /guides/whatsapp-business-api-pricing — WhatsApp Business Platform pricing explained for stores (retention, whatsapp)
+- /guides/amazon-flat-file-listing — Listing products on Amazon with flat files and templates (feeds, feeds)
+
+Landing pages you can also link: see docs/landing-writing.md (e.g. /shopify-product-upload-service, /fashion-catalog-upload-service, /product-upload-services-uk).
