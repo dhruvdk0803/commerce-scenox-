@@ -1,6 +1,6 @@
 ---
 kind: service
-title: "Shopify Store Setup With Products: Catalog Ready to Launch"
+title: "Shopify Store Setup Service: Products Loaded, Ready to Sell"
 description: "Shopify store setup with products: we load your catalog, collections and product pages so your new store can open. Catalog and content setup, human-checked."
 eyebrow: "SHOPIFY STORE SETUP WITH PRODUCTS"
 heading: "Shopify store setup with products loaded."

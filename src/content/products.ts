@@ -104,7 +104,7 @@ export const productPages: ProductPage[] = [
     price: { in: 2999, us: 79, uk: 65, au: 119 },
     unit: "per 50 products",
     turnaround: "From 48 hours",
-    metaTitle: "AI Product Photo Editing for Ecommerce",
+    metaTitle: "AI Product Photo Editing & White Background Photos",
     metaDescription:
       "Background removal, consistent white-background sets and lifestyle scenes from your existing product photos. Marketplace-ready, checked by a person.",
     eyebrow: "AI PRODUCT IMAGERY",
@@ -243,7 +243,7 @@ export const productPages: ProductPage[] = [
     unit: "setup, chat + voice",
     turnaround: "From 48 hours",
     isNew: true,
-    metaTitle: "AI Shopping Assistant & Voice Agent for Ecommerce",
+    metaTitle: "AI Voice Agent & Shopping Assistant for Ecommerce",
     metaDescription:
       "AI shopping assistant that recommends products and builds the cart in chat and WhatsApp, plus voice agents for COD confirmation and cart callbacks.",
     eyebrow: "AI VOICE & CHAT SHOPPING",
@@ -455,7 +455,7 @@ export const productPages: ProductPage[] = [
     price: { in: 9999, us: 279, uk: 229, au: 429 },
     unit: "one-time setup",
     turnaround: "From 48 hours",
-    metaTitle: "AI Customer Support for Ecommerce Stores",
+    metaTitle: "AI Customer Service for Ecommerce Stores",
     metaDescription:
       "An AI agent that answers order status, product, sizing and returns questions on chat and WhatsApp 24/7 from your real store data, and hands off the rest.",
     eyebrow: "AI CUSTOMER SUPPORT",

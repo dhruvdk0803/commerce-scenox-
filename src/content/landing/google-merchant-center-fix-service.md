@@ -1,6 +1,6 @@
 ---
 kind: service
-title: "Google Merchant Center Disapproved Products Fix Service"
+title: "Google Merchant Center Fix: Disapproved Products Service"
 description: "Google Merchant Center disapproved products fixed for you: diagnosis, feed and data repair, then re-review. Human-checked, fixed price, per channel setup."
 eyebrow: "MERCHANT CENTER FIX"
 heading: "Google Merchant Center disapprovals, fixed."

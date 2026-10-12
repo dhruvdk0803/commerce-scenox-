@@ -1,6 +1,6 @@
 ---
 kind: service
-title: "Product Data Entry Services: AI Speed, Human Review"
+title: "Ecommerce Data Entry Services: Product Data, Human-Checked"
 description: "Ecommerce product data entry with an AI engine and human review instead of manual double-keying. Fixed price, free 10-product sample."
 eyebrow: "PRODUCT DATA ENTRY SERVICES"
 heading: "Product data entry, without the double-keying."
