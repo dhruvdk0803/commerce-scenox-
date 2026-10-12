@@ -6,6 +6,7 @@ import { StickyMobileCTA } from "@/components/layout/StickyMobileCTA";
 import { Button, TextLink } from "@/components/ui/Button";
 import { ServiceGrid } from "@/components/home/ServiceGrid";
 import { FAQ } from "@/components/home/FAQ";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { pageMeta, serviceJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
@@ -87,6 +88,7 @@ export default function CatalogCleanupPage() {
           description="Every kind of fix, shown as a real before and after, applied across the whole catalog in one pass."
         />
         <SampleOffer />
+        <RelatedLinks services={["cleanup"]} kinds={["service"]} exclude="/catalog-cleanup" />
         <FAQ items={cleanupFaqs} heading="Cleanup questions." />
         <FinalCTA
           heading={["FIX THE CATALOG.", "KEEP THE STORE."]}

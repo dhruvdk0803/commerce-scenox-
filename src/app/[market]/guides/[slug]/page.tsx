@@ -33,6 +33,10 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
   const service = products.find((p) => p.id === g.service) ?? products[0];
   const cat = GUIDE_CATEGORIES[g.category];
   const related = relatedGuides(g);
+  // topic cluster: the hub guides link down to every error page, error pages link to their siblings
+  const family = g.slug.startsWith("shopify-csv-error-") || g.slug === "shopify-csv-import-errors" ? "shopify-csv-error-" : g.slug.startsWith("merchant-center-") || g.slug === "google-merchant-center-disapprovals" ? "merchant-center-" : null;
+  const cluster = getGuides().filter((x) => x.slug !== g.slug && (family ? x.slug.startsWith(family) : x.category === g.category));
+  const clusterLabel = family === "shopify-csv-error-" ? "Every Shopify CSV error" : family === "merchant-center-" ? "Every Merchant Center issue" : `More in ${cat.label.toLowerCase()}`;
   const path = `/guides/${g.slug}`;
 
   return (
@@ -129,6 +133,23 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
             </div>
           </div>
         </article>
+
+        {cluster.length > 0 && (
+          <section className="border-t border-line" aria-labelledby="cluster-heading">
+            <div className="container-x py-12 md:py-14">
+              <h2 id="cluster-heading" className="text-h3 text-ink">{clusterLabel}</h2>
+              <ul className="mt-6 grid gap-x-10 gap-y-0 sm:grid-cols-2 lg:grid-cols-3">
+                {cluster.map((c) => (
+                  <li key={c.slug} className="border-b border-line">
+                    <Link href={`/guides/${c.slug}`} className="block py-3 text-[0.95rem] leading-snug text-ink hover:underline hover:underline-offset-4">
+                      {c.heading}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        )}
 
         {g.faqs.length > 0 && <FAQ items={g.faqs} heading="Common questions." eyebrow="FAQ" />}
 

@@ -11,6 +11,7 @@ import { ProcessSteps } from "@/components/home/ProcessSteps";
 import { PricingCards } from "@/components/home/PricingCards";
 import { SampleOffer } from "@/components/home/SampleOffer";
 import { FAQ } from "@/components/home/FAQ";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { Eyebrow, Tag } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
@@ -108,6 +109,7 @@ export default function CatalogPage() {
         <ProcessSteps showLink={false} />
         <PricingCards preview />
         <SampleOffer />
+        <RelatedLinks services={["upload"]} kinds={["platform", "country", "industry", "marketplace"]} maxPages={30} exclude="/bulk-product-upload" />
         <FAQ items={catalogPageFaqs} heading="Before you send the catalog." />
         <FinalCTA />
       </main>

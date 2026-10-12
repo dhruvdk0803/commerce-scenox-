@@ -15,6 +15,7 @@ import { FinalCTA } from "@/components/home/FinalCTA";
 import { HeroStorefront } from "@/components/home/HeroStorefront";
 import { Price } from "@/components/market/Price";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 import {
   CatalogMosaicArt,
   CleanupArt,
@@ -161,6 +162,7 @@ export default async function LandingPage({ params }: { params: Promise<{ page: 
 
         <p className="container-x -mt-8 pb-12 text-[0.8rem] text-ink-3">*{site.qualifier}</p>
 
+        <RelatedLinks kinds={[l.kind]} services={[l.service]} exclude={path} title="Related services and guides" maxPages={18} maxGuides={6} />
         <SampleOffer />
         {l.faqs.length > 0 && <FAQ items={l.faqs} />}
         <FinalCTA primary={{ label: l.cta, href: quoteHref }} />

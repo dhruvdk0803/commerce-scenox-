@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ComponentType } from "react";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 import { ImageryVisual } from "./illustrations/ImageryVisual";
 import { FeedsVisual } from "./illustrations/FeedsVisual";
 import { EmailVisual } from "./illustrations/EmailVisual";
@@ -212,6 +213,7 @@ export function ProductTemplate({ id }: { id: string }) {
           </Container>
         </Section>
 
+        <RelatedLinks services={[p.id]} exclude={p.href} />
         <FAQ items={p.faqs} heading={p.faqHeading} />
         <FinalCTA heading={p.finalHeading} body={p.desc} primary={{ label: p.cta, href: cta }} secondary={p.secondary} />
       </main>

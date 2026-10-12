@@ -8,6 +8,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { PlatformStrip } from "@/components/home/PlatformStrip";
 import { SampleOffer } from "@/components/home/SampleOffer";
 import { FAQ } from "@/components/home/FAQ";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { pageMeta, serviceJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
@@ -123,6 +124,7 @@ export default function WholesaleCatalogPage() {
         <SampleOffer />
 
 
+        <RelatedLinks services={["upload"]} kinds={["industry", "audience"]} exclude="/wholesale-catalog" />
         <FAQ items={wholesaleFaqs} heading="High-SKU questions." />
         <FinalCTA
           heading={["SEND THE SUPPLIER FILE.", "WE'LL BUILD THE CATALOG."]}

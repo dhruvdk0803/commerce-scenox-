@@ -10,6 +10,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ProcessSteps, type ProcessStep } from "@/components/home/ProcessSteps";
 import { CheckBox } from "@/components/ui/Status";
 import { FAQ } from "@/components/home/FAQ";
+import { RelatedLinks } from "@/components/seo/RelatedLinks";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { pageMeta, serviceJsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/seo";
@@ -121,6 +122,7 @@ export default function MigrationPage() {
           description="Four steps. Your current store stays live the whole time; you switch over when the new one is approved."
           steps={MIGRATION_STEPS}
         />
+        <RelatedLinks services={["migration"]} kinds={["migration"]} categories={["migration"]} exclude="/store-migration" />
         <FAQ items={migrationFaqs} heading="Migration questions." />
         <FinalCTA
           heading={["MOVE THE CATALOG.", "LAUNCH CLEANER."]}
