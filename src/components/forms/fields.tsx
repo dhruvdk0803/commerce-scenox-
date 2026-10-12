@@ -1,7 +1,7 @@
 "use client";
 
-import { useId, useRef, useState, type InputHTMLAttributes, type ReactNode, type SelectHTMLAttributes } from "react";
-import { Check, ChevronDown, FileUp, X } from "lucide-react";
+import { useEffect, useId, useMemo, useRef, useState, type InputHTMLAttributes, type ReactNode, type SelectHTMLAttributes } from "react";
+import { Check, ChevronDown, FileUp, Search, X } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { DIAL_CODES, type DialIso } from "./options";
@@ -181,37 +181,21 @@ export function PhoneInput({
 
   const emit = (dial: string, num: string) => onChange(num.trim() ? `${dial} ${num.trimStart()}` : "");
 
+  const pick = (next: (typeof DIAL_CODES)[number]) => {
+    setIso(next.iso);
+    emit(next.dial, local);
+    if (next.iso !== iso) onCountry?.(next.name);
+  };
+
   return (
+    <div className="relative">
     <div
       className={cn(
-        "flex h-12 w-full overflow-hidden rounded-[8px] border bg-bg-elevated transition-[border-color,box-shadow] duration-[160ms] focus-within:ring-2",
+        "flex h-12 w-full rounded-[8px] border bg-bg-elevated transition-[border-color,box-shadow] duration-[160ms] focus-within:ring-2",
         invalid ? "border-danger focus-within:ring-danger/10" : "border-line focus-within:border-ink focus-within:ring-ink/10",
       )}
     >
-      <div className="relative w-[6.75rem] shrink-0 border-r border-line">
-        <select
-          aria-label="Country code"
-          value={iso}
-          onChange={(e) => {
-            const next = DIAL_CODES.find((d) => d.iso === e.target.value)!;
-            setIso(next.iso);
-            emit(next.dial, local);
-            onCountry?.(next.name);
-          }}
-          className="h-full w-[6.75rem] appearance-none bg-transparent pl-3 pr-7 font-mono text-[0.9rem] text-transparent outline-none"
-        >
-          {DIAL_CODES.map((d) => (
-            <option key={d.iso} value={d.iso}>
-              {d.iso} {d.dial} · {d.name}
-            </option>
-          ))}
-        </select>
-        {/* the closed select shows only "IN +91"; the full name lives in the list */}
-        <span aria-hidden className="pointer-events-none absolute inset-0 flex items-center gap-1 bg-bg-elevated pl-3 pr-7 font-mono text-[0.9rem] text-ink">
-          <span className="text-ink-3">{entry.iso}</span> {entry.dial}
-        </span>
-        <ChevronDown className="pointer-events-none absolute right-2 top-1/2 size-3.5 -translate-y-1/2 text-ink-2" strokeWidth={2} aria-hidden />
-      </div>
+      <CountryPicker value={entry} onPick={pick} />
       <input
         id={id}
         type="tel"
@@ -236,8 +220,135 @@ export function PhoneInput({
         aria-invalid={invalid || undefined}
         aria-describedby={describedBy}
         placeholder="Phone number"
-        className="h-full w-0 min-w-0 flex-1 bg-transparent px-3.5 text-[1rem] text-ink outline-none placeholder:text-ink-3"
+        className="h-full w-0 min-w-0 flex-1 rounded-r-[8px] bg-transparent px-3.5 text-[1rem] text-ink outline-none placeholder:text-ink-3"
       />
+    </div>
+    </div>
+  );
+}
+
+/**
+ * Searchable country-code list styled like the rest of the form. Replaces the
+ * native select, whose option list browsers draw themselves (and which showed
+ * blank on some phones).
+ */
+function CountryPicker({
+  value,
+  onPick,
+}: {
+  value: (typeof DIAL_CODES)[number];
+  onPick: (d: (typeof DIAL_CODES)[number]) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const [active, setActive] = useState(0);
+  const root = useRef<HTMLDivElement>(null);
+  const search = useRef<HTMLInputElement>(null);
+  const list = useRef<HTMLUListElement>(null);
+  const listId = useId();
+
+  const items = useMemo(() => {
+    const q = query.trim().toLowerCase().replace(/^\+/, "");
+    if (!q) return DIAL_CODES;
+    return DIAL_CODES.filter(
+      (d) => d.name.toLowerCase().includes(q) || d.iso.toLowerCase() === q || d.dial.replace("+", "").startsWith(q),
+    );
+  }, [query]);
+
+  // close on outside click
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e: PointerEvent) => {
+      if (root.current && !root.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("pointerdown", onDown);
+    return () => document.removeEventListener("pointerdown", onDown);
+  }, [open]);
+
+  // keep the highlighted row in view
+  useEffect(() => {
+    if (!open) return;
+    list.current?.querySelector<HTMLElement>(`[data-i="${active}"]`)?.scrollIntoView({ block: "nearest" });
+  }, [active, open]);
+
+  const openList = () => {
+    setQuery("");
+    setActive(Math.max(0, DIAL_CODES.findIndex((d) => d.iso === value.iso)));
+    setOpen(true);
+    requestAnimationFrame(() => search.current?.focus());
+  };
+
+  const choose = (d: (typeof DIAL_CODES)[number]) => {
+    onPick(d);
+    setOpen(false);
+  };
+
+  const onKey = (e: React.KeyboardEvent) => {
+    if (e.key === "ArrowDown") { e.preventDefault(); setActive((a) => Math.min(items.length - 1, a + 1)); }
+    else if (e.key === "ArrowUp") { e.preventDefault(); setActive((a) => Math.max(0, a - 1)); }
+    else if (e.key === "Enter") { e.preventDefault(); if (items[active]) choose(items[active]); }
+    else if (e.key === "Escape") { e.preventDefault(); setOpen(false); }
+  };
+
+  return (
+    <div ref={root} className="relative w-[6.75rem] shrink-0 border-r border-line">
+      <button
+        type="button"
+        aria-label={`Country code: ${value.name} ${value.dial}`}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        onClick={() => (open ? setOpen(false) : openList())}
+        onKeyDown={(e) => { if (e.key === "ArrowDown" && !open) { e.preventDefault(); openList(); } }}
+        className="flex h-full w-full items-center gap-1 rounded-l-[8px] pl-3 pr-7 font-mono text-[0.9rem] text-ink outline-none focus-visible:bg-bg-muted"
+      >
+        <span className="text-ink-3">{value.iso}</span> {value.dial}
+        <ChevronDown className={cn("absolute right-2 top-1/2 size-3.5 -translate-y-1/2 text-ink-2 transition-transform duration-[160ms]", open && "rotate-180")} strokeWidth={2} aria-hidden />
+      </button>
+
+      {open && (
+        <div className="absolute left-0 top-[calc(100%+6px)] z-50 w-[min(19rem,calc(100vw-2.5rem))] overflow-hidden rounded-[12px] border border-line bg-bg-elevated shadow-[0_12px_32px_-12px_rgba(17,17,17,0.22)]">
+          <div className="flex items-center gap-2 border-b border-line px-3">
+            <Search className="size-4 shrink-0 text-ink-3" strokeWidth={2} aria-hidden />
+            <input
+              ref={search}
+              value={query}
+              onChange={(e) => { setQuery(e.target.value); setActive(0); }}
+              onKeyDown={onKey}
+              placeholder="Search country or code"
+              aria-label="Search countries"
+              aria-controls={listId}
+              aria-activedescendant={items[active] ? `${listId}-${items[active].iso}` : undefined}
+              className="h-11 w-full bg-transparent text-[0.95rem] text-ink outline-none placeholder:text-ink-3"
+            />
+          </div>
+          <ul ref={list} id={listId} role="listbox" aria-label="Country codes" className="max-h-64 overflow-y-auto overscroll-contain py-1">
+            {items.length === 0 && <li className="px-3 py-3 text-[0.9rem] text-ink-3">No match</li>}
+            {items.map((d, i) => {
+              const sel = d.iso === value.iso;
+              return (
+                <li
+                  key={d.iso}
+                  id={`${listId}-${d.iso}`}
+                  data-i={i}
+                  role="option"
+                  aria-selected={sel}
+                  onPointerMove={() => setActive(i)}
+                  onClick={() => choose(d)}
+                  className={cn(
+                    "flex cursor-pointer items-center gap-3 px-3 py-2.5 text-[0.925rem] text-ink",
+                    i === active && "bg-bg-muted",
+                  )}
+                >
+                  <span className="mono-micro w-6 shrink-0 text-ink-3">{d.iso}</span>
+                  <span className="min-w-0 flex-1 truncate">{d.name}</span>
+                  <span className="font-mono text-[0.85rem] text-ink-2">{d.dial}</span>
+                  <Check className={cn("size-3.5 shrink-0 text-accent", sel ? "opacity-100" : "opacity-0")} strokeWidth={2.5} aria-hidden />
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
