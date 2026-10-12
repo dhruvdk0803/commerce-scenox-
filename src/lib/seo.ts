@@ -28,7 +28,9 @@ export function pageMeta({
     console.warn(`[seo] ${path} description is ${description.length} chars (max ${MAX_DESCRIPTION})`);
   }
   const url = `${site.url}${path === "/" ? "" : path}`;
-  const fullTitle = `${title} | ${site.name}`;
+  // Google shows roughly 60 characters; keep the brand suffix only when it still fits
+  const branded = `${title} | ${site.name}`;
+  const fullTitle = branded.length <= 65 ? branded : title;
   return {
     title: fullTitle,
     description,

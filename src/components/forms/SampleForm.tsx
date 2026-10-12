@@ -60,7 +60,7 @@ export function SampleForm() {
     const e: Errors = {};
     if (data.fullName.trim().length < 2) e.fullName = "Enter your name.";
     if (!isValidEmail(data.email)) e.email = "Enter a valid work email.";
-    if (!isValidPhone(data.phone)) e.phone = "Enter a valid phone number, including the country code.";
+    if (!isValidPhone(data.phone)) e.phone = "Enter your phone or WhatsApp number.";
     if (data.company.trim().length < 2) e.company = "Enter your company name.";
     if (!data.platform) e.platform = "Select a platform.";
     if (!data.productCount) e.productCount = "Roughly how many products in the full catalog?";

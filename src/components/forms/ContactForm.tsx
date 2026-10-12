@@ -48,7 +48,7 @@ export function ContactForm() {
     const e: Errors = {};
     if (data.fullName.trim().length < 2) e.fullName = "Enter your name.";
     if (!isValidEmail(data.email)) e.email = "Enter a valid work email.";
-    if (!isValidPhone(data.phone)) e.phone = "Enter a valid phone number, including the country code.";
+    if (!isValidPhone(data.phone)) e.phone = "Enter your phone or WhatsApp number.";
     if (data.company.trim().length < 2) e.company = "Enter your company name.";
     if (!data.topic) e.topic = "Pick the closest topic.";
     if (data.message.trim().length < 10) e.message = "Tell us a little more about what you need.";

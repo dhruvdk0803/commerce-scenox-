@@ -38,8 +38,8 @@
   --success-soft: rgba(28, 140, 89, 0.1);
   --warning: #8f560e;
   --warning-soft: rgba(181, 109, 18, 0.1);
-  --danger: #b54848;
-  --danger-soft: rgba(181, 72, 72, 0.1);
+  --danger: #a33d3d;
+  --danger-soft: rgba(163, 61, 61, 0.1);
 
   /* motion */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);

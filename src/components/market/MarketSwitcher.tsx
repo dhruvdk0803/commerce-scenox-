@@ -12,7 +12,8 @@ import { useMarket } from "./MarketProvider";
  */
 export function MarketSwitcher({ className }: { className?: string }) {
   const current = useMarket();
-  const path = usePathname() ?? "/";
+  // the proxy rewrites URLs to /{market}/..., so drop that segment before prefixing a new market
+  const path = (usePathname() ?? "/").replace(/^\/(in|us|uk|au)(?=\/|$)/, "") || "/";
 
   return (
     <div className={cn("flex flex-wrap items-center gap-x-3 gap-y-2", className)}>
@@ -35,7 +36,7 @@ export function MarketSwitcher({ className }: { className?: string }) {
           ) : (
             <a
               key={id}
-              href={`/${id}${path}`}
+              href={path === "/" ? `/${id}` : `/${id}${path}`}
               rel="nofollow"
               hrefLang={m.locale}
               className="mono-micro inline-flex h-9 items-center rounded-[4px] border border-transparent px-2.5 sm:h-7 sm:px-1.5 text-ink-3 transition-colors duration-[160ms] hover:border-line hover:text-ink"
