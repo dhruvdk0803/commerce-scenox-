@@ -27,6 +27,10 @@ faqs:
     a: "Our team is in India, so there are a few hours of overlap with Australian mornings. Questions are batched into one list rather than trickled through the day, and drafts are ready for your review at the start of your next working day."
   - q: "Is the copy Australian English?"
     a: "Yes: colour, organise, metric measurements, and local product names such as singlet or doona where the item is one. We avoid forced slang. A product description should sound like a retailer, not a cartoon of one."
+  - q: "Which file formats can you work from?"
+    a: "CSV, Excel, Google Sheets, supplier price lists, PDFs and exports from your current store. Images can come through a shared folder. If the data only exists in a PDF, we extract it first and show you the result before building."
+  - q: "Can you keep the catalogue updated after launch?"
+    a: "Yes. Monthly Catalog Ops covers new products, edits and cleanup, from A$299 a month. You can also buy a single project at the published starting prices and move to the monthly plan when supplier updates become regular."
 ---
 
 An Australian catalogue has a few local habits: GST-inclusive prices, long delivery distances, and a marketplace scene that is different to the US or UK. We build for those, not around them.
@@ -73,6 +77,16 @@ Australian Consumer Law expects claims to be accurate and not misleading. For ca
 ### Distance and shipping data
 
 Large parcels cross large distances, so accurate weights and cubic dimensions matter more here than almost anywhere. A missing weight on a bulky item can turn a shipping rate into a loss.
+
+## Beyond the first upload
+
+For Australian stores the extra setup that tends to matter is:
+
+- **Collections and tags.** Rule-based or manual collections by brand, category and price band so filters work from day one.
+- **SEO fields.** Page titles, meta descriptions and clean handles, written per product.
+- **Merchant Center pricing.** Google expects Australian prices to include GST, so a sheet that mixes ex-GST and inclusive rows will trigger feed errors as well as wrong shelf prices.
+- **Customs fields.** If you export, we can place HS codes and country of origin where your platform asks. Confirm the codes with your broker or accountant.
+- **Supplier updates.** A fresh price list is reconciled against the live catalogue so existing products update instead of duplicating.
 
 ## Pricing
 

@@ -26,6 +26,8 @@ faqs:
     a: "Turnaround is from 48 hours for eligible projects; turnaround depends on scope, catalog complexity and the quality of the data and access we receive. Larger catalogs are delivered in approved batches, and the schedule is in your written quote."
   - q: "Do you publish the descriptions to my store?"
     a: "If you want us to, yes, through a staff or collaborator account you can remove; we never ask for passwords. Otherwise we deliver an import-ready file in your platform's format and you load it yourself."
+  - q: "Do you do keyword research?"
+    a: "We use the keywords you already target and the terms in your own category, collection and search data. We do not promise rankings. If you want a keyword list built first, tell us and we scope it with the quote."
 ---
 
 Writing one good product description takes ten minutes. Writing eight hundred takes a month, and the last two hundred never read like the first. Teams cut corners: pasted supplier copy, descriptions that repeat the title, half the catalog with no description at all.
@@ -87,6 +89,14 @@ Note what the rewrite did not do. It did not add "BPA-free" or "dishwasher safe"
 ## Titles and meta descriptions at scale
 
 Search titles follow patterns that change by category. A fashion title leads with brand and product type; an electronics title leads with the model and key spec. Our [product title SEO guide](/guides/product-title-seo) shows the formulas we apply, and our [description templates by category](/guides/product-description-templates) show the structures behind the copy. Meta descriptions are written to roughly 150 characters and each one is unique, because duplicated meta text across hundreds of pages helps nobody.
+
+## SEO, accuracy and who owns the copy
+
+Descriptions are written for the shopper first, with the search term placed where it reads naturally. We write unique copy per product rather than swapping a few words in a template, and we do not stuff keywords. Titles, meta descriptions and, where you ask for it, image alt text are written to the same voice guide so the product page is consistent from the search result onward.
+
+Facts are taken only from your specs, supplier data or images. We do not add claims you cannot support, such as health, safety or performance statements, and we flag any claim that needs your sign-off. If your market uses its own spelling, we write in it: British, American or Australian English.
+
+You own the copy once the project is paid. Revisions on a sample batch are included so the voice is settled before we run the full catalog. For structure by category, see the [product description templates guide](/guides/product-description-templates).
 
 ## Pricing
 

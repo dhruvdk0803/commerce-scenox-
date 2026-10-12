@@ -26,6 +26,8 @@ faqs:
     a: "Turnaround is from 48 hours for eligible projects; turnaround depends on scope, catalog complexity and the quality of the data and access we receive. The exact date goes in your written quote."
   - q: "Do I give you access to my store?"
     a: "Only if you want us to load the data. We work through a staff or collaborator account you can remove, never a password. If you prefer, we return a platform-ready import file and you upload it yourself."
+  - q: "Can you update prices and stock in bulk as well as add new products?"
+    a: "Yes. Price and stock updates from a supplier sheet are common requests. We match rows by SKU, show you a before and after file, and apply only what you approve. Large recurring updates fit better on the monthly Catalog Ops plan than as separate one-off jobs."
 ---
 
 Product data entry is the dullest job in ecommerce and one of the costliest when it goes wrong. A wrong size on a variant becomes a return. A missing material field becomes a rejected feed item. A price typed with a misplaced decimal becomes a very bad afternoon.
@@ -74,6 +76,14 @@ We do not publish accuracy percentages, because they depend entirely on how clea
 | Image-only catalog | Specs in photos | Read, structure, flag low-confidence values |
 | Old store export | Duplicate SKUs, orphan variants | Rebuild parent and child relationships |
 | Manufacturer feed | Different taxonomy from yours | Map to your categories and attributes |
+
+## Accuracy checks and what we will not guess
+
+Every field has a source: your supplier sheet, spec PDF, packaging photo or an existing store record. Where a value is missing, we leave it empty and list it in the QA report rather than invent it. Checks we run on each batch include required fields filled, units and formats consistent, prices numeric and in the right currency, SKUs unique, barcodes valid length, image links resolving and variants attached to the correct parent.
+
+Typical batch deliverables are the filled import file in your platform's format, an exceptions list, and a short note on anything ambiguous, such as two supplier rows that look like the same product. You decide those; we do not merge silently.
+
+We keep the work to product data, and we never use your files to train third-party models.
 
 ## Pricing
 

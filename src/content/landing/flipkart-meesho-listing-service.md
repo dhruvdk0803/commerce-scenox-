@@ -27,6 +27,10 @@ faqs:
     a: "Not for our work. We write English titles and descriptions in Indian English. If you supply regional-language text, we keep it as given and do not translate it without approval."
   - q: "How long does a listing batch take?"
     a: "From 48 hours for eligible projects; turnaround depends on scope, catalog complexity and the quality of the data and access we receive. Review time on the marketplace side is separate and out of our hands."
+  - q: "Can you fix listings that were rejected or failed quality checks?"
+    a: "Usually, yes. Send the error file or panel messages. We trace each rejection to a field, such as a missing attribute, wrong category, image issue or size mismatch, correct the data and prepare a resubmission file. Brand or document approvals are decided by the marketplace."
+  - q: "Can you update existing listings in bulk?"
+    a: "Yes. We can prepare bulk update files for attributes, titles, images and variant data on listings you already have. Prices and stock stay your decision, so we only change them when you give us the figures."
 ---
 
 Flipkart and Meesho both run on category templates, mandatory attributes and image checks. The panels are different, but the pain is the same: hundreds of rows, one wrong value, and a batch that comes back rejected. We prepare the data so that does not happen.
@@ -77,6 +81,16 @@ Meesho listings tend to be simpler and lower-priced, with heavy emphasis on clea
 ### What is outside our scope
 
 Pricing, commission, shipping fees, returns policy, ad spend and account approval belong to you. We prepare the data; we do not run the account.
+
+## Before you upload
+
+A few things decide whether a batch goes through at all, and none of them are data entry:
+
+- **Category and brand approvals.** Some categories and brands need approval or documents before listing. We tell you what the panel is likely to ask for. We cannot obtain approval for you.
+- **GST and HSN details.** Panels ask for tax details per product. You or your CA confirm the HSN and GST rate; we place them in the template.
+- **Colour names that match the photo.** Use a standard colour name that matches what the image shows. A mismatch between the listed colour and the picture is a common reason for returns and complaints.
+- **Pack contents and quantity.** State exactly what is in the box, including set sizes, so the listing does not promise more than ships.
+- **SKU discipline.** One stable seller SKU per variant, reused across both panels and your own store, so orders and stock reconcile later.
 
 ## Pricing
 

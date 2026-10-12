@@ -26,6 +26,8 @@ faqs:
     a: "We map sizes using the chart you provide or a standard chart you approve, and show the local size for each market. Where charts disagree we flag it instead of guessing."
   - q: "How quickly can you list a jewellery range?"
     a: "From 48 hours for eligible projects; turnaround depends on scope, catalog complexity and the quality of the data and access we receive. Pieces with certificates and many images take longer than plain silver ranges."
+  - q: "Can you set up engraving or made-to-order options?"
+    a: "Yes, within your platform's limits. We add a personalisation text field with character limits, a lead-time note and the right shipping messaging. If a design needs more than the platform's option limits, we structure it with separate products or an app, and tell you the trade-off."
 ---
 
 ## What you get
@@ -85,6 +87,12 @@ Gold jewellery sold in India falls under BIS hallmarking. The hallmark carries t
 | Certification | Lab name and report number | Only if supplied |
 | Ring size | US 7, UK N | Per market |
 | Finish | Rhodium plated | Care and description |
+
+## Certificates, care and trust details
+
+Buyers of jewellery want proof. We add what you supply and can substantiate: metal and purity, stone type, carat weight and dimensions, certificate or lab report references where you hold them, hallmark details and country of origin. We do not state a grade, origin or certification that your paperwork does not show.
+
+Alongside the specs, care instructions, return and resizing policy, gift packaging and delivery insurance details help conversion on higher-value items. We keep these in consistent fields so they show in the same place on every product. If you sell made-to-order or engraved pieces, we set up the personalisation field and lead time.
 
 ## Pricing
 

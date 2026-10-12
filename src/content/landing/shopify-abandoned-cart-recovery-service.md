@@ -26,6 +26,10 @@ faqs:
     a: "No. We never ask for passwords. You add us as a staff or collaborator account, and invite us to your email platform as a user, both removable at any time."
   - q: "How long does setup take?"
     a: "We work from 48 hours for eligible projects; turnaround depends on scope, catalog complexity and the quality of the data and access we receive. WhatsApp approval timelines sit outside our control and are quoted separately."
+  - q: "How many emails should an abandoned cart flow send, and when?"
+    a: "Three or four is a common structure: a reminder within the first hour or two, a follow-up the next day and a final message a few days later. We set timing around your buying cycle. Higher-priced products often need a longer gap than low-priced ones."
+  - q: "Is it legal to email people who abandoned a cart?"
+    a: "It depends on the country and on what the customer agreed to. Most regimes require consent or a lawful basis, an unsubscribe link and a sender identity. We build in unsubscribe and consent checks, but your legal obligations are yours to confirm with a professional."
 ---
 
 A customer who adds to cart and leaves has told you something useful: they wanted the product. The recovery message is where most stores either do nothing, or send a single generic reminder with a discount in it. This service builds the proper version, once, and hands it over.
@@ -61,6 +65,19 @@ Most underperforming flows fail in dull, fixable ways, and a guide such as our [
 | One message for every cart | Split by cart value or new versus returning customers |
 
 For WhatsApp and SMS the rules are stricter. They need explicit consent, WhatsApp requires approved templates and a business account, and costs per message differ by country. In India, a WhatsApp reminder often performs differently than email; in some other markets, SMS rules and expectations vary. We explain the trade-offs before adding a channel.
+
+## Cart, checkout and browse abandonment
+
+These are three different triggers, and Shopify treats them differently. A customer who adds to cart but never enters an email cannot be emailed, because you do not know who they are. A customer who starts checkout and leaves has given an email, so an abandoned checkout flow can reach them. Browse abandonment needs the shopper to be identified by your email platform's tracking.
+
+We set up each trigger only where your data supports it, and explain what is missing where it does not. If you use Shopify's own abandoned checkout email, we can replace it with a longer flow or keep it and add the other triggers.
+
+### Deliverability and testing
+
+- **Sender authentication.** SPF, DKIM and a branded sending domain set up with your email platform, so messages are less likely to land in spam.
+- **Subject lines and preview text.** Written as pairs, with two variants ready for testing once you have enough volume.
+- **Mobile and dark mode.** Checked across the common inboxes, since most carts are abandoned on a phone.
+- **Testing plan.** We tell you which test to run first, usually timing or the first email's angle, and how many sends it needs before you trust the result.
 
 ## Pricing
 

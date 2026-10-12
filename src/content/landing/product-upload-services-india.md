@@ -27,6 +27,10 @@ faqs:
     a: "Slightly. We keep weights, dimensions and shipping data tidy so your courier rates and COD rules work, and we flag products you may want to exclude from COD. Order confirmation itself is a separate WhatsApp service."
   - q: "How fast can it be done?"
     a: "From 48 hours for eligible projects; turnaround depends on scope, catalog complexity and the quality of the data and access we receive. We confirm a date in the fixed quote after inspecting your files."
+  - q: "Which file formats can you work from?"
+    a: "Excel, CSV, Google Sheets, supplier PDFs, price lists photographed from a catalogue book, and exports from Shopify, Amazon.in or Flipkart. Photos can come through Drive or Dropbox. Where data is only in a PDF or an image, we extract it first and show you the result."
+  - q: "Can you handle updates and new stock after launch?"
+    a: "Yes. Monthly Catalog Ops covers new products, edits and cleanup, from ₹7,999 a month. Many sellers start with one project and move to monthly once supplier sheets and festival ranges become regular."
 ---
 
 Most Indian sellers send us a messy Excel sheet, a folder of supplier PDFs, and photos named after a WhatsApp group. That is fine. This page explains what we do with those files, how the India-specific fields are handled, and what it costs in rupees.
@@ -70,6 +74,16 @@ On Shopify we work inside the three-options-per-product limit and use metafields
 ### Cross-listing to Amazon.in, Flipkart, Meesho and Myntra
 
 A clean store catalogue is the best starting point for marketplace listings, because the same titles, attributes and images get reused. Each marketplace has its own category templates and mandatory fields, so we treat that as a separate feeds job. See [Flipkart and Meesho listing](/flipkart-meesho-listing-service) and [Amazon listing](/amazon-product-listing-service). Myntra and brand-led panels often need onboarding by the marketplace first; we prepare your data, but account approval is theirs to give.
+
+## Beyond the first upload
+
+Beyond creating products, we set up the parts that stop a catalogue becoming messy again:
+
+- **Collections and tags.** Collections by category, occasion, fabric and price band, so festival and sale pages can be built from rules rather than by hand.
+- **SEO fields.** Page titles, meta descriptions and clean handles per product.
+- **Invoice-ready fields.** HSN, GST rate and country of origin kept in structured fields so your invoicing or accounting app can read them.
+- **Pincode and COD tags.** Heavy or fragile items tagged so shipping and COD rules can treat them differently.
+- **Supplier updates.** A new sheet from a supplier is reconciled against the live catalogue so existing products update instead of duplicating.
 
 ## Pricing
 

@@ -26,6 +26,10 @@ faqs:
     a: "Yes. We produce white-background mains and sized variants for your channels, but each marketplace updates its rules. We build to the current published requirements and flag anything borderline, such as category-specific exceptions."
   - q: "How long does it take?"
     a: "We work from 48 hours for eligible projects; turnaround depends on scope, catalog complexity and the quality of the data and access we receive. Large catalogs are staged in batches, with a written date."
+  - q: "Do you flag AI-generated images for marketplaces and ads?"
+    a: "We tell you where channels ask for disclosure or restrict generated imagery, since policies change. Marketplace mains stay as faithful to the product as we can make them, and we can leave any product on original photography if you prefer. The final call on each channel is yours."
+  - q: "Can you do every colour and variant?"
+    a: "Yes, when each colourway has its own source photo. We do not recolour a product by guessing, because dyes, finishes and trims rarely shift evenly. If a variant has no photo, we list it as missing instead of inventing it."
 ---
 
 Product photography is the cost that scales worst. A hundred products means a studio booking, a stylist and a week of editing, and the next season starts the whole thing again. This service is for stores that have photos, perhaps decent supplier shots or a quick phone shoot, and need them to look like a consistent catalog.
@@ -65,6 +69,20 @@ We would rather send you eighty accurate images out of a hundred, with a note on
 ## Where the images are used
 
 Different channels need different outputs. Marketplaces want a clean white-background main. Your store benefits from lifestyle scenes and detail shots. Ads want consistent crops. The [image requirements guide](/guides/product-image-requirements) lists the specifics for Shopify, Google, Amazon, Meta and Flipkart, and we build to them. For the tool-style version of this work, see [/ai-product-photos](/ai-product-photos); this page is for teams who want the whole catalog handled.
+
+## Planning the image set per product
+
+Before generating anything, we agree which images each product needs. A typical set is:
+
+| Image | Purpose |
+| --- | --- |
+| White-background main | Marketplaces, Merchant Center, collection pages |
+| Angle or back view | Shows shape, ports, closures and straps |
+| Detail shot | Texture, stitching, finish, label |
+| Scale reference | Helps buyers judge size, which reduces size-related returns |
+| Lifestyle scene | Your store, ads and social, in a style agreed in advance |
+
+Not every product needs all five. Low-price items may need only a main and one scene, and we say so in the quote instead of padding it. We use your photos and data only for your project, and never to train third-party models.
 
 ## Pricing
 

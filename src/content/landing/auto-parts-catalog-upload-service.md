@@ -26,6 +26,8 @@ faqs:
     a: "We do not guess fitment, because a wrong fit means a return and a lost customer. Parts with partial or conflicting data are listed in the QA report with the gap, so you or your supplier can confirm."
   - q: "How quickly can you list a parts catalog?"
     a: "From 48 hours for eligible projects; turnaround depends on scope, catalog complexity and the quality of the data and access we receive. Large fitment tables take longer to validate."
+  - q: "Can you handle cross-references and superseded part numbers?"
+    a: "Yes. We store OE, aftermarket and superseded numbers in separate fields, link replacements to retired parts and keep old URLs working. We map only the relationships in your data; if a link is uncertain we flag it for your parts expert instead of guessing."
 ---
 
 ## What you get
@@ -90,6 +92,12 @@ At this size, small errors repeat. We validate in batches: unique SKUs, no blank
 | Interchange | Competing part numbers | Lookup |
 | Weight and dimensions | Unit stated | Shipping |
 | Condition | New, remanufactured | Filter and channel field |
+
+## Cross-references, superseded parts and returns
+
+Part numbers change. We keep the manufacturer part number, OE and aftermarket cross-references and any superseded numbers in separate fields, so search can find a part by whichever number a customer holds. Where a supplier gives a replacement for a discontinued part, we link it instead of deleting the old page.
+
+For returns, the biggest risk is a wrong fit. We make the vehicle compatibility visible near the add to cart, separate universal parts from vehicle-specific ones, and add the install notes, position (front or rear, left or right) and quantity per pack that buyers need. Core charges, hazardous shipping flags and warranty terms are added as fields when you supply them.
 
 ## Pricing
 

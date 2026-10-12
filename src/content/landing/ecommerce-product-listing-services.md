@@ -26,6 +26,8 @@ faqs:
     a: "Turnaround is from 48 hours for eligible projects; turnaround depends on scope, catalog complexity and the quality of the data and access we receive. Marketplace approval timelines are set by the marketplaces themselves, not by us."
   - q: "What do I need to send?"
     a: "Your product data in whatever state it exists: a store export, supplier sheets, photos. Also tell us each channel, your brand registry or category approvals if any, and any restricted categories. We tell you what is missing before quoting."
+  - q: "Do you handle category restrictions and brand approvals?"
+    a: "We flag them. If a category needs marketplace approval or you do not hold brand permission, we tell you before upload and list the affected products separately. Applying for the approval is between you and the marketplace; we prepare the data and listings so you are ready once approved."
 ---
 
 Listing on one channel is a project. Listing on five is a data problem. Every new marketplace asks for the same product in a slightly different shape, and the team that keeps all those versions accurate is usually one person with a lot of spreadsheets.
@@ -72,6 +74,14 @@ When a supplier changes a weight or you rename a colour, you change the master o
 Most problems are boring. Titles stuffed for one channel and pasted onto another. Variants that exist in the store but are flattened into separate listings elsewhere. Missing GTINs in required fields. Category choices made by guesswork, which then limit where a product can appear. Images that are fine on the store and fail a marketplace's background rule.
 
 For the Amazon and Indian marketplace specifics, see our pages on [Amazon product listing](/amazon-product-listing-service) and [Flipkart and Meesho listing](/flipkart-meesho-listing-service). For the template mechanics, the [Amazon flat file guide](/guides/amazon-flat-file-listing) walks through it.
+
+## Compliance, images and category choices per channel
+
+Each channel has its own gatekeeping. Marketplaces tend to require a specific category, mandatory attributes, GTINs or approved brand status for some categories, and image rules such as a plain background for the main image. Google Shopping cares about identifiers, accurate price and availability and a matching landing page. Your own store wants clean URLs and consistent options.
+
+We map every product to the right category on each channel, check mandatory fields before submission, and note any category that needs approval or a restriction review from the marketplace so you are not surprised after the upload. Image sizes, count and background rules are checked against the channel's published guidelines at the time of the work. See the [product image requirements guide](/guides/product-image-requirements) for the common limits.
+
+Where you sell across borders, we also keep currency, units and spelling matched to the market rather than copying one version everywhere.
 
 ## Pricing
 

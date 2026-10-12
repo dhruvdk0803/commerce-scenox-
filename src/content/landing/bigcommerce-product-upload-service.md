@@ -26,6 +26,10 @@ faqs:
     a: "Yes. We map your product options into variant options and modifiers appropriately, and check each variant has its own SKU and price. If you are coming from another platform, we restructure the data to suit BigCommerce rather than copying it blindly."
   - q: "How quickly can you deliver?"
     a: "From 48 hours for eligible projects; turnaround depends on scope, catalog complexity and the quality of the data and access we receive. We give you a realistic date in the quote."
+  - q: "Is my product data kept private?"
+    a: "Your files are used only for your project and never to train third-party models. Access is through a user or API account you create and can revoke, and we do not need customer or order data to upload products."
+  - q: "Can you fix products that are already in my store?"
+    a: "Yes. We export the current catalog, correct variants, modifiers, categories and descriptions in a working file, then re-import only the changes. You get the original export back as a restore point."
 ---
 
 BigCommerce imports are forgiving about some things and unforgiving about others. A variant without a SKU or a modifier mistaken for a variant option can leave you with a store that looks complete in the admin and sells wrongly at checkout. We treat that distinction carefully.
@@ -39,6 +43,8 @@ BigCommerce imports are forgiving about some things and unforgiving about others
 - Category assignment, brand matching and page titles
 - Images matched to products and variants, with alt text
 - Channel assignment for each product across storefronts
+- Product weights, dimensions and tax or shipping-related fields filled where your data has them
+- Product page SEO fields and clean URLs, with 301 redirects prepared if URLs change
 - A QA report listing changes, flags and anything we could not resolve
 
 ## How it works
@@ -70,6 +76,10 @@ With multi-storefront, products live in one catalog and are assigned to channels
 ### Variant limits
 
 BigCommerce caps how many variants a single product can hold. If a source product has an enormous combination matrix, we propose splitting it into separate products or reducing options, and agree that with you before building.
+
+## Updating existing products
+
+If your store already has products, we match on SKU, change only the fields you name and keep a before and after file. The control panel importer can add and update but a careless file can overwrite good data, so we export your current catalog first as a safety copy. For regular refreshes, such as seasonal price changes, ask about Monthly Catalog Ops.
 
 ## Pricing
 

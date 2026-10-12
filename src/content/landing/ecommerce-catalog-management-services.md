@@ -26,6 +26,10 @@ faqs:
     a: "Turnaround is from 48 hours for eligible projects; turnaround depends on scope, catalog complexity and the quality of the data and access we receive. We confirm a delivery date in writing with your fixed quote, before work starts."
   - q: "Do you need my store password?"
     a: "No. We never ask for passwords. We work through a staff or collaborator account that you create and can remove at any time. Your product data is never used to train third-party models."
+  - q: "Can you keep my store and marketplace data consistent?"
+    a: "Yes, within the scope we agree. We apply one set of rules for titles, attributes and categories, then check the store and each channel feed against them. We flag price or stock mismatches, though live inventory sync between systems is a tooling job we scope separately."
+  - q: "What happens to the work if I stop the monthly plan?"
+    a: "You keep everything. The cleaned data lives in your store and your files, and we hand over the rules document, taxonomy and QA reports so your team or another provider can carry on. There is no lock-in to a platform we run."
 ---
 
 Most catalog problems are not technology problems. They are a supplier sheet with four spellings of the same brand, variants hanging off the wrong parent, titles written by five different people and a category tree nobody has touched since launch. Software can store that mess very efficiently. It cannot fix it.
@@ -75,6 +79,12 @@ Most clients start with the cleanup, since it settles the rules everything else 
 Across supplier files, the same faults come up again and again. Colour values in free text ("navy", "Navy Blue", "NAVY/WHITE") that break filters. Size fields that mix units. Variants that share a SKU. Brand names that differ by capital letter and so split into two filter entries. Descriptions pasted from a manufacturer site, which also appear on twenty competitor stores. Each one is small, but at 2,000 products they compound into poor search, weak filters, rejected feed items and a team that cannot trust its own numbers.
 
 Fixing these properly means deciding the rules first, then applying them consistently. That is the unglamorous part of the work, and it is why attribute design matters; the [product attributes and taxonomy guide](/guides/product-attributes-taxonomy) explains how we think about it.
+
+## What stays yours, and what we report
+
+You keep ownership of everything. Changes are made in your store or your files, never in a system you would have to leave later, and the QA report and change log are yours to keep. Each monthly cycle ends with a short summary: what was added, what was corrected, what is waiting on a decision from you and which products had gaps we could not fill from the data supplied.
+
+Catalog work also touches more than listings. Inventory counts, price lists and images change as often as copy does, so a monthly scope can include price and stock corrections from your supplier sheets, image naming and alt text fixes, and a quarterly audit of orphaned, duplicate or out-of-stock products. Tell us which channels you sell on, and we keep the same rules across your store and any marketplace or feed that reads from it.
 
 ## Pricing
 

@@ -26,6 +26,10 @@ faqs:
     a: "We ask for a few existing product pages you like and any tone notes, then write to match. A person reviews every output, and you approve before anything goes live."
   - q: "Can we start with something smaller?"
     a: "Yes. Start with the free 10-product sample if the project is a fit, or buy a single catalog project at the published starting prices and move to a monthly plan later."
+  - q: "Can you work around the apps we already use?"
+    a: "Yes. We work with the theme, review, bundle, subscription and filter apps you already run, and we tell you if a field has to be held in a particular place for an app to read it. We do not install or change apps without your approval."
+  - q: "What happens to old products after a season ends?"
+    a: "You choose: archive, keep live as sold out, or redirect to the closest current product. We prepare the redirects and update collections so nothing leads to a dead page. Search value tied to the old URL is kept where a good redirect target exists."
 ---
 
 A D2C brand's catalog is never finished. A drop goes out on Friday, last season's items need archiving, the hero product needs better photos, and someone has to tell Google and Meta about all of it. Doing this with an in-house generalist works until launch week, when everything lands at once.
@@ -61,6 +65,17 @@ Marketplaces reward uniformity; a D2C store has to feel like a brand. That chang
 | Fast-growing channel mix | One clean catalog that feeds ads, email and WhatsApp |
 
 Brands often reach us after launching twice on messy data. The second drop is where inconsistent tags and missing alt text start costing real time, because filters, collections and ad feeds all depend on the same fields.
+
+## Our launch checklist
+
+For each drop we run the same short checklist, so nothing goes live half-built:
+
+- **Line sheet check.** Every product has a title, price, SKU, weight and at least one image before building starts.
+- **Draft and preview.** Products stay as drafts so you can preview collection pages and filters before the date.
+- **Collection rules.** Tags and metafields feed smart collections, so a new product appears in the right place automatically.
+- **SEO and social fields.** Page titles, descriptions and alt text are set, so the page looks right when shared.
+- **Feed readiness.** Identifiers, categories and image links are checked so Google and Meta catalogs accept the products.
+- **Post-launch sweep.** A day or two after launch, we check for broken variants, missing images and out-of-stock items still showing.
 
 ## Monthly plans
 

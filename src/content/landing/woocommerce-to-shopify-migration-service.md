@@ -26,6 +26,10 @@ faqs:
     a: "Reviews live in WooCommerce comments or a plugin. Shopify has no built-in review store for imports, so we export them and load them into the review app you choose, if that app accepts CSV. We confirm the format with you before quoting."
   - q: "Do you need access to my WordPress admin?"
     a: "We prefer CSV exports, which you can run yourself. If more is needed we ask for a limited user you can delete, never your main password. On Shopify we work through a collaborator or staff account."
+  - q: "Can you migrate my order history?"
+    a: "Yes, as an option. Past orders import as records for reference and reporting, so Shopify sends no emails and changes no stock for them. Order numbers and dates are kept. It adds time and cost, so we quote it separately."
+  - q: "Will my WooCommerce store go offline during migration?"
+    a: "No. Your store stays live and takes orders while we build and test on an unpublished Shopify store. Downtime is limited to the domain switch, which we plan with you for a quiet day."
 ---
 
 ## What you get
@@ -87,6 +91,14 @@ If your permalinks include a category base such as /shop/home/linen-throw-grey/,
 ## What we do not do
 
 We do not design your Shopify theme or develop custom apps. We move data and handle SEO. For the storefront, checkout customisation or replacing WordPress plugins with apps, we can recommend people who do that work.
+
+## Cutover and downtime
+
+Your WooCommerce site keeps taking orders while we build and test on an unpublished Shopify store. Near launch we agree a cutover window, you pause product and customer changes, and we export again so recent orders and sign-ups come across. Then redirects load and you switch the domain. Pick a quiet day, keep the WordPress site and a backup for a while afterwards, and do not cancel hosting until you are sure nothing was missed.
+
+## Subscriptions, coupons and other data
+
+Active coupon codes can move. Subscriptions are a separate case: payment tokens do not transfer between gateways, so recurring customers usually need to re-enter payment details through a Shopify subscription app. We flag this at quote stage, because it shapes both the plan and your customer notice.
 
 ## Timeline factors
 

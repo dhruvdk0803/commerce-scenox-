@@ -28,6 +28,10 @@ faqs:
     a: "No. You create a separate user for us with only the permissions the job needs, and you can delete it afterwards. We never ask for or store your own login."
   - q: "How long does it take?"
     a: "From 48 hours for eligible projects; turnaround depends on scope, catalog complexity and the quality of the data and access we receive. Variable products with many attributes take longer than simple ones."
+  - q: "Can you update existing WooCommerce products, such as prices or stock?"
+    a: "Yes. We match on SKU, change only the fields you name and keep a before and after file. We take or ask for a backup first. For recurring supplier updates, ask about Monthly Catalog Ops, which covers regular refreshes."
+  - q: "Is my supplier data kept private?"
+    a: "Yes. Your files are used only for your project and never to train third-party models. We work through a limited user you create, and we do not need customer or order data to upload products."
 ---
 
 WooCommerce gives you plenty of freedom, which is exactly why catalog imports go wrong. Attributes, variations and categories can each be modelled three ways, and a file that imports without error can still produce a store that filters badly. We build the data to match how WooCommerce actually behaves.
@@ -41,6 +45,7 @@ WooCommerce gives you plenty of freedom, which is exactly why catalog imports go
 - Short and long descriptions written or cleaned to a consistent format
 - Images matched by SKU or filename, with alt text and a designated gallery order
 - SEO title and meta fields prepared for Yoast, Rank Math or your SEO plugin where you use one
+- Tax class, shipping class, weight and dimensions set where your data has them, so shipping and tax rules apply correctly
 - A QA report of everything changed or flagged
 
 ## How it works
@@ -72,6 +77,10 @@ The native importer is free, built in and enough for most catalogs. WP All Impor
 ### Hosting limits
 
 Shared hosts commonly cap file upload size, PHP memory and script run time. Large imports hit those limits and stop partway. We chunk files to fit, and for catalogs with many images we load images from URLs in batches, so one slow image does not stall the run.
+
+## Backups and existing products
+
+Before any production import we ask for a fresh backup, from your host or a backup plugin, so there is a clean way back. If the store already holds products, we match on SKU to update them rather than duplicate them, and we tell you which rows will create new products and which will change existing ones before we run anything. Messy existing data can be fixed first through [catalog cleanup](/catalog-cleanup).
 
 ## Pricing
 

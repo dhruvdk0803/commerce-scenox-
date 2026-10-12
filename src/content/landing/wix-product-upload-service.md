@@ -26,6 +26,10 @@ faqs:
     a: "If Wix handles your volume and sales channels comfortably, stay. If you need deeper product options, B2B, markets or more apps, moving may make sense. We do both uploads and migrations, and we will say honestly which fits."
   - q: "How long does it take?"
     a: "From 48 hours for eligible projects; turnaround depends on scope, catalog complexity and the quality of the data and access we receive. Image-heavy catalogs need extra time for hosting and matching."
+  - q: "Is my product data kept private?"
+    a: "Your files are used only for your project and never to train third-party models. Access is through a collaborator invite with limited permissions that you can remove, and we do not need customer or order data."
+  - q: "Can you handle product photos as well as the listings?"
+    a: "Yes. We match the photos you already have, and if you need better images our AI product imagery service starts at $79 per 50 products. We can quote both together so you get one timeline."
 ---
 
 Wix Stores is built for simplicity, and its import reflects that: a fixed set of columns, rules about how variants are written, and little tolerance for improvisation. A supplier spreadsheet rarely fits it without rework.
@@ -39,6 +43,7 @@ Wix Stores is built for simplicity, and its import reflects that: a fixed set of
 - Images matched to products and loaded by URL
 - Prices, SKUs, weight, inventory and visibility settings checked
 - SEO titles and descriptions prepared for the product pages
+- Product info sections (shipping, care, size guide) drafted where you supply the source details
 - A QA report of anything changed or flagged
 
 ## How it works
@@ -70,6 +75,10 @@ Wix pulls images from URLs. The links must be public and stable, and the files s
 ### Batching
 
 Large catalogs are safer imported in batches, so an error in one file does not stall the whole job. We split by category or supplier and check each batch before the next.
+
+## Updating existing products and backups
+
+If the store already has products, we export it first so you hold a copy before any change, then match on SKU or product name and update only the fields you name. Wix lets you review imported products before making them visible, which is where we check images, options and prices side by side with your source file. Messy existing data can be fixed beforehand through [catalog cleanup](/catalog-cleanup).
 
 ## Pricing
 

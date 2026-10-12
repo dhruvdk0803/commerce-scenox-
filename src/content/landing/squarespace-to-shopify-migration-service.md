@@ -26,6 +26,10 @@ faqs:
     a: "No. Shopify uses /products/handle, so each old Squarespace address needs a 301 redirect. We build the map from your export and a crawl, then test it before DNS changes."
   - q: "Can you recreate my Squarespace design in Shopify?"
     a: "No, we do not do theme design or custom app development. We move the data and protect SEO, and can recommend a Shopify theme designer who works from your existing site."
+  - q: "What happens to my Squarespace blog?"
+    a: "We can move posts into a Shopify blog with images and publish dates, and redirect every old post URL. Layouts and galleries do not carry over. If a post gets little traffic, we can suggest retiring it with a redirect to a related page."
+  - q: "Can you migrate my Squarespace order history?"
+    a: "Yes, as an option. Orders import as records for reference and reporting, so Shopify sends no emails and changes no stock for them. It adds time and cost, so we quote it separately."
 ---
 
 ## What you get
@@ -86,6 +90,14 @@ Squarespace slugs sometimes carry a random suffix on duplicated products, so the
 ## What we do not do
 
 We do not rebuild your Squarespace design in a Shopify theme, and we do not write custom apps. Squarespace sites tend to be designed carefully, so a designer is worth it. We can recommend one.
+
+## Your blog and content pages
+
+Many Squarespace sites earn their traffic from the blog, so decide what to do with it early. Posts can move into a Shopify blog with images and dates, and each old URL gets a redirect. Squarespace page layouts and galleries do not transfer, so key pages such as About, delivery and FAQs move as text and are laid out again in the new theme. Low-value pages are best retired with a redirect to a related page, not left to return a 404. We help you sort pages into move, merge or retire using Search Console data.
+
+## Domain and cutover
+
+Your domain can stay registered at Squarespace and be repointed to Shopify, or you can transfer it to Shopify or another registrar. Transfers can take days and need an authorisation code from your current registrar, so start that early and keep the site working until it completes. We schedule redirects and DNS together. Your Squarespace store keeps selling until the switch, and we pick a quiet day.
 
 ## Timeline factors
 

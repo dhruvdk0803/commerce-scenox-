@@ -27,6 +27,10 @@ faqs:
     a: "Yes, as a separate feeds job per channel. We prepare category templates, required attributes and images. You keep the seller accounts and we work through access you grant and can remove."
   - q: "Will the copy read as American English?"
     a: "Yes: color, gray, sneakers, and US measurements first (inches, pounds) with metric where you want it. We follow your brand tone sheet if you have one, and a sensible neutral one if you do not."
+  - q: "Which file formats can you work from?"
+    a: "CSV, Excel, Google Sheets, supplier PDFs, distributor feeds and exports from your current store. Images can come as a shared Drive, Dropbox or zip. If the data is only in a PDF or a website, we extract it first and show you the result before building."
+  - q: "Can you keep the catalog updated after launch?"
+    a: "Yes. Monthly Catalog Ops covers new products, edits and cleanup, from $199 a month. You can also buy single projects at the published starting prices and add the monthly plan later if supplier updates become regular."
 ---
 
 A US seller usually comes to us with one of three things: a supplier spreadsheet with 800 rows and no consistent naming, a store that needs to be listed on Amazon and Walmart as well, or a backlog nobody on the team wants to touch. All three are routine for us.
@@ -73,6 +77,16 @@ Marketplaces and Google match products by GTIN, which in the US is usually a 12-
 | eBay | Item specifics, condition, category, variations, shipping profile fields. |
 
 Each channel has its own approval rules; we prepare the data and you hold the account.
+
+## Beyond the first upload
+
+A catalog that only exists is not finished. For US stores we also set the parts that make it findable and manageable:
+
+- **Collections and tags.** Manual or rule-based collections (brand, product type, price band) so navigation and filters work on day one.
+- **SEO fields.** Page titles, meta descriptions and clean handles or slugs, written per product, not copied from the title.
+- **Metafields and attributes.** Material, dimensions, care and compatibility held in structured fields where your theme can show them.
+- **Prop 65 and similar notices.** If a product needs a California Proposition 65 warning or another label, we place the text you supply. We do not decide whether it applies.
+- **Supplier updates.** When a distributor sends a new price list, we reconcile it against the live catalog and prepare an update, not a duplicate set of products.
 
 ## Pricing
 

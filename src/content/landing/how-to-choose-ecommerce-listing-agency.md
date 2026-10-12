@@ -26,6 +26,8 @@ faqs:
     a: "It depends on volume and risk. A freelancer suits small, one-off jobs with someone you trust. An agency or managed service suits volume, deadlines and QA. Apps suit clean data you can process yourself. Our outsourcing guide compares them in detail."
   - q: "Are you saying to choose Scenox Commerce?"
     a: "No. We are one provider among several. This checklist is written so that you can hold us to the same standard as anyone else. If another provider scores higher on your sample and your criteria, that is the right choice for you."
+  - q: "What should the contract or quote cover?"
+    a: "Scope in plain terms, price, delivery date, number of revisions, who owns the output, how your data is handled and deleted, what access you give and how it is removed. If any of these is missing from a quote, ask before you pay."
 ---
 
 Full disclosure first: Scenox Commerce is a product upload and catalog service, so we are one of the providers you may end up comparing. We wrote this checklist so you can compare us, and everyone else, on the same terms. We do not name or rank other companies here.
@@ -85,6 +87,12 @@ Choosing badly is expensive in a particular way. The invoice is rarely the probl
 8. What is the delivery date, and what would delay it?
 9. How do corrections work after delivery?
 10. Have you handled our platform, and our product type, before?
+
+## Check the scope, the people and the contract
+
+Two things get skipped most often. First, scope: ask exactly which fields are filled, which platforms and channels are covered, whether images and descriptions are included, and what counts as a revision. Second, people: ask who actually does the work and who reviews it, not only who sells.
+
+Read the terms too. Look for who owns the finished data, whether you can leave without penalty, how your files are stored and deleted, whether they are used to train models, and what happens to the work if the relationship ends.
 
 ## A scoring table you can copy
 

@@ -28,6 +28,10 @@ faqs:
     a: "Supplier sheets, price lists, image folders or links, and any brand rules for naming. Add us as a staff account on your store. If you have no descriptions yet, we can write them from your specifications."
   - q: "Can you work on a store that is still on a trial?"
     a: "Yes. We can load products while the store is in development, and they stay as drafts until you are ready. Nothing needs to be public until launch."
+  - q: "Which other launch tasks will I need to handle?"
+    a: "Payments, shipping rates, tax settings, policies, domain and the theme. We make sure every product carries the weights, SKUs and tax-relevant fields those settings rely on. A short launch checklist is on this page."
+  - q: "Can you add products to a store that already has some?"
+    a: "Yes. We match on handle or SKU so nothing is duplicated, and we leave your existing products untouched unless you ask us to change them. New items load as drafts for review."
 ---
 
 A new Shopify store with a beautiful theme and twelve products looks unfinished. The slow part of opening is rarely the design; it is turning supplier data into hundreds of consistent product pages. That is the part we do.
@@ -72,6 +76,19 @@ Sizes, colours and packs need to be modelled once and correctly, within Shopify'
 ### Images and alt text
 
 A catalog without images matched to products cannot launch. We match by SKU or filename, set the first image carefully and add alt text. If you need new or cleaner product images, see [AI product photos](/ai-product-photos).
+
+### The rest of your launch checklist
+
+Products are one workstream of several. Before you open, someone also needs to cover the essentials below. We do not do these, but we plan the catalog so they work.
+
+- Theme chosen and the product page layout checked against real catalog data
+- Payment gateway and a test order
+- Shipping zones and rates, with weights already on every product
+- Tax settings for your market, and prices shown with or without tax as local rules require
+- Legal policies: returns, shipping, privacy and terms
+- Domain connected, plus order and customer email notifications reviewed
+- Markets and currencies, if you sell to more than one country
+- Analytics, and a product feed for Google or Meta if you plan to advertise at launch. We can help here through [product feed management](/product-feed-management).
 
 ### What stays outside our scope
 

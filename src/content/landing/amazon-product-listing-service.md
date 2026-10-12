@@ -26,6 +26,10 @@ faqs:
     a: "Yes, from your specs and existing copy. We write five factual bullets, a clear title within category rules, and backend search terms with no repeats or competitor brands. You approve everything before it goes live."
   - q: "How fast is it?"
     a: "From 48 hours for eligible projects; turnaround depends on scope, catalog complexity and the quality of the data and access we receive. Account approvals and Amazon's own processing time are outside our control."
+  - q: "Can you fix listings already live on Amazon?"
+    a: "Yes, for the data side. We can correct titles, bullets, attributes, variation families and images, and resubmit through update files. If a listing is suppressed, we find the missing or invalid field. Account suspensions and appeals are outside our scope."
+  - q: "Do you list on several Amazon marketplaces at once?"
+    a: "Yes. We build a separate file per market, because browse nodes, required fields, spelling, currency and tax display differ. Content is adapted for each country, not just pasted across. You tell us the markets and we price by product type and market."
 ---
 
 Amazon does not forgive sloppy data. A wrong category, a missing variation attribute or a poor main image can mean a suppressed listing, and fixing a suppressed listing one row at a time is slow. We prepare the catalogue properly before it is submitted.
@@ -90,6 +94,18 @@ Most listings need a GTIN. If you have none, Amazon has an exemption process in 
 | India | INR, Indian English, GST and HSN details where Amazon asks. |
 
 Country-specific upload work is on our [USA](/product-upload-services-usa), [UK](/product-upload-services-uk), [Australia](/product-upload-services-australia) and [India](/product-upload-services-india) pages. For the template mechanics, read the [Amazon flat file guide](/guides/amazon-flat-file-listing).
+
+### Brand Registry and A+ content
+
+A+ content is available to sellers enrolled in Amazon Brand Registry for the brand in question, and eligibility is set per marketplace. If you are enrolled, we draft the module text and image briefs, and you build or approve them in the A+ manager. If you are not enrolled, we prepare the brand and trademark details so you can apply, though Amazon decides.
+
+### Existing ASINs and listing fixes
+
+Before creating anything new, we check whether the product already has an ASIN, because a duplicate page is worse than none. Where it does, we match your offer to it and, if you own the brand, propose content corrections. We can also fix the data behind a suppressed or stranded listing, such as a missing attribute or an invalid identifier, and resubmit. We do not handle account suspension appeals.
+
+### FBA, FBM and what stays with you
+
+Listing data is the same whether you fulfil yourself or use FBA. We do not prepare FBA shipments, labels or inbound plans, and we do not set pricing strategy or run advertising. You open the Seller Central account and complete its identity checks, and we start from there.
 
 ## Pricing
 

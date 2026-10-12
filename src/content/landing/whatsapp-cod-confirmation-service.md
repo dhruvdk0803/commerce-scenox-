@@ -27,6 +27,10 @@ faqs:
     a: "Mainly Shopify, and WooCommerce on request, through your order and tagging system. We connect to the apps you already use for COD and shipping, and tell you up front if a limitation applies."
   - q: "Do you need my store password?"
     a: "No. We never ask for passwords. You add us as a staff or collaborator account and invite us as a user on your WhatsApp provider. Both can be removed at any time."
+  - q: "What happens when a COD parcel fails delivery?"
+    a: "We can add a follow-up flow for non-delivery reports: a WhatsApp message asking the buyer to confirm availability or correct the address before the courier returns the parcel. It depends on your courier or shipping app exposing the failed-delivery status, and we check that first."
+  - q: "How do I know whether it is working?"
+    a: "We set up tagging so you can track confirmation rate, cancellation rate, non-response rate and RTO share. Compare these with your numbers from before the flow went live, over a period long enough to cover a normal week and a sale week."
 ---
 
 For many Indian D2C stores, cash on delivery is a large share of orders and a large share of returns. A COD parcel that is refused at the door costs shipping both ways and a unit of stock stuck in transit. Confirming the order on WhatsApp before dispatch is a cheap, familiar step, and this service builds it properly.
@@ -64,6 +68,17 @@ This is a market where small details decide whether the flow works.
 | Provider costs | Per-conversation fees are separate and depend on your provider |
 
 A confirmation message that reads like a promotion tends to be rejected or ignored. A short, plain message that lists the items, the amount payable at delivery and two buttons usually behaves better. Many stores also pair this with a prepaid nudge, offering a small incentive to pay online, which we can add if it suits your margins.
+
+## Measuring it, and what comes after confirmation
+
+The flow gives you four numbers worth watching: confirmation rate, cancellation rate, non-response rate and RTO on shipped COD orders. Tags on each order let you pull them from your store without a separate dashboard. Compare before and after across the same kind of weeks, because a sale period behaves differently from a quiet one.
+
+### Optional additions
+
+- **Failed-delivery follow-up.** A message after a non-delivery report asking the buyer to confirm availability or fix the address before return.
+- **COD to prepaid nudge.** A payment link sent with a small incentive that you set, for buyers who would rather pay online.
+- **Repeat-offender rules.** A tag for phone numbers or pincodes with several past refusals, so your team can hold or call before shipping. You decide the rule and review it, since rules that are too strict lose genuine orders.
+- **Existing apps.** If you already use a COD verification app, we can connect to it, or move you to a cleaner setup. We tell you which is simpler.
 
 ## Pricing
 

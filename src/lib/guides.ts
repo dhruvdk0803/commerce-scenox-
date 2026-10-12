@@ -7,7 +7,7 @@ import { Marked } from "marked";
  * Guides live as Markdown in src/content/guides/<slug>.md with frontmatter.
  * Parsed at build time; every page is statically generated.
  */
-export type GuideCategory = "catalog" | "migration" | "feeds" | "content" | "imagery" | "retention" | "costs";
+export type GuideCategory = "catalog" | "migration" | "feeds" | "content" | "imagery" | "retention" | "costs" | "fixes";
 
 export const GUIDE_CATEGORIES: Record<GuideCategory, { label: string; desc: string }> = {
   costs: { label: "Costs & outsourcing", desc: "What catalog work costs and when to hand it off." },
@@ -17,6 +17,7 @@ export const GUIDE_CATEGORIES: Record<GuideCategory, { label: string; desc: stri
   feeds: { label: "Feeds & marketplaces", desc: "Google Merchant Center, Meta, Amazon and Flipkart." },
   imagery: { label: "Product images", desc: "Specs, backgrounds and AI imagery." },
   retention: { label: "Email & WhatsApp", desc: "Abandoned carts, COD confirmation and repeat orders." },
+  fixes: { label: "Error fixes", desc: "One page per Shopify CSV error and Merchant Center issue, with the fix." },
 };
 
 export type GuideFaq = { q: string; a: string };

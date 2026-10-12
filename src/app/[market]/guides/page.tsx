@@ -17,7 +17,7 @@ export const metadata = pageMeta({
   path: "/guides",
 });
 
-const ORDER: GuideCategory[] = ["costs", "catalog", "migration", "feeds", "content", "imagery", "retention"];
+const ORDER: GuideCategory[] = ["costs", "catalog", "migration", "feeds", "content", "imagery", "retention", "fixes"];
 
 export default function GuidesPage() {
   const guides = getGuides();

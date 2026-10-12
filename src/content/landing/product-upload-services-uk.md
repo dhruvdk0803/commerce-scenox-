@@ -27,6 +27,10 @@ faqs:
     a: "Yes, each as a separate feeds job. We prepare category data, item specifics, identifiers, variations and images in the format the channel expects. You keep the seller account, and approval is up to the marketplace."
   - q: "Is the copy British English?"
     a: "Yes: colour, grey, trainers, jumper, and metric measurements, with inches shown where your customers expect them. We also keep UK sizing separate from US and EU sizing, and label each one clearly."
+  - q: "Which file formats can you work from?"
+    a: "CSV, Excel, Google Sheets, supplier price lists, PDFs and exports from your current store or marketplace. Images can arrive through a shared folder. If the data only exists as a PDF, we extract it first and show you the result before anything is built."
+  - q: "Can you handle ongoing updates and seasonal ranges?"
+    a: "Yes. Monthly Catalog Ops covers new lines, edits and cleanup, from £159 a month. Many UK sellers start with a single project and move to the monthly plan once supplier price lists and seasonal ranges become regular."
 ---
 
 UK catalogue work looks simple until you list the same product on four channels. Prices must show VAT, sizing must be UK, and a marketplace wants a barcode your supplier never gave you. This page covers how we handle those details.
@@ -73,6 +77,16 @@ Some categories, such as toys, electricals and certain protective gear, need con
 ### GDPR and data handling
 
 Product files rarely hold personal data, but customer lists and order exports sometimes arrive mixed in. We ask you to strip them out, work only through accounts you can revoke, and do not use your data to train third-party models.
+
+## Beyond the first upload
+
+The catalogue is only useful if shoppers and feeds can use it. For UK stores we also cover:
+
+- **Collections and tags.** Rule-based or manual collections by brand, type, size and price band, so filters work from launch.
+- **SEO fields.** Page titles, meta descriptions and tidy handles written per product.
+- **Merchant Center pricing.** Google expects UK prices to include VAT, so a mixed inclusive and exclusive sheet is a feed problem as well as a store problem. We settle it before upload.
+- **Commodity codes.** If you ship abroad, we can place HS or commodity codes and country of origin in the fields your platform provides. You or your customs agent confirm the code for each product.
+- **Supplier updates.** New price lists are reconciled against the live catalogue so changes update existing products rather than creating duplicates.
 
 ## Pricing
 

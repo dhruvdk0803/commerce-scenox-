@@ -26,6 +26,8 @@ faqs:
     a: "We match and order the images you have. For missing room scenes, our AI product imagery service can create scenes from product shots, which you approve before use. It is a separate service."
   - q: "How long does a furniture catalog take?"
     a: "From 48 hours for eligible projects; turnaround depends on scope, catalog complexity and the quality of the data and access we receive. Configurable ranges with many fabrics take longer than fixed-spec products."
+  - q: "Can you add delivery lead times and returns information?"
+    a: "Yes. We add lead times, delivery method, assembly time and your return terms in consistent fields, using the wording you give us. Costs and policies come from you; we structure and place them so they appear on every relevant product."
 ---
 
 ## What you get
@@ -89,6 +91,12 @@ Furniture sells on context. We order images as: hero on white, lifestyle, detail
 | Assembly | Required, 2 people | Product page |
 | Weight capacity | Per seat or shelf | Safety information |
 | Lead time | 2 to 4 weeks | Product page |
+
+## Returns, delivery and room context
+
+Furniture returns are expensive, so the page needs to prevent a wrong purchase. We structure product dimensions, seat height, clearance, weight capacity and the packaged dimensions in one consistent format. We also add delivery notes you supply: lead time, white-glove or kerbside options, assembly time and whether tools are included.
+
+Material and finish detail should be searchable: wood species, fabric type, cleaning code and colour finish names that match the swatch image. We also link related pieces, such as matching sets, tables with chairs, or modular sections, so shoppers can see a full range. Where you sell by room, we build collections for living, dining, bedroom and outdoor.
 
 ## Pricing
 

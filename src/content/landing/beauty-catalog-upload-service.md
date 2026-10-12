@@ -26,6 +26,8 @@ faqs:
     a: "We prepare the data in the format a channel needs. Some beauty categories on marketplaces are restricted or need approval, so check the channel's current rules for your brand first. Feed and channel setup is covered under feeds and marketplaces."
   - q: "How long will it take?"
     a: "From 48 hours for eligible projects; turnaround depends on scope, catalog complexity and the quality of the data and access we receive. A large shade range with ingredient lists per item needs more review time."
+  - q: "Can you build bundles, sets and minis?"
+    a: "Yes. Gift sets, bundles and minis are listed with clear contents, size per item and a total price, with individual SKUs kept separate so stock stays accurate. We tell you which approach your platform handles best."
 ---
 
 ## What you get
@@ -88,6 +90,12 @@ Beauty is often a gated or restricted area on marketplaces, with brand approval 
 | Finish | Matte | Filter |
 | Period after opening | Months | Where supplied |
 | Pack contents | Full size, refill | Set linking |
+
+## Skin type, claims and batch details
+
+Shoppers filter beauty by skin type, hair type, concern and finish, so these become structured attributes instead of free text. We also add size and unit, how to use, key ingredients, free-from statements you can support, and whether the product is vegan or cruelty-free only where you hold the evidence.
+
+Expiry, period-after-opening and batch details matter for stores selling to regulated markets. We keep the supplied wording for legal and safety text, such as warnings and mandatory labelling, and avoid rewriting regulated statements. If you sell to the EU, UK, US or India, tell us the markets so we match the format your team uses; we are a catalog service, not a regulatory adviser, so your compliance owner signs off the final wording.
 
 ## Pricing
 

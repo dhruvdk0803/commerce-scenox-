@@ -26,6 +26,10 @@ faqs:
     a: "Not directly. We prepare validated import files and load them through an admin user you create, on staging first where you have it. We do not change server configuration, cron or indexers."
   - q: "How long does it take?"
     a: "From 48 hours for eligible projects; turnaround depends on scope, catalog complexity and the quality of the data and access we receive. Configurable-heavy and multi-language catalogs need more checking time."
+  - q: "Can you sync stock or prices from my ERP?"
+    a: "No. We prepare and load files, we do not build integrations. If your ERP or PIM already exports to a file, we can clean and shape that file for Magento on a recurring basis. Live sync between systems needs a developer."
+  - q: "Is my product data kept private?"
+    a: "Your files are used only for your project and never to train third-party models. Access is through an admin role you create and can remove, and we do not need customer or order data."
 ---
 
 Magento is strict. The import accepts nothing it does not recognise, and a wrong attribute code or an unknown attribute set can reject a whole row. We build the files to the structure your store already uses, then check them before anything is loaded.
@@ -40,6 +44,8 @@ Magento is strict. The import accepts nothing it does not recognise, and a wrong
 - Images with roles (base, small, thumbnail) and labels
 - Stock, price, special price, weight and tax class values
 - SEO fields: meta title, description and URL key
+- Stock source or quantity and salable status set, plus customer group pricing inputs where your data includes them
+- Related, cross-sell and up-sell links prepared where you supply the pairings
 - A QA report of anything changed, flagged or unresolved
 
 ## How it works
@@ -71,6 +77,10 @@ Content for another language is a row with the matching `store_view_code`. Field
 ### After the import
 
 Large imports depend on indexers and cron to show up on the storefront. If prices or categories look stale afterwards, that is usually indexing, not data. We tell you what to check and when.
+
+## Updating existing products and keeping a way back
+
+Magento's import offers add or update, replace and delete behaviours, and replace wipes the existing record before writing the new one. We use add or update unless you explicitly ask otherwise, and we take a before export of the affected products so changes can be reversed. We also run the admin Check Data step on every file, and clear its validation errors before anything loads.
 
 ## Pricing
 

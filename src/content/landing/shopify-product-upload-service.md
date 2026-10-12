@@ -28,6 +28,10 @@ faqs:
     a: "Only after you approve. We load products as drafts, or on a development or duplicate store, so you can review a sample and the full set. Nothing goes live until you say so."
   - q: "Do you work with Shopify Plus stores?"
     a: "Yes. Plus stores often have multiple markets, B2B catalogs and strict metafield schemas. We follow your existing definitions and naming, and we can prepare per-market data such as translated titles and local-currency pricing inputs."
+  - q: "Can you update products already in my store, not just add new ones?"
+    a: "Yes. We match on handle or SKU, change only the fields you name, such as prices, descriptions or tags, and keep a before and after file so any change can be reversed. For regular updates, see Monthly Catalog Ops on the pricing page."
+  - q: "Is my product data kept private?"
+    a: "Your files are used only for your project and are never used to train third-party models. Access runs through a staff account you can remove, and we do not need your payment or customer data to upload products."
 ---
 
 You can import a Shopify catalog yourself with the product CSV. The trouble starts when the source data is a supplier spreadsheet with merged cells, sizes written three different ways and images named after a warehouse code. That is the work we take off your hands.
@@ -41,6 +45,7 @@ You can import a Shopify catalog yourself with the product CSV. The trouble star
 - Metafields populated for the specs your theme or filters use, such as fabric, dimensions, care or compatibility
 - Collections created and assigned, with automated rules where your data supports them
 - SEO title and meta description for each product
+- Missing details researched from the supplier data you give us, and flagged rather than guessed when the source is silent
 - A QA report listing anything we changed, flagged or could not resolve
 
 ## How it works
@@ -74,6 +79,10 @@ The product CSV does not assign products to manual collections. We build automat
 ### Shopify Plus and Markets
 
 If you sell in several countries, we prepare the base catalog in your primary language and currency, and keep translatable fields tidy so translations can be added per market. On Plus, we respect existing B2B catalog and metafield structures rather than overwriting them.
+
+## What changes the quote
+
+Product count sets the plan, but three other things move the price. Missing data (blank descriptions, no images) means more writing and matching. Variant depth, meaning how many options and combinations per product, means more checking. And whether you are adding new products or also updating existing ones, since matching to live handles takes care. We name each factor in the quote so nothing appears later as an extra.
 
 ## Pricing
 

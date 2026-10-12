@@ -26,6 +26,10 @@ faqs:
     a: "We work from 48 hours for eligible projects; turnaround depends on scope, catalog complexity and the quality of the data and access we receive. Multi-channel setups take longer than one, and we give you a date in writing."
   - q: "Do you list on marketplaces I am not on yet?"
     a: "Yes, if the category and your documents allow it. Some marketplaces need approvals, brand registration or tax details first. We tell you what is needed before we quote."
+  - q: "Do you handle inventory and price sync across channels?"
+    a: "We prepare the data and mapping, and can advise on which sync app or marketplace connector suits your setup. We do not run or operate sync tools, and price and stock decisions stay with you. We make sure SKUs and identifiers match so a sync tool has clean input."
+  - q: "Can you help with account suspensions or appeals?"
+    a: "We fix the catalog data behind a suspension or listing removal and can help you present the correction. Appeals, policy decisions and brand approvals are the marketplace's call, and no service can guarantee them. We tell you clearly if the cause is outside the data."
 ---
 
 Marketplace sellers often end up with the same product described three ways: one title on Amazon, a shorter one on Flipkart, a third on the Shopify store that nobody has touched since launch. Prices drift. Variants do not match. Then a listing is suppressed and nobody knows which copy is the source of truth.
@@ -64,6 +68,15 @@ Image rules are the most common source of rejected listings, so we handle them e
 ## Suppressed listings
 
 A suppressed listing is a data problem more often than a policy problem. The usual causes are missing required attributes, a category the product does not fit, images that break the rules, and identifier mismatches. We read each notice, correct the field, and resubmit. If the cause is a brand approval or a policy decision on the marketplace's side, we tell you rather than guess.
+
+## Identifiers, brands and variations
+
+Three problems cause most multi-channel mess, and each is fixable in the master:
+
+- **Barcodes.** Marketplaces match listings by GTIN. We check format and duplicates, flag missing codes, and point own-brand sellers to GS1 as the source of valid ones. Some categories allow an exemption request instead; that request is yours to file.
+- **Brand names.** One spelling of each brand across every channel, matching the brand registered or approved on the marketplace.
+- **Variation families.** Parent and child relationships, themes and option names built once and mapped per channel, so a size run does not become ten separate listings on one channel and one on another.
+- **SKU consistency.** One SKU per variant everywhere, so orders, returns and stock can be reconciled across channels.
 
 ## Pricing
 

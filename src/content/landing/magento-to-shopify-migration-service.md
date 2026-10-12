@@ -26,6 +26,10 @@ faqs:
     a: "Shopify allows three options per product, so four attributes need a decision. We usually merge two (such as size and length) into one option, split the product, or move a value to a metafield. You choose before we build."
   - q: "Can you rebuild my Magento theme or custom modules?"
     a: "No. We do not design themes or develop custom apps. We move the data and protect SEO, and we can recommend a Shopify theme designer or developer for the storefront and any module replacements."
+  - q: "Will my Magento store go offline during migration?"
+    a: "No. Your Magento store stays live while we build and test on an unpublished Shopify store. Downtime is limited to the DNS switch, and we agree the cutover window with you in advance. We suggest a quiet trading day, away from sales."
+  - q: "Can you migrate my order history?"
+    a: "Yes, if you want it. Historical orders are imported as records for reference and reporting, so Shopify will not send emails or change stock for them. Order numbers and dates are kept. Order migration adds time and cost, so it is optional in the quote."
 ---
 
 ## What you get
@@ -88,6 +92,14 @@ Shopify imports this CSV from the Navigation area of the online store. We also r
 ## What we do not do
 
 We do not design themes, write custom Shopify apps or replace Magento extensions with bespoke code. If your store depends on a module for bundles, subscriptions or custom pricing, we point you to an app or a developer we can recommend. Our work is the data and the SEO plumbing.
+
+## Cutover and downtime
+
+The Magento store stays live while we build the Shopify store in parallel. Close to launch we agree a cutover window and ask you to pause catalog edits. We then take a fresh export so new customers and any orders placed since the first pass are included, load redirects, and you switch DNS. Choose a quiet trading day and avoid a sale week. Keep Magento available for a while afterwards as a reference.
+
+## Shopify or Shopify Plus
+
+Most Magento stores with one or two currencies and standard B2B needs run well on regular Shopify plans. Plus is worth a look for several markets, heavy B2B or checkout customisation. We can migrate to either; the choice sits with you, and we tell you which Magento features push towards Plus.
 
 ## Timeline factors
 

@@ -26,6 +26,10 @@ faqs:
     a: "We can move posts into a Shopify blog, with images and URLs redirected. Wix blog URLs usually use /post/, so a redirect for each post is needed. Layout styling does not transfer, only the content."
   - q: "Do you migrate my Wix design?"
     a: "No. Wix templates cannot be exported, and we do not do theme design. We move the data and SEO. We can recommend a Shopify theme designer if you want your look recreated."
+  - q: "Can you migrate my Wix order history?"
+    a: "Yes, as an option. Past orders import as records for reference and reporting, so Shopify sends no emails and changes no stock for them. Order numbers and dates are kept. It adds time and cost, so it is quoted separately."
+  - q: "Will my Wix store stop selling during the move?"
+    a: "No. Wix keeps selling while we build and test on an unpublished Shopify store. Downtime is limited to the DNS switch, which we plan with you for a quiet trading day."
 ---
 
 ## What you get
@@ -86,6 +90,14 @@ Wix addresses usually have no trailing slash and a single path segment after the
 ## What we do not do
 
 We do not design themes or write custom apps. Wix Velo code and Wix-only apps have no counterpart on Shopify, so we flag them and recommend a developer or a Shopify app.
+
+## What does not transfer
+
+Wix handles more than products, and some of it has no direct Shopify route. Your design and template do not move. Wix Bookings, Members Area, forms, pricing plans and Velo code have no one-to-one equivalent, so each is replaced with a Shopify app or left behind. We list every Wix feature your site uses at the start, so you can decide what to replace before launch rather than after.
+
+## Cutover and staying live
+
+Your Wix store keeps taking orders while we build and test on an unpublished Shopify store. Near launch we agree a window, you pause product and customer changes, and we re-export so recent orders and sign-ups come across. Then redirects load and DNS is repointed. Plan it for a quiet day.
 
 ## Timeline factors
 

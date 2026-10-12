@@ -26,6 +26,10 @@ faqs:
     a: "No password sharing. You export catalog data from the control panel, or create a limited user we can use for exports and you can delete afterwards. On Shopify we use a staff or collaborator account."
   - q: "Can you migrate my Stencil theme?"
     a: "No. Themes do not move between platforms, and we do not do theme design. We migrate the data and SEO, and can recommend a Shopify theme designer to rebuild the look."
+  - q: "Will my BigCommerce store go offline while you migrate?"
+    a: "No. The live store keeps selling while we build and test on an unpublished Shopify store. Downtime is limited to the DNS switch, which we schedule with you for a quiet day away from sales."
+  - q: "Can you migrate order history from BigCommerce?"
+    a: "Yes, as an option. Orders import as records for reference and reporting, so Shopify sends no emails and changes no stock for them. Order numbers and dates are kept. It adds time and cost, so it is priced separately."
 ---
 
 ## What you get
@@ -85,6 +89,14 @@ We export every custom URL from the catalog, include brand pages and blog posts,
 ## What we do not do
 
 We do not build themes or custom apps, and we do not rebuild BigCommerce-specific apps such as bespoke ERP connectors. We map the data, and recommend developers or Shopify apps where functionality has no equivalent.
+
+## What does not transfer
+
+Be ready for these before you start. Your Stencil theme and any theme edits do not move. BigCommerce apps and widgets need Shopify equivalents. Product reviews can move only if the review app you choose accepts a CSV import, which we confirm before quoting. Shipping zones, tax rules and payment gateways are set up again in Shopify by you. We give you a list of each, taken from your store, so nothing surprises you after launch.
+
+## Cutover and downtime
+
+BigCommerce stays live while we build and test on an unpublished Shopify store. Near launch we agree a window, you pause catalog and customer changes, we export once more for recent orders and sign-ups, load redirects, and you repoint DNS. Choose a quiet trading day, and keep BigCommerce available as a reference afterwards.
 
 ## Timeline factors
 

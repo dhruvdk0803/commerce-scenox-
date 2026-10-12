@@ -26,6 +26,10 @@ faqs:
     a: "No. We never ask for passwords. Your client adds a staff or collaborator account for us, or for your agency, and can remove it the moment the job is done. Everything we change is done through that account."
   - q: "What if the supplier data is a mess?"
     a: "That is the common case. We clean and normalise it first, flag gaps in a sheet you can send to the client, and only then build. You see the queries before the client sees a half-finished catalog."
+  - q: "Can we resell your quote with our own margin?"
+    a: "Yes. The quote is fixed and addressed to you, and what you charge your client is your decision. We never contact the client about price. If you want the quote itemised so you can show scope without our name, we can format it that way."
+  - q: "Can you run several client projects at the same time?"
+    a: "Yes, each as its own project with its own quote, access and QA sheet. Tell us your deadlines when you send files, and we confirm dates in writing for each. Files from one client are never mixed with another's."
 ---
 
 Most agencies we talk to are good at design, theme work and integrations, and quietly dislike catalog work. It is repetitive, it arrives late in the project, and the client's spreadsheet is never as clean as promised. This page describes how we take that work off your plate without your client ever feeling a handoff.
@@ -66,6 +70,18 @@ Platform detail matters too. On Shopify we respect the three-option limit and mo
 Because we work through the client's own account, your client keeps ownership and visibility. They can see activity on their staff list, and you are never the person holding someone else's credentials. If your agreement with the client requires named individuals on the account, tell us at the start and we will set it up that way.
 
 For larger replatforming jobs we usually agree a freeze window with you: a date after which the client stops editing the old catalog, so we do not build against a moving target. It is a small thing that prevents most late surprises.
+
+## Scoping a project for your client
+
+Quotes go faster, and are more accurate, when the first message includes a few facts. Send these and we can usually return a fixed quote after inspecting the files:
+
+- **Product and variant count.** Variants drive the work more than product count does.
+- **Source state.** Clean sheet, supplier PDFs, old-store export, or a mix.
+- **Image state.** Are images named and matched to SKUs, or in loose folders?
+- **Target platform and theme.** Which metafields or attributes the theme actually displays.
+- **Extras.** Collections, SEO fields, redirects, alt text, or a monthly retainer for ongoing updates, from the Monthly Catalog Ops plan.
+
+You set your own price to your client. We only need a clear scope and a date.
 
 ## Pricing
 

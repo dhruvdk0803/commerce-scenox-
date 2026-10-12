@@ -26,6 +26,8 @@ faqs:
     a: "From 48 hours for eligible projects; turnaround depends on scope, catalog complexity and the quality of the data and access we receive. Large seasonal drops with many colourways usually take longer than a clean basics range."
   - q: "Do you add Google Shopping attributes for clothing?"
     a: "Yes, on request. We fill colour, size, size system, size type, gender, age group, material and item group ID so variants group correctly. Feed setup itself is covered under our feeds service."
+  - q: "Can you handle seasonal collections and archived styles?"
+    a: "Yes. We build collections for each drop, tag products by season and keep old styles unpublished or archived rather than deleted so links and history stay intact. Reordering and merchandising rules can be set up as part of the project or monthly plan."
 ---
 
 ## What you get
@@ -94,6 +96,12 @@ Sarees, lehengas, kurta sets and dupatta combinations are bundles. We separate w
 | Model height and size worn | 5'9", wearing M | Reduces returns |
 
 Google's apparel requirements vary by country and subcategory, so we check the current Merchant Center help pages for your target markets before filling these.
+
+## Seasonal drops, returns and cross-border sizing
+
+Fashion catalogs are rebuilt every season, so the structure matters more than the first upload. We set up collections and tags for drops and capsules, keep last season's products archived rather than deleted so the URLs and history survive, and prepare pre-order or coming-soon states where your platform supports them.
+
+Fit information is the biggest lever on returns we see. Size charts in centimetres and inches, model height with the size worn, fabric composition, stretch and care instructions all belong on the page as structured data, not buried in an image. For stores selling across markets, we map sizing systems (UK, US, EU, AU) in a clear conversion table so a shopper never has to guess.
 
 ## Pricing
 

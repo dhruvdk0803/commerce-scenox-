@@ -26,6 +26,8 @@ faqs:
     a: "We record battery type, capacity, weight and package size where supplied, so shipping and carrier rules can be applied. Dangerous goods classification is your carrier's and your compliance team's call, not ours."
   - q: "How long does an electronics upload take?"
     a: "From 48 hours for eligible projects; turnaround depends on scope, catalog complexity and the quality of the data and access we receive. Long spec sheets and compatibility lists add review time."
+  - q: "Can you add warranty details, manuals and box contents?"
+    a: "Yes. We add warranty terms you supply, in-the-box lists, manual and spec-sheet links and region or plug-type fields. We do not state certifications or approvals unless you give us the documentation that supports them."
 ---
 
 ## What you get
@@ -86,6 +88,12 @@ Products with lithium batteries are subject to carrier rules, and carriers commo
 | Warranty | 12 months, type | Page and feed |
 | Compatible with | List of models | Cross-sell |
 | In the box | Items listed | Reduces returns |
+
+## Warranty, support and returns data
+
+Electronics buyers look for warranty length, what is in the box, supported regions and power or plug type. We add these as structured fields: warranty period and terms you supply, box contents, voltage, plug type, certifications you hold (such as CE or FCC markings where you can show them) and links to manuals or downloadable spec sheets.
+
+We also keep model numbers and variants clean so a new revision does not overwrite an older one. Where products share a family but differ by capacity, colour or region, we use options or linked products and keep a clear difference in the title. Comparison attributes for filters (screen size, storage, connectivity) are standardised so the category page can be sorted properly.
 
 ## Pricing
 

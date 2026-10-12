@@ -26,6 +26,8 @@ faqs:
     a: "Turnaround is from 48 hours for eligible projects; turnaround depends on scope, catalog complexity and the quality of the data and access we receive. Google's own review times vary and are outside our control."
   - q: "Do you do this once or on an ongoing basis?"
     a: "Both. A one-off fix clears the current disapprovals. If new products are added regularly, our Monthly Catalog Ops plan or ongoing feed management keeps the data checked so the same issues do not return."
+  - q: "Do you fix suspended accounts, or only disapproved products?"
+    a: "We can audit and prepare both, but suspensions depend on your store as well as your feed. We list what to change, help you make the data side right and prepare supporting details. Google makes the final decision, so we cannot promise reinstatement or a date."
 ---
 
 A red disapproved count in Merchant Center is not just an annoyance. Disapproved products do not appear in Shopping results, and for many stores those results are a large share of paid traffic.
@@ -68,6 +70,14 @@ Take the price mismatch. It is often not a wrong price at all, but a feed that i
 ## Identifiers deserve special attention
 
 A large share of "missing identifier" errors come from products that truly have no GTIN: handmade goods, private label items, custom products. The right answer is to declare that honestly and provide brand and MPN, not to invent a barcode. Fake GTINs create a worse problem than a missing one, and we will not add them. The [GTIN, MPN and brand guide](/guides/gtin-mpn-brand) explains the logic, and the [Google product category guide](/guides/google-product-category) covers the other common mapping error.
+
+## Item disapprovals versus account suspensions
+
+These are different problems. An item-level disapproval affects specific products and is usually fixed in the feed or on the product page. An account-level suspension or misrepresentation flag affects the whole account and depends on the store itself: clear contact details, shipping and returns policies, accurate business information and a working checkout.
+
+For item issues we fix the data, make sure the change reaches the page and the feed, and prepare the review request only where a policy flag needs one. Review requests are limited, so we submit one when the fix is live, not before. For account-level problems we audit the store against Google's published requirements and give you a written list of what to change. The decision is Google's, and nobody can honestly promise approval or a timeline.
+
+We also cover free listings as well as paid Shopping ads, because both read from the same product data. Currency, tax and shipping settings are worth checking if you sell in more than one country. Read more in the [Merchant Center disapprovals guide](/guides/google-merchant-center-disapprovals).
 
 ## Pricing
 
