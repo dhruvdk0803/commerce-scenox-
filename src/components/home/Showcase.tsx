@@ -8,16 +8,18 @@ import { cn } from "@/lib/utils";
 type Tile = { photo: ImgKey; title: string; path: string };
 
 const ROW: Tile[] = [
-  { photo: "chair", title: "Black Ergonomic Office Chair", path: "Office › Chairs" },
-  { photo: "bottle", title: "Insulated Steel Bottle 750 ml", path: "Kitchen › Drinkware" },
-  { photo: "sneaker", title: "White Leather Low-Top Sneaker", path: "Footwear › Sneakers" },
-  { photo: "lamp", title: "White LED Desk Lamp", path: "Lighting › Desk Lamps" },
-  { photo: "serum", title: "Vitamin C Face Serum 30 ml", path: "Beauty › Serums" },
+  { photo: "dress", title: "Sage Linen Wrap Midi Dress", path: "Women › Dresses" },
+  { photo: "jacket", title: "Olive Cotton Bomber Jacket", path: "Men › Jackets" },
+  { photo: "tote", title: "Tan Leather Tote Bag", path: "Women › Bags" },
+  { photo: "watch", title: "Steel Watch, Leather Strap", path: "Men › Watches" },
+  { photo: "kurta", title: "Ivory Block-Print Kurta", path: "Women › Ethnic Wear" },
+  { photo: "lamp", title: "White LED Desk Lamp", path: "Home › Lighting" },
+  { photo: "heels", title: "Terracotta Suede Mules", path: "Women › Footwear" },
+  { photo: "shirt", title: "Blue Oxford Button-Down", path: "Men › Shirts" },
+  { photo: "sunglasses", title: "Tortoiseshell Sunglasses", path: "Accessories › Eyewear" },
+  { photo: "mug", title: "Stoneware Coffee Mug 350 ml", path: "Home › Tableware" },
   { photo: "shelf", title: "5-Tier Oak Bookshelf", path: "Furniture › Shelving" },
-  { photo: "speaker", title: "Mini Bluetooth Speaker", path: "Electronics › Audio" },
-  { photo: "mug", title: "Stoneware Coffee Mug 350 ml", path: "Kitchen › Tableware" },
-  { photo: "clock", title: "Oak Frame Wall Clock 30 cm", path: "Decor › Clocks" },
-  { photo: "tshirt", title: "Cotton Crew T-Shirt", path: "Apparel › T-Shirts" },
+  { photo: "rug", title: "Hand-Woven Wool Rug", path: "Home › Rugs" },
 ];
 
 /** Photos are shot on porcelain; multiply lets each tile take its own surface colour. */

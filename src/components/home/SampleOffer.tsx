@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 
-const PHOTOS = [img.chair, img.bottle, img.sneaker, img.lamp, img.mug] as const;
+const PHOTOS = [img.sneaker, img.bottle, img.speaker, img.clock, img.tshirt] as const;
 
 /** The no-risk first step. One message, one button, the outcome shown as photos. */
 export function SampleOffer() {

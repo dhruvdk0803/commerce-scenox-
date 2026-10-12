@@ -61,7 +61,7 @@ export default function SamplePage() {
                   <span className="mono-micro text-ink-3">EXAMPLE</span>
                 </div>
                 <div className="grid grid-cols-5 gap-px border-b border-line bg-line">
-                  {[img.chair, img.bottle, img.lamp, img.sneaker, img.mug].map((src, i) => (
+                  {[img.shirt, img.heels, img.watch, img.kurta, img.sunglasses].map((src, i) => (
                     <div key={i} className="relative aspect-square bg-[#f5f4ef]">
                       <Image src={src} alt="" sizes="96px" className="size-full object-cover" />
                     </div>

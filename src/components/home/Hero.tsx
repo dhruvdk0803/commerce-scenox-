@@ -4,6 +4,7 @@ import type { CSSProperties } from "react";
 import { Button, TextLink } from "@/components/ui/Button";
 import { CatalogPipeline } from "./pipeline/CatalogPipeline";
 import { RowToProductArt } from "@/components/pages/HeroArt";
+import { HeroStorefront } from "./HeroStorefront";
 
 export function Hero({ compact = false }: { compact?: boolean }) {
   // CSS-driven entrance: runs off the main thread and respects reduced motion via globals.css
@@ -85,13 +86,20 @@ export function Hero({ compact = false }: { compact?: boolean }) {
             className="anim-fade-up relative min-w-0 lg:col-span-8"
             style={{ animationDelay: "320ms", animationDuration: "900ms" }}
           >
-            {/* the animated ledger needs width; phones get the simpler before/after card */}
-            <div className="max-md:hidden">
-              <CatalogPipeline />
-            </div>
-            <div className="md:hidden">
-              <RowToProductArt />
-            </div>
+            {compact ? (
+              <>
+                {/* the animated ledger needs width; phones get the simpler before/after card */}
+                <div className="max-md:hidden">
+                  <CatalogPipeline />
+                </div>
+                <div className="md:hidden">
+                  <RowToProductArt />
+                </div>
+              </>
+            ) : (
+              // homepage: lead with the outcome; the spreadsheet appears once, further down, as the problem
+              <HeroStorefront />
+            )}
           </div>
         </div>
 

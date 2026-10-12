@@ -18,8 +18,8 @@ const PRODUCTS: {
   out: Record<Output, StaticImageData>;
   file: string;
 }[] = [
+  { id: "dress", label: "Linen dress", raw: img.dressRaw, out: { studio: img.dress, lifestyle: img.dressLife, marketplace: img.dressWhite }, file: "wd-118-sage" },
   { id: "chair", label: "Office chair", raw: img.chairRaw, out: { studio: img.chair, lifestyle: img.chairLife, marketplace: img.chairWhite }, file: "ax-442-black" },
-  { id: "sneaker", label: "Sneaker", raw: img.sneakerRaw, out: { studio: img.sneaker, lifestyle: img.sneakerLife, marketplace: img.sneakerWhite }, file: "sn-200-white" },
   { id: "serum", label: "Serum", raw: img.serumRaw, out: { studio: img.serum, lifestyle: img.serumLife, marketplace: img.serumWhite }, file: "vc-30-amber" },
 ];
 
@@ -30,8 +30,8 @@ const OUTPUTS: { id: Output; label: string; note: string }[] = [
 ];
 
 
-export function PhotoStudio({ showLink = true }: { showLink?: boolean }) {
-  const [p, setP] = useState(0);
+export function PhotoStudio({ showLink = true, start = 0 }: { showLink?: boolean; /** which product opens first */ start?: number }) {
+  const [p, setP] = useState(start);
   const [o, setO] = useState<Output>("studio");
   const [pos, setPos] = useState(50);
   const [dragging, setDragging] = useState(false);

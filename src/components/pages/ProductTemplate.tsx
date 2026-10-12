@@ -158,7 +158,7 @@ export function ProductTemplate({ id }: { id: string }) {
           ]}
         />
 
-        {p.id === "imagery" && <PhotoStudio showLink={false} />}
+        {p.id === "imagery" && <PhotoStudio showLink={false} start={1} />}
         <Timeline p={p} />
 
         <Section tone="muted" aria-labelledby="ledger-heading">

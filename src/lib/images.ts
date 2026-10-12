@@ -24,6 +24,19 @@ import serum from "@/assets/products/serum.webp";
 import serumRaw from "@/assets/products/serum-raw.webp";
 import serumLife from "@/assets/products/serum-life.webp";
 import serumWhite from "@/assets/products/serum-white.webp";
+import dress from "@/assets/products/dress.webp";
+import dressRaw from "@/assets/products/dress-raw.webp";
+import dressLife from "@/assets/products/dress-life.webp";
+import dressWhite from "@/assets/products/dress-white.webp";
+import shirt from "@/assets/products/shirt.webp";
+import jacket from "@/assets/products/jacket.webp";
+import tote from "@/assets/products/tote.webp";
+import kurta from "@/assets/products/kurta.webp";
+import sunglasses from "@/assets/products/sunglasses.webp";
+import watch from "@/assets/products/watch.webp";
+import heels from "@/assets/products/heels.webp";
+import modelWoman from "@/assets/products/model-woman.webp";
+import modelMan from "@/assets/products/model-man.webp";
 
 export const img = {
   chair,
@@ -47,6 +60,19 @@ export const img = {
   serumRaw,
   serumLife,
   serumWhite,
+  dress,
+  dressRaw,
+  dressLife,
+  dressWhite,
+  shirt,
+  jacket,
+  tote,
+  kurta,
+  sunglasses,
+  watch,
+  heels,
+  modelWoman,
+  modelMan,
 } as const;
 
 export type ImgKey = keyof typeof img;
