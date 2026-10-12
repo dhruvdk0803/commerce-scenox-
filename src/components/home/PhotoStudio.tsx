@@ -84,7 +84,7 @@ export function PhotoStudio({ showLink = true, start = 0 }: { showLink?: boolean
                 />
               </div>
 
-              <span className="mono-micro absolute left-4 top-4 rounded-full bg-ink/80 px-2.5 py-1 text-paper backdrop-blur-sm">BEFORE</span>
+              <span className="mono-micro absolute left-4 top-4 rounded-full bg-ink/80 px-2.5 py-1 text-paper">BEFORE</span>
               <span className="mono-micro absolute right-4 top-4 rounded-full bg-accent px-2.5 py-1 text-white">AFTER</span>
 
 

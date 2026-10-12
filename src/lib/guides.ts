@@ -2,6 +2,7 @@ import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import matter from "gray-matter";
 import { Marked } from "marked";
+import guideImages from "@/content/guide-images.json";
 
 /**
  * Guides live as Markdown in src/content/guides/<slug>.md with frontmatter.
@@ -39,7 +40,24 @@ export type Guide = {
   html: string;
   toc: { id: string; text: string }[];
   readMinutes: number;
+  /** hero image in /public/images/guides, 1536x1024 */
+  image: { src: string; alt: string } | null;
 };
+
+const IMAGES = guideImages as Record<string, string>;
+
+/** Each guide's own image; error-fix pages share a small set per family. */
+function imageFor(slug: string): { src: string; alt: string } | null {
+  let key: string | null = slug in IMAGES ? slug : null;
+  if (!key) {
+    const fam = slug.startsWith("shopify-csv-error-") ? "fix-csv" : slug.startsWith("merchant-center-") ? "fix-mc" : null;
+    if (fam) {
+      const n = (slug.split("").reduce((a, c) => a + c.charCodeAt(0), 0) % 3) + 1;
+      key = `${fam}-${n}` in IMAGES ? `${fam}-${n}` : null;
+    }
+  }
+  return key ? { src: `/images/guides/${key}.webp`, alt: IMAGES[key] } : null;
+}
 
 const DIR = join(process.cwd(), "src/content/guides");
 
@@ -100,6 +118,7 @@ export function getGuides(): Guide[] {
         html,
         toc,
         readMinutes: Math.max(3, Math.round(words / 220)),
+        image: imageFor(f.replace(/\.md$/, "")),
       } satisfies Guide;
     })
     .sort((a, b) => b.updated.localeCompare(a.updated));

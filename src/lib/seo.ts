@@ -184,7 +184,7 @@ export function faqJsonLd(faqs: { q: string; a: string }[]) {
 }
 
 /** Guides: Article with dates and publisher so answer engines can attribute and date the content. */
-export function articleJsonLd(a: { title: string; description: string; path: string; published: string; updated: string }) {
+export function articleJsonLd(a: { title: string; description: string; path: string; published: string; updated: string; image?: string }) {
   const url = `${site.url}${a.path}`;
   return {
     "@context": "https://schema.org",
@@ -195,7 +195,7 @@ export function articleJsonLd(a: { title: string; description: string; path: str
     mainEntityOfPage: url,
     datePublished: a.published,
     dateModified: a.updated,
-    image: `${site.url}${OG_IMAGE.url}`,
+    image: `${site.url}${a.image ?? OG_IMAGE.url}`,
     author: { "@type": "Organization", "@id": `${site.url}/#organization`, name: site.name, url: site.url },
     publisher: { "@type": "Organization", "@id": `${site.url}/#organization`, name: site.name, url: site.url },
   };

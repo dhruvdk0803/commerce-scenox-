@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -53,7 +54,13 @@ export default function GuidesPage() {
               <ul className="divide-y divide-line border-y border-line lg:col-span-8">
                 {g.items.map((it) => (
                   <li key={it.slug}>
-                    <Link href={`/guides/${it.slug}`} className="group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-5 transition-colors">
+                    <Link href={`/guides/${it.slug}`} className="group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-5 transition-colors sm:grid-cols-[7.5rem_minmax(0,1fr)_auto] sm:gap-5">
+                      {it.image && (
+                        <span className="relative hidden aspect-[3/2] overflow-hidden rounded-[10px] bg-bg-muted sm:block">
+                          <Image src={it.image.src} alt="" fill sizes="120px" className="object-cover" />
+                        </span>
+                      )}
+                      {!it.image && <span className="hidden sm:block" />}
                       <span>
                         <span className="block text-[1.075rem] font-semibold leading-snug tracking-[-0.015em] text-ink group-hover:underline group-hover:underline-offset-4">
                           {it.heading}

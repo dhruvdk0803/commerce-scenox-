@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, Check } from "lucide-react";
 import { Header } from "@/components/layout/Header";
@@ -24,7 +25,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const g = getGuide((await params).slug);
   if (!g) return {};
   const meta = pageMeta({ title: g.title, description: g.description, path: `/guides/${g.slug}` });
-  return { ...meta, openGraph: { ...meta.openGraph, type: "article", publishedTime: g.published, modifiedTime: g.updated } };
+  const images = g.image ? [{ url: g.image.src, width: 1536, height: 1024, alt: g.image.alt }] : undefined;
+  return {
+    ...meta,
+    openGraph: { ...meta.openGraph, type: "article", publishedTime: g.published, modifiedTime: g.updated, ...(images ? { images } : {}) },
+    ...(images ? { twitter: { ...meta.twitter, images: [g.image!.src] } } : {}),
+  };
 }
 
 export default async function GuidePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -63,6 +69,14 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
               <p className="mt-2.5 text-[1.075rem] leading-[1.6] text-ink">{g.summary}</p>
             </div>
           </header>
+
+          {g.image && (
+            <div className="container-x pb-10 md:pb-14">
+              <div className="relative aspect-[3/2] overflow-hidden rounded-[18px] bg-bg-muted sm:aspect-[21/9]">
+                <Image src={g.image.src} alt={g.image.alt} fill priority sizes="(min-width: 1280px) 1216px, 100vw" className="object-cover" />
+              </div>
+            </div>
+          )}
 
           <div className="container-x grid grid-cols-[minmax(0,1fr)] gap-10 pt-2 pb-16 md:pt-4 lg:grid-cols-12 lg:gap-12">
             <aside className="order-2 lg:col-span-4">
@@ -160,11 +174,18 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
               <ul className="mt-8 grid gap-4 md:grid-cols-3">
                 {related.map((r) => (
                   <li key={r.slug}>
-                    <Link href={`/guides/${r.slug}`} className="group flex h-full flex-col rounded-[14px] border border-line bg-bg-elevated p-5 transition-colors hover:border-line-strong">
+                    <Link href={`/guides/${r.slug}`} className="group flex h-full flex-col overflow-hidden rounded-[14px] border border-line bg-bg-elevated transition-colors hover:border-line-strong">
+                      {r.image && (
+                        <span className="relative block aspect-[3/2] bg-bg-muted">
+                          <Image src={r.image.src} alt="" fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover" />
+                        </span>
+                      )}
+                      <span className="flex flex-1 flex-col p-5">
                       <span className="mono-micro text-ink-3">{GUIDE_CATEGORIES[r.category].label.toUpperCase()}</span>
                       <span className="mt-2 text-[1.05rem] font-semibold leading-snug tracking-[-0.015em] text-ink">{r.heading}</span>
                       <span className="mt-auto flex items-center gap-1 pt-4 text-[0.85rem] text-ink-2 group-hover:text-ink">
                         Read guide <ArrowUpRight className="size-3.5" strokeWidth={2} aria-hidden />
+                      </span>
                       </span>
                     </Link>
                   </li>
@@ -180,7 +201,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
       <StickyMobileCTA />
       <JsonLd
         data={[
-          articleJsonLd({ title: g.heading, description: g.description, path, published: g.published, updated: g.updated }),
+          articleJsonLd({ title: g.heading, description: g.description, path, published: g.published, updated: g.updated, image: g.image?.src }),
           breadcrumbJsonLd([
             { name: "Home", path: "/" },
             { name: "Guides", path: "/guides" },

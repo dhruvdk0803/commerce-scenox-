@@ -25,7 +25,7 @@ const SIZES = ["XS", "S", "M", "L", "XL"];
 
 function LiveBadge({ className }: { className?: string }) {
   return (
-    <span className={cn("mono-micro inline-flex items-center gap-1.5 rounded-full bg-bg-elevated/95 px-2.5 py-1 text-success backdrop-blur-sm", className)}>
+    <span className={cn("mono-micro inline-flex items-center gap-1.5 rounded-full bg-bg-elevated px-2.5 py-1 text-success", className)}>
       <span className="size-1.5 rounded-full bg-success" />
       LIVE
     </span>
@@ -59,7 +59,7 @@ export function HeroStorefront() {
               sizes="(min-width: 1024px) 26vw, (min-width: 640px) 45vw, 100vw"
               className="object-cover object-top"
             />
-            <span className="mono-micro absolute left-3 top-3 rounded-full bg-bg-elevated/95 px-2.5 py-1 text-ink-2 backdrop-blur-sm">1 / 6</span>
+            <span className="mono-micro absolute left-3 top-3 rounded-full bg-bg-elevated px-2.5 py-1 text-ink-2">1 / 6</span>
           </div>
 
           <div className="flex flex-col justify-center p-5 md:p-6">
@@ -120,7 +120,7 @@ export function HeroStorefront() {
               className={cn("object-cover", "portrait" in p ? "object-top" : "mix-blend-multiply")}
             />
             <LiveBadge className="absolute right-2 top-2 max-sm:hidden" />
-            <div className="absolute inset-x-2 bottom-2 rounded-[10px] bg-bg-elevated/95 px-2.5 py-1.5 backdrop-blur-sm max-sm:hidden">
+            <div className="absolute inset-x-2 bottom-2 rounded-[10px] bg-bg-elevated px-2.5 py-1.5 max-sm:hidden">
               <p className="truncate text-[0.8rem] font-medium text-ink">{p.name}</p>
               <p className="mono-micro truncate text-ink-3">{p.path.toUpperCase()}</p>
             </div>

@@ -128,7 +128,7 @@ export function BeforeAfter() {
               <div className="relative overflow-hidden rounded-[8px] border border-line bg-[#f5f4ef] max-sm:mx-auto max-sm:w-48 aspect-square">
                 <Image src={img.chair} alt="Black ergonomic office chair, finished product photo" placeholder="blur" sizes="(min-width: 640px) 144px, 192px" className="size-full object-cover" />
                 <span className="mono-micro absolute left-1.5 top-1.5 rounded-full bg-bg-elevated/90 px-1.5 py-0.5 text-ink-3 tabular">1/4</span>
-                <p className="mono-micro absolute inset-x-0 bottom-0 bg-bg-elevated/90 px-2 py-1 text-success backdrop-blur-sm">MATCHED</p>
+                <p className="mono-micro absolute inset-x-0 bottom-0 bg-bg-elevated/90 px-2 py-1 text-success">MATCHED</p>
               </div>
 
               {/* details */}
