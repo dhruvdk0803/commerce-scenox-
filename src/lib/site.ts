@@ -38,6 +38,7 @@ export const nav = {
     { label: "How It Works", href: "/how-it-works" },
     { label: "Pricing", href: "/pricing" },
     { label: "Case Studies", href: "/case-studies" },
+    { label: "Guides", href: "/guides" },
   ],
   footer: {
     services: [
@@ -57,6 +58,7 @@ export const nav = {
       { label: "How It Works", href: "/how-it-works" },
       { label: "Pricing & Plans", href: "/pricing" },
       { label: "Case Studies", href: "/case-studies" },
+      { label: "Guides", href: "/guides" },
       { label: "About", href: "/about" },
       { label: "Contact", href: "/contact" },
       { label: "Get a Quote", href: "/get-started" },

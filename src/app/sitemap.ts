@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
+import { getGuides } from "@/lib/guides";
 
 const routes: { path: string; priority: number; freq: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
   { path: "/", priority: 1, freq: "weekly" },
@@ -17,6 +18,7 @@ const routes: { path: string; priority: number; freq: MetadataRoute.Sitemap[numb
   { path: "/ai-voice-shopping-assistant", priority: 0.8, freq: "monthly" },
   { path: "/how-it-works", priority: 0.8, freq: "monthly" },
   { path: "/pricing", priority: 0.9, freq: "monthly" },
+  { path: "/guides", priority: 0.7, freq: "weekly" },
   { path: "/case-studies", priority: 0.6, freq: "monthly" },
   { path: "/about", priority: 0.5, freq: "yearly" },
   { path: "/contact", priority: 0.6, freq: "yearly" },
@@ -30,10 +32,17 @@ const routes: { path: string; priority: number; freq: MetadataRoute.Sitemap[numb
 const LAST_UPDATED = new Date("2026-10-10");
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return routes.map((r) => ({
+  const pages = routes.map((r) => ({
     url: `${site.url}${r.path === "/" ? "" : r.path}`,
     lastModified: LAST_UPDATED,
     changeFrequency: r.freq,
     priority: r.priority,
   }));
+  const guides = getGuides().map((g) => ({
+    url: `${site.url}/guides/${g.slug}`,
+    lastModified: new Date(g.updated),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+  return [...pages, ...guides];
 }

@@ -182,3 +182,21 @@ export function faqJsonLd(faqs: { q: string; a: string }[]) {
     })),
   };
 }
+
+/** Guides: Article with dates and publisher so answer engines can attribute and date the content. */
+export function articleJsonLd(a: { title: string; description: string; path: string; published: string; updated: string }) {
+  const url = `${site.url}${a.path}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: a.title,
+    description: a.description,
+    url,
+    mainEntityOfPage: url,
+    datePublished: a.published,
+    dateModified: a.updated,
+    image: `${site.url}${OG_IMAGE.url}`,
+    author: { "@type": "Organization", "@id": `${site.url}/#organization`, name: site.name, url: site.url },
+    publisher: { "@type": "Organization", "@id": `${site.url}/#organization`, name: site.name, url: site.url },
+  };
+}

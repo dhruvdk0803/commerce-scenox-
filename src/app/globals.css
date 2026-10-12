@@ -598,3 +598,70 @@ html[data-consent-open] [data-chat-launcher] {
   .marquee-track { animation: none; }
   .marquee { overflow-x: auto; }
 }
+
+/* ---------- guides: long-form article body (rendered from Markdown) ---------- */
+.prose-guide {
+  color: var(--color-ink-2);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  max-width: 44rem;
+}
+.prose-guide > * + * { margin-top: 1.15em; }
+.prose-guide h2 {
+  scroll-margin-top: 6rem;
+  margin-top: 2.4em;
+  color: var(--color-ink);
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 1.95rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+.prose-guide h2:first-child { margin-top: 0; }
+.prose-guide h3 {
+  scroll-margin-top: 6rem;
+  margin-top: 1.8em;
+  color: var(--color-ink);
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+}
+.prose-guide h2 + *, .prose-guide h3 + * { margin-top: 0.6em; }
+.prose-guide strong { color: var(--color-ink); font-weight: 600; }
+.prose-guide a { color: var(--color-ink); text-decoration: underline; text-decoration-color: var(--color-accent); text-underline-offset: 3px; }
+.prose-guide a:hover { color: var(--color-accent-hover); }
+.prose-guide ul, .prose-guide ol { padding-left: 1.25em; }
+.prose-guide ul { list-style: disc; }
+.prose-guide ol { list-style: decimal; }
+.prose-guide li + li { margin-top: 0.4em; }
+.prose-guide li::marker { color: var(--color-ink-3); }
+.prose-guide blockquote {
+  border-left: 2px solid var(--color-accent);
+  padding: 0.25em 0 0.25em 1.1em;
+  color: var(--color-ink);
+}
+.prose-guide code {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.86em;
+  background: var(--color-bg-muted);
+  border: 1px solid var(--color-line);
+  border-radius: 5px;
+  padding: 0.1em 0.35em;
+  color: var(--color-ink);
+}
+.prose-guide pre {
+  overflow-x: auto;
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  background: var(--color-bg-elevated);
+  padding: 1rem 1.1rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+.prose-guide pre code { background: none; border: 0; padding: 0; font-size: inherit; }
+.prose-guide .table-wrap { overflow-x: auto; border: 1px solid var(--color-line); border-radius: 12px; }
+.prose-guide table { width: 100%; border-collapse: collapse; font-size: 0.925rem; line-height: 1.5; }
+.prose-guide th { background: var(--color-bg-muted); color: var(--color-ink); font-weight: 600; text-align: left; }
+.prose-guide th, .prose-guide td { padding: 0.65rem 0.9rem; border-bottom: 1px solid var(--color-line); vertical-align: top; min-width: 8rem; }
+.prose-guide tr:last-child td { border-bottom: 0; }
+.prose-guide hr { border: 0; border-top: 1px solid var(--color-line); margin: 2.5em 0; }
