@@ -1,6 +1,7 @@
 "use client";
 
 import { site } from "@/lib/site";
+import { BookCallPrompt } from "./BookCallPrompt";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -192,6 +193,7 @@ export function LeadForm() {
           </Link>{" "}
           and we&apos;ll quote from your real data.
         </p>
+        <BookCallPrompt />
       </motion.div>
     );
   }

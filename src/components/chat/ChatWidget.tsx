@@ -16,6 +16,7 @@ const STORE_KEY = "scx_chat";
 const STARTERS = [
   "What would 500 products cost?",
   "Can you move my store from Magento to Shopify?",
+  "Book a call with the team",
   "I need a quote for my store",
   "Show me your Shopify services",
 ];
@@ -190,7 +191,7 @@ export function ChatWidget() {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: history, market: market.id, path }),
+        body: JSON.stringify({ messages: history, market: market.id, path, tz: (() => { try { return Intl.DateTimeFormat().resolvedOptions().timeZone; } catch { return undefined; } })() }),
       });
       if (!res.ok || !res.body) {
         let msg = "The assistant isn't available right now.";
@@ -210,12 +211,14 @@ export function ChatWidget() {
         buf = lines.pop() ?? "";
         for (const l of lines) {
           if (!l) continue;
-          const ev = JSON.parse(l) as { t: "d" | "reset" | "end" | "err" | "nav" | "lead"; v?: string };
+          const ev = JSON.parse(l) as { t: "d" | "reset" | "end" | "err" | "nav" | "lead" | "booked"; v?: string };
           if (ev.t === "d") answer += ev.v ?? "";
           else if (ev.t === "nav" && ev.v?.startsWith("/")) {
             // the assistant opened a page: go there; on phones the chat covers the page, so step aside
             router.push(ev.v);
             if (window.matchMedia("(max-width: 639px)").matches) setTimeout(() => setOpen(false), 400);
+          } else if (ev.t === "booked") {
+            track("book_call_click", { from: "chat_booked" });
           } else if (ev.t === "lead") {
             track("form_submitted", { form: "chat" });
             trackConversion("lead", { source: "chat" });
@@ -267,7 +270,7 @@ export function ChatWidget() {
             className="fixed bottom-4 right-4 z-[60] inline-flex h-12 items-center gap-2 rounded-full bg-ink pl-4 pr-5 text-[0.95rem] font-medium text-paper shadow-[0_8px_24px_-10px_rgba(16,17,18,0.45)] transition-colors duration-[160ms] hover:bg-[#232527] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent active:scale-[0.98] sm:bottom-5 sm:right-5"
           >
             <MessageCircle aria-hidden className="size-[1.15rem]" strokeWidth={2} />
-            Ask a question
+            Ask Nox
           </motion.button>
         )}
       </AnimatePresence>
@@ -277,7 +280,7 @@ export function ChatWidget() {
           <motion.div
             key="panel"
             role="dialog"
-            aria-label="Ask Scenox, AI assistant"
+            aria-label="Nox, Scenox AI assistant"
             initial={reduce ? { opacity: 0 } : { opacity: 0, transform: "translateY(12px) scale(0.98)" }}
             animate={{ opacity: 1, transform: "translateY(0px) scale(1)" }}
             exit={reduce ? { opacity: 0 } : { opacity: 0, transform: "translateY(8px) scale(0.98)" }}
@@ -288,7 +291,7 @@ export function ChatWidget() {
             {/* header */}
             <div className="flex items-center justify-between gap-3 border-b border-line px-4 pb-3 pt-[max(0.75rem,env(safe-area-inset-top))] sm:pt-3">
               <div className="min-w-0">
-                <p className="text-[1rem] font-semibold tracking-[-0.015em] text-ink">Ask Scenox</p>
+                <p className="text-[1rem] font-semibold tracking-[-0.015em] text-ink">Nox</p>
                 <p className="mono-micro mt-0.5 text-ink-3">AI ASSISTANT · PRICES IN {market.currency}</p>
               </div>
               <button
@@ -306,8 +309,8 @@ export function ChatWidget() {
               {empty ? (
                 <div>
                   <p className="text-[0.95rem] leading-relaxed text-ink-2">
-                    Ask about services, prices, platforms or timelines. Answers come from our published pricing and
-                    service pages. This is the same kind of AI support we set up for online stores.
+                    Hi, I&apos;m Nox. Ask about services, prices or platforms, get a quote, or book a call with the team in
+                    your time zone. I&apos;m the same kind of AI assistant we set up for online stores.
                   </p>
                   <p className="mono-micro mt-6 text-ink-3">TRY ASKING</p>
                   <ul className="mt-2.5 flex flex-col gap-2">

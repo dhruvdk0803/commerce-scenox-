@@ -36,11 +36,11 @@ export default function BookPage() {
             <div className="lg:col-span-4">
               <Eyebrow>BOOK A CALL</Eyebrow>
               <h1 className="mt-5 text-h1 text-ink">
-                Talk it through
-                <span className="block text-ink-2">with the founder.</span>
+                Book a call.
+                <span className="block text-ink-2">Get a clear plan.</span>
               </h1>
               <p className="mt-6 max-w-[40ch] text-lead text-ink-2">
-                A short video call about your store. No pitch deck, no obligation. Pick any open slot; it shows in your own time zone.
+                A 30-minute video call to scope your project: what needs doing, how long it takes and what it costs. No obligation. Slots show in your own time zone.
               </p>
 
               <div className="mt-10 overflow-hidden rounded-[10px] border border-line bg-bg-elevated">

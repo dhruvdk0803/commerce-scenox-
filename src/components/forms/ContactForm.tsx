@@ -1,6 +1,7 @@
 "use client";
 
 import { useMarket } from "@/components/market/MarketProvider";
+import { BookCallPrompt } from "./BookCallPrompt";
 import { site } from "@/lib/site";
 import { useRef, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
@@ -111,6 +112,7 @@ export function ContactForm() {
         <p className="mt-3 max-w-[44ch] text-[1rem] leading-relaxed text-ink-2">
           We reply to every enquiry. Expect a reply by email, or a call on the number you gave us if that is quicker.
         </p>
+        <BookCallPrompt />
       </motion.div>
     );
   }
