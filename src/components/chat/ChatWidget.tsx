@@ -1,13 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Fragment, useCallback, useEffect, useRef, useState, type FormEvent, type KeyboardEvent, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowUp, MessageCircle, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { site } from "@/lib/site";
-import { track } from "@/lib/analytics";
+import { track, trackConversion } from "@/lib/analytics";
 import { useMarket } from "@/components/market/MarketProvider";
 
 type Msg = { role: "user" | "assistant"; content: string };
@@ -16,8 +16,8 @@ const STORE_KEY = "scx_chat";
 const STARTERS = [
   "What would 500 products cost?",
   "Can you move my store from Magento to Shopify?",
-  "How does the 48-hour upload work?",
-  "Which monthly plan fits a small store?",
+  "I need a quote for my store",
+  "Show me your Shopify services",
 ];
 
 /* ------------------------------------------------------------------ */
@@ -108,6 +108,7 @@ function Rich({ text }: { text: string }) {
 export function ChatWidget() {
   const market = useMarket();
   const pathname = usePathname();
+  const router = useRouter();
   const path = (pathname ?? "/").replace(/^\/(in|us|uk|au)(?=\/|$)/, "") || "/";
   const reduce = useReducedMotion();
 
@@ -209,8 +210,16 @@ export function ChatWidget() {
         buf = lines.pop() ?? "";
         for (const l of lines) {
           if (!l) continue;
-          const ev = JSON.parse(l) as { t: "d" | "reset" | "end" | "err"; v?: string };
+          const ev = JSON.parse(l) as { t: "d" | "reset" | "end" | "err" | "nav" | "lead"; v?: string };
           if (ev.t === "d") answer += ev.v ?? "";
+          else if (ev.t === "nav" && ev.v?.startsWith("/")) {
+            // the assistant opened a page: go there; on phones the chat covers the page, so step aside
+            router.push(ev.v);
+            if (window.matchMedia("(max-width: 639px)").matches) setTimeout(() => setOpen(false), 400);
+          } else if (ev.t === "lead") {
+            track("form_submitted", { form: "chat" });
+            trackConversion("lead", { source: "chat" });
+          }
           else if (ev.t === "reset") answer = "";
           else if (ev.t === "err") throw new Error(ev.v);
         }

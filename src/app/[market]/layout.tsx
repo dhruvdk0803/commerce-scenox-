@@ -86,7 +86,7 @@ export default async function RootLayout({
         </a>
         <MarketProvider market={market}>
           {children}
-          {/* the assistant only renders when an API key was set at build time (see next.config.ts) */}
+          {/* the assistant only renders when CHAT_API_KEY and CHAT_MODEL were set at build time (see next.config.ts) */}
           {process.env.CHAT_ENABLED === "1" && <ChatWidget />}
         </MarketProvider>
         <ConsentBanner />

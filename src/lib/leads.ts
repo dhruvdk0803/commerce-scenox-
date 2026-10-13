@@ -317,3 +317,58 @@ export async function forwardLead(data: Payload, meta: { ip?: string; ua?: strin
   if (webhook.status === "rejected") console.error("[lead] webhook failed", webhook.reason);
   return { emailed, forwarded };
 }
+
+/* ------------------------------------------------------------------ */
+/* visitor confirmation (used by the website assistant)                 */
+/* ------------------------------------------------------------------ */
+
+/** Sends a plain confirmation to the visitor through whichever email transport is configured. */
+export async function sendVisitorEmail(to: string, name: string, summary: string[]) {
+  const first = name.split(" ")[0] || name;
+  const subject = "We've got your request · Scenox Commerce";
+  const lines = summary.filter(Boolean);
+  const text = [
+    `Hi ${first},`,
+    "",
+    "Thanks for getting in touch through our website assistant. Here's what we noted:",
+    "",
+    ...lines.map((l) => `- ${l}`),
+    "",
+    "What happens next: someone from the team reviews this and replies by email with a fixed quote or the questions we need answered first. You can also send 10 products for a free sample: https://commerce.scenoxstudios.com/free-sample",
+    "",
+    "If anything above is wrong, just reply to this email.",
+    "",
+    "Scenox Commerce",
+  ].join("\n");
+  const html = `<body style="margin:0;background:#f5f4ef;font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#111">
+  <div style="max-width:560px;margin:24px auto;background:#fbfaf7;border:1px solid #d9dad5;border-radius:12px;overflow:hidden">
+    <div style="padding:14px 20px;border-bottom:1px solid #d9dad5;font:600 12px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#686b6d">SCENOX / COMMERCE</div>
+    <div style="padding:20px;font-size:15px;line-height:1.6">
+      <p style="margin:0 0 12px">Hi ${esc(first)},</p>
+      <p style="margin:0 0 12px">Thanks for getting in touch through our website assistant. Here's what we noted:</p>
+      <ul style="margin:0 0 16px;padding-left:18px">${lines.map((l) => `<li>${esc(l)}</li>`).join("")}</ul>
+      <p style="margin:0 0 12px"><b>What happens next:</b> someone from the team reviews this and replies by email with a fixed quote or the questions we need answered first.</p>
+      <p style="margin:0 0 12px">Want to see the quality first? <a href="https://commerce.scenoxstudios.com/free-sample" style="color:#c2410c">Send 10 products for a free sample</a>.</p>
+      <p style="margin:0;color:#686b6d;font-size:13px">If anything above is wrong, just reply to this email.</p>
+    </div>
+  </div></body>`;
+
+  if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
+    const nodemailer = await import("nodemailer");
+    const port = Number(process.env.SMTP_PORT || 465);
+    const transport = nodemailer.createTransport({ host: process.env.SMTP_HOST, port, secure: port === 465, auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS } });
+    await transport.sendMail({ from: process.env.LEAD_FROM_EMAIL || `Scenox Commerce <${process.env.SMTP_USER}>`, to, replyTo: process.env.LEAD_TO_EMAIL?.split(",")[0]?.trim() || undefined, subject, text, html });
+    return true;
+  }
+  if (process.env.RESEND_API_KEY) {
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { authorization: `Bearer ${process.env.RESEND_API_KEY}`, "content-type": "application/json" },
+      body: JSON.stringify({ from: process.env.LEAD_FROM_EMAIL || "Scenox Commerce <onboarding@resend.dev>", to: [to], reply_to: process.env.LEAD_TO_EMAIL?.split(",")[0]?.trim() || undefined, subject, text, html }),
+      signal: AbortSignal.timeout(10000),
+    });
+    if (!res.ok) throw new Error(`Resend responded ${res.status}`);
+    return true;
+  }
+  return false;
+}
