@@ -82,6 +82,6 @@ export function knowledgeLines({ detailed = false }: { detailed?: boolean } = {}
     `- [Get started](${site.url}/get-started)`,
     `- [Contact](${site.url}/contact)`,
   );
-  if (site.bookingUrl) lines.push(`- [Book a call](${site.bookingUrl})`);
+  if (site.bookingUrl) lines.push(`- [Book a call](${site.url}${site.bookingUrl})`);
   return lines;
 }

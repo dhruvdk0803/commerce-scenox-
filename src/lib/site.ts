@@ -10,8 +10,11 @@ export const site = {
   email: "commerce@scenoxstudios.com",
   /** Set to a full international number (e.g. "919999999999") to enable WhatsApp CTAs. Leave empty to hide. */
   whatsapp: "",
-  /** Meeting booking link (Calendly, Cal.com, Google Calendar…). Leave empty to hide every "Book a call" button. */
-  bookingUrl: "",
+  /** Our booking page. Leave empty to hide every "Book a call" button. */
+  bookingUrl: "/book",
+  /** Google Calendar appointment schedule embedded on /book */
+  bookingEmbed:
+    "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0UyY7hH4ObhaLK2fO4VTNt0-yH0v6fFeVjLv0X0he_jPTocGTqPtTymKDHhnUXg-6WG6jHptsg?gv=true",
   platforms: ["Shopify", "WooCommerce", "Magento", "BigCommerce", "Wix", "Custom"],
   qualifier:
     "For eligible projects. Turnaround depends on scope, catalog complexity and the quality of the data and access we receive.",
@@ -63,6 +66,7 @@ export const nav = {
       { label: "Guides", href: "/guides" },
       { label: "About", href: "/about" },
       { label: "Contact", href: "/contact" },
+      { label: "Book a Call", href: "/book" },
       { label: "Get a Quote", href: "/get-started" },
       { label: "Scenox Studios", href: "https://scenoxstudios.com", external: true },
     ],

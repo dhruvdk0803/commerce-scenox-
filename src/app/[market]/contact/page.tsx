@@ -58,15 +58,13 @@ export default function ContactPage() {
                     <span className="mono-label text-ink-2">BOOK A CALL</span>
                   </div>
                   <div className="p-4">
-                    <a
+                    <Link
                       href={site.bookingUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       className="link-underline inline-flex items-center gap-2 text-[1.1rem] font-medium text-ink"
                     >
                       Pick a time
                       <ArrowUpRight className="size-4" strokeWidth={2} aria-hidden />
-                    </a>
+                    </Link>
                     <p className="mt-3 text-[0.875rem] leading-snug text-ink-2">A short video call to go through your store, your data and what it would cost.</p>
                   </div>
                 </div>

@@ -15,6 +15,7 @@ const CORE: IndexedPage[] = [
   { path: "/how-it-works", title: "How it works", summary: "The AI engine plus human review process, step by step.", type: "page" },
   { path: "/get-started", title: "Get a fixed quote", summary: "The one-step quote form.", type: "page" },
   { path: "/free-sample", title: "Free 10-product sample", summary: "Send 10 products and get them back store-ready, free if the project is a fit.", type: "page" },
+  { path: "/book", title: "Book a call", summary: "Pick a time for a video call with the founder; slots show in the visitor's own time zone.", type: "page" },
   { path: "/contact", title: "Contact", summary: "Contact form and email.", type: "page" },
   { path: "/solutions", title: "Solutions by platform, industry and country", summary: "Hub of every specialist page.", type: "page" },
   { path: "/guides", title: "Guides", summary: "All how-to guides and error fixes.", type: "page" },

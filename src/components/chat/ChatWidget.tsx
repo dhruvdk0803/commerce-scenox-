@@ -29,7 +29,7 @@ function safeHref(href: string): { kind: "internal" | "external"; href: string }
   if (href.startsWith("mailto:")) return { kind: "external", href };
   try {
     const u = new URL(href);
-    const allowed = [new URL(site.url).host, site.bookingUrl ? new URL(site.bookingUrl).host : null].filter(Boolean);
+    const allowed = [new URL(site.url).host];
     if (u.protocol === "https:" && allowed.includes(u.host)) {
       // links back to this site become client-side navigations
       return u.host === new URL(site.url).host ? { kind: "internal", href: u.pathname + u.search + u.hash } : { kind: "external", href };
@@ -389,15 +389,13 @@ export function ChatWidget() {
                 <p className="text-[0.75rem] text-ink-3">AI can make mistakes. Your quote confirms the price.</p>
                 <div className="flex items-center gap-3 text-[0.8rem]">
                   {site.bookingUrl && (
-                    <a
+                    <Link
                       href={site.bookingUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       onClick={() => track("book_call_click", { from: "chat" })}
                       className="inline-flex min-h-8 items-center font-medium text-ink hover:underline"
                     >
                       Book a call
-                    </a>
+                    </Link>
                   )}
                   <Link href="/contact" className="inline-flex min-h-8 items-center font-medium text-ink hover:underline">
                     Talk to a person
