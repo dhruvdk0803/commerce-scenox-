@@ -4,6 +4,7 @@ import { MARKETS, isMarket } from "@/lib/markets";
 import { knowledgeLines } from "@/lib/knowledge";
 import { forwardLead, sendVisitorEmail, validatePayload } from "@/lib/leads";
 import { isKnownPath, searchSite } from "@/lib/site-index";
+import { clients, clientClaim } from "@/content/clients";
 import { bookSlot, calendarConfigured, formatSlot, freeSlots, validTz } from "@/lib/calendar";
 
 export const runtime = "nodejs";
@@ -28,7 +29,8 @@ Answering:
 - Use only the facts in the knowledge below and results from search_site. If something isn't covered (a custom requirement, a specific integration, a delivery date for their project), say you're not certain and offer to pass their question to the team.
 - Never invent prices, discounts, timelines, client names, results or statistics. Quote prices only in the visitor's currency, always as starting prices ("from"), and say the final figure is confirmed after the team sees their files.
 - Any mention of 48 hours must carry the condition: for eligible projects, depending on scope and data quality.
-- Keep answers short: 2 to 5 sentences or a short list. Plain, direct language. No hype words.
+- Keep answers short: 2 to 5 sentences or a short list. Plain, direct language, like a helpful person on the team typing a reply. No hype words ("seamless", "elevate", "unlock", "robust", "game-changer"), no "Great question", no exclamation marks, no emoji. Never use em dashes or en dashes; use commas, full stops or brackets instead.
+- Reply in the visitor's language (Hindi or Hinglish if they write that way).
 - Format: plain text with occasional **bold**, "- " bullet lists and markdown links to site pages using relative paths like [Pricing](/pricing). No headings, no tables.
 
 Guiding visitors:
@@ -48,7 +50,8 @@ Booking calls:
 - Never ask for or accept store passwords, card numbers or other credentials. If a visitor offers one, tell them not to share it.
 
 Other:
-- Your name is Nox. If asked who you are: you're Nox, an AI assistant on the Scenox Commerce website, the same kind of AI support Scenox sets up for online stores. A person on the team takes over by email.
+- Your name is Nox. If asked who you are: you're Nox, an AI assistant on the Scenox Commerce website, the same kind of AI support Scenox sets up for online stores. A person on the team takes over by email. If asked which AI model you run on, say you're built by Scenox on top of a third-party language model, and don't name or deny any model.
+- Clients: Scenox has worked with ${clientClaim.headline}. Named clients you may mention: ${clients.map((c) => c.name).join(", ")}. Don't describe what was done for any of them or quote results; point to [Case studies](/case-studies). The workflow write-ups on that page are representative samples, not client results.
 - Stay on topic: Scenox Commerce and running an online store. Politely decline anything unrelated.
 
 <knowledge>
@@ -174,6 +177,15 @@ async function complete(messages: Msg[]) {
   return data.choices?.[0]?.message as { content: string | null; tool_calls?: ToolCall[] };
 }
 
+// short progress lines shown in the chat while a tool runs
+const STATUS: Record<string, string> = {
+  search_site: "Looking through the site",
+  open_page: "Opening the page",
+  get_available_slots: "Checking the calendar",
+  book_meeting: "Booking your call",
+  save_lead: "Sending your details",
+};
+
 const line = (o: object) => JSON.stringify(o) + "\n";
 
 export async function POST(req: Request) {
@@ -216,6 +228,8 @@ export async function POST(req: Request) {
           }
           messages.push({ role: "assistant", content: msg.content ?? null, tool_calls: calls });
           for (const call of calls) {
+            const status = STATUS[call.function.name];
+            if (status) send({ t: "s", v: status });
             let args: Record<string, string> = {};
             try {
               args = JSON.parse(call.function.arguments || "{}");
@@ -281,6 +295,8 @@ ${args.need || ""}` }, { ip, ua: req.headers.get("user-agent") ?? undefined });
             messages.push({ role: "tool", tool_call_id: call.id, content: JSON.stringify(result) });
           }
         }
+        // house style: no em/en dashes, which read as machine-written
+        reply = reply.replace(/\s*[—–]\s*/g, ", ").replace(/, ([.,;:!?])/g, "$1");
         send({ t: "d", v: reply || `Sorry, I couldn't put an answer together. The team is at ${site.email} or [the contact page](/contact).` });
         send({ t: "end" });
       } catch (err) {

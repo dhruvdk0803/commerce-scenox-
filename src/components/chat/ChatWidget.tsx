@@ -41,13 +41,15 @@ function safeHref(href: string): { kind: "internal" | "external"; href: string }
 
 function inline(text: string, key: string): ReactNode[] {
   const out: ReactNode[] = [];
-  const re = /\*\*([^*]+)\*\*|\[([^\]]+)\]\(([^)\s]+)\)/g;
+  const re = /\*\*([^*]+)\*\*|\[([^\]]+)\]\(([^)\s]+)\)|`([^`]+)`/g;
   let last = 0;
   let m: RegExpExecArray | null;
   let i = 0;
   while ((m = re.exec(text))) {
     if (m.index > last) out.push(text.slice(last, m.index));
-    if (m[1]) {
+    if (m[4]) {
+      out.push(<code key={`${key}-${i++}`} className="rounded-[4px] bg-bg-muted px-1 py-px font-mono text-[0.85em] text-ink">{m[4]}</code>);
+    } else if (m[1]) {
       out.push(<strong key={`${key}-${i++}`} className="font-semibold text-ink">{m[1]}</strong>);
     } else {
       const link = safeHref(m[3]);
@@ -118,6 +120,7 @@ export function ChatWidget() {
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [status, setStatus] = useState<string | null>(null);
 
   const launcherRef = useRef<HTMLButtonElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -177,6 +180,7 @@ export function ChatWidget() {
     while (history.length && history[0].role !== "user") history.shift();
     setMsgs([...history, { role: "assistant", content: "" }]);
     setBusy(true);
+    setStatus(null);
     track("chat_message_sent", { page: path, turn: history.length });
 
     let answer = "";
@@ -211,8 +215,9 @@ export function ChatWidget() {
         buf = lines.pop() ?? "";
         for (const l of lines) {
           if (!l) continue;
-          const ev = JSON.parse(l) as { t: "d" | "reset" | "end" | "err" | "nav" | "lead" | "booked"; v?: string };
+          const ev = JSON.parse(l) as { t: "d" | "s" | "reset" | "end" | "err" | "nav" | "lead" | "booked"; v?: string };
           if (ev.t === "d") answer += ev.v ?? "";
+          else if (ev.t === "s") setStatus(ev.v ?? null);
           else if (ev.t === "nav" && ev.v?.startsWith("/")) {
             // the assistant opened a page: go there; on phones the chat covers the page, so step aside
             router.push(ev.v);
@@ -236,6 +241,7 @@ export function ChatWidget() {
       if (!answer.trim()) setInput(q);
     } finally {
       setBusy(false);
+      setStatus(null);
     }
   };
 
@@ -342,11 +348,13 @@ export function ChatWidget() {
                           {m.content ? (
                             <Rich text={m.content} />
                           ) : (
-                            <span className="mono-micro inline-flex items-center gap-2 text-ink-3">
-                              <span className="chat-dot" />
-                              <span className="chat-dot [animation-delay:120ms]" />
-                              <span className="chat-dot [animation-delay:240ms]" />
-                              <span className="sr-only">Writing an answer</span>
+                            <span className="inline-flex items-center gap-2 text-[0.85rem] text-ink-3">
+                              <span className="inline-flex items-center gap-1.5" aria-hidden>
+                                <span className="chat-dot" />
+                                <span className="chat-dot [animation-delay:120ms]" />
+                                <span className="chat-dot [animation-delay:240ms]" />
+                              </span>
+                              {i === msgs.length - 1 && status ? <span>{status}…</span> : <span className="sr-only">Writing an answer</span>}
                             </span>
                           )}
                         </div>

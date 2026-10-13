@@ -1,0 +1,13 @@
+# keep secrets and local artefacts out of the build context
+.env*
+!.env.example
+sora*
+*.pem
+.git
+.next
+node_modules
+.vercel
+.claude
+coverage
+*.tsbuildinfo
+npm-debug.log*

@@ -1,0 +1,33 @@
+# Scenox Commerce on a shared Docker host.
+#   cp .env.example .env    (fill in the values; never commit it)
+#   docker compose up -d --build
+# The site publishes no host ports. The shared reverse proxy joins the
+# dedicated `commerce_edge` network, which carries only this container
+# (alias commerce-web), and serves commerce.scenoxstudios.com over HTTPS.
+name: scenox-commerce
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        CHAT_ENABLED: ${CHAT_ENABLED:-1}
+        NEXT_PUBLIC_GA_ID: ${NEXT_PUBLIC_GA_ID:-}
+        NEXT_PUBLIC_META_PIXEL_ID: ${NEXT_PUBLIC_META_PIXEL_ID:-}
+    image: scenox-commerce:latest
+    container_name: scenox-commerce-web
+    env_file: .env
+    restart: unless-stopped
+    expose: ["3000"]
+    networks:
+      commerce_edge:
+        aliases: [commerce-web]
+    security_opt: ["no-new-privileges:true"]
+    deploy: { resources: { limits: { memory: 1g } } }
+    logging:
+      driver: json-file
+      options: { max-size: "10m", max-file: "5" }
+
+networks:
+  commerce_edge:
+    name: commerce_edge

@@ -96,6 +96,10 @@ export function Footer() {
             <span className="mono-micro tabular">
               © {new Date().getFullYear()} Scenox Studios
             </span>
+            {/* required credit for the IP-to-country data used to pick each visitor's currency */}
+            <a href="https://db-ip.com" target="_blank" rel="noopener" className="mono-micro text-ink-3 hover:text-ink">
+              IP Geolocation by DB-IP
+            </a>
           </div>
         </div>
       </div>

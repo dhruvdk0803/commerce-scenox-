@@ -9,10 +9,12 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@ip-location-db/dbip-country-mmdb": "^2.3.2026060120",
     "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",
     "lucide-react": "^1.42.0",
     "marked": "^15.0.12",
+    "mmdb-lib": "^3.0.3",
     "motion": "^13.2.0",
     "next": "16.3.4",
     "nodemailer": "^10.0.1",

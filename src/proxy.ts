@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { MARKET_COOKIE, isMarket, marketForCountry } from "@/lib/markets";
+import { requestCountry } from "@/lib/geo";
 
 const ONE_YEAR = 60 * 60 * 24 * 365;
 
@@ -8,7 +9,7 @@ const ONE_YEAR = 60 * 60 * 24 * 365;
  *
  * - `/uk/pricing` (switcher links): save the choice, redirect to `/pricing`.
  * - `/pricing`: rewrite to `/{market}/pricing`, where market comes from the
- *   saved cookie, else the visitor's IP country (Vercel header).
+ *   saved cookie, else the visitor's country (CDN header or IP lookup).
  */
 export function proxy(request: NextRequest) {
   const { pathname, search } = request.nextUrl;
@@ -26,7 +27,7 @@ export function proxy(request: NextRequest) {
   const saved = request.cookies.get(MARKET_COOKIE)?.value;
   const market = isMarket(saved)
     ? saved
-    : marketForCountry(request.headers.get("x-vercel-ip-country"));
+    : marketForCountry(requestCountry(request.headers));
 
   const url = request.nextUrl.clone();
   url.pathname = `/${market}${pathname === "/" ? "" : pathname}`;

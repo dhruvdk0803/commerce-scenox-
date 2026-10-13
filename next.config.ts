@@ -11,9 +11,10 @@ const RENAMED: Record<string, string> = {
 };
 
 const nextConfig: NextConfig = {
-  // Only a yes/no reaches the bundle, never the key. The chat button shows when a key exists at build time.
+  // Only a yes/no reaches the bundle, never the key. The chat button shows when a key exists at build
+  // time, or when CHAT_ENABLED=1 (Docker builds, where the key is only given at runtime).
   env: {
-    CHAT_ENABLED: process.env.CHAT_API_KEY && process.env.CHAT_MODEL ? "1" : "",
+    CHAT_ENABLED: process.env.CHAT_ENABLED === "1" || (process.env.CHAT_API_KEY && process.env.CHAT_MODEL) ? "1" : "",
   },
   // Root layout lives under [market], so unmatched URLs need a global 404 (see app/global-not-found.tsx).
   experimental: {
