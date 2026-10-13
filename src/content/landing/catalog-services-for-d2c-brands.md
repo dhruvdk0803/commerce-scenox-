@@ -1,7 +1,7 @@
 ---
 kind: audience
 title: "Catalog Services for D2C Brands"
-description: "Ongoing catalog services for D2C brands: launches, seasonal drops, product page quality, imagery, feeds and retention. Monthly plans from ₹7,999 / $199 a month."
+description: "Ongoing catalog services for D2C brands: launches, seasonal drops, product pages, imagery, feeds and retention. Monthly plans from ₹7,999 / $199 a month."
 eyebrow: "FOR D2C BRANDS"
 heading: "Catalog services for D2C brands."
 lead: "A catalog team on retainer for brands that launch often: new collections, seasonal drops, product pages that sell, and the feeds and email flows that follow."
