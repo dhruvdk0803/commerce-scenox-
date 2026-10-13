@@ -1,0 +1,25 @@
+
+# --------------------------------------------------------------------------
+# Scenox Commerce — marketing site, its own compose project (~/scenox-commerce).
+# It publishes no host ports. Caddy is joined ONLY to the dedicated
+# `commerce_edge` network, which carries nothing but the web container
+# (alias commerce-web). Caddy sets X-Forwarded-For from the real client
+# address (incoming values are discarded); the site uses it for rate limits
+# and to pick each visitor's pricing currency.
+#
+# TLS is automatic (Let's Encrypt); commerce.scenoxstudios.com resolves here.
+# --------------------------------------------------------------------------
+commerce.scenoxstudios.com {
+	encode zstd gzip
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options nosniff
+		Referrer-Policy strict-origin-when-cross-origin
+		-Server
+	}
+	# the free-sample form accepts a 3 MB file
+	request_body {
+		max_size 8MB
+	}
+	reverse_proxy commerce-web:3000
+}
