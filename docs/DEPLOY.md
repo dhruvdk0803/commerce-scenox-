@@ -1,5 +1,25 @@
 # Running Scenox Commerce on your own server
 
+## Current setup: Docker on the Scenox server
+
+The site runs as one container (`scenox-commerce-web`) from `~/scenox-commerce` on the server (`ssh scenox`). It publishes no host ports. The shared Caddy in `~/ekam/docker` joins the `commerce_edge` network and serves `commerce.scenoxstudios.com` with automatic HTTPS, proxying to the alias `commerce-web:3000`.
+
+- Secrets live in `~/scenox-commerce/.env` (mode 600). They are read at runtime only; `.dockerignore` keeps every `.env*` file out of the image.
+- Visitor currency comes from an offline IP-to-country lookup (DB-IP Lite, credited in the footer), since there is no CDN country header.
+
+**Deploy a new version** (from your computer, in the project folder):
+
+```
+git archive --format=tar HEAD | ssh scenox "tar -x -C ~/scenox-commerce"
+ssh scenox "cd ~/scenox-commerce && docker compose up -d --build"
+```
+
+**Change a key or setting:** edit `~/scenox-commerce/.env` on the server, then `docker compose up -d` (no rebuild needed, except for `NEXT_PUBLIC_*` values, which need `--build`).
+
+**Logs:** `ssh scenox "docker logs --tail 100 -f scenox-commerce-web"`
+
+The sections below describe the same settings for a plain Node setup.
+
 ## Requirements
 
 - Node.js 20 or newer (the site is built and tested on Node 24)
