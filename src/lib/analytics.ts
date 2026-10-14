@@ -23,6 +23,8 @@ export type AnalyticsEvent =
   | "case_study_viewed"
   | "cta_click"
   | "chat_opened"
+  | "chat_teaser_shown"
+  | "chat_reset"
   | "chat_message_sent"
   | "book_call_click";
 
