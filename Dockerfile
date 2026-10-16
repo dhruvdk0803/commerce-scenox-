@@ -22,6 +22,7 @@ COPY --from=build --chown=node:node /app/package.json /app/next.config.ts ./
 COPY --from=build --chown=node:node /app/node_modules ./node_modules
 COPY --from=build --chown=node:node /app/public ./public
 COPY --from=build --chown=node:node /app/src/content ./src/content
+COPY --from=build --chown=node:node /app/src/assets/fonts ./src/assets/fonts
 COPY --from=build --chown=node:node /app/.next ./.next
 USER node
 EXPOSE 3000
